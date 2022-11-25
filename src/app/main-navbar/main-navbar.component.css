@@ -1,0 +1,20 @@
+nav{
+    display: flex;
+    position: relative;
+    border-bottom: 2px solid black;
+    padding-bottom: 2rem;
+    align-items: center;
+}
+
+.brand-name{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.nav-buttons{
+    margin-left: auto;
+}

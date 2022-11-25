@@ -1,0 +1,31 @@
+ <div class="dates" >
+        <span *ngFor ="let date of dates">{{  date | date:'dd/MM' }}</span>
+   
+    </div>
+    <div class="movie-container" *ngFor=" let movie of movies">
+   
+    <div class="movie-container__img">  
+        <img [src]="movie.image" alt="movie.title">
+    </div>
+    <div class="movie-container__info">
+        <div class="movie-container__title" >
+        <h2>{{ movie.title }}</h2>
+        </div>
+        <div class="movie-container__details">
+            <span *ngFor="let genre of movie.genres">{{ genre }}</span>
+            <span>{{ movie.time }}</span>
+            <span>{{ movie.ageRestriction }}</span>
+        
+            <p class="movie-details__description">{{ movie.description }}</p>
+        </div><div> 
+        <button class="more-text" (click)=showMore()>Więcej</button>
+        </div>
+        <div class="movie-container__hours" >
+            <span *ngFor="let hour of movie.hours">{{hour}}</span>
+        </div>
+    </div>  
+        
+    </div>
+    
+    
+
