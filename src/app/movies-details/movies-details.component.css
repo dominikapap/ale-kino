@@ -4,13 +4,13 @@
     margin: 2rem 0;
 }
 
-.dates span{
+.dates button{
     padding: 0.5rem;
     background-color: lightgrey;
     border: 1px solid;
 }
 
-.dates span + span{
+.dates button + button{
     margin-left:1rem;
 }
 
@@ -28,8 +28,15 @@
 .movie-details__description{
     display: -webkit-box;
     overflow: hidden;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+}
+
+.movie-details__description:has(+ label>input:checked){
+    display: block;
+}
+
+input#showMore{
 }
 
 .movie-container__hours{

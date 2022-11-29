@@ -1,7 +1,4 @@
- <div class="dates" >
-        <span *ngFor ="let date of dates">{{  date | date:'dd/MM' }}</span>
-   
-    </div>
+
     <div class="movie-container" *ngFor=" let movie of movies">
    
     <div class="movie-container__img">  
@@ -17,12 +14,15 @@
             <span>{{ movie.ageRestriction }}</span>
         
             <p class="movie-details__description">{{ movie.description }}</p>
-        </div><div> 
-        <button class="more-text" (click)=showMore()>Więcej</button>
+            <label for="showMore"><input class="more-text" id="showMore" type="checkbox">Więcej</label>
         </div>
-        <div class="movie-container__hours" >
-            <span *ngFor="let hour of movie.hours">{{hour}}</span>
-        </div>
+        
+        
+        <!--<div class="movie-container__hours" >
+            <span *ngFor="let hour of movie.hours">
+                <span *ngIf="compareHours(hour)">{{hour}}</span>
+            </span>
+        </div>-->
     </div>  
         
     </div>
