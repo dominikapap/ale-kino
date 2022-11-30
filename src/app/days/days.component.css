@@ -28,7 +28,7 @@
 .movie-details__description{
     display: -webkit-box;
     overflow: hidden;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 
@@ -36,7 +36,7 @@
     display: block;
 }
 
-.showMoreLabel{
+.showMoreLabel > span{
     border: 1px solid;
     padding: 0.5rem;
     padding-left: 0;
@@ -48,9 +48,7 @@ input.more-text{
 }
 
 .movie-container__hours{
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
    
 }
 
@@ -75,6 +73,6 @@ input.more-text{
     background-color: lightgrey;
 }
 
-.movie-container__hours, .additionalBtns{
-margin-top: 1rem;
+ .additionalBtns{
+margin-top: 2rem;
 }

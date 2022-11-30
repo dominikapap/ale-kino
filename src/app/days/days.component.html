@@ -14,17 +14,22 @@
                     <span>{{ movieDetail.ageRestriction }}</span>
                 
                     <p class="movie-details__description">{{ movieDetail.description }}</p>
-                    <label for='{{ movie.title }}' class="showMoreLabel"><input class="more-text" id='{{ movie.title }}' type="checkbox">Więcej</label>
+                    
+                    <label for='{{ movie.title }}' class="showMoreLabel" >
+                        <input class="more-text" id='{{ movie.title }}' name ='{{ movie.title }}' type="checkbox">
+                        <span (click)="toggleMoreLess(movie.title)">Więcej</span>
+                    </label>     
                 </div>
             <div class="additionalBtns">
                 <span>Rating</span>
                 <button>Oceń</button>
-                <button (click)="addToWatchList(movie.title)">Chcę obejrzeć</button>
+                <button (click)="newWatchList(movie.title)">Chcę obejrzeć</button>
             </div>
             
-                <div class="movie-container__hours" *ngFor="let hour of movie.hours">
+            <div class="movie-container__hours" ><span *ngFor="let hour of movie.hours">
                     <span *ngIf="compareHours(hour)"> {{ hour }}</span>
-                </div>
+                </span></div>
+                
             </div>  </div></span>
     </span>
     

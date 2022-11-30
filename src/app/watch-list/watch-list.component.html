@@ -1,1 +1,10 @@
-<p>watch-list works!</p>
+<h1>Lista filmów do obejrzenia</h1>
+<div *ngIf="titlesToWatch.length === 0 ">
+    <p> Nie ma jeszcze dodanych filmów</p>
+</div>
+<ol *ngIf="titlesToWatch.length > 0 ">
+    <li *ngFor="let title of titlesToWatch">{{title}}
+        <button [id]="title" (click)="removeFromWatchList(title)">Usuń z listy</button>
+    </li>
+    
+</ol>
