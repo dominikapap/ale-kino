@@ -14,7 +14,7 @@ export class DaysComponent implements OnInit {
 
 
 
-days:string[];
+// days:string[];
 movies:object[]=[]
 mymovies:any;
 movieDetails:any[];
@@ -39,8 +39,8 @@ compareHours(hour:string):boolean{
 
 
   constructor( private datesService:DatesService, public moviesDetailsService:MoviesService, private watchListService:WatchListService) { 
-    this.days = datesService.getDays();
-    this.movies = datesService.getMovies();
+    // this.days = datesService.getDays();
+    // this.movies = datesService.getMovies();
     this.mymovies = this.movies[0]
     this.movieDetails = moviesDetailsService.getDetails()
     console.log(this.movieDetails)

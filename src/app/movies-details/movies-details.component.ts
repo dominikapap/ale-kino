@@ -1,16 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieDetails } from '../interfaces/MovieDetails';
 import { DatesService } from '../services/dates.service';
 import { MoviesService } from '../services/movies.service';
 
-interface Movie {
-  title: string;
-  id: number;
-  image: string;
-  genres: string[];
-  time: string | number;
-  ageRestriction: string;
-  description: string
-}
+
 
 
 @Component({
@@ -41,7 +34,7 @@ export class MoviesDetailsComponent implements OnInit {
   }
   
 
-  movies: Movie[] =[]
+  movies: MovieDetails[] =[]
   dates: any = []
   days:any;
 

@@ -1,2 +1,398 @@
-{"users":[], 
-"products":[]}
+{
+  "users": [
+    {
+      "id": 168395,
+      "firstName": "John",
+      "lastName": "Wick",
+      "email": "john@wick.com",
+      "password": "verystrongpassword123!",
+      "role": "User"
+    },
+    {
+      "id": 168363,
+      "firstName": "Emma",
+      "lastName": "Strong",
+      "email": "emma@example.com",
+      "password": "strongpassword!27",
+      "role": "User"
+    },
+    {
+      "id": 680235,
+      "firstName": "Annabelle",
+      "lastName": "Wachowski",
+      "email": "admin@superadmin.com",
+      "password": "qwerty99?",
+      "role": "Admin"
+    }
+  ],
+  "products": [],
+  "movies": [
+    {
+      "title": "Apokawixa",
+      "id": 1267943,
+      "imageUrl": "https://fwcdn.pl/fpo/55/10/10015510/8029347.6.jpg",
+      "genres": ["Horror"],
+      "time": "120 minut",
+      "ageRestriction": "PG-13",
+      "descriptionShort": " Apokawixa details:Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
+      "descriptionLong": " Apokawixa details:Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "rating": "6.5",
+      "duration": "90min",
+      "isPremiere": false
+    },
+    {
+      "title": "Co w duszy gra",
+      "id": 2437892,
+      "imageUrl": "https://fwcdn.pl/fpo/66/50/836650/7934792.6.jpg",
+      "genres": ["Animowany", "Obyczajowy"],
+      "time": "120 minut",
+      "ageRestriction": "Dla wszystkich",
+      "descriptionShort": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
+      "descriptionLong": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
+      "rating": "8.5",
+      "duration": "75min",
+      "isPremiere": false
+    }
+  ],
+  "showings": [
+    {
+      "id": 15,
+      "movieId": 1267943,
+      "date": "2022-12-08",
+      "break": 15,
+      "timeFrom": "12:30",
+      "timeTo": "14:00",
+      "rows": 10,
+      "columns": 12,
+      "numOfSeats": 120,
+      "hallId": 1,
+      "paidSeats": [
+        {
+          "row": "A",
+          "num": 3
+        },
+        {
+          "row": "A",
+          "num": 2
+        }
+      ],
+      "bookedSeats": [
+        {
+          "row": "B",
+          "num": 4
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "movieId": 1267943,
+      "date": "2022-12-07",
+      "break": 15,
+      "timeFrom": "16:00",
+      "timeTo": "17:30",
+      "rows": 10,
+      "columns": 12,
+      "numOfSeats": 120,
+      "hallId": 1,
+      "paidSeats": [
+        {
+          "row": "B",
+          "num": 4
+        },
+        {
+          "row": "B",
+          "num": 3
+        }
+      ],
+      "bookedSeats": [
+        {
+          "row": "C",
+          "num": 10
+        },
+        {
+          "row": "C",
+          "num": 11
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "movieId": 1267943,
+      "date": "2022-12-08",
+      "break": 15,
+      "timeFrom": "21:00",
+      "timeTo": "21:30",
+      "rows": 12,
+      "columns": 12,
+      "numOfSeats": 144,
+      "hallId": 2,
+      "paidSeats": [
+        {
+          "row": "D",
+          "num": 7
+        },
+        {
+          "row": "D",
+          "num": 8
+        }
+      ],
+      "bookedSeats": []
+    },
+    {
+      "id": 22,
+      "movieId": 2437892,
+      "date": "2022-12-08",
+      "break": 15,
+      "timeFrom": "12:30",
+      "timeTo": "14:00",
+      "rows": 10,
+      "columns": 12,
+      "numOfSeats": 120,
+      "hallId": 2,
+      "paidSeats": [
+        {
+          "row": "A",
+          "num": 3
+        },
+        {
+          "row": "A",
+          "num": 2
+        }
+      ],
+      "bookedSeats": [
+        {
+          "row": "B",
+          "num": 4
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "movieId": 2437892,
+      "date": "2022-12-08",
+      "break": 15,
+      "timeFrom": "16:00",
+      "timeTo": "17:30",
+      "rows": 10,
+      "columns": 12,
+      "numOfSeats": 120,
+      "hallId": 1,
+      "paidSeats": [
+        {
+          "row": "B",
+          "num": 4
+        },
+        {
+          "row": "B",
+          "num": 3
+        }
+      ],
+      "bookedSeats": [
+        {
+          "row": "C",
+          "num": 10
+        },
+        {
+          "row": "C",
+          "num": 11
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "movieId": 2437892,
+      "date": "2022-12-08",
+      "break": 15,
+      "timeFrom": "21:00",
+      "timeTo": "21:30",
+      "rows": 12,
+      "columns": 12,
+      "numOfSeats": 144,
+      "hallId": 2,
+      "paidSeats": [
+        {
+          "row": "D",
+          "num": 7
+        },
+        {
+          "row": "D",
+          "num": 8
+        }
+      ],
+      "bookedSeats": []
+    },
+    {
+      "id": 15,
+      "movieId": 1267943,
+      "date": "2022-12-08",
+      "break": 15,
+      "timeFrom": "12:30",
+      "timeTo": "14:00",
+      "rows": 10,
+      "columns": 12,
+      "numOfSeats": 120,
+      "hallId": 1,
+      "paidSeats": [
+        {
+          "row": "A",
+          "num": 3
+        },
+        {
+          "row": "A",
+          "num": 2
+        }
+      ],
+      "bookedSeats": [
+        {
+          "row": "B",
+          "num": 4
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "movieId": 1267943,
+      "date": "2022-12-06",
+      "break": 15,
+      "timeFrom": "16:00",
+      "timeTo": "17:30",
+      "rows": 10,
+      "columns": 12,
+      "numOfSeats": 120,
+      "hallId": 1,
+      "paidSeats": [
+        {
+          "row": "B",
+          "num": 4
+        },
+        {
+          "row": "B",
+          "num": 3
+        }
+      ],
+      "bookedSeats": [
+        {
+          "row": "C",
+          "num": 10
+        },
+        {
+          "row": "C",
+          "num": 11
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "movieId": 1267943,
+      "date": "2022-12-08",
+      "break": 15,
+      "timeFrom": "21:00",
+      "timeTo": "21:30",
+      "rows": 12,
+      "columns": 12,
+      "numOfSeats": 144,
+      "hallId": 2,
+      "paidSeats": [
+        {
+          "row": "D",
+          "num": 7
+        },
+        {
+          "row": "D",
+          "num": 8
+        }
+      ],
+      "bookedSeats": []
+    },
+    {
+      "id": 27,
+      "movieId": 2437892,
+      "date": "2022-12-06",
+      "break": 15,
+      "timeFrom": "12:30",
+      "timeTo": "14:00",
+      "rows": 10,
+      "columns": 12,
+      "numOfSeats": 120,
+      "hallId": 2,
+      "paidSeats": [
+        {
+          "row": "A",
+          "num": 3
+        },
+        {
+          "row": "A",
+          "num": 2
+        }
+      ],
+      "bookedSeats": [
+        {
+          "row": "B",
+          "num": 4
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "movieId": 2437892,
+      "date": "2022-12-07",
+      "break": 15,
+      "timeFrom": "16:00",
+      "timeTo": "17:30",
+      "rows": 10,
+      "columns": 12,
+      "numOfSeats": 120,
+      "hallId": 1,
+      "paidSeats": [
+        {
+          "row": "B",
+          "num": 4
+        },
+        {
+          "row": "B",
+          "num": 3
+        }
+      ],
+      "bookedSeats": [
+        {
+          "row": "C",
+          "num": 10
+        },
+        {
+          "row": "C",
+          "num": 11
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "movieId": 2437892,
+      "date": "2022-12-06",
+      "break": 15,
+      "timeFrom": "21:00",
+      "timeTo": "21:30",
+      "rows": 12,
+      "columns": 12,
+      "numOfSeats": 144,
+      "hallId": 2,
+      "paidSeats": [
+        {
+          "row": "D",
+          "num": 7
+        },
+        {
+          "row": "D",
+          "num": 8
+        }
+      ],
+      "bookedSeats": []
+    }
+  ],
+  "screeningHall": [
+    {
+      "id": 2,
+      "name": "Duża sala"
+    }
+  ],
+  "watchlist": []
+}

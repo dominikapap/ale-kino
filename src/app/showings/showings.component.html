@@ -1,0 +1,66 @@
+<div class="weekDays">
+  <button
+    [disabled]="day < currDay"
+    *ngFor="let day of week"
+    (click)="filterShowings(day)"
+  >
+    {{ day }}
+  </button>
+</div>
+
+<p *ngIf="filteredShowings.length == 0">Brak repertuaru na dany dzień</p>
+
+<div *ngIf="filteredShowings.length">
+  <div *ngFor="let movie of movieDetails">
+    <div class="movie-container__img">
+      <img [src]="movie.imageUrl" alt="movie.title" />
+    </div>
+
+    <div class="movie-container__info">
+      <span> {{ movie.title }}</span>
+      <div class="movie-container__details">
+        <span *ngFor="let genre of movie.genres">{{ genre }}</span>
+        <span>{{ movie.time }}</span>
+        <span>{{ movie.ageRestriction }}</span>
+
+        <p class="movie-details__description" *ngIf="description">
+          {{ movie.descriptionShort }}
+        </p>
+        <p class="movie-details__description" *ngIf="!description">
+          {{ movie.descriptionLong }}
+        </p>
+        <button (click)="description = !description">Więcej</button>
+      </div>
+      <div class="additionalBtns">
+        <span>Rating</span>
+        <button>Oceń</button>
+        <button>Chcę obejrzeć</button>
+      </div>
+    </div>
+
+    <span *ngFor="let showing of filteredShowings">
+      <span *ngIf="movie.id === showing.movieId">
+        <!-- *ngIf="compareHours(showing.timeFrom)" -->
+        <p
+          [routerLink]="['/kup-bilet/', showing.id]"
+          (click)="updateCurrentShowing(showing.id)"
+        >
+          {{ showing.timeFrom }}
+        </p>
+      </span>
+    </span>
+  </div>
+</div>
+
+<!-- 
+<p *ngIf="filteredShowings.length">
+    <span *ngFor="let showing of filteredShowings">
+        <span *ngFor="let movieDetail of movieDetails">
+        <span *ngIf="showing.movieId === movieDetail.id">
+<p>Tytuł: {{movieDetail.title}}</p>
+<p>Data :{{ showing.date }}</p>
+<p>Godzina :{{ showing.timeFrom }}</p>
+        </span>
+        
+       </span></span>
+    </p> -->

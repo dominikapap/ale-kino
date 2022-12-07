@@ -1,8 +1,11 @@
-<app-main-navbar></app-main-navbar>
-<app-days></app-days>
-<hr>
+<nav>
+  <div class="brand-name" routerLink=""><p>Ale kino!</p></div>
+  <div class="nav-buttons">
+    <button class="btn cart-btn">Cart</button>
+    <a class="btn login-btn" routerLink="logowanie">>Zaloguj</a>
+  </div>
+</nav>
+<hr />
 
-
+<router-outlet></router-outlet>
 <app-main-footer></app-main-footer>
-
-<app-watch-list></app-watch-list>
