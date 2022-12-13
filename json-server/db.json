@@ -25,7 +25,24 @@
       "role": "Admin"
     }
   ],
-  "products": [],
+  "ticketTypes": [
+    {
+      "name": "bilet normalny",
+      "price": 22
+    },
+    {
+      "name": "bilet rodzinny",
+      "price": 18
+    },
+    {
+      "name": "bilet ulgowy",
+      "price": 17
+    },
+    {
+      "name": "voucher",
+      "price": 22
+    }
+  ],
   "movies": [
     {
       "title": "Apokawixa",
@@ -58,7 +75,35 @@
     {
       "id": 15,
       "movieId": 1267943,
-      "date": "2022-12-08",
+      "date": "2022-12-12",
+      "break": 15,
+      "timeFrom": "12:30",
+      "timeTo": "14:00",
+      "rows": 10,
+      "columns": 12,
+      "numOfSeats": 120,
+      "hallId": 1,
+      "paidSeats": [
+        {
+          "row": "A",
+          "num": 3
+        },
+        {
+          "row": "A",
+          "num": 2
+        }
+      ],
+      "bookedSeats": [
+        {
+          "row": "B",
+          "num": 4
+        }
+      ]
+    },
+    {
+      "id": 153,
+      "movieId": 2437892,
+      "date": "2022-12-12",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -86,7 +131,7 @@
     {
       "id": 17,
       "movieId": 1267943,
-      "date": "2022-12-07",
+      "date": "2022-12-12",
       "break": 15,
       "timeFrom": "16:00",
       "timeTo": "17:30",
@@ -118,7 +163,7 @@
     {
       "id": 18,
       "movieId": 1267943,
-      "date": "2022-12-08",
+      "date": "2022-12-12",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -141,7 +186,7 @@
     {
       "id": 22,
       "movieId": 2437892,
-      "date": "2022-12-08",
+      "date": "2022-12-13",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -168,10 +213,10 @@
     },
     {
       "id": 24,
-      "movieId": 2437892,
-      "date": "2022-12-08",
+      "movieId": 1267943,
+      "date": "2022-12-13",
       "break": 15,
-      "timeFrom": "16:00",
+      "timeFrom": "18:00",
       "timeTo": "17:30",
       "rows": 10,
       "columns": 12,
@@ -201,7 +246,7 @@
     {
       "id": 26,
       "movieId": 2437892,
-      "date": "2022-12-08",
+      "date": "2022-12-13",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -222,9 +267,9 @@
       "bookedSeats": []
     },
     {
-      "id": 15,
+      "id": 156,
       "movieId": 1267943,
-      "date": "2022-12-08",
+      "date": "2022-12-14",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -234,12 +279,12 @@
       "hallId": 1,
       "paidSeats": [
         {
-          "row": "A",
-          "num": 3
+          "col": "A",
+          "row": 3
         },
         {
-          "row": "A",
-          "num": 2
+          "col": "A",
+          "row": 2
         }
       ],
       "bookedSeats": [
@@ -252,7 +297,7 @@
     {
       "id": 99,
       "movieId": 1267943,
-      "date": "2022-12-06",
+      "date": "2022-12-14",
       "break": 15,
       "timeFrom": "16:00",
       "timeTo": "17:30",
@@ -282,9 +327,9 @@
       ]
     },
     {
-      "id": 26,
+      "id": 263,
       "movieId": 1267943,
-      "date": "2022-12-08",
+      "date": "2022-12-14",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -305,9 +350,9 @@
       "bookedSeats": []
     },
     {
-      "id": 27,
+      "id": 276,
       "movieId": 2437892,
-      "date": "2022-12-06",
+      "date": "2022-12-15",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -333,9 +378,9 @@
       ]
     },
     {
-      "id": 30,
+      "id": 303,
       "movieId": 2437892,
-      "date": "2022-12-07",
+      "date": "2022-12-15",
       "break": 15,
       "timeFrom": "16:00",
       "timeTo": "17:30",
@@ -365,9 +410,9 @@
       ]
     },
     {
-      "id": 32,
+      "id": 323,
       "movieId": 2437892,
-      "date": "2022-12-06",
+      "date": "2022-12-15",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -394,5 +439,10 @@
       "name": "Duża sala"
     }
   ],
-  "watchlist": []
+  "watchlist": [
+    {
+      "userID": 168395,
+      "movies": ["Apokawixa", "Co w duszy gra"]
+    }
+  ]
 }
