@@ -1,0 +1,28 @@
+.rows {
+  margin-inline: auto;
+  margin-bottom: 1rem;
+}
+
+.column-seats,
+.row {
+  width: 200px;
+  border: 1px solid black;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  display: table-cell;
+  text-align: center;
+}
+
+.column-seats {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.row {
+  background-color: grey;
+}
+
+.paid-seat {
+  background-color: red;
+  pointer-events: none;
+}
