@@ -1,0 +1,9 @@
+<div class="weekDays">
+  <button
+    [disabled]="day < currDay"
+    *ngFor="let day of week"
+    (click)="pickDay(day)"
+  >
+    {{ day }}
+  </button>
+</div>
