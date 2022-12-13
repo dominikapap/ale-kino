@@ -1,5 +1,4 @@
 export interface PaidSeat {
-    row: string
-    num: number
-  }
-  
+  row: string;
+  num: number;
+}
