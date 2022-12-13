@@ -13,6 +13,8 @@ import { ShowingsComponent } from './showings/showings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ThisWeekComponent } from './this-week/this-week.component';
+import { TicketsComponent } from './tickets/tickets.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     PageNotFoundComponent,
     ShowingsComponent,
     CheckoutComponent,
+    ThisWeekComponent,
+    TicketsComponent,
   ],
   imports: [
     BrowserModule,
