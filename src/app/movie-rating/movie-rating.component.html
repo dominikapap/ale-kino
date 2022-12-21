@@ -1,0 +1,56 @@
+<span>Rating {{ currentRating | number : "1.2-2" }}/10</span>
+<button
+  [disabled]="checkIfUserRated(userID)"
+  (click)="showRatingForm = !showRatingForm"
+>
+  Oceń
+</button>
+
+<ng-container *ngIf="showRatingForm">
+  <form (ngSubmit)="rateMovie(userID)">
+       
+    <label for="one"
+      ><input type="radio" id="one" name="rating" value="1" />1</label
+    >
+       
+    <label for="two"
+      ><input type="radio" id="two" name="rating" value="2" />2</label
+    >
+       
+    <label for="three"
+      ><input type="radio" id="three" name="rating" value="3" />3</label
+    >
+
+     
+    <label for="four"
+      ><input type="radio" id="four" name="rating" value="4" />4</label
+    >
+       
+    <label for="five"
+      ><input type="radio" id="five" name="rating" value="5" />5</label
+    >
+       
+    <label for="sixe">
+      <input type="radio" id="six" name="rating" value="6" />6</label
+    >
+
+     
+    <label for="seven"
+      ><input type="radio" id="seven" name="rating" value="7" />7</label
+    >
+       
+    <label for="eight"
+      ><input type="radio" id="eight" name="rating" value="8" />8</label
+    >
+       
+    <label for="nine"
+      ><input type="radio" id="nine" name="rating" value="9" />9</label
+    >
+
+     
+    <label for="ten"
+      ><input type="radio" id="ten" name="rating" value="10" />10</label
+    ><br />
+    <button>Potwierdzam</button>
+  </form>
+</ng-container>
