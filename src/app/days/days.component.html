@@ -1,36 +1,45 @@
 <!-- <button *ngFor="let day of days, let i = index" [id]="i" (click)="loadDayData(i)">{{day}}</button> -->
 <p *ngFor="let movie of mymovies">
-    <span>{{ movie.title}}</span>
-    <span *ngFor="let movieDetail of movieDetails">
-        <span *ngIf="movie.id === movieDetail.id">
-            <div class="movie-container">
-            <div class="movie-container__img">  
-                <img [src]="movieDetail.image" alt="movie.title">
-            </div>
-            <div class="movie-container__info">
-                <div class="movie-container__details">
-                    <span *ngFor="let genre of movieDetail.genres">{{ genre }}</span>
-                    <span>{{ movieDetail.time }}</span>
-                    <span>{{ movieDetail.ageRestriction }}</span>
-                
-                    <p class="movie-details__description">{{ movieDetail.description }}</p>
-                    
-                    <label for='{{ movie.title }}' class="showMoreLabel" >
-                        <input class="more-text" id='{{ movie.title }}' name ='{{ movie.title }}' type="checkbox">
-                        <span (click)="toggleMoreLess(movie.title)">Więcej</span>
-                    </label>     
-                </div>
-            <div class="additionalBtns">
-                <span>Rating</span>
-                <button>Oceń</button>
-                <button (click)="newWatchList(movie.title)">Chcę obejrzeć</button>
-            </div>
-            
-            <div class="movie-container__hours" ><span *ngFor="let hour of movie.hours">
-                    <span *ngIf="compareHours(hour)"> {{ hour }}</span>
-                </span></div>
-                
-            </div>  </div></span>
-    </span>
-    
+  <span>{{ movie.title }}</span>
+  <span *ngFor="let movieDetail of movieDetails">
+    <span *ngIf="movie.id === movieDetail.id">
+      <div class="movie-container">
+        <div class="movie-container__img">
+          <img [src]="movieDetail.image" alt="movie.title" />
+        </div>
+        <div class="movie-container__info">
+          <div class="movie-container__details">
+            <span *ngFor="let genre of movieDetail.genres">{{ genre }}</span>
+            <span>{{ movieDetail.time }}</span>
+            <span>{{ movieDetail.ageRestriction }}</span>
+
+            <p class="movie-details__description">
+              {{ movieDetail.description }}
+            </p>
+
+            <label for="{{ movie.title }}" class="showMoreLabel">
+              <input
+                class="more-text"
+                id="{{ movie.title }}"
+                name="{{ movie.title }}"
+                type="checkbox"
+              />
+              <span (click)="toggleMoreLess(movie.title)">Więcej</span>
+            </label>
+          </div>
+          <div class="additionalBtns">
+            <span>Rating</span>
+            <button>Oceń</button>
+            <!-- <button >Chcę obejrzeć</button>(click)="newWatchList(movie.title)" -->
+          </div>
+
+          <div class="movie-container__hours">
+            <span *ngFor="let hour of movie.hours">
+              <span *ngIf="compareHours(hour)"> {{ hour }}</span>
+            </span>
+          </div>
+        </div>
+      </div></span
+    >
+  </span>
 </p>

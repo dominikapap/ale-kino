@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ThisWeekComponent } from './this-week/this-week.component';
 import { TicketsComponent } from './tickets/tickets.component';
+import { MovieRatingComponent } from './movie-rating/movie-rating.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { TicketsComponent } from './tickets/tickets.component';
     CheckoutComponent,
     ThisWeekComponent,
     TicketsComponent,
+    MovieRatingComponent,
   ],
   imports: [
     BrowserModule,

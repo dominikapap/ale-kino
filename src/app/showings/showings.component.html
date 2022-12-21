@@ -1,12 +1,3 @@
-<!-- <div class="weekDays">
-  <button
-    [disabled]="day < currDay"
-    *ngFor="let day of week"
-    (click)="filterShowings(day)"
-  >
-    {{ day }}
-  </button>
-</div> -->
 <app-this-week (chooseDay)="filterShowings($event)"></app-this-week>
 
 <p *ngIf="filteredShowings.length == 0">Brak repertuaru na dany dzień</p>
@@ -34,9 +25,11 @@
           <button (click)="description = !description">Więcej</button>
         </div>
         <div class="additionalBtns">
-          <span>Rating</span>
-          <button>Oceń</button>
-          <button>Chcę obejrzeć</button>
+          <app-movie-rating [movieId]="movie.id"></app-movie-rating>
+
+          <button (click)="onUpdateWatchlist(movie.title, 1)">
+            Chcę obejrzeć
+          </button>
         </div>
       </div>
 
@@ -45,13 +38,11 @@
           class="movie-container__hours"
           *ngIf="movie.id === showing.movieId"
         >
-          <!-- *ngIf="compareHours(showing.timeFrom, showing.date) -->
           <ng-container>
             <span [routerLink]="['/kup-bilet/', showing.id]">
               {{ showing.timeFrom }}
             </span></ng-container
           >
-          <!-- (click)="updateCurrentShowing(showing.id)" -->
         </span>
       </span>
     </ng-container>

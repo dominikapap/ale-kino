@@ -4,6 +4,7 @@ import { MovieShowing } from '../interfaces/MovieShowing';
 import { CurrentShowingService } from '../services/current-showing.service';
 import { DatesService } from '../services/dates.service';
 import { MovieApiService } from '../services/movieapi.service';
+import { WatchListService } from '../services/watch-list.service';
 
 export interface MovieRepertoire {
   title: string;
@@ -28,7 +29,8 @@ export class ShowingsComponent implements OnInit {
 
   constructor(
     private movieApiService: MovieApiService,
-    private datesService: DatesService // private currentShowing: CurrentShowingService
+    private datesService: DatesService, // private currentShowing: CurrentShowingService,
+    private watchlistService: WatchListService
   ) {}
 
   ngOnInit(): void {
@@ -51,9 +53,9 @@ export class ShowingsComponent implements OnInit {
     // this.currentShowing.currentShowingInfo$.subscribe(
     //   (value) => (this.currentShowingInfo = value)
     // );
-    this.movieApiService
-      .getMovieApiDataShowingForWeek('2022-12-09')
-      .subscribe({ next: (response) => console.log(response) });
+    // this.movieApiService
+    //   .getMovieApiDataShowingForWeek('2022-12-09')
+    //   .subscribe({ next: (response) => console.log(response) });
   }
 
   filterShowings(day: string) {
@@ -62,16 +64,38 @@ export class ShowingsComponent implements OnInit {
     );
     if (day == this.currDay) {
       let now = new Date();
-      this.filteredShowings = this.filteredShowings.filter(
-        (element) => element.timeFrom > `${now.getHours()}:${now.getMinutes()}`
+      console.log(this.filteredShowings);
+      this.filteredShowings = this.filteredShowings.filter((element) =>
+        this.checkIfHourPassed(element.timeFrom)
       );
+      console.log(this.filteredShowings);
     }
   }
+
+  checkIfHourPassed(hour: string) {
+    let now = new Date();
+    if (parseInt(hour.split(':')[0]) < now.getHours()) {
+      return false;
+    } else if (parseInt(hour.split(':')[0]) == now.getHours()) {
+      if (parseInt(hour.split(':')[1]) > now.getMinutes()) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
+  }
+
   checkIfMovieHasShowings(id: number) {
     this.filteredShowingsId = this.filteredShowings.filter(
       (el) => el.movieId == id
     );
     return this.filteredShowingsId.length > 0;
+  }
+
+  onUpdateWatchlist(movieTitle: string, userId: number) {
+    this.watchlistService.updateWatchlist(movieTitle, userId);
   }
 
   // updateCurrentShowing(id: number) {
