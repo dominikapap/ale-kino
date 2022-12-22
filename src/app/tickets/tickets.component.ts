@@ -51,8 +51,8 @@ export class TicketsComponent implements OnInit {
       next: (response) => {
         this.showing = response;
         this.createSeatsGrid(this.showing);
-
         this.paidSeats = this.showing[0].paidSeats;
+
         this.movieApiService
           .getMovieApiDataMovie(this.showing[0].movieId)
           .subscribe({
