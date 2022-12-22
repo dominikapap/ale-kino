@@ -13,8 +13,8 @@ export class MovieApiService {
   getMovieApiDataShowings(): Observable<MovieShowing[]> {
     return this.http.get<MovieShowing[]>('http://localhost:3000/showings');
   }
-  getMovieApiDataShowing(showingId: number): Observable<MovieShowing> {
-    return this.http.get<MovieShowing>(
+  getMovieApiDataShowing(showingId: number): Observable<MovieShowing[]> {
+    return this.http.get<MovieShowing[]>(
       `http://localhost:3000/showings?id=${showingId}`
     );
   }
@@ -29,8 +29,8 @@ export class MovieApiService {
     return this.http.get<MovieDetails[]>('http://localhost:3000/movies');
   }
 
-  getMovieApiDataMovie(movieId: number): Observable<MovieDetails> {
-    return this.http.get<MovieDetails>(
+  getMovieApiDataMovie(movieId: number): Observable<MovieDetails[]> {
+    return this.http.get<MovieDetails[]>(
       `http://localhost:3000/movies?id=${movieId}`
     );
   }

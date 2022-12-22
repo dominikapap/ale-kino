@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MovieDetails } from '../interfaces/MovieDetails';
+import { MovieShowing } from '../interfaces/MovieShowing';
 import { PaidSeat } from '../interfaces/PaidSeats';
 import { TicketForm } from '../interfaces/TicketForm';
 import { TicketType } from '../interfaces/TicketType';
@@ -17,8 +18,8 @@ type Form2 = FormGroup<{
   styleUrls: ['./tickets.component.css'],
 })
 export class TicketsComponent implements OnInit {
-  showing: any;
-  movie: any;
+  showing: MovieShowing[] = [];
+  movie: MovieDetails[] = [];
   rows: number[] = [];
   columns: number[] = [];
   rowsA: string[] = [];
@@ -49,12 +50,8 @@ export class TicketsComponent implements OnInit {
     this.movieApiService.getMovieApiDataShowing(showingIdFromRoute).subscribe({
       next: (response) => {
         this.showing = response;
-        this.columns = [...Array(parseInt(this.showing[0].columns + 1)).keys()];
-        this.columns.shift();
-        this.rows = Array.from(Array(this.showing[0].rows)).map(
-          (e, i) => i + 65
-        );
-        this.rowsA = this.rows.map((x) => String.fromCharCode(x));
+        this.createSeatsGrid(this.showing);
+
         this.paidSeats = this.showing[0].paidSeats;
         this.movieApiService
           .getMovieApiDataMovie(this.showing[0].movieId)
@@ -72,6 +69,13 @@ export class TicketsComponent implements OnInit {
       (el) => el.row == row && el.num == column
     );
     return filteredSeats.length;
+  }
+
+  createSeatsGrid(showing: MovieShowing[]) {
+    this.columns = [...Array(showing[0].columns + 1).keys()];
+    this.columns.shift();
+    this.rows = Array.from(Array(showing[0].rows)).map((e, i) => i + 65);
+    this.rowsA = this.rows.map((x) => String.fromCharCode(x));
   }
 
   addTicket(row: string, column: number) {

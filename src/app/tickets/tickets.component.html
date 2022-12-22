@@ -1,6 +1,6 @@
 <!-- <ng-container *ngIf="movie[0].title && showing[0].date; else notFound" >-->
 
-<ng-container *ngIf="movie[0].title"
+<ng-container *ngIf="movie.length"
   ><div>
     <p>
       {{ movie[0].title }}, {{ showing[0].date }}, {{ showing[0].timeFrom }}
@@ -18,7 +18,8 @@
       *ngFor="let column of columns"
       [ngClass]="checkPaidSeat(row, column) ? 'paid-seat' : ''"
       (click)="addTicket(row, column)"
-      >{{ column }}
+    >
+      {{ column }}
     </span>
   </div>
 
