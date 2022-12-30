@@ -26,7 +26,7 @@ export class TicketsComponent implements OnInit {
   paidSeats: PaidSeat[] = [];
   ticketsForm = this.createForm();
   ticketTypes: TicketType[] = [];
-  ticketPrice: number = 0;
+  ticketPrice = 0;
   constructor(
     private route: ActivatedRoute,
     private movieApiService: MovieApiService,

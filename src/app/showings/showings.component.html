@@ -1,6 +1,6 @@
 <app-this-week (chooseDay)="filterShowings($event)"></app-this-week>
 
-<p *ngIf="filteredShowings.length == 0">Brak repertuaru na dany dzień</p>
+<p *ngIf="filteredShowings.length === 0">Brak repertuaru na dany dzień</p>
 
 <div *ngIf="filteredShowings.length">
   <div *ngFor="let movie of movieDetails" class="movie-container">
@@ -27,7 +27,7 @@
         <div class="additionalBtns">
           <app-movie-rating [movieId]="movie.id"></app-movie-rating>
 
-          <button (click)="onUpdateWatchlist(movie.title, 1)">
+          <button (click)="onUpdateWatchlist(movie.title)">
             Chcę obejrzeć
           </button>
         </div>

@@ -64,11 +64,10 @@ export class ShowingsComponent implements OnInit {
     );
     if (day == this.currDay) {
       let now = new Date();
-      console.log(this.filteredShowings);
+
       this.filteredShowings = this.filteredShowings.filter((element) =>
         this.checkIfHourPassed(element.timeFrom)
       );
-      console.log(this.filteredShowings);
     }
   }
 
@@ -94,8 +93,8 @@ export class ShowingsComponent implements OnInit {
     return this.filteredShowingsId.length > 0;
   }
 
-  onUpdateWatchlist(movieTitle: string, userId: number) {
-    this.watchlistService.updateWatchlist(movieTitle, userId);
+  onUpdateWatchlist(movieTitle: string) {
+    this.watchlistService.updateWatchlist(movieTitle);
   }
 
   // updateCurrentShowing(id: number) {

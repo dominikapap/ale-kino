@@ -7,110 +7,23 @@
 </button>
 
 <ng-container *ngIf="showRatingForm">
-  <form [formGroup]="ratingForm" (ngSubmit)="rateMovie(userID)">
-       
-    <label for="one"
-      ><input
-        type="radio"
-        id="one"
-        name="rating"
-        formControlName="rating"
-        value="1"
-      />1</label
-    >
-       
-    <label for="two"
-      ><input
-        type="radio"
-        id="two"
-        name="rating"
-        formControlName="rating"
-        value="2"
-      />2</label
-    >
-       
-    <label for="three"
-      ><input
-        type="radio"
-        id="three"
-        name="rating"
-        formControlName="rating"
-        value="3"
-      />3</label
-    >
-
-     
-    <label for="four"
-      ><input
-        type="radio"
-        id="four"
-        name="rating"
-        formControlName="rating"
-        value="4"
-      />4</label
-    >
-       
-    <label for="five"
-      ><input
-        type="radio"
-        id="five"
-        name="rating"
-        formControlName="rating"
-        value="5"
-      />5</label
-    >
-       
-    <label for="sixe">
-      <input
-        type="radio"
-        id="six"
-        name="rating"
-        formControlName="rating"
-        value="6"
-      />6</label
-    >
-
-     
-    <label for="seven"
-      ><input
-        type="radio"
-        id="seven"
-        name="rating"
-        formControlName="rating"
-        value="7"
-      />7</label
-    >
-       
-    <label for="eight"
-      ><input
-        type="radio"
-        id="eight"
-        name="rating"
-        formControlName="rating"
-        value="8"
-      />8</label
-    >
-       
-    <label for="nine"
-      ><input
-        type="radio"
-        id="nine"
-        name="rating"
-        formControlName="rating"
-        value="9"
-      />9</label
-    >
-
-     
-    <label for="ten"
-      ><input
-        type="radio"
-        id="ten"
-        name="rating"
-        formControlName="rating"
-        value="10"
-      />10</label
-    ><br />
+  <form [formGroup]="ratingForm" (ngSubmit)="rateMovie(userID, movieId)">
+    <mat-radio-group formControlName="rating" aria-label="Oceń film">
+      <mat-radio-button name="rating" value="1">1</mat-radio-button
+      ><mat-radio-button name="rating" value="2">2</mat-radio-button
+      ><mat-radio-button name="rating" value="3">3</mat-radio-button
+      ><mat-radio-button name="rating" value="4">4</mat-radio-button
+      ><mat-radio-button name="rating" value="5">5</mat-radio-button
+      ><mat-radio-button name="rating" value="6">6</mat-radio-button
+      ><mat-radio-button name="rating" value="7">7</mat-radio-button
+      ><mat-radio-button name="rating" value="8">8</mat-radio-button
+      ><mat-radio-button name="rating" value="9">9</mat-radio-button
+      ><mat-radio-button name="rating" value="10">10</mat-radio-button><br
+    /></mat-radio-group>
     <button [disabled]="!ratingForm.controls.rating.value">Potwierdzam</button>
   </form>
+</ng-container>
+
+<ng-container *ngIf="showThankYou">
+  <p>Dziękujemy, oceniłeś film {{ ratingForm.controls.rating.value }}/10</p>
 </ng-container>

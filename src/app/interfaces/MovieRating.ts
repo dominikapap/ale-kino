@@ -1,10 +1,6 @@
-export interface MovieRating {
+export interface MovieRatings {
   id: number;
   movieId: number;
-  ratings: Ratings[];
-}
-
-export interface Ratings {
   userID: number;
   rating: number;
 }

@@ -1,19 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthStateService } from './auth-state.service';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   loginForm = this.createLoginForm();
 
   constructor(
     private builder: NonNullableFormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private authStateService: AuthStateService
   ) {}
+
+  // login() {
+  //   this.authStateService
+  //     .login(this.loginForm.getRawValue())
+  //     .subscribe(console.log);
+  // }
 
   sendForm() {
     this.loginForm.markAllAsTouched();
@@ -24,8 +32,8 @@ export class LoginComponent implements OnInit {
 
     this.auth
       .checkCredentials(
-        this.loginForm.controls.emailCtrl.value,
-        this.loginForm.controls.passwordCtrl.value
+        this.loginForm.controls.email.value,
+        this.loginForm.controls.password.value
       )
       .subscribe({
         next: (results) => {
@@ -33,7 +41,7 @@ export class LoginComponent implements OnInit {
             alert('Błędne dane, spróbuj ponownie');
             this.loginForm.reset();
           } else {
-            alert('zalogowano');
+            this.auth.authorize();
           }
         },
         error: (e) => {
@@ -45,18 +53,16 @@ export class LoginComponent implements OnInit {
 
   private createLoginForm() {
     const form = this.builder.group({
-      emailCtrl: this.builder.control('', {
+      email: this.builder.control('', {
         validators: [
           Validators.required,
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
         ],
       }),
-      passwordCtrl: this.builder.control('', {
+      password: this.builder.control('', {
         validators: [Validators.required, Validators.minLength(8)],
       }),
     });
     return form;
   }
-
-  ngOnInit(): void {}
 }

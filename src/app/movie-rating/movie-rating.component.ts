@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
-import { MovieRating, Ratings } from '../interfaces/MovieRating';
+import { MovieRatings } from '../interfaces/MovieRating';
 import { MovieRatingService } from './movie-rating.service';
 
 type RatingForm = FormGroup<{
@@ -15,12 +15,12 @@ type RatingForm = FormGroup<{
 export class MovieRatingComponent implements OnInit {
   @Input() movieId = 0;
 
-  movieRatings: Ratings[] = [];
+  movieRatings: MovieRatings[] = [];
   currentRating: number = 0;
-  userID: number = 168396; //tymczasowe
-  showRatingForm: boolean = false;
+  userID: number = 168398; //tymczasowe
+  showRatingForm = false;
   ratingForm = this.createMovieRatingForm();
-  showThankYou: boolean = false;
+  showThankYou = false;
 
   constructor(
     private movieRatingService: MovieRatingService,
@@ -28,17 +28,16 @@ export class MovieRatingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.movieId) {
-      this.movieRatingService.getMovieRating(this.movieId).subscribe({
-        next: (response: MovieRating[]) => {
-          this.movieRatings = response[0].ratings;
-          this.getCurrentRating(this.movieRatings);
-        },
-      });
-    }
+    // this.movieRatingService.getMovieRatings(this.movieId);
+    this.movieRatingService.getMovieRating(this.movieId).subscribe({
+      next: (response: MovieRatings[]) => {
+        this.movieRatings = response;
+        this.getCurrentRating(this.movieRatings);
+      },
+    });
   }
-  getCurrentRating(ratings: Ratings[]) {
-    ratings.forEach((element: Ratings) => {
+  getCurrentRating(ratings: MovieRatings[]) {
+    ratings.forEach((element: MovieRatings) => {
       this.currentRating += element.rating;
     });
     this.currentRating /= ratings.length;
@@ -46,16 +45,29 @@ export class MovieRatingComponent implements OnInit {
   checkIfUserRated(userID: number) {
     if (this.movieRatings.length) {
       return this.movieRatings.filter(
-        (element: Ratings) => element.userID == userID
+        (element: MovieRatings) => element.userID == userID
       ).length;
     } else {
-      return 0;
+      return false;
     }
   }
-  rateMovie(userID: number) {
-    console.log(userID);
-    console.log(this.ratingForm.controls.rating.value);
+  rateMovie(userID: number, movieID: number) {
+    this.movieRatingService
+      .updateMovieRating(
+        userID,
+        +this.ratingForm.controls.rating.value,
+        movieID
+      )
+      .subscribe();
+    console.log(userID, this.ratingForm.controls.rating.value, movieID);
+    this.hideRatingForm();
+    this.showThankYouForm();
+  }
+
+  hideRatingForm() {
     this.showRatingForm = !this.showRatingForm;
+  }
+  showThankYouForm() {
     this.showThankYou = true;
   }
 

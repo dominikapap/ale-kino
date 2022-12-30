@@ -7,18 +7,18 @@ export class DatesService {
   constructor() {}
 
   getCurrentWeek() {
-    let curr = new Date();
-    let week = [];
+    const curr = new Date();
+    const week = [];
 
     for (let i = 1; i <= 7; i++) {
-      let first = curr.getDate() - curr.getDay() + i;
-      let day = new Date(curr.setDate(first)).toISOString().slice(0, 10);
+      const first = curr.getDate() - curr.getDay() + i;
+      const day = new Date(curr.setDate(first)).toISOString().slice(0, 10);
       week.push(day);
     }
     return week;
   }
   getCurrentDay() {
-    let curr = new Date();
+    const curr = new Date();
     return curr.toISOString().slice(0, 10);
   }
 
