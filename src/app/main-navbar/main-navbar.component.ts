@@ -7,10 +7,16 @@ import { AuthService } from '../auth';
     <div class="brand-name"><p>Ale kino!</p></div>
     <div class="nav-buttons">
       <button class="btn cart-btn">Cart</button>
-      <button class="btn login-btn">
-        <a routerLink="logowanie">Zaloguj</a>
-      </button>
-      <button class="btn login-btn" (click)="logout()">Wyloguj</button>
+      <ng-container *ngIf="!hasAuth()"
+        ><button class="btn login-btn">
+          <a routerLink="logowanie">Zaloguj</a>
+        </button></ng-container
+      >
+      <ng-container *ngIf="hasAuth()"
+        ><button class="btn login-btn" (click)="logout()">
+          Wyloguj
+        </button></ng-container
+      >
     </div>
   </nav> `,
   styleUrls: ['./main-navbar.component.css'],
