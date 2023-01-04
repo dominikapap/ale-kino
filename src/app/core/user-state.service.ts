@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
-
-export interface User {
-  email: string;
-  id: number;
-}
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserStateService {
-  private user$$ = new ReplaySubject<User>(1);
+  private user$$ = new BehaviorSubject<{ userID: number }>({ userID: 0 });
 
   get user$() {
     return this.user$$.asObservable();
   }
-  addUser(user: User) {
-    this.user$$.next(user);
+
+  getUserID() {
+    let userID!: number;
+    this.user$$.subscribe((result) => (userID = result.userID));
+    return userID;
+  }
+
+  updateUserID(id: number) {
+    this.user$$.next({ ...this.user$$, userID: id });
   }
 }

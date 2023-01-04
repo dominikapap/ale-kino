@@ -39,7 +39,6 @@ export class AuthStateService {
           next: (res) => {
             console.log(res);
             const { accessToken, user } = res;
-            this.userStateService.addUser(user);
             this.auth$$.next({ hasAuth: true });
             localStorage.setItem('token', accessToken);
             localStorage.setItem('user', JSON.stringify(user));

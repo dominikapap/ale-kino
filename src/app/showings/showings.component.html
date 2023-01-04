@@ -24,13 +24,17 @@
           </p>
           <button (click)="description = !description">Więcej</button>
         </div>
-        <div class="additionalBtns">
-          <app-movie-rating [movieId]="movie.id"></app-movie-rating>
 
-          <button (click)="onUpdateWatchlist(movie.title)">
-            Chcę obejrzeć
-          </button>
-        </div>
+        <ng-container *ngIf="hasAuth()">
+          <div class="additionalBtns">
+            <app-movie-rating [movieId]="movie.id"></app-movie-rating>
+
+            <button (click)="onUpdateWatchlist(movie.title)">
+              Chcę obejrzeć
+            </button>
+            <button (click)="getID()">show user id</button>
+          </div></ng-container
+        >
       </div>
 
       <span *ngFor="let showing of filteredShowings">

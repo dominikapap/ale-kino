@@ -35,12 +35,10 @@ export class MovieRatingService {
       .get<MovieRatings[]>(
         `http://localhost:3000/movieRatings?movieId=${movieId}`
       )
-      .subscribe({
-        next: (response: MovieRatings[]) => {
-          this.movieRatings = response;
-          this.getCurrentRating(this.movieRatings);
-          this.movieRating$$.next(this.currentRating);
-        },
+      .subscribe((response: MovieRatings[]) => {
+        this.movieRatings = response;
+        this.getCurrentRating(this.movieRatings);
+        this.movieRating$$.next(this.currentRating);
       });
   }
 

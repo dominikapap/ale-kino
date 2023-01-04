@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
+import { UserStateService } from '../core/user-state.service';
 import { MovieRatings } from '../interfaces/MovieRating';
 import { MovieRatingService } from './movie-rating.service';
 
@@ -17,14 +18,15 @@ export class MovieRatingComponent implements OnInit {
 
   movieRatings: MovieRatings[] = [];
   currentRating: number = 0;
-  userID: number = 168398; //tymczasowe
+  userID: number = 168395; //tymczasowe
   showRatingForm = false;
   ratingForm = this.createMovieRatingForm();
   showThankYou = false;
 
   constructor(
     private movieRatingService: MovieRatingService,
-    private builder: NonNullableFormBuilder
+    private builder: NonNullableFormBuilder,
+    private userStateService: UserStateService
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +35,7 @@ export class MovieRatingComponent implements OnInit {
       next: (response: MovieRatings[]) => {
         this.movieRatings = response;
         this.getCurrentRating(this.movieRatings);
+        this.userID = this.userStateService.getUserID();
       },
     });
   }

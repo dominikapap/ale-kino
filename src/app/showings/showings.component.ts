@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth';
+import { UserStateService } from '../core/user-state.service';
 import { MovieDetails } from '../interfaces/MovieDetails';
 import { MovieShowing } from '../interfaces/MovieShowing';
 import { CurrentShowingService } from '../services/current-showing.service';
@@ -30,7 +32,9 @@ export class ShowingsComponent implements OnInit {
   constructor(
     private movieApiService: MovieApiService,
     private datesService: DatesService, // private currentShowing: CurrentShowingService,
-    private watchlistService: WatchListService
+    private watchlistService: WatchListService,
+    private auth: AuthService,
+    private userStateService: UserStateService
   ) {}
 
   ngOnInit(): void {
@@ -71,6 +75,10 @@ export class ShowingsComponent implements OnInit {
     }
   }
 
+  getID() {
+    this.userStateService.getUserID();
+  }
+
   checkIfHourPassed(hour: string) {
     let now = new Date();
     if (parseInt(hour.split(':')[0]) < now.getHours()) {
@@ -97,6 +105,9 @@ export class ShowingsComponent implements OnInit {
     this.watchlistService.updateWatchlist(movieTitle);
   }
 
+  hasAuth() {
+    return this.auth.checkIfHasAuth();
+  }
   // updateCurrentShowing(id: number) {
   //   let current = this.filteredShowings.filter((element) => (element.id = id));
   //   this.currentShowing.setCurrentShowing(current[0]);

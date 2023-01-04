@@ -41,7 +41,7 @@ export class LoginComponent {
             alert('Błędne dane, spróbuj ponownie');
             this.loginForm.reset();
           } else {
-            this.auth.authorize();
+            this.auth.authorize(results[0].id);
           }
         },
         error: (e) => {

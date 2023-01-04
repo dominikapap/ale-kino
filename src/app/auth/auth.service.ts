@@ -3,6 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, filter, Observable } from 'rxjs';
 import { User } from '../interfaces/User';
+import { map, tap } from 'rxjs/operators';
+import { UserStateService } from '../core/user-state.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +12,7 @@ import { User } from '../interfaces/User';
 export class AuthService {
   private http = inject(HttpClient);
   private router = inject(Router);
+  private userStateService = inject(UserStateService);
 
   private auth$$ = new BehaviorSubject<{ hasAuth: boolean }>({
     hasAuth: false,
@@ -25,10 +28,10 @@ export class AuthService {
     );
   }
 
-  authorize() {
-    this.auth$$.next({ hasAuth: true });
+  authorize(userID: number) {
+    this.auth$$.next({ ...this.auth$$.value, hasAuth: true });
+    this.userStateService.updateUserID(userID);
     this.router.navigate(['']);
-    console.log('authorized');
   }
 
   logout() {
@@ -36,10 +39,16 @@ export class AuthService {
       ...this.auth$$.value,
       hasAuth: false,
     });
-    console.log('logout');
+    this.userStateService.updateUserID(0);
+    alert('wylogowano');
   }
 
   checkIfHasAuth() {
-    return this.auth$.subscribe((authState) => authState.hasAuth);
+    let authState;
+    this.auth$.subscribe((result) => (authState = result.hasAuth));
+    return authState;
+    // return true;
   }
+
+  ngOnDestroy() {}
 }
