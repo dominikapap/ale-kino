@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { AuthStateService } from './auth-state.service';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -13,8 +12,7 @@ export class LoginComponent {
 
   constructor(
     private builder: NonNullableFormBuilder,
-    private auth: AuthService,
-    private authStateService: AuthStateService
+    private auth: AuthService
   ) {}
 
   // login() {
