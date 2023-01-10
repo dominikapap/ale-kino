@@ -18,7 +18,6 @@ export class WatchListService {
   watchList$ = this.watchList$$.asObservable();
 
   constructor() {
-    // this.fetchWatchList();
     this.getWatchList();
   }
   private http = inject(HttpClient);
@@ -39,7 +38,6 @@ export class WatchListService {
   // }
 
   getWatchList() {
-    console.log('getting watchlist');
     this.currentUserID$
       .pipe(
         switchMap((user) => {
@@ -83,7 +81,6 @@ export class WatchListService {
             console.error('There was an error!', error);
           },
         });
-      // this.getWatchList();
     }
   }
 
@@ -107,14 +104,16 @@ export class WatchListService {
   // }
 
   removeFromWatchlist(titleId: number) {
-    this.http.delete(`http://localhost:3000/watchlist/${titleId}`).subscribe({
-      next: () =>
-        this.watchList$$.next(
-          this.watchList$$.value.filter((item) => item.titleId !== titleId)
-        ),
-      error: (error) => {
-        console.error('There was an error!', error);
-      },
-    });
+    this.http
+      .delete<WatchListItem>(`http://localhost:3000/watchlist/${titleId}`)
+      .subscribe({
+        next: () =>
+          this.watchList$$.next(
+            this.watchList$$.value.filter((item) => item.titleId !== titleId)
+          ),
+        error: (error) => {
+          console.error('There was an error!', error);
+        },
+      });
   }
 }
