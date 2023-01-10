@@ -1,6 +1,11 @@
-<span>Rating {{ currentRating | number : "1.2-2" }}/10</span>
+<ng-container *ngIf="rating$ | async as movieRating"
+  ><span>
+    Rating: {{ movieRating.rating | number : "1.2-2" }}</span
+  ></ng-container
+>
+
 <button
-  [disabled]="checkIfUserRated(userID)"
+  [disabled]="checkIfUserRated()"
   (click)="showRatingForm = !showRatingForm"
 >
   Oceń

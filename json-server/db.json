@@ -42,19 +42,13 @@
       "id": 1,
       "movieId": 1267943,
       "userID": 268395,
-      "rating": 6
+      "rating": 10
     },
     {
       "id": 2,
       "movieId": 1267943,
       "userID": 268363,
-      "rating": 7
-    },
-    {
-      "id": 3,
-      "movieId": 1267943,
-      "userID": 680235,
-      "rating": 6
+      "rating": 5
     },
     {
       "id": 4,
@@ -75,28 +69,10 @@
       "rating": 5
     },
     {
-      "movieId": 1267943,
-      "userID": 268397,
-      "rating": 10,
-      "id": 7
-    },
-    {
-      "movieId": 1267943,
-      "userID": 268398,
-      "rating": 6,
-      "id": 8
-    },
-    {
       "movieId": 2437892,
       "userID": 268398,
       "rating": 6,
       "id": 9
-    },
-    {
-      "movieId": 1267943,
-      "userID": 168398,
-      "rating": 5,
-      "id": 10
     },
     {
       "movieId": 2437892,
@@ -107,14 +83,8 @@
     {
       "movieId": 2437892,
       "userID": 168395,
-      "rating": 6,
+      "rating": 8,
       "id": 12
-    },
-    {
-      "movieId": 1267943,
-      "userID": 168395,
-      "rating": 5,
-      "id": 13
     }
   ],
   "ticketTypes": [
