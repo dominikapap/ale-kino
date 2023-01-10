@@ -21,7 +21,9 @@ export class AuthService {
   get auth$() {
     return this.auth$$.asObservable();
   }
-
+  constructor() {
+    this.setStateFromLocalStorage();
+  }
   checkCredentials(email: string, password: string): Observable<User[]> {
     return this.http.get<User[]>(
       `http://localhost:3000/users?email=${email}&password=${password}`
@@ -31,15 +33,19 @@ export class AuthService {
   authorize(userID: number) {
     this.auth$$.next({ ...this.auth$$.value, hasAuth: true });
     this.userStateService.updateUserID(userID);
-    this.router.navigate(['']);
+    localStorage.setItem('userID', userID.toString());
+    this.router.navigate(['']); //todo change to navigate to page visited before login
   }
 
   logout() {
+    this.userStateService.updateUserID(0);
+    localStorage.removeItem('userID');
     this.auth$$.next({
       ...this.auth$$.value,
       hasAuth: false,
     });
-    this.userStateService.updateUserID(0);
+
+    this.router.navigate(['logowanie']);
     alert('wylogowano');
   }
 
@@ -50,5 +56,16 @@ export class AuthService {
     // return true;
   }
 
-  ngOnDestroy() {}
+  private setStateFromLocalStorage() {
+    // naive checking with userID
+    if (localStorage.getItem('userID')) {
+      this.auth$$.next({ hasAuth: true });
+    }
+
+    const userIDFromLS = localStorage.getItem('userID');
+
+    if (userIDFromLS) {
+      this.userStateService.updateUserID(parseInt(userIDFromLS));
+    }
+  }
 }

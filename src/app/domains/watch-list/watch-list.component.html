@@ -1,0 +1,13 @@
+<h1>Lista filmów do obejrzenia</h1>
+<!-- <div *ngIf="watchlist.length === 0">
+  <p>Nie ma jeszcze dodanych filmów</p>
+</div> -->
+<ol>
+  <li *ngFor="let movieTitle of titles$ | async">
+    {{ movieTitle.title }}
+    <button (click)="onRemoveFromWatchList(movieTitle.titleId)">usuń</button>
+  </li>
+</ol>
+<!-- <button [id]="title" (click)="removeFromWatchList(title)">
+      Usuń z listy
+    </button> -->

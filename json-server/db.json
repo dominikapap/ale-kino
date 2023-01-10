@@ -109,6 +109,12 @@
       "userID": 168395,
       "rating": 6,
       "id": 12
+    },
+    {
+      "movieId": 1267943,
+      "userID": 168395,
+      "rating": 5,
+      "id": 13
     }
   ],
   "ticketTypes": [
@@ -170,7 +176,7 @@
     {
       "id": 15,
       "movieId": 1267943,
-      "date": "2023-01-02",
+      "date": "2023-01-09",
       "break": 15,
       "timeFrom": "9:30",
       "timeTo": "11:00",
@@ -198,7 +204,7 @@
     {
       "id": 153,
       "movieId": 2437892,
-      "date": "2023-01-04",
+      "date": "2023-01-09",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -364,7 +370,7 @@
     {
       "id": 156,
       "movieId": 1267943,
-      "date": "2023-01-05",
+      "date": "2023-01-10",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -392,7 +398,7 @@
     {
       "id": 99,
       "movieId": 1267943,
-      "date": "2023-01-05",
+      "date": "2023-01-10",
       "break": 15,
       "timeFrom": "16:00",
       "timeTo": "17:30",
@@ -424,7 +430,7 @@
     {
       "id": 263,
       "movieId": 1267943,
-      "date": "2023-01-05",
+      "date": "2023-01-10",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -447,7 +453,7 @@
     {
       "id": 276,
       "movieId": 2437892,
-      "date": "2023-01-06",
+      "date": "2023-01-11",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -475,7 +481,7 @@
     {
       "id": 303,
       "movieId": 2437892,
-      "date": "2023-01-06",
+      "date": "2023-01-11",
       "break": 15,
       "timeFrom": "16:00",
       "timeTo": "17:30",
@@ -507,7 +513,7 @@
     {
       "id": 323,
       "movieId": 2437892,
-      "date": "2023-01-06",
+      "date": "2023-01-11",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -536,11 +542,16 @@
   ],
   "watchlist": [
     {
+      "id": 2,
       "userID": 168395,
-      "movies": [
-        "Apokawixa",
-        "Co w duszy gra"
-      ]
+      "movieID": 2437892,
+      "movieTitle": "Co w duszy gra"
+    },
+    {
+      "id": 3,
+      "userID": 168363,
+      "movieID": 2437892,
+      "movieTitle": "Co w duszy gra"
     }
   ]
 }

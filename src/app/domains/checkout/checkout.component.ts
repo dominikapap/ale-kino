@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
-import { CheckoutForm } from '../interfaces/CheckoutForm';
+import { CheckoutForm } from '../../interfaces/CheckoutForm';
 
 @Component({
   selector: 'app-checkout',

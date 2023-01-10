@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieDetails } from '../interfaces/MovieDetails';
-import { DatesService } from '../services/dates.service';
-import { MoviesService } from '../services/movies.service';
+import { MovieDetails } from '../../interfaces/MovieDetails';
+import { DatesService } from '../../services/dates.service';
+import { MoviesService } from '../../services/movies.service';
 
 @Component({
   selector: 'app-movies-details',

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth';
+import { AuthService } from '../../auth';
 
 @Component({
   selector: 'app-main-navbar',
   template: `<nav>
-    <div class="brand-name"><p>Ale kino!</p></div>
+    <div class="brand-name"><p routerLink="">Ale kino!</p></div>
     <div class="nav-buttons">
       <button class="btn cart-btn">Cart</button>
       <ng-container *ngIf="!hasAuth()"
@@ -17,6 +17,9 @@ import { AuthService } from '../auth';
           Wyloguj
         </button></ng-container
       >
+      <button class="btn login-btn">
+        <a routerLink="do-obejrzenia">Watchlist</a>
+      </button>
     </div>
   </nav> `,
   styleUrls: ['./main-navbar.component.css'],

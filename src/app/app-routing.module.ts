@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CartComponent } from './cart/cart.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { CartComponent } from './domains/cart/cart.component';
+import { CheckoutComponent } from './domains/checkout/checkout.component';
+import { ConfirmationComponent } from './domains/confirmation/confirmation.component';
 import { LoginComponent } from './auth/login.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SettingsComponent } from './settings/settings.component';
-import { ShowingsComponent } from './showings/showings.component';
-import { TicketsComponent } from './tickets/tickets.component';
-import { UserTicketsComponent } from './user-tickets/user-tickets.component';
-import { WatchListComponent } from './watch-list/watch-list.component';
+import { PageNotFoundComponent } from './domains/page-not-found/page-not-found.component';
+import { SettingsComponent } from './domains/settings/settings.component';
+import { ShowingsComponent } from './domains/showings/showings.component';
+import { TicketsComponent } from './domains/tickets/tickets.component';
+import { UserTicketsComponent } from './domains/user-tickets/user-tickets.component';
+import { WatchListComponent } from './domains/watch-list/watch-list.component';
+import { hasAuthGuard } from './auth/has-auth-guard.guard';
 
 export const routes: Routes = [
   {
@@ -50,6 +51,7 @@ export const routes: Routes = [
       {
         path: 'do-obejrzenia',
         component: WatchListComponent,
+        canActivate: [hasAuthGuard],
       },
       {
         path: '**',

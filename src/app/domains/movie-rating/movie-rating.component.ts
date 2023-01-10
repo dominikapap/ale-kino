@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
-import { UserStateService } from '../core/user-state.service';
-import { MovieRatings } from '../interfaces/MovieRating';
+import { UserStateService } from '../../core/user-state.service';
+import { MovieRatings } from '../../interfaces/MovieRating';
 import { MovieRatingService } from './movie-rating.service';
 
 type RatingForm = FormGroup<{

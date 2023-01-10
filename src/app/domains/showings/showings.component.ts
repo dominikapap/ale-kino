@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth';
-import { UserStateService } from '../core/user-state.service';
-import { MovieDetails } from '../interfaces/MovieDetails';
-import { MovieShowing } from '../interfaces/MovieShowing';
-import { CurrentShowingService } from '../services/current-showing.service';
-import { DatesService } from '../services/dates.service';
-import { MovieApiService } from '../services/movieapi.service';
-import { WatchListService } from '../services/watch-list.service';
+import { AuthService } from '../../auth';
+import { UserStateService } from '../../core/user-state.service';
+import { MovieDetails } from '../../interfaces/MovieDetails';
+import { MovieShowing } from '../../interfaces/MovieShowing';
+import { CurrentShowingService } from '../../services/current-showing.service';
+import { DatesService } from '../../services/dates.service';
+import { MovieApiService } from '../../services/movieapi.service';
+import { WatchListService } from '../watch-list/watch-list.service';
 
 export interface MovieRepertoire {
   title: string;
@@ -101,8 +101,8 @@ export class ShowingsComponent implements OnInit {
     return this.filteredShowingsId.length > 0;
   }
 
-  onUpdateWatchlist(movieTitle: string) {
-    this.watchlistService.updateWatchlist(movieTitle);
+  onUpdateWatchlist(movieTitle: string, movieID: number) {
+    this.watchlistService.addToWatchlist(movieTitle, movieID);
   }
 
   hasAuth() {

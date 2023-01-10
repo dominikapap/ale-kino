@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { MovieDetails } from '../interfaces/MovieDetails';
-import { MovieShowing } from '../interfaces/MovieShowing';
-import { PaidSeat } from '../interfaces/PaidSeats';
-import { TicketForm } from '../interfaces/TicketForm';
-import { TicketType } from '../interfaces/TicketType';
-import { MovieApiService } from '../services/movieapi.service';
+import { MovieDetails } from '../../interfaces/MovieDetails';
+import { MovieShowing } from '../../interfaces/MovieShowing';
+import { PaidSeat } from '../../interfaces/PaidSeats';
+import { TicketForm } from '../../interfaces/TicketForm';
+import { TicketType } from '../../interfaces/TicketType';
+import { MovieApiService } from '../../services/movieapi.service';
 
 type Form2 = FormGroup<{
   tickets: FormArray<FormGroup<TicketForm>>;

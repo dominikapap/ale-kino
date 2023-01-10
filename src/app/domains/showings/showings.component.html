@@ -29,10 +29,10 @@
           <div class="additionalBtns">
             <app-movie-rating [movieId]="movie.id"></app-movie-rating>
 
-            <button (click)="onUpdateWatchlist(movie.title)">
+            <button (click)="onUpdateWatchlist(movie.title, movie.id)">
               Chcę obejrzeć
             </button>
-            <button (click)="getID()">show user id</button>
+            <!-- <button (click)="getID()">show user id</button> -->
           </div></ng-container
         >
       </div>
