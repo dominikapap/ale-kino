@@ -1,7 +1,6 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { UserStateService } from '../../core/user-state.service';
-import { MovieRatings } from '../../interfaces/MovieRating';
 import { MovieRatingService } from './movie-rating.service';
 
 type RatingForm = FormGroup<{
@@ -12,6 +11,7 @@ type RatingForm = FormGroup<{
   selector: 'app-movie-rating',
   templateUrl: './movie-rating.component.html',
   styleUrls: ['./movie-rating.component.css'],
+  providers: [MovieRatingService],
 })
 export class MovieRatingComponent {
   @Input() movieId = 0;

@@ -63,28 +63,22 @@
       "rating": 8
     },
     {
-      "id": 6,
-      "movieId": 2437892,
-      "userID": 680235,
-      "rating": 5
+      "movieId": 1267943,
+      "userID": 168395,
+      "rating": 2,
+      "id": 6
     },
     {
-      "movieId": 2437892,
-      "userID": 268398,
-      "rating": 6,
-      "id": 9
-    },
-    {
-      "movieId": 2437892,
-      "userID": 168398,
+      "movieId": 1267943,
+      "userID": 168395,
       "rating": 10,
-      "id": 11
+      "id": 7
     },
     {
       "movieId": 2437892,
       "userID": 168395,
-      "rating": 8,
-      "id": 12
+      "rating": 3,
+      "id": 8
     }
   ],
   "ticketTypes": [
@@ -146,7 +140,7 @@
     {
       "id": 15,
       "movieId": 1267943,
-      "date": "2023-01-09",
+      "date": "2023-01-16",
       "break": 15,
       "timeFrom": "9:30",
       "timeTo": "11:00",
@@ -174,10 +168,10 @@
     {
       "id": 153,
       "movieId": 2437892,
-      "date": "2023-01-09",
+      "date": "2023-01-16",
       "break": 15,
-      "timeFrom": "12:30",
-      "timeTo": "14:00",
+      "timeFrom": "21:30",
+      "timeTo": "23:00",
       "rows": 10,
       "columns": 12,
       "numOfSeats": 120,
@@ -202,7 +196,7 @@
     {
       "id": 17,
       "movieId": 1267943,
-      "date": "2023-01-02",
+      "date": "2023-01-17",
       "break": 15,
       "timeFrom": "16:00",
       "timeTo": "17:30",
@@ -234,7 +228,7 @@
     {
       "id": 18,
       "movieId": 1267943,
-      "date": "2023-01-02",
+      "date": "2023-01-17",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -257,7 +251,7 @@
     {
       "id": 22,
       "movieId": 2437892,
-      "date": "2023-01-03",
+      "date": "2023-01-18",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -285,7 +279,7 @@
     {
       "id": 24,
       "movieId": 2437892,
-      "date": "2023-01-02",
+      "date": "2023-01-18",
       "break": 15,
       "timeFrom": "18:00",
       "timeTo": "17:30",
@@ -317,7 +311,7 @@
     {
       "id": 26,
       "movieId": 2437892,
-      "date": "2023-01-03",
+      "date": "2023-01-19",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -340,7 +334,7 @@
     {
       "id": 156,
       "movieId": 1267943,
-      "date": "2023-01-10",
+      "date": "2023-01-19",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -368,7 +362,7 @@
     {
       "id": 99,
       "movieId": 1267943,
-      "date": "2023-01-10",
+      "date": "2023-01-20",
       "break": 15,
       "timeFrom": "16:00",
       "timeTo": "17:30",
@@ -400,7 +394,7 @@
     {
       "id": 263,
       "movieId": 1267943,
-      "date": "2023-01-10",
+      "date": "2023-01-20",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -423,7 +417,7 @@
     {
       "id": 276,
       "movieId": 2437892,
-      "date": "2023-01-11",
+      "date": "2023-01-21",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -451,7 +445,7 @@
     {
       "id": 303,
       "movieId": 2437892,
-      "date": "2023-01-11",
+      "date": "2023-01-21",
       "break": 15,
       "timeFrom": "16:00",
       "timeTo": "17:30",
@@ -483,7 +477,7 @@
     {
       "id": 323,
       "movieId": 2437892,
-      "date": "2023-01-11",
+      "date": "2023-01-22",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -502,6 +496,222 @@
         }
       ],
       "bookedSeats": []
+    }
+  ],
+  "reservedSeats": [
+    {
+      "row": "D",
+      "num": 7,
+      "showingsID": 323,
+      "id": 1
+    },
+    {
+      "row": "E",
+      "num": 3,
+      "showingsID": 303,
+      "id": 2
+    },
+    {
+      "row": "A",
+      "num": 5,
+      "showingsID": 263,
+      "id": 3
+    },
+    {
+      "row": "G",
+      "num": 8,
+      "showingsID": 99,
+      "id": 4
+    },
+    {
+      "row": "D",
+      "num": 7,
+      "showingsID": 276,
+      "id": 5
+    },
+    {
+      "row": "E",
+      "num": 3,
+      "showingsID": 156,
+      "id": 6
+    },
+    {
+      "row": "A",
+      "num": 5,
+      "showingsID": 26,
+      "id": 7
+    },
+    {
+      "row": "G",
+      "num": 8,
+      "showingsID": 24,
+      "id": 8
+    },
+    {
+      "row": "G",
+      "num": 8,
+      "showingsID": 22,
+      "id": 9
+    },
+    {
+      "row": "D",
+      "num": 7,
+      "showingsID": 18,
+      "id": 11
+    },
+    {
+      "row": "E",
+      "num": 3,
+      "showingsID": 17,
+      "id": 11
+    },
+    {
+      "row": "A",
+      "num": 5,
+      "showingsID": 153,
+      "id": 12
+    },
+    {
+      "row": "G",
+      "num": 8,
+      "showingsID": 15,
+      "id": 13
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 1,
+      "showingsID": 153,
+      "userID": 0,
+      "id": 14
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 1,
+      "showingsID": 153,
+      "userID": 0,
+      "id": 15
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 2,
+      "showingsID": 153,
+      "userID": -1,
+      "id": 16
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 2,
+      "showingsID": 153,
+      "userID": -1,
+      "id": 17
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 3,
+      "showingsID": 153,
+      "userID": -1,
+      "id": 18
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 4,
+      "showingsID": 153,
+      "userID": -1,
+      "id": 19
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 6,
+      "showingsID": 153,
+      "userID": -1,
+      "id": 20
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 7,
+      "showingID": 153,
+      "userID": -1,
+      "id": 21
+    }
+  ],
+  "bookedTickets": [
+    {
+      "row": "D",
+      "num": 8,
+      "showingsID": 323,
+      "id": 1
+    },
+    {
+      "row": "E",
+      "num": 4,
+      "showingsID": 303,
+      "id": 2
+    },
+    {
+      "row": "A",
+      "num": 9,
+      "showingsID": 263,
+      "id": 3
+    },
+    {
+      "row": "G",
+      "num": 11,
+      "showingsID": 99,
+      "id": 4
+    },
+    {
+      "row": "D",
+      "num": 2,
+      "showingsID": 276,
+      "id": 5
+    },
+    {
+      "row": "E",
+      "num": 1,
+      "showingsID": 156,
+      "id": 6
+    },
+    {
+      "row": "A",
+      "num": 7,
+      "showingsID": 26,
+      "id": 7
+    },
+    {
+      "row": "G",
+      "num": 4,
+      "showingsID": 24,
+      "id": 8
+    },
+    {
+      "row": "G",
+      "num": 9,
+      "showingsID": 22,
+      "id": 9
+    },
+    {
+      "row": "D",
+      "num": 1,
+      "showingsID": 18,
+      "id": 10
+    },
+    {
+      "row": "E",
+      "num": 2,
+      "showingsID": 17,
+      "id": 11
+    },
+    {
+      "row": "A",
+      "num": 2,
+      "showingsID": 153,
+      "id": 12
+    },
+    {
+      "row": "G",
+      "num": 1,
+      "showingsID": 15,
+      "id": 13
     }
   ],
   "screeningHall": [

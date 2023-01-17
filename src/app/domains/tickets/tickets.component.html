@@ -1,5 +1,3 @@
-<!-- <ng-container *ngIf="movie[0].title && showing[0].date; else notFound" >-->
-
 <ng-container *ngIf="movie.length"
   ><div>
     <p>
@@ -15,9 +13,9 @@
     <span class="row">{{ row }} </span>
     <span
       class="column-seats"
-      *ngFor="let column of columns"
-      [ngClass]="checkPaidSeat(row, column) ? 'paid-seat' : ''"
-      (click)="addTicket(row, column)"
+      *ngFor="let column of columns; let index = index"
+      [ngClass]="onCheckReservedSeats(row, column) ? 'reserved-seat' : ''"
+      (click)="onReserveOrRemoveSeat(row, column)"
     >
       {{ column }}
     </span>

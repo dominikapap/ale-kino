@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { DatesService } from '../../services/dates.service';
 import { Output, EventEmitter } from '@angular/core';
 
@@ -11,13 +11,13 @@ export class ThisWeekComponent implements OnInit {
   @Output() chooseDay = new EventEmitter<string>();
 
   week: string[] = [];
-  currDay: string = '';
+  currDay = '';
 
   pickDay(value: string) {
     this.chooseDay.emit(value);
   }
 
-  constructor(private datesService: DatesService) {}
+  private datesService = inject(DatesService);
 
   ngOnInit(): void {
     this.week = this.datesService.getCurrentWeek();

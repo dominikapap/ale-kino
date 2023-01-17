@@ -26,3 +26,7 @@
   background-color: red;
   pointer-events: none;
 }
+
+.reserved-seat {
+  background-color: orange;
+}

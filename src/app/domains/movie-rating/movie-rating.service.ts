@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { UserStateService } from 'src/app/core/user-state.service';
 
 interface MovieRatings {
@@ -25,36 +25,6 @@ export class MovieRatingService {
   get movieRating$() {
     return this.movieRating$$.asObservable();
   }
-
-  // getMovieRating(movieId: number): Observable<MovieRatings[]> {
-  //   return this.http.get<MovieRatings[]>(
-  //     `http://localhost:3000/movieRatings?movieId=${movieId}`
-  //   );
-  // }
-
-  // getMovieRatings(movieId: number) {
-  //   let currR = 0;
-  //   let count = 0;
-  //   this.http
-  //     .get<MovieRatings[]>(
-  //       `http://localhost:3000/movieRatings?movieId=${movieId}`
-  //     )
-  //     .pipe(
-  //       map((result) =>
-  //         result.map((res) => {
-  //           currR += res.rating;
-  //           count++;
-  //         })
-  //       )
-  //     )
-  //     .subscribe({
-  //       next: () =>
-  //         this.movieRating$$.next({
-  //           ...this.movieRating$$,
-  //           rating: currR / count,
-  //         }),
-  //     });
-  // }
 
   getMovieRatings(movieId: number) {
     let currentRating = 0;
@@ -84,12 +54,29 @@ export class MovieRatingService {
         userID: userID,
         rating: userRating,
       })
-      .subscribe({
-        next: () => {
-          this.getMovieRatings(movieID);
-        },
-      });
+      .pipe(
+        tap({
+          next: () => {
+            this.getMovieRatings(movieID);
+          },
+        })
+      )
+      .subscribe();
   }
+
+  // updateMovieRating(userID: number, userRating: number, movieID: number) {
+  //   return this.http
+  //     .post(`http://localhost:3000/movieRatings`, {
+  //       movieId: movieID,
+  //       userID: userID,
+  //       rating: userRating,
+  //     })
+  //     .subscribe({
+  //       next: () => {
+  //         this.getMovieRatings(movieID);
+  //       },
+  //     });
+  // }
 
   // getCurrentRating(ratings: MovieRatings[]) {
   //   ratings.forEach((element: MovieRatings) => {
@@ -109,4 +96,33 @@ export class MovieRatingService {
       return false;
     }
   }
+  // getMovieRating(movieId: number): Observable<MovieRatings[]> {
+  //   return this.http.get<MovieRatings[]>(
+  //     `http://localhost:3000/movieRatings?movieId=${movieId}`
+  //   );
+  // }
+
+  // getMovieRatings(movieId: number) {
+  //   let currR = 0;
+  //   let count = 0;
+  //   this.http
+  //     .get<MovieRatings[]>(
+  //       `http://localhost:3000/movieRatings?movieId=${movieId}`
+  //     )
+  //     .pipe(
+  //       map((result) =>
+  //         result.map((res) => {
+  //           currR += res.rating;
+  //           count++;
+  //         })
+  //       )
+  //     )
+  //     .subscribe({
+  //       next: () =>
+  //         this.movieRating$$.next({
+  //           ...this.movieRating$$,
+  //           rating: currR / count,
+  //         }),
+  //     });
+  // }
 }
