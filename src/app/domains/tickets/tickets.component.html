@@ -14,16 +14,27 @@
     <span
       class="column-seats"
       *ngFor="let column of columns; let index = index"
-      [ngClass]="onCheckReservedSeats(row, column) ? 'reserved-seat' : ''"
-      (click)="onReserveOrRemoveSeat(row, column)"
+      [ngClass]="
+        onCheckBookedSeats(row, column)
+          ? 'booked-seat'
+          : onCheckReservedSeats(row, column)
+          ? 'reserved-seat'
+          : ''
+      "
+      (click)="onReserveSeat(row, column)"
     >
       {{ column }}
     </span>
   </div>
 
   <ng-container *ngIf="ticketsForm.controls.tickets.controls.length > 0">
-    <form [formGroup]="ticketsForm">
-      <ol *ngFor="let ticket of ticketsForm.controls.tickets.controls">
+    <form [formGroup]="ticketsForm" (ngSubmit)="onSubmit()">
+      <ol
+        *ngFor="
+          let ticket of ticketsForm.controls.tickets.controls;
+          let index = index
+        "
+      >
         <div>
           <fieldset>
             <legend>Bilet</legend>
@@ -31,18 +42,30 @@
             <span> Miejsce {{ ticket.controls.columnSeat.value }}</span
             ><select formName="ticketTypeName">
               <option
-                value="ticketType.name"
+                [ngValue]="ticketType.name"
                 *ngFor="let ticketType of ticketTypes; let index = index"
               >
-                {{ ticketType.name }} :
-                <span formName="ticketTypePrice"
-                  >{{ ticketType.price }} PLN</span
-                >
+                {{ ticketType.name }}
               </option>
             </select>
+
+            <button
+              (click)="
+                removeTicket(
+                  index,
+                  ticket.controls.rowSeat.value,
+                  ticket.controls.columnSeat.value
+                )
+              "
+            >
+              X
+            </button>
           </fieldset>
         </div>
       </ol>
+
+      <span>{{ totalPrice }}</span>
+      <button>Wyślij</button>
     </form>
   </ng-container>
 </ng-container>

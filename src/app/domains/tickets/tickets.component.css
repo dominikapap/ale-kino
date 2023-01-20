@@ -14,7 +14,7 @@
 }
 
 .column-seats {
-  background-color: lightgray;
+  background-color: green;
   cursor: pointer;
 }
 
@@ -22,11 +22,12 @@
   background-color: grey;
 }
 
-.paid-seat {
+.booked-seat {
   background-color: red;
   pointer-events: none;
 }
 
 .reserved-seat {
   background-color: orange;
+  pointer-events: none;
 }

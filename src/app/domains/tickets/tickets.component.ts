@@ -1,7 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormArray, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { filter } from 'rxjs';
 import { UserStateService } from 'src/app/core/user-state.service';
 import { MovieDetails } from '../../interfaces/MovieDetails';
 import { MovieShowing } from '../../interfaces/MovieShowing';
@@ -9,9 +8,10 @@ import { PaidSeat } from '../../interfaces/PaidSeats';
 import { TicketForm } from '../../interfaces/TicketForm';
 import { TicketType } from '../../interfaces/TicketType';
 import { MovieApiService } from '../../services/movieapi.service';
+import { BookedSeatsService } from '../shared/booked-seats.service';
 import { ReservedSeatsService } from './reserved-seats.service';
 
-type Form2 = FormGroup<{
+type Form = FormGroup<{
   tickets: FormArray<FormGroup<TicketForm>>;
 }>;
 
@@ -26,6 +26,7 @@ export class TicketsComponent implements OnInit {
   private builder = inject(NonNullableFormBuilder);
   private userID = inject(UserStateService).getUserID();
   private reservedSeatsService = inject(ReservedSeatsService);
+  private bookedSeatsService = inject(BookedSeatsService);
 
   showing: MovieShowing[] = [];
   movie: MovieDetails[] = [];
@@ -38,10 +39,13 @@ export class TicketsComponent implements OnInit {
   ticketPrice = 0;
   routeParams = this.route.snapshot.paramMap;
   showingIdFromRoute = Number(this.routeParams.get('id'));
+  totalPrice = 0;
 
   ngOnInit(): void {
     this.reservedSeatsService.getReservedSeats(this.showingIdFromRoute);
+    this.bookedSeatsService.getBookedSeats(this.showingIdFromRoute);
 
+    // przenieść subscribe do serwisu
     this.movieApiService.getMovieApiDataTicketTypes().subscribe({
       next: (response) => {
         (this.ticketTypes = response),
@@ -49,6 +53,14 @@ export class TicketsComponent implements OnInit {
       },
     });
 
+    // this.ticketsForm.valueChanges.subscribe(() => {
+    //   this.totalPrice = 0;
+    //   this.ticketsForm.value.tickets!.forEach((element) => {
+    //     this.totalPrice += element.ticketPrice!;
+    //   });
+    // });
+
+    ///tu powinno być switchMap, todo: refactor
     this.movieApiService
       .getMovieApiDataShowing(this.showingIdFromRoute)
       .subscribe({
@@ -67,15 +79,17 @@ export class TicketsComponent implements OnInit {
         },
       });
   }
-
-  checkPaidSeat(row: string, column: number) {
-    const filteredSeats = this.paidSeats.filter(
-      (el) => el.row == row && el.num == column
-    );
-    return filteredSeats.length;
+  removeTicket(index: number, row: string, column: number) {
+    this.ticketsForm.controls.tickets.removeAt(index);
+    this.reservedSeatsService.removeSeat(row, column);
   }
+
   onCheckReservedSeats(row: string, column: number): boolean {
     return this.reservedSeatsService.canReserve(row, column);
+  }
+
+  onCheckBookedSeats(row: string, column: number): boolean {
+    return this.bookedSeatsService.canBook(row, column);
   }
 
   private createSeatsGrid(showing: MovieShowing[]) {
@@ -85,8 +99,11 @@ export class TicketsComponent implements OnInit {
     this.rowsA = this.rows.map((x) => String.fromCharCode(x));
   }
 
-  onReserveOrRemoveSeat(row: string, column: number) {
-    if (!this.reservedSeatsService.canReserve(row, column)) {
+  onReserveSeat(row: string, column: number) {
+    if (
+      !this.reservedSeatsService.canReserve(row, column) &&
+      this.ticketsForm.controls.tickets.length < 10
+    ) {
       this.ticketsForm.controls.tickets.push(
         this.createTicketsForm(row, column)
       );
@@ -97,11 +114,16 @@ export class TicketsComponent implements OnInit {
         this.showingIdFromRoute
       );
     } else {
-      this.reservedSeatsService.removeSeat(row, column);
+      alert('Nie można zarezerować więcej niż 10 billetów jednocześnie');
+      // this.reservedSeatsService.removeSeat(row, column);
     }
   }
 
-  private createForm(): Form2 {
+  onSubmit() {
+    console.log(this.ticketsForm.value);
+  }
+
+  private createForm(): Form {
     const form = this.builder.group({
       tickets: this.builder.array<FormGroup<TicketForm>>([]),
     });

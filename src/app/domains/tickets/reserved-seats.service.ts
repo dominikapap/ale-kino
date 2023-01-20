@@ -1,21 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, filter, map, tap } from 'rxjs';
+import { BehaviorSubject, filter, map, switchMap, tap } from 'rxjs';
 
 export interface ReservedSeat {
+  id: number;
   rowSeat: string;
   columnSeat: number;
   showingID: number;
   userID: number;
-}
-interface BookedTicket {
-  id?: number;
-  ticketTypeName: string;
-  ticketPrice: number;
-  rowSeat: string;
-  columnSeat: number;
-  showingID: number;
-  userID: number | undefined;
 }
 
 @Injectable({
@@ -32,7 +24,7 @@ export class ReservedSeatsService {
   getReservedSeats(showingId: number) {
     this.http
       .get<ReservedSeat[]>(
-        `http://localhost:3000/reservedSeats?showingsID=${showingId}`
+        `http://localhost:3000/reservedSeats?showingID=${showingId}`
       )
       .pipe(
         tap({
@@ -43,22 +35,6 @@ export class ReservedSeatsService {
       )
       .subscribe();
   }
-
-  // checkReservedSeats(row: string, column: number):boolean {
-  //   let canReserve: boolean;
-  //   this.reservedSeats$$
-  //     .pipe(
-  //       map((element) =>
-  //         element.map((el) =>
-  //           el.rowSeat === row && el.columnSeat === column ? true : false
-  //         )
-  //       ), tap((result) => {
-  //       canReserve = result[0];
-  //       return canReserve
-  //     })
-  //     )
-
-  // }
 
   canReserve(row: string, column: number): boolean {
     return this.reservedSeats$$.value.some(
@@ -93,11 +69,29 @@ export class ReservedSeatsService {
           },
         })
       )
-
       .subscribe();
   }
 
   removeSeat(row: string, column: number) {
-    console.log(this.reservedSeats$$.value);
+    const seatRow = this.reservedSeats$$.value.filter(
+      (seat) => seat.rowSeat === row
+    );
+    const seatColumn = seatRow.filter((seat) => seat.columnSeat === column);
+    this.http
+      .delete<ReservedSeat>(
+        `http://localhost:3000/reservedSeats/${seatColumn[0].id}`
+      )
+      .pipe(
+        tap({
+          next: () => {
+            this.reservedSeats$$.next(
+              this.reservedSeats$$.value.filter(
+                (seat) => seat.id !== seatColumn[0].id
+              )
+            );
+          },
+        })
+      )
+      .subscribe();
   }
 }

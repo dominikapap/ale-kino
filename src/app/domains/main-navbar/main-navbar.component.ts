@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { UserStateService } from 'src/app/core/user-state.service';
 import { AuthService } from '../../auth';
 
 @Component({
@@ -13,20 +14,22 @@ import { AuthService } from '../../auth';
         </button></ng-container
       >
       <ng-container *ngIf="hasAuth()"
-        ><button class="btn login-btn" (click)="logout()">
-          Wyloguj
-        </button></ng-container
+        ><button class="btn login-btn" (click)="logout()">Wyloguj</button>
+        <button class="btn login-btn">
+          <a routerLink="do-obejrzenia">Watchlist</a>
+        </button>
+        <p>Witaj, {{ userName }}</p></ng-container
       >
-      <button class="btn login-btn">
-        <a routerLink="do-obejrzenia">Watchlist</a>
-      </button>
     </div>
   </nav> `,
   styleUrls: ['./main-navbar.component.css'],
 })
-export class MainNavbarComponent implements OnInit {
-  constructor(private auth: AuthService) {}
-  ngOnInit(): void {}
+export class MainNavbarComponent {
+  private auth = inject(AuthService);
+  userName = inject(UserStateService).getUserName();
+  ngOnInit() {
+    console.log(this.userName);
+  }
 
   logout() {
     this.auth.logout();

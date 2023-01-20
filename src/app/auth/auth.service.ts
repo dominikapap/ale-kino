@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, filter, Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../interfaces/User';
-import { map, tap } from 'rxjs/operators';
 import { UserStateService } from '../core/user-state.service';
 
 @Injectable({
@@ -30,16 +29,18 @@ export class AuthService {
     );
   }
 
-  authorize(userID: number) {
+  authorize(userID: number, userName: string) {
     this.auth$$.next({ ...this.auth$$.value, hasAuth: true });
-    this.userStateService.updateUserID(userID);
+    this.userStateService.updateUser(userID, userName);
     localStorage.setItem('userID', userID.toString());
+    localStorage.setItem('userName', userName.toString());
     this.router.navigate(['']); //todo change to navigate to page visited before login
   }
 
   logout() {
-    this.userStateService.updateUserID(0);
+    this.userStateService.updateUser(0, '');
     localStorage.removeItem('userID');
+    localStorage.removeItem('userName');
     this.auth$$.next({
       ...this.auth$$.value,
       hasAuth: false,
@@ -63,9 +64,10 @@ export class AuthService {
     }
 
     const userIDFromLS = localStorage.getItem('userID');
+    const userNameFromLS = localStorage.getItem('userName');
 
-    if (userIDFromLS) {
-      this.userStateService.updateUserID(parseInt(userIDFromLS));
+    if (userIDFromLS && userNameFromLS) {
+      this.userStateService.updateUser(parseInt(userIDFromLS), userNameFromLS);
     }
   }
 }
