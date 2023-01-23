@@ -1,19 +1,32 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormArray, FormGroup, NonNullableFormBuilder } from '@angular/forms';
+import {
+  FormArray,
+  FormControl,
+  FormGroup,
+  NonNullableFormBuilder,
+} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UserStateService } from 'src/app/core/user-state.service';
+import { ThisWeekComponent } from 'src/app/shared/this-week/this-week.component';
 import { MovieDetails } from '../../interfaces/MovieDetails';
 import { MovieShowing } from '../../interfaces/MovieShowing';
 import { PaidSeat } from '../../interfaces/PaidSeats';
-import { TicketForm } from '../../interfaces/TicketForm';
 import { TicketType } from '../../interfaces/TicketType';
 import { MovieApiService } from '../../services/movieapi.service';
+import { CartService } from '../cart/cart.service';
 import { BookedSeatsService } from '../shared/booked-seats.service';
 import { ReservedSeatsService } from './reserved-seats.service';
 
 type Form = FormGroup<{
   tickets: FormArray<FormGroup<TicketForm>>;
 }>;
+
+interface TicketForm {
+  ticketTypeName: FormControl<string>;
+  ticketPrice: FormControl<number>;
+  rowSeat: FormControl<string>;
+  columnSeat: FormControl<number>;
+}
 
 @Component({
   selector: 'app-tickets',
@@ -23,6 +36,7 @@ type Form = FormGroup<{
 export class TicketsComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private movieApiService = inject(MovieApiService);
+  private cartService = inject(CartService);
   private builder = inject(NonNullableFormBuilder);
   private userID = inject(UserStateService).getUserID();
   private reservedSeatsService = inject(ReservedSeatsService);
@@ -35,7 +49,25 @@ export class TicketsComponent implements OnInit {
   rowsA: string[] = [];
   paidSeats: PaidSeat[] = [];
   ticketsForm = this.createForm();
-  ticketTypes: TicketType[] = [];
+  // ticketTypes: TicketType[] = [];
+  ticketTypes = [
+    {
+      name: 'Bilet normalny',
+      price: 22,
+    },
+    {
+      name: 'Bilet rodzinny',
+      price: 18,
+    },
+    {
+      name: 'Bilet ulgowy',
+      price: 17,
+    },
+    {
+      name: 'Voucher',
+      price: 22,
+    },
+  ];
   ticketPrice = 0;
   routeParams = this.route.snapshot.paramMap;
   showingIdFromRoute = Number(this.routeParams.get('id'));
@@ -46,12 +78,11 @@ export class TicketsComponent implements OnInit {
     this.bookedSeatsService.getBookedSeats(this.showingIdFromRoute);
 
     // przenieść subscribe do serwisu
-    this.movieApiService.getMovieApiDataTicketTypes().subscribe({
-      next: (response) => {
-        (this.ticketTypes = response),
-          (this.ticketPrice = this.ticketTypes[0].price);
-      },
-    });
+    // this.movieApiService.getMovieApiDataTicketTypes().subscribe({
+    //   next: (response) => {
+    //     (this.ticketTypes = response)
+    //   },
+    // });
 
     // this.ticketsForm.valueChanges.subscribe(() => {
     //   this.totalPrice = 0;
@@ -115,12 +146,25 @@ export class TicketsComponent implements OnInit {
       );
     } else {
       alert('Nie można zarezerować więcej niż 10 billetów jednocześnie');
-      // this.reservedSeatsService.removeSeat(row, column);
+    }
+  }
+  updateTicketPrice() {
+    console.log(this.ticketsForm.controls.tickets.controls[0].value);
+  }
+  onSubmit() {
+    console.log(this.ticketsForm.value.tickets);
+
+    if (this.ticketsForm.value.tickets) {
+      this.cartService.addToCart(
+        Array.from(this.ticketsForm.value.tickets),
+        this.userID,
+        this.showingIdFromRoute
+      );
     }
   }
 
-  onSubmit() {
-    console.log(this.ticketsForm.value);
+  onChange(value: string) {
+    console.log(value);
   }
 
   private createForm(): Form {

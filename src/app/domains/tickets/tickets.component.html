@@ -35,19 +35,19 @@
           let index = index
         "
       >
-        <div>
+        <div [formGroup]="ticket">
           <fieldset>
             <legend>Bilet</legend>
             <span>Rząd {{ ticket.controls.rowSeat.value }}</span>
-            <span> Miejsce {{ ticket.controls.columnSeat.value }}</span
-            ><select formName="ticketTypeName">
+            <span> Miejsce {{ ticket.controls.columnSeat.value }}</span>
+            <select formControlName="ticketTypeName">
               <option
                 [ngValue]="ticketType.name"
                 *ngFor="let ticketType of ticketTypes; let index = index"
               >
                 {{ ticketType.name }}
-              </option>
-            </select>
+              </option></select
+            ><span>{{ ticket.controls.ticketPrice.value }}</span>
 
             <button
               (click)="

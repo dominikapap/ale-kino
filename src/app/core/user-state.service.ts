@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +12,14 @@ export class UserStateService {
 
   get user$() {
     return this.user$$.asObservable();
+  }
+
+  get userId$() {
+    return this.user$.pipe(map((user) => user.userID));
+  }
+
+  get userName$() {
+    return this.user$.pipe(map((user) => user.userName));
   }
 
   getUserID() {

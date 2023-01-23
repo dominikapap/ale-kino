@@ -18,7 +18,7 @@ import { AuthService } from '../../auth';
         <button class="btn login-btn">
           <a routerLink="do-obejrzenia">Watchlist</a>
         </button>
-        <p>Witaj, {{ userName }}</p></ng-container
+        <p>Witaj, {{ userName$ | async }}</p></ng-container
       >
     </div>
   </nav> `,
@@ -27,9 +27,7 @@ import { AuthService } from '../../auth';
 export class MainNavbarComponent {
   private auth = inject(AuthService);
   userName = inject(UserStateService).getUserName();
-  ngOnInit() {
-    console.log(this.userName);
-  }
+  userName$ = inject(UserStateService).userName$;
 
   logout() {
     this.auth.logout();
