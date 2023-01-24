@@ -1,6 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MovieDetails } from 'src/app/interfaces/MovieDetails';
 import { MovieShowing } from 'src/app/interfaces/MovieShowing';
 import { MovieApiService } from 'src/app/services/movieapi.service';
 
