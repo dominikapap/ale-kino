@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { CartService } from '../domains/cart/cart.service';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -8,12 +9,12 @@ import { AuthService } from './auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  private cartService = inject(CartService);
+  private builder = inject(NonNullableFormBuilder);
+  private auth = inject(AuthService);
   loginForm = this.createLoginForm();
 
-  constructor(
-    private builder: NonNullableFormBuilder,
-    private auth: AuthService
-  ) {}
+  constructor() {}
 
   // login() {
   //   this.authStateService
@@ -40,6 +41,7 @@ export class LoginComponent {
             this.loginForm.reset();
           } else {
             this.auth.authorize(results[0].id, results[0].firstName);
+            this.cartService.getCart(results[0].id);
           }
         },
         error: (e) => {

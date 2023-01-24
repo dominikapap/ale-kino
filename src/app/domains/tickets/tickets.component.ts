@@ -115,6 +115,13 @@ export class TicketsComponent implements OnInit {
     this.reservedSeatsService.removeSeat(row, column);
   }
 
+  changePrice(index: number) {
+    this.ticketsForm.controls.tickets
+      .at(index)
+      .get('ticketPrice')
+      ?.setValue(30);
+  }
+
   onCheckReservedSeats(row: string, column: number): boolean {
     return this.reservedSeatsService.canReserve(row, column);
   }
@@ -148,9 +155,7 @@ export class TicketsComponent implements OnInit {
       alert('Nie można zarezerować więcej niż 10 billetów jednocześnie');
     }
   }
-  updateTicketPrice() {
-    console.log(this.ticketsForm.controls.tickets.controls[0].value);
-  }
+
   onSubmit() {
     console.log(this.ticketsForm.value.tickets);
 
@@ -161,10 +166,6 @@ export class TicketsComponent implements OnInit {
         this.showingIdFromRoute
       );
     }
-  }
-
-  onChange(value: string) {
-    console.log(value);
   }
 
   private createForm(): Form {

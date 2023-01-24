@@ -1,1 +1,15 @@
-<p>cart works!</p>
+<p>Cartitems:</p>
+<ol>
+  <li *ngFor="let item of cart$ | async as cart; let index = index">
+    {{ item.ticketTypeName }}, {{ item.ticketPrice }}, miejsce {{ item.rowSeat
+    }}{{ item.columnSeat }}
+    <a [routerLink]="['/kup-bilet/', item.showingId]">Seans </a
+    ><app-showing-details [showingId]="item.showingId"></app-showing-details
+    ><button (click)="onRemoveFromCart(item.id)">Usuń</button>
+  </li>
+</ol>
+<ng-container *ngIf="cartPrices$ | async as cartPrices">
+  Łączna kwota: {{ cartPrices | sum }}PLN
+</ng-container>
+
+<a routerLink="zamowienie">Przejdź do zamówienia</a>

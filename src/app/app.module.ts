@@ -16,6 +16,10 @@ import { MovieRatingComponent } from './domains/movie-rating/movie-rating.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
 import { ShellComponent } from './shell/shell.component';
+import { ShowingDetailsComponent } from './shared/showing-details/showing-details.component';
+import { CartComponent } from './domains/cart/cart.component';
+import { MovieDetailsComponent } from './shared/movie-details/movie-details.component';
+import { SumPipe } from './shared/pipes/sum.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,10 @@ import { ShellComponent } from './shell/shell.component';
     TicketsComponent,
     MovieRatingComponent,
     ShellComponent,
+    ShowingDetailsComponent,
+    CartComponent,
+    MovieDetailsComponent,
+    SumPipe,
   ],
   imports: [
     BrowserModule,

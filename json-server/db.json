@@ -168,7 +168,7 @@
     {
       "id": 153,
       "movieId": 2437892,
-      "date": "2023-01-16",
+      "date": "2023-01-23",
       "break": 15,
       "timeFrom": "21:30",
       "timeTo": "23:00",
@@ -196,7 +196,7 @@
     {
       "id": 17,
       "movieId": 1267943,
-      "date": "2023-01-17",
+      "date": "2023-01-24",
       "break": 15,
       "timeFrom": "16:00",
       "timeTo": "17:30",
@@ -228,7 +228,7 @@
     {
       "id": 18,
       "movieId": 1267943,
-      "date": "2023-01-17",
+      "date": "2023-01-24",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -251,7 +251,7 @@
     {
       "id": 22,
       "movieId": 2437892,
-      "date": "2023-01-18",
+      "date": "2023-01-25",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -279,7 +279,7 @@
     {
       "id": 24,
       "movieId": 2437892,
-      "date": "2023-01-18",
+      "date": "2023-01-25",
       "break": 15,
       "timeFrom": "18:00",
       "timeTo": "17:30",
@@ -311,7 +311,7 @@
     {
       "id": 26,
       "movieId": 2437892,
-      "date": "2023-01-19",
+      "date": "2023-01-26",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -905,6 +905,146 @@
       "showingID": 323,
       "userID": 168395,
       "id": 60
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 4,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 61
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 5,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 62
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 6,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 63
+    },
+    {
+      "rowSeat": "H",
+      "columnSeat": 3,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 64
+    },
+    {
+      "rowSeat": "H",
+      "columnSeat": 4,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 65
+    },
+    {
+      "rowSeat": "H",
+      "columnSeat": 5,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 66
+    },
+    {
+      "rowSeat": "L",
+      "columnSeat": 1,
+      "showingID": 18,
+      "userID": 168395,
+      "id": 67
+    },
+    {
+      "rowSeat": "L",
+      "columnSeat": 2,
+      "showingID": 18,
+      "userID": 168395,
+      "id": 68
+    },
+    {
+      "rowSeat": "L",
+      "columnSeat": 3,
+      "showingID": 18,
+      "userID": 168395,
+      "id": 69
+    },
+    {
+      "rowSeat": "C",
+      "columnSeat": 2,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 70
+    },
+    {
+      "rowSeat": "C",
+      "columnSeat": 3,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 71
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 10,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 72
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 11,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 73
+    },
+    {
+      "rowSeat": "A",
+      "columnSeat": 7,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 74
+    },
+    {
+      "rowSeat": "A",
+      "columnSeat": 8,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 75
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 8,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 76
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 9,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 77
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 1,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 78
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 2,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 79
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 5,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 80
     }
   ],
   "bookedSeats": [
@@ -1035,22 +1175,148 @@
   ],
   "cart": [
     {
-      "ticketTypeName": "Bilet rodzinny",
+      "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "rowSeat": "I",
-      "columnSeat": 5,
+      "rowSeat": "F",
+      "columnSeat": 4,
       "userID": 168395,
-      "showingId": 323,
+      "showingId": 153,
       "id": 1
     },
     {
-      "ticketTypeName": "Bilet ulgowy",
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "F",
+      "columnSeat": 5,
+      "userID": 168395,
+      "showingId": 153,
+      "id": 3
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "H",
+      "columnSeat": 3,
+      "userID": 168395,
+      "showingId": 153,
+      "id": 4
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
       "rowSeat": "H",
       "columnSeat": 5,
       "userID": 168395,
-      "showingId": 323,
-      "id": 2
+      "showingId": 153,
+      "id": 5
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "H",
+      "columnSeat": 4,
+      "userID": 168395,
+      "showingId": 153,
+      "id": 6
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "L",
+      "columnSeat": 2,
+      "userID": 168395,
+      "showingId": 18,
+      "id": 8
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "L",
+      "columnSeat": 3,
+      "userID": 168395,
+      "showingId": 18,
+      "id": 9
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "C",
+      "columnSeat": 2,
+      "userID": 168395,
+      "showingId": 153,
+      "id": 10
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "C",
+      "columnSeat": 3,
+      "userID": 168395,
+      "showingId": 153,
+      "id": 11
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "J",
+      "columnSeat": 10,
+      "userID": 168395,
+      "showingId": 153,
+      "id": 12
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "J",
+      "columnSeat": 11,
+      "userID": 168395,
+      "showingId": 153,
+      "id": 13
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "A",
+      "columnSeat": 7,
+      "userID": 168395,
+      "showingId": 153,
+      "id": 14
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "A",
+      "columnSeat": 8,
+      "userID": 168395,
+      "showingId": 153,
+      "id": 15
+    },
+    {
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 22,
+      "rowSeat": "J",
+      "columnSeat": 5,
+      "userID": 168395,
+      "showingId": 153,
+      "id": 16
+    },
+    {
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 22,
+      "rowSeat": "I",
+      "columnSeat": 8,
+      "userID": 168395,
+      "showingId": 153,
+      "id": 17
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "H",
+      "columnSeat": 8,
+      "userID": 168395,
+      "showingId": 153,
+      "id": 18
     }
   ]
 }

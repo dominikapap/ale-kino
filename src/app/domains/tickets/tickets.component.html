@@ -1,9 +1,5 @@
 <ng-container *ngIf="movie.length"
-  ><div>
-    <p>
-      {{ movie[0].title }}, {{ showing[0].date }}, {{ showing[0].timeFrom }}
-    </p>
-  </div>
+  ><app-showing-details [showingId]="showing[0].id"></app-showing-details>
 
   <!-- </ng-container> -->
 
@@ -43,6 +39,7 @@
             <select formControlName="ticketTypeName">
               <option
                 [ngValue]="ticketType.name"
+                (click)="changePrice(index)"
                 *ngFor="let ticketType of ticketTypes; let index = index"
               >
                 {{ ticketType.name }}

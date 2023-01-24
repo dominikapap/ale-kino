@@ -39,7 +39,7 @@ export const routes: Routes = [
           },
           {
             path: 'koszyk',
-            loadChildren: () => import('./domains/cart/cart.module'),
+            component: CartComponent,
           },
           {
             path: 'zamowienie',
