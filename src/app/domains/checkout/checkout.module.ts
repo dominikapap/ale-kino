@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckoutComponent } from './checkout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import CartComponent from '../cart/cart.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -11,6 +13,11 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [CheckoutComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    CartComponent,
+  ],
 })
 export default class LoginModule {}

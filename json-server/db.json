@@ -18,6 +18,7 @@
       "lastName": "Wick",
       "email": "john@wick.com",
       "password": "verystrongpassword123!",
+      "phoneNumber": 12356789,
       "role": "User"
     },
     {
@@ -26,6 +27,7 @@
       "lastName": "Strong",
       "email": "emma@example.com",
       "password": "strongpassword!27",
+      "phoneNumber": 82356389,
       "role": "User"
     },
     {
@@ -34,6 +36,7 @@
       "lastName": "Wachowski",
       "email": "admin@superadmin.com",
       "password": "qwerty99?",
+      "phoneNumber": 82382089,
       "role": "Admin"
     }
   ],
@@ -96,9 +99,7 @@
       "title": "Apokawixa",
       "id": 1267943,
       "imageUrl": "https://fwcdn.pl/fpo/55/10/10015510/8029347.6.jpg",
-      "genres": [
-        "Horror"
-      ],
+      "genres": ["Horror"],
       "time": "120 minut",
       "ageRestriction": "PG-13",
       "descriptionShort": " Apokawixa details:Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
@@ -111,10 +112,7 @@
       "title": "Co w duszy gra",
       "id": 2437892,
       "imageUrl": "https://fwcdn.pl/fpo/66/50/836650/7934792.6.jpg",
-      "genres": [
-        "Animowany",
-        "Obyczajowy"
-      ],
+      "genres": ["Animowany", "Obyczajowy"],
       "time": "120 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",

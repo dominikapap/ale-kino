@@ -9,7 +9,7 @@
   </li>
 </ol>
 <ng-container *ngIf="cartPrices$ | async as cartPrices">
-  Łączna kwota: {{ cartPrices | sum }}PLN, Średnia {{ cartPrices | avg }}
+  Łączna kwota: {{ cartPrices | sum }}PLN
 </ng-container>
 
-<a routerLink="zamowienie">Przejdź do zamówienia</a>
+<a routerLink="/zamowienie">Przejdź do zamówienia</a>

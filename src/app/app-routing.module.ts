@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CartComponent } from './domains/cart/cart.component';
-import { CheckoutComponent } from './domains/checkout/checkout.component';
 import { ConfirmationComponent } from './domains/confirmation/confirmation.component';
 import { PageNotFoundComponent } from './domains/page-not-found/page-not-found.component';
 import { SettingsComponent } from './domains/settings/settings.component';
@@ -39,7 +37,7 @@ export const routes: Routes = [
           },
           {
             path: 'koszyk',
-            component: CartComponent,
+            loadComponent: () => import('./domains/cart/cart.component'),
           },
           {
             path: 'zamowienie',

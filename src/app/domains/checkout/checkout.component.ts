@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {  NonNullableFormBuilder, Validators } from '@angular/forms';
+import { Component, inject, OnInit } from '@angular/core';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { UserStateService } from 'src/app/core/user-state.service';
 import { CheckoutForm } from '../../interfaces/CheckoutForm';
 
 @Component({
@@ -8,9 +9,13 @@ import { CheckoutForm } from '../../interfaces/CheckoutForm';
   styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent implements OnInit {
+  private builder = inject(NonNullableFormBuilder);
+  userName = inject(UserStateService).getUserName();
   checkoutForm = this.createCheckoutForm();
 
-  constructor(private builder: NonNullableFormBuilder) {}
+  ngOnInit() {
+    this.checkoutForm.controls.firstName.setValue(this.userName);
+  }
 
   sendForm() {
     this.checkoutForm.markAllAsTouched();
@@ -51,6 +56,4 @@ export class CheckoutComponent implements OnInit {
     });
     return form;
   }
-
-  ngOnInit(): void {}
 }
