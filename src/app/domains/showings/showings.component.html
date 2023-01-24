@@ -29,9 +29,19 @@
           <div class="additionalBtns">
             <app-movie-rating [movieId]="movie.id"></app-movie-rating>
 
-            <button (click)="onUpdateWatchlist(movie.title, movie.id)">
-              Chcę obejrzeć
-            </button>
+            <ng-container *ngIf="onWatchlist(movie.title); else addToWatchlist"
+              ><p>
+                Zapisany na
+                <a routerLink="do-obejrzenia">liście do obejrzenia</a>
+              </p></ng-container
+            >
+
+            <ng-template #addToWatchlist
+              ><button (click)="onUpdateWatchlist(movie.title, movie.id)">
+                Chcę obejrzeć
+              </button></ng-template
+            >
+
             <!-- <button (click)="getID()">show user id</button> -->
           </div></ng-container
         >

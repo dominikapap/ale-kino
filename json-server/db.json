@@ -65,14 +65,8 @@
     {
       "movieId": 1267943,
       "userID": 168395,
-      "rating": 2,
+      "rating": 4,
       "id": 6
-    },
-    {
-      "movieId": 2437892,
-      "userID": 168395,
-      "rating": 3,
-      "id": 7
     }
   ],
   "ticketTypes": [
@@ -1165,12 +1159,6 @@
       "userID": 168363,
       "movieID": 2437892,
       "movieTitle": "Co w duszy gra"
-    },
-    {
-      "userID": 168395,
-      "movieID": 1267943,
-      "movieTitle": "Apokawixa",
-      "id": 4
     }
   ],
   "cart": [

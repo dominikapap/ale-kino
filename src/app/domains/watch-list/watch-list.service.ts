@@ -23,20 +23,6 @@ export class WatchListService {
   private http = inject(HttpClient);
   private currentUserID$ = inject(UserStateService).user$;
 
-  // changewatchList(title: string) {
-  //   this.watchListSource.next(title);
-  // }
-
-  // fetchWatchList() {
-  //   const userID = this.userStateService.getUserID();
-  //   return this.http
-  //     .get<WatchListItem[]>(`http://localhost:3000/watchlist?userID=${userID}`)
-  //     .pipe(map((result) => result.map((res) => res.movieTitle)))
-  //     .subscribe((result) => {
-  //       this.watchList$$.next([...this.watchList$$.value, ...result]);
-  //     });
-  // }
-
   getWatchList() {
     this.currentUserID$
       .pipe(
@@ -84,25 +70,6 @@ export class WatchListService {
     }
   }
 
-  // removeFromWatchlist(movieTitle: string) {
-  //   this.currentUserID$
-  //     .pipe(
-  //       switchMap((user) => {
-  //         return this.http.delete(
-  //           `http://localhost:3000/users/${user.userID}/watchlist`
-  //         );
-  //       })
-  //     )
-  //     .subscribe((result) => console.log(result));
-  // }
-
-  // removeFromWatchlist(titleId: number) {
-  //   this.http.delete(`http://localhost:3000/watchlist/${titleId}`).subscribe();
-  //   this.watchList$$.next(
-  //     this.watchList$$.value.filter((item) => item.titleId !== titleId)
-  //   );
-  // }
-
   removeFromWatchlist(titleId: number) {
     this.http
       .delete<WatchListItem>(`http://localhost:3000/watchlist/${titleId}`)
@@ -115,5 +82,12 @@ export class WatchListService {
           console.error('There was an error!', error);
         },
       });
+  }
+
+  checkIfOnWatchlist(movieTitle: string): boolean {
+    const filteredWatchlist = this.watchList$$.value.filter(
+      (item) => item.title === movieTitle
+    );
+    return filteredWatchlist.length > 0;
   }
 }

@@ -65,6 +65,9 @@ export class ShowingsComponent implements OnInit {
   getID() {
     this.userStateService.getUserID();
   }
+  onWatchlist(movieTitle: string): boolean {
+    return this.watchlistService.checkIfOnWatchlist(movieTitle);
+  }
 
   checkIfHourPassed(hour: string) {
     const now = new Date();
