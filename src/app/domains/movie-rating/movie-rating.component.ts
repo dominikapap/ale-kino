@@ -24,6 +24,7 @@ export class MovieRatingComponent {
   userStateService = inject(UserStateService);
   userID = this.userStateService.getUserID();
   rating$ = inject(MovieRatingService).movieRating$;
+  ratingList$ = inject(MovieRatingService).movieRatingList$;
 
   constructor(private builder: NonNullableFormBuilder) {}
 

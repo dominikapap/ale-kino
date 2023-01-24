@@ -1,6 +1,6 @@
-<ng-container *ngIf="rating$ | async as movieRating"
+<ng-container *ngIf="ratingList$ | async as movieRating"
   ><span>
-    Rating: {{ movieRating.rating | number : "1.2-2" }}</span
+    Rating: {{ movieRating | avg | number : "1.2-2" }}</span
   ></ng-container
 >
 

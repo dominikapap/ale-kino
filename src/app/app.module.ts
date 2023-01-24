@@ -20,6 +20,7 @@ import { ShowingDetailsComponent } from './shared/showing-details/showing-detail
 import { CartComponent } from './domains/cart/cart.component';
 import { MovieDetailsComponent } from './shared/movie-details/movie-details.component';
 import { SumPipe } from './shared/pipes/sum.pipe';
+import { AveragePipe } from './shared/pipes/average.pipe';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SumPipe } from './shared/pipes/sum.pipe';
     CartComponent,
     MovieDetailsComponent,
     SumPipe,
+    AveragePipe,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, map, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 interface Ticket {
   ticketTypeName?: string | undefined;
   ticketPrice?: number;
@@ -28,7 +28,7 @@ export class CartService {
   get cart$() {
     return this.cart$$.asObservable();
   }
-  get cartPrices$() {
+  get cartPrices$(): Observable<(number | undefined)[]> {
     return this.cart$.pipe(map((item) => item.map((res) => res.ticketPrice)));
   }
 
