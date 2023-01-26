@@ -1,46 +1,36 @@
 <form [formGroup]="loginForm" (ngSubmit)="sendForm()">
-  <label for="login-email"
-    >Email
+  <mat-form-field class="full-width">
+    <mat-label>Email</mat-label>
     <input
-      [class.error]="
-        loginForm.controls.email.errors && loginForm.controls.email.touched
-      "
-      formControlName="email"
       type="email"
-      name="email"
-      id="login-email"
+      matInput
+      formControlName="couponCode"
+      formControlName="email"
       placeholder="example@email.com"
-  /></label>
+    />
+    <mat-error *ngIf="loginForm.controls.email.hasError('required')">
+      Email jest <strong>wymagany</strong>
+    </mat-error>
+    <mat-error *ngIf="loginForm.controls.email.hasError('pattern')">
+      Niewłaściwy format email
+    </mat-error>
+  </mat-form-field>
 
-  <ng-container
-    *ngIf="loginForm.controls.email.errors && loginForm.controls.email.touched"
-    ><span class="error-msg" *ngIf="loginForm.controls.email.errors['required']"
-      >Email jest wymaganym polem</span
-    >
-    <span class="error-msg" *ngIf="loginForm.controls.email.errors['pattern']"
-      >Niewłaściwy format adresu email</span
-    ></ng-container
-  >
-
-  <label for="login-password"
-    >Hasło
+  <mat-form-field class="full-width">
+    <mat-label>Hasło</mat-label>
     <input
+      type="password"
+      matInput
+      formControlName="password"
       [class.error]="
         loginForm.controls.password.errors &&
         loginForm.controls.password.touched
       "
-      formControlName="password"
-      type="password"
-      id="login-password"
-  /></label>
+    />
+    <mat-error *ngIf="loginForm.controls.password.hasError('required')">
+      Hasło jest <strong>wymagane</strong>
+    </mat-error>
+  </mat-form-field>
 
-  <ng-container *ngIf="loginForm.controls.password.errors as errors">
-    <ng-container *ngIf="loginForm.controls.password.touched">
-      <span class="error-msg" *ngIf="errors['required']"
-        >Hasło jest wymaganym polem</span
-      >
-    </ng-container>
-  </ng-container>
-
-  <button>Zaloguj</button>
+  <button mat-raised-button color="primary">Zaloguj</button>
 </form>

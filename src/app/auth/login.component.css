@@ -7,13 +7,16 @@ form {
   margin-top: 2rem;
   background-color: darkblue;
   color: white;
+  min-width: 300px;
   width: fit-content;
   margin-inline: auto;
   padding: 2rem;
   border-radius: 20px;
 }
-
-input {
+.mat-mdc-form-field-infix {
+  width: 200px !important;
+}
+/* input {
   margin-top: 0.5rem;
   min-width: 250px;
 }
@@ -30,9 +33,9 @@ label {
 .error-msg {
   color: red;
   align-self: flex-start;
-}
+} */
 
-button {
+/* button {
   border-radius: 1rem;
   padding: 0.5rem;
   width: 125px;
@@ -55,4 +58,4 @@ button:not(:disabled):hover {
   background-color: darkblue;
   border: solid 2px white;
   transform: scale(1.2);
-}
+} */

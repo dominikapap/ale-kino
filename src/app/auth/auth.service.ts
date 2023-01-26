@@ -31,16 +31,16 @@ export class AuthService {
     );
   }
 
-  authorize(userID: number, userName: string) {
+  authorize(user: User) {
     this.auth$$.next({ ...this.auth$$.value, hasAuth: true });
-    this.userStateService.updateUser(userID, userName);
-    localStorage.setItem('userID', userID.toString());
-    localStorage.setItem('userName', userName.toString());
+    this.userStateService.updateUser(user);
+    localStorage.setItem('userID', user.userID.toString());
+    localStorage.setItem('userName', user.firstName.toString());
     this.router.navigate(['']); //todo change to navigate to page visited before login
   }
 
   logout() {
-    this.userStateService.updateUser(0, '');
+    this.userStateService.clearUser();
     localStorage.removeItem('userID');
     localStorage.removeItem('userName');
     this.cartService.emptyCart();
@@ -67,10 +67,9 @@ export class AuthService {
     }
 
     const userIDFromLS = localStorage.getItem('userID');
-    const userNameFromLS = localStorage.getItem('userName');
 
-    if (userIDFromLS && userNameFromLS) {
-      this.userStateService.updateUser(parseInt(userIDFromLS), userNameFromLS);
+    if (userIDFromLS) {
+      this.userStateService.fecthUser(parseInt(userIDFromLS));
     }
   }
 }

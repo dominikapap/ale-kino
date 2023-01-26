@@ -13,7 +13,7 @@
   ],
   "users": [
     {
-      "id": 168395,
+      "userID": 168395,
       "firstName": "John",
       "lastName": "Wick",
       "email": "john@wick.com",
@@ -22,7 +22,7 @@
       "role": "User"
     },
     {
-      "id": 168363,
+      "userID": 168363,
       "firstName": "Emma",
       "lastName": "Strong",
       "email": "emma@example.com",
@@ -31,7 +31,7 @@
       "role": "User"
     },
     {
-      "id": 680235,
+      "userID": 680235,
       "firstName": "Annabelle",
       "lastName": "Wachowski",
       "email": "admin@superadmin.com",
@@ -99,7 +99,9 @@
       "title": "Apokawixa",
       "id": 1267943,
       "imageUrl": "https://fwcdn.pl/fpo/55/10/10015510/8029347.6.jpg",
-      "genres": ["Horror"],
+      "genres": [
+        "Horror"
+      ],
       "time": "120 minut",
       "ageRestriction": "PG-13",
       "descriptionShort": " Apokawixa details:Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
@@ -112,7 +114,10 @@
       "title": "Co w duszy gra",
       "id": 2437892,
       "imageUrl": "https://fwcdn.pl/fpo/66/50/836650/7934792.6.jpg",
-      "genres": ["Animowany", "Obyczajowy"],
+      "genres": [
+        "Animowany",
+        "Obyczajowy"
+      ],
       "time": "120 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
@@ -1031,6 +1036,48 @@
       "showingID": 153,
       "userID": 168395,
       "id": 80
+    },
+    {
+      "rowSeat": "C",
+      "columnSeat": 6,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 81
+    },
+    {
+      "rowSeat": "C",
+      "columnSeat": 7,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 82
+    },
+    {
+      "rowSeat": "C",
+      "columnSeat": 8,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 83
+    },
+    {
+      "rowSeat": "C",
+      "columnSeat": 10,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 85
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 11,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 90
+    },
+    {
+      "rowSeat": "D",
+      "columnSeat": 11,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 92
     }
   ],
   "bookedSeats": [
@@ -1147,16 +1194,16 @@
   ],
   "watchlist": [
     {
-      "id": 2,
-      "userID": 168395,
-      "movieID": 2437892,
-      "movieTitle": "Co w duszy gra"
-    },
-    {
       "id": 3,
       "userID": 168363,
       "movieID": 2437892,
       "movieTitle": "Co w duszy gra"
+    },
+    {
+      "userID": 168395,
+      "movieID": 1267943,
+      "movieTitle": "Apokawixa",
+      "id": 4
     }
   ],
   "cart": [
@@ -1177,114 +1224,6 @@
       "userID": 168395,
       "showingId": 153,
       "id": 3
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "H",
-      "columnSeat": 3,
-      "userID": 168395,
-      "showingId": 153,
-      "id": 4
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "H",
-      "columnSeat": 5,
-      "userID": 168395,
-      "showingId": 153,
-      "id": 5
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "H",
-      "columnSeat": 4,
-      "userID": 168395,
-      "showingId": 153,
-      "id": 6
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "L",
-      "columnSeat": 2,
-      "userID": 168395,
-      "showingId": 18,
-      "id": 8
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "L",
-      "columnSeat": 3,
-      "userID": 168395,
-      "showingId": 18,
-      "id": 9
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "C",
-      "columnSeat": 2,
-      "userID": 168395,
-      "showingId": 153,
-      "id": 10
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "C",
-      "columnSeat": 3,
-      "userID": 168395,
-      "showingId": 153,
-      "id": 11
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "J",
-      "columnSeat": 10,
-      "userID": 168395,
-      "showingId": 153,
-      "id": 12
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "J",
-      "columnSeat": 11,
-      "userID": 168395,
-      "showingId": 153,
-      "id": 13
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "A",
-      "columnSeat": 7,
-      "userID": 168395,
-      "showingId": 153,
-      "id": 14
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "A",
-      "columnSeat": 8,
-      "userID": 168395,
-      "showingId": 153,
-      "id": 15
-    },
-    {
-      "ticketTypeName": "Bilet rodzinny",
-      "ticketPrice": 22,
-      "rowSeat": "J",
-      "columnSeat": 5,
-      "userID": 168395,
-      "showingId": 153,
-      "id": 16
     }
   ]
 }

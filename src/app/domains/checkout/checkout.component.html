@@ -2,35 +2,37 @@
 
 <form [formGroup]="checkoutForm" (ngSubmit)="sendForm()">
   <fieldset>
-    <label for="firstName">
-      Imię
-      <input type="text" formControlName="firstName" />
-    </label>
-    <label for="lastName"
-      >Nazwisko <input type="text" formControlName="lastName" />
-    </label>
-    <label for="phoneNumber"
-      >Numer telefonu
-      <input type="tel" formControlName="phoneNumber" />
-    </label>
+    <mat-form-field class="full-width">
+      <mat-label>Imię</mat-label>
+      <input matInput formControlName="firstName" /> </mat-form-field
+    ><mat-form-field class="full-width">
+      <mat-label>Nazwisko</mat-label>
+      <input matInput formControlName="lastName" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Numer Telefonu</mat-label>
+      <input type="tel" matInput formControlName="phoneNumber" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Adres email</mat-label>
+      <input type="email" matInput formControlName="email" /> </mat-form-field
+    ><mat-form-field>
+      <mat-label>Potwierdź adres email</mat-label>
+      <input type="email" matInput formControlName="confirmEmail" />
+    </mat-form-field>
 
-    <label for="email"
-      >Adres email <input type="email" formControlName="email" />
-    </label>
-    <label for="confirmEmail"
-      >Potwierdź adres email
-      <input type="email" formControlName="confirmEmail" />
-    </label>
+    <mat-slide-toggle
+      [checked]="true"
+      color="primary"
+      formControlName="newsletter"
+      >Chcę otrzymywać informacje o zniżkach i promocjach
+    </mat-slide-toggle>
 
-    <label for="newsletter" class="switch">
-      <input type="checkbox" id="newsletter" formControlName="newsletter" />
-      <span class="slider round"></span> </label
-    >Chcę otrzymywać informacje o zniżkach i promocjach
+    <mat-form-field class="full-width">
+      <mat-label>Kod zniżkowy</mat-label>
+      <input matInput formControlName="couponCode" />
+    </mat-form-field>
 
-    <label for="couponCode">
-      Kod zniżkowy
-      <input type="text" formControlName="couponCode" />
-    </label>
-    <button>Zamawiam</button>
+    <button mat-raised-button color="primary">Zamawiam</button>
   </fieldset>
 </form>

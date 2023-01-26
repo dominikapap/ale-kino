@@ -15,11 +15,16 @@ import { TicketsComponent } from './domains/tickets/tickets.component';
 import { MovieRatingComponent } from './domains/movie-rating/movie-rating.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
 import { ShellComponent } from './shell/shell.component';
 import ShowingDetailsComponent from './shared/showing-details/showing-details.component';
 import MovieDetailsComponent from './shared/movie-details/movie-details.component';
 import SumPipe from './shared/pipes/sum.pipe';
 import { AveragePipe } from './shared/pipes/average.pipe';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -47,6 +52,11 @@ import { AveragePipe } from './shared/pipes/average.pipe';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatRadioModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

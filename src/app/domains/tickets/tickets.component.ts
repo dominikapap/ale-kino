@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UserStateService } from 'src/app/core/user-state.service';
-import { ThisWeekComponent } from 'src/app/shared/this-week/this-week.component';
 import { MovieDetails } from '../../interfaces/MovieDetails';
 import { MovieShowing } from '../../interfaces/MovieShowing';
 import { PaidSeat } from '../../interfaces/PaidSeats';

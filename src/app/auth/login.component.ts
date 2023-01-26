@@ -14,14 +14,6 @@ export class LoginComponent {
   private auth = inject(AuthService);
   loginForm = this.createLoginForm();
 
-  constructor() {}
-
-  // login() {
-  //   this.authStateService
-  //     .login(this.loginForm.getRawValue())
-  //     .subscribe(console.log);
-  // }
-
   sendForm() {
     this.loginForm.markAllAsTouched();
 
@@ -40,8 +32,9 @@ export class LoginComponent {
             alert('Błędne dane, spróbuj ponownie');
             this.loginForm.reset();
           } else {
-            this.auth.authorize(results[0].id, results[0].firstName);
-            this.cartService.getCart(results[0].id);
+            this.auth.authorize(results[0]);
+            console.log(results[0]);
+            this.cartService.getCart(results[0].userID);
           }
         },
         error: (e) => {

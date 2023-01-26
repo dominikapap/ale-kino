@@ -16,5 +16,18 @@ button:disabled {
   color: grey;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+button a {
+  color: white;
+}
+.mat-mdc-form-field-infix,
+input.mdc-text-field__input {
+  min-width: 200px;
+}
