@@ -99,9 +99,7 @@
       "title": "Apokawixa",
       "id": 1267943,
       "imageUrl": "https://fwcdn.pl/fpo/55/10/10015510/8029347.6.jpg",
-      "genres": [
-        "Horror"
-      ],
+      "genres": ["Horror"],
       "time": "120 minut",
       "ageRestriction": "PG-13",
       "descriptionShort": " Apokawixa details:Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
@@ -114,10 +112,7 @@
       "title": "Co w duszy gra",
       "id": 2437892,
       "imageUrl": "https://fwcdn.pl/fpo/66/50/836650/7934792.6.jpg",
-      "genres": [
-        "Animowany",
-        "Obyczajowy"
-      ],
+      "genres": ["Animowany", "Obyczajowy"],
       "time": "120 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
@@ -131,7 +126,7 @@
     {
       "id": 15,
       "movieId": 1267943,
-      "date": "2023-01-16",
+      "date": "2023-01-30",
       "break": 15,
       "timeFrom": "9:30",
       "timeTo": "11:00",
@@ -159,7 +154,7 @@
     {
       "id": 153,
       "movieId": 2437892,
-      "date": "2023-01-23",
+      "date": "2023-02-01",
       "break": 15,
       "timeFrom": "21:30",
       "timeTo": "23:00",
@@ -187,7 +182,7 @@
     {
       "id": 17,
       "movieId": 1267943,
-      "date": "2023-01-25",
+      "date": "2023-02-02",
       "break": 15,
       "timeFrom": "16:00",
       "timeTo": "17:30",
@@ -219,7 +214,7 @@
     {
       "id": 18,
       "movieId": 1267943,
-      "date": "2023-01-25",
+      "date": "2023-02-02",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -242,7 +237,7 @@
     {
       "id": 22,
       "movieId": 2437892,
-      "date": "2023-01-25",
+      "date": "2023-02-02",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -270,7 +265,7 @@
     {
       "id": 24,
       "movieId": 2437892,
-      "date": "2023-01-26",
+      "date": "2023-02-03",
       "break": 15,
       "timeFrom": "18:00",
       "timeTo": "17:30",
@@ -302,7 +297,7 @@
     {
       "id": 26,
       "movieId": 2437892,
-      "date": "2023-01-27",
+      "date": "2023-02-04",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -325,7 +320,7 @@
     {
       "id": 156,
       "movieId": 1267943,
-      "date": "2023-01-28",
+      "date": "2023-02-05",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -408,7 +403,7 @@
     {
       "id": 276,
       "movieId": 2437892,
-      "date": "2023-01-21",
+      "date": "2023-01-30",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -436,7 +431,7 @@
     {
       "id": 303,
       "movieId": 2437892,
-      "date": "2023-01-21",
+      "date": "2023-01-30",
       "break": 15,
       "timeFrom": "16:00",
       "timeTo": "17:30",
@@ -468,7 +463,7 @@
     {
       "id": 323,
       "movieId": 2437892,
-      "date": "2023-01-22",
+      "date": "2023-01-31",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",

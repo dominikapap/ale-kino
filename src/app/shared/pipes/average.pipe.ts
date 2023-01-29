@@ -15,8 +15,4 @@ export class AveragePipe implements PipeTransform {
       initial
     );
   }
-
-  isArray(value: any): boolean {
-    return Array.isArray(value);
-  }
 }

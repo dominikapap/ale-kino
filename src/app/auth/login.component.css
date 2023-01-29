@@ -13,9 +13,7 @@ form {
   padding: 2rem;
   border-radius: 20px;
 }
-.mat-mdc-form-field-infix {
-  width: 200px !important;
-}
+
 /* input {
   margin-top: 0.5rem;
   min-width: 250px;
