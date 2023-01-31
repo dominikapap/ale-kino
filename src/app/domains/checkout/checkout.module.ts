@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import CartComponent from '../cart/cart.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  declarations: [CheckoutComponent],
+  declarations: [CheckoutComponent, PaymentComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -26,6 +27,16 @@ const routes: Routes = [
     MatFormFieldModule,
     MatSlideToggleModule,
     MatButtonModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: CheckoutComponent,
+      },
+      {
+        path: 'platnosc',
+        component: PaymentComponent,
+      },
+    ]),
   ],
 })
 export default class CheckoutModule {}

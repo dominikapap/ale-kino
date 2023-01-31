@@ -1,0 +1,20 @@
+<img
+  src="https://blik.com/layout/default/dist/gfx/logo/logo.svg"
+  alt="BLIK logo"
+/>
+<form [formGroup]="blikForm">
+  <mat-form-field class="example-full-width">
+    <input type="number" matInput formControlName="blikNum" />
+
+    <mat-error *ngIf="blikForm.controls.blikNum.hasError('required')">
+      Number BLIK jest <strong>wymagany</strong>
+    </mat-error>
+    <mat-error *ngIf="blikForm.controls.blikNum.hasError('minlength')">
+      Kod musi się składać z
+      {{ blikForm.controls.blikNum.errors!["minlength"]["requiredLength"] }}
+      znaków
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary">Płacę</button>
+</form>

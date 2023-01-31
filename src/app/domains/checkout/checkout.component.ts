@@ -1,23 +1,27 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserStateService } from 'src/app/core/user-state.service';
 import { User } from 'src/app/interfaces/User';
 import { CheckoutForm } from '../../interfaces/CheckoutForm';
+import { ConfirmEmailValidator } from './confirmEmailValidator';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],
 })
-export class CheckoutComponent {
+export class CheckoutComponent implements OnInit {
   private builder = inject(NonNullableFormBuilder);
+  private router = inject(Router);
+  confirmEmailValidator = inject(ConfirmEmailValidator).emailValidator;
   user = inject(UserStateService).getUserInfo();
   checkoutForm = this.createCheckoutForm();
 
   ngOnInit() {
     if (this.user.userID > 0) {
       this.fillForm(this.user);
-    } else console.log(this.user);
+    }
   }
 
   get checkoutFormCtrls() {
@@ -35,9 +39,11 @@ export class CheckoutComponent {
     this.checkoutForm.markAllAsTouched();
 
     if (this.checkoutForm.invalid) {
-      alert('Nie wypełniono formularza');
+      alert('Niepoprawnie wypełniony formularz');
+    } else {
+      console.log(this.checkoutForm.value);
+      this.router.navigate(['zamowienie/platnosc']);
     }
-    console.log(this.checkoutForm.value);
   }
 
   private createCheckoutForm(): CheckoutForm {
@@ -49,7 +55,7 @@ export class CheckoutComponent {
         validators: [Validators.required, Validators.minLength(2)],
       }),
       phoneNumber: this.builder.control(0, {
-        validators: [Validators.minLength(9)],
+        validators: [Validators.required, Validators.minLength(9)],
       }),
       email: this.builder.control('', {
         validators: [
@@ -61,6 +67,7 @@ export class CheckoutComponent {
         validators: [
           Validators.required,
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+          this.confirmEmailValidator('email'),
         ],
       }),
       newsletter: this.builder.control(false),
