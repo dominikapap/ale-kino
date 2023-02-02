@@ -70,6 +70,12 @@
       "userID": 168395,
       "rating": 4,
       "id": 6
+    },
+    {
+      "movieId": 2437892,
+      "userID": 168395,
+      "rating": 5,
+      "id": 7
     }
   ],
   "ticketTypes": [
@@ -99,7 +105,9 @@
       "title": "Apokawixa",
       "id": 1267943,
       "imageUrl": "https://fwcdn.pl/fpo/55/10/10015510/8029347.6.jpg",
-      "genres": ["Horror"],
+      "genres": [
+        "Horror"
+      ],
       "time": "120 minut",
       "ageRestriction": "PG-13",
       "descriptionShort": " Apokawixa details:Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
@@ -112,7 +120,10 @@
       "title": "Co w duszy gra",
       "id": 2437892,
       "imageUrl": "https://fwcdn.pl/fpo/66/50/836650/7934792.6.jpg",
-      "genres": ["Animowany", "Obyczajowy"],
+      "genres": [
+        "Animowany",
+        "Obyczajowy"
+      ],
       "time": "120 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
@@ -126,6 +137,7 @@
     {
       "id": 15,
       "movieId": 1267943,
+      "movieTitle": "Apokawixa",
       "date": "2023-01-30",
       "break": 15,
       "timeFrom": "9:30",
@@ -133,27 +145,12 @@
       "rows": 10,
       "columns": 12,
       "numOfSeats": 120,
-      "hallId": 1,
-      "paidSeats": [
-        {
-          "row": "A",
-          "num": 3
-        },
-        {
-          "row": "A",
-          "num": 2
-        }
-      ],
-      "bookedSeats": [
-        {
-          "row": "B",
-          "num": 4
-        }
-      ]
+      "hallId": 1
     },
     {
       "id": 153,
       "movieId": 2437892,
+      "movieTitle": "Co w duszy gra",
       "date": "2023-02-01",
       "break": 15,
       "timeFrom": "21:30",
@@ -161,27 +158,12 @@
       "rows": 10,
       "columns": 12,
       "numOfSeats": 120,
-      "hallId": 1,
-      "paidSeats": [
-        {
-          "row": "A",
-          "num": 3
-        },
-        {
-          "row": "A",
-          "num": 2
-        }
-      ],
-      "bookedSeats": [
-        {
-          "row": "B",
-          "num": 4
-        }
-      ]
+      "hallId": 1
     },
     {
       "id": 17,
       "movieId": 1267943,
+      "movieTitle": "Apokawixa",
       "date": "2023-02-02",
       "break": 15,
       "timeFrom": "16:00",
@@ -189,31 +171,12 @@
       "rows": 10,
       "columns": 12,
       "numOfSeats": 120,
-      "hallId": 1,
-      "paidSeats": [
-        {
-          "row": "B",
-          "num": 4
-        },
-        {
-          "row": "B",
-          "num": 3
-        }
-      ],
-      "bookedSeats": [
-        {
-          "row": "C",
-          "num": 10
-        },
-        {
-          "row": "C",
-          "num": 11
-        }
-      ]
+      "hallId": 1
     },
     {
       "id": 18,
       "movieId": 1267943,
+      "movieTitle": "Apokawixa",
       "date": "2023-02-02",
       "break": 15,
       "timeFrom": "21:00",
@@ -221,18 +184,7 @@
       "rows": 12,
       "columns": 12,
       "numOfSeats": 144,
-      "hallId": 2,
-      "paidSeats": [
-        {
-          "row": "D",
-          "num": 7
-        },
-        {
-          "row": "D",
-          "num": 8
-        }
-      ],
-      "bookedSeats": []
+      "hallId": 2
     },
     {
       "id": 22,
@@ -244,27 +196,12 @@
       "rows": 10,
       "columns": 12,
       "numOfSeats": 120,
-      "hallId": 2,
-      "paidSeats": [
-        {
-          "row": "A",
-          "num": 3
-        },
-        {
-          "row": "A",
-          "num": 2
-        }
-      ],
-      "bookedSeats": [
-        {
-          "row": "B",
-          "num": 4
-        }
-      ]
+      "hallId": 2
     },
     {
       "id": 24,
       "movieId": 2437892,
+      "movieTitle": "Co w duszy gra",
       "date": "2023-02-03",
       "break": 15,
       "timeFrom": "18:00",
@@ -272,31 +209,12 @@
       "rows": 10,
       "columns": 12,
       "numOfSeats": 120,
-      "hallId": 1,
-      "paidSeats": [
-        {
-          "row": "B",
-          "num": 4
-        },
-        {
-          "row": "B",
-          "num": 3
-        }
-      ],
-      "bookedSeats": [
-        {
-          "row": "C",
-          "num": 10
-        },
-        {
-          "row": "C",
-          "num": 11
-        }
-      ]
+      "hallId": 1
     },
     {
       "id": 26,
       "movieId": 2437892,
+      "movieTitle": "Co w duszy gra",
       "date": "2023-02-04",
       "break": 15,
       "timeFrom": "21:00",
@@ -304,22 +222,12 @@
       "rows": 12,
       "columns": 12,
       "numOfSeats": 144,
-      "hallId": 2,
-      "paidSeats": [
-        {
-          "row": "D",
-          "num": 7
-        },
-        {
-          "row": "D",
-          "num": 8
-        }
-      ],
-      "bookedSeats": []
+      "hallId": 2
     },
     {
       "id": 156,
       "movieId": 1267943,
+      "movieTitle": "Apokawixa",
       "date": "2023-02-05",
       "break": 15,
       "timeFrom": "12:30",
@@ -327,27 +235,12 @@
       "rows": 10,
       "columns": 12,
       "numOfSeats": 120,
-      "hallId": 1,
-      "paidSeats": [
-        {
-          "col": "A",
-          "row": 3
-        },
-        {
-          "col": "A",
-          "row": 2
-        }
-      ],
-      "bookedSeats": [
-        {
-          "row": "B",
-          "num": 4
-        }
-      ]
+      "hallId": 1
     },
     {
       "id": 99,
       "movieId": 1267943,
+      "movieTitle": "Apokawixa",
       "date": "2023-01-29",
       "break": 15,
       "timeFrom": "16:00",
@@ -355,31 +248,12 @@
       "rows": 10,
       "columns": 12,
       "numOfSeats": 120,
-      "hallId": 1,
-      "paidSeats": [
-        {
-          "row": "B",
-          "num": 4
-        },
-        {
-          "row": "B",
-          "num": 3
-        }
-      ],
-      "bookedSeats": [
-        {
-          "row": "C",
-          "num": 10
-        },
-        {
-          "row": "C",
-          "num": 11
-        }
-      ]
+      "hallId": 1
     },
     {
       "id": 263,
       "movieId": 1267943,
+      "movieTitle": "Apokawixa",
       "date": "2023-01-29",
       "break": 15,
       "timeFrom": "21:00",
@@ -387,22 +261,12 @@
       "rows": 12,
       "columns": 12,
       "numOfSeats": 144,
-      "hallId": 2,
-      "paidSeats": [
-        {
-          "row": "D",
-          "num": 7
-        },
-        {
-          "row": "D",
-          "num": 8
-        }
-      ],
-      "bookedSeats": []
+      "hallId": 2
     },
     {
       "id": 276,
       "movieId": 2437892,
+      "movieTitle": "Co w duszy gra",
       "date": "2023-01-30",
       "break": 15,
       "timeFrom": "12:30",
@@ -410,27 +274,12 @@
       "rows": 10,
       "columns": 12,
       "numOfSeats": 120,
-      "hallId": 2,
-      "paidSeats": [
-        {
-          "row": "A",
-          "num": 3
-        },
-        {
-          "row": "A",
-          "num": 2
-        }
-      ],
-      "bookedSeats": [
-        {
-          "row": "B",
-          "num": 4
-        }
-      ]
+      "hallId": 2
     },
     {
       "id": 303,
       "movieId": 2437892,
+      "movieTitle": "Co w duszy gra",
       "date": "2023-01-30",
       "break": 15,
       "timeFrom": "16:00",
@@ -438,31 +287,12 @@
       "rows": 10,
       "columns": 12,
       "numOfSeats": 120,
-      "hallId": 1,
-      "paidSeats": [
-        {
-          "row": "B",
-          "num": 4
-        },
-        {
-          "row": "B",
-          "num": 3
-        }
-      ],
-      "bookedSeats": [
-        {
-          "row": "C",
-          "num": 10
-        },
-        {
-          "row": "C",
-          "num": 11
-        }
-      ]
+      "hallId": 1
     },
     {
       "id": 323,
       "movieId": 2437892,
+      "movieTitle": "Co w duszy gra",
       "date": "2023-01-31",
       "break": 15,
       "timeFrom": "21:00",
@@ -470,18 +300,7 @@
       "rows": 12,
       "columns": 12,
       "numOfSeats": 144,
-      "hallId": 2,
-      "paidSeats": [
-        {
-          "row": "D",
-          "num": 7
-        },
-        {
-          "row": "D",
-          "num": 8
-        }
-      ],
-      "bookedSeats": []
+      "hallId": 2
     }
   ],
   "reservedSeats": [
@@ -956,123 +775,144 @@
       "id": 69
     },
     {
-      "rowSeat": "C",
-      "columnSeat": 2,
+      "rowSeat": "F",
+      "columnSeat": 1,
       "showingID": 153,
       "userID": 168395,
       "id": 70
     },
     {
-      "rowSeat": "C",
-      "columnSeat": 3,
+      "rowSeat": "F",
+      "columnSeat": 2,
       "showingID": 153,
       "userID": 168395,
       "id": 71
     },
     {
-      "rowSeat": "J",
-      "columnSeat": 10,
+      "rowSeat": "D",
+      "columnSeat": 3,
       "showingID": 153,
-      "userID": 168395,
+      "userID": -1,
       "id": 72
     },
     {
-      "rowSeat": "J",
-      "columnSeat": 11,
+      "rowSeat": "D",
+      "columnSeat": 4,
       "showingID": 153,
-      "userID": 168395,
+      "userID": -1,
       "id": 73
     },
     {
-      "rowSeat": "A",
-      "columnSeat": 7,
+      "rowSeat": "G",
+      "columnSeat": 8,
       "showingID": 153,
-      "userID": 168395,
+      "userID": -1,
       "id": 74
     },
     {
-      "rowSeat": "A",
-      "columnSeat": 8,
+      "rowSeat": "G",
+      "columnSeat": 9,
       "showingID": 153,
-      "userID": 168395,
+      "userID": -1,
       "id": 75
     },
     {
-      "rowSeat": "F",
-      "columnSeat": 8,
+      "rowSeat": "J",
+      "columnSeat": 9,
       "showingID": 153,
-      "userID": 168395,
+      "userID": -1,
       "id": 76
     },
     {
-      "rowSeat": "F",
-      "columnSeat": 9,
+      "rowSeat": "J",
+      "columnSeat": 10,
       "showingID": 153,
-      "userID": 168395,
+      "userID": -1,
       "id": 77
     },
     {
-      "rowSeat": "F",
-      "columnSeat": 1,
+      "rowSeat": "D",
+      "columnSeat": 8,
       "showingID": 153,
-      "userID": 168395,
+      "userID": -1,
       "id": 78
     },
     {
-      "rowSeat": "F",
-      "columnSeat": 2,
+      "rowSeat": "D",
+      "columnSeat": 9,
       "showingID": 153,
-      "userID": 168395,
+      "userID": -1,
       "id": 79
     },
     {
-      "rowSeat": "J",
-      "columnSeat": 5,
+      "rowSeat": "G",
+      "columnSeat": 11,
       "showingID": 153,
-      "userID": 168395,
+      "userID": -1,
       "id": 80
     },
     {
-      "rowSeat": "C",
-      "columnSeat": 6,
+      "rowSeat": "G",
+      "columnSeat": 12,
       "showingID": 153,
-      "userID": 168395,
+      "userID": -1,
       "id": 81
     },
     {
-      "rowSeat": "C",
-      "columnSeat": 7,
+      "rowSeat": "H",
+      "columnSeat": 11,
       "showingID": 153,
-      "userID": 168395,
+      "userID": -1,
       "id": 82
     },
     {
-      "rowSeat": "C",
-      "columnSeat": 8,
-      "showingID": 153,
-      "userID": 168395,
+      "rowSeat": "J",
+      "columnSeat": 7,
+      "showingID": 156,
+      "userID": -1,
       "id": 83
     },
     {
-      "rowSeat": "C",
-      "columnSeat": 10,
+      "rowSeat": "J",
+      "columnSeat": 8,
+      "showingID": 156,
+      "userID": -1,
+      "id": 84
+    },
+    {
+      "rowSeat": "A",
+      "columnSeat": 11,
       "showingID": 153,
       "userID": 168395,
       "id": 85
     },
     {
-      "rowSeat": "F",
-      "columnSeat": 11,
+      "rowSeat": "A",
+      "columnSeat": 12,
       "showingID": 153,
       "userID": 168395,
-      "id": 90
+      "id": 86
     },
     {
-      "rowSeat": "D",
+      "rowSeat": "A",
+      "columnSeat": 10,
+      "showingID": 24,
+      "userID": -1,
+      "id": 87
+    },
+    {
+      "rowSeat": "A",
       "columnSeat": 11,
-      "showingID": 153,
-      "userID": 168395,
-      "id": 92
+      "showingID": 24,
+      "userID": -1,
+      "id": 88
+    },
+    {
+      "rowSeat": "A",
+      "columnSeat": 12,
+      "showingID": 24,
+      "userID": -1,
+      "id": 89
     }
   ],
   "bookedSeats": [
@@ -1201,24 +1041,5 @@
       "id": 4
     }
   ],
-  "cart": [
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "F",
-      "columnSeat": 4,
-      "userID": 168395,
-      "showingId": 153,
-      "id": 1
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "F",
-      "columnSeat": 5,
-      "userID": 168395,
-      "showingId": 153,
-      "id": 3
-    }
-  ]
+  "cart": []
 }

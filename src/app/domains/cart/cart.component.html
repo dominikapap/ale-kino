@@ -1,11 +1,20 @@
-<p>Cartitems:</p>
 <ol>
   <li *ngFor="let item of cart$ | async as cart; let index = index">
     {{ item.ticketTypeName }}, {{ item.ticketPrice }}, miejsce {{ item.rowSeat
     }}{{ item.columnSeat }}
-    <a [routerLink]="['/kup-bilet/', item.showingId]">Seans </a
+    <a
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/kup-bilet/', item.showingId]"
+      >Seans </a
     ><app-showing-details [showingId]="item.showingId"></app-showing-details>
-    <button (click)="onRemoveFromCart(item.id)" mat-raised-button color="warn">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onRemoveFromCart(item.id)"
+      mat-raised-button
+      color="warn"
+    >
       Usuń
     </button>
   </li>
@@ -14,6 +23,10 @@
   Łączna kwota: {{ cartPrices | sum }}PLN
 </ng-container>
 
-<a *ngIf="routerUrl === '/koszyk'" routerLink="/zamowienie"
+<a
+  mat-raised-button
+  color="primary"
+  *ngIf="routerUrl === '/koszyk'"
+  routerLink="/zamowienie"
   >Przejdź do zamówienia</a
 >

@@ -9,10 +9,8 @@
     <mat-error *ngIf="blikForm.controls.blikNum.hasError('required')">
       Number BLIK jest <strong>wymagany</strong>
     </mat-error>
-    <mat-error *ngIf="blikForm.controls.blikNum.hasError('minlength')">
-      Kod musi się składać z
-      {{ blikForm.controls.blikNum.errors!["minlength"]["requiredLength"] }}
-      znaków
+    <mat-error *ngIf="blikForm.controls.blikNum.hasError('pattern')">
+      Kod musi się składać z 6 cyfr
     </mat-error>
   </mat-form-field>
 

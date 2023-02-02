@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { UserStateService } from 'src/app/core/user-state.service';
 import { User } from 'src/app/interfaces/User';
 import { CheckoutForm } from '../../interfaces/CheckoutForm';
-import { ConfirmEmailValidator } from './confirmEmailValidator';
+import { confirmEmailValidator } from './confirmEmailValidator';
 
 @Component({
   selector: 'app-checkout',
@@ -14,7 +14,6 @@ import { ConfirmEmailValidator } from './confirmEmailValidator';
 export class CheckoutComponent implements OnInit {
   private builder = inject(NonNullableFormBuilder);
   private router = inject(Router);
-  confirmEmailValidator = inject(ConfirmEmailValidator).emailValidator;
   user = inject(UserStateService).getUserInfo();
   checkoutForm = this.createCheckoutForm();
 
@@ -67,7 +66,7 @@ export class CheckoutComponent implements OnInit {
         validators: [
           Validators.required,
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
-          this.confirmEmailValidator('email'),
+          confirmEmailValidator('email'),
         ],
       }),
       newsletter: this.builder.control(false),

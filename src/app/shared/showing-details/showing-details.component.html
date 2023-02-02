@@ -1,4 +1,3 @@
 <ng-container *ngIf="showingDetails | async as showingD"
-  ><app-movie-details [movieId]="showingD.movieId"></app-movie-details
-  >{{ showingD.date }}, {{ showingD.timeFrom }}
+  >{{ showingD.movieTitle }},{{ showingD.date }}, {{ showingD.timeFrom }}
 </ng-container>

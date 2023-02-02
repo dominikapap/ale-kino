@@ -5,7 +5,13 @@
 <ol>
   <li *ngFor="let movieTitle of titles$ | async">
     {{ movieTitle.title }}
-    <button (click)="onRemoveFromWatchList(movieTitle.titleId)">usuń</button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="onRemoveFromWatchList(movieTitle.titleId)"
+    >
+      usuń
+    </button>
   </li>
 </ol>
 <!-- <button [id]="title" (click)="removeFromWatchList(title)">

@@ -57,19 +57,14 @@ export class AuthService {
     let authState;
     this.auth$.subscribe((result) => (authState = result.hasAuth));
     return authState;
-    // return true;
   }
 
   private setStateFromLocalStorage() {
     // naive checking with userID
-    if (localStorage.getItem('userID')) {
-      this.auth$$.next({ hasAuth: true });
-    }
-
     const userIDFromLS = localStorage.getItem('userID');
-
-    if (userIDFromLS) {
+    if (userIDFromLS !== null) {
       this.userStateService.fecthUser(parseInt(userIDFromLS));
+      this.auth$$.next({ hasAuth: true });
     }
   }
 }

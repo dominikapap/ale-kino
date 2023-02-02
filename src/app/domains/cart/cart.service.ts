@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
+import { v4 as createUuidv4 } from 'uuid';
+
 interface Ticket {
   ticketTypeName?: string | undefined;
   ticketPrice?: number;
@@ -8,14 +10,10 @@ interface Ticket {
   columnSeat?: number;
 }
 
-interface Ticket2 {
-  ticketTypeName?: string | undefined;
-  ticketPrice?: number;
-  rowSeat?: string;
-  columnSeat?: number;
-  userID: number;
+interface TicketDetails extends Ticket {
+  userID?: number;
   showingId: number;
-  id: number;
+  id: number | string;
 }
 
 @Injectable({
@@ -23,7 +21,7 @@ interface Ticket2 {
 })
 export class CartService {
   private http = inject(HttpClient);
-  private cart$$ = new BehaviorSubject<Ticket2[]>([]);
+  private cart$$ = new BehaviorSubject<TicketDetails[]>([]);
 
   get cart$() {
     return this.cart$$.asObservable();
@@ -33,52 +31,97 @@ export class CartService {
   }
 
   addToCart(ticketList: Ticket[], userID: number, showingId: number) {
-    ticketList.forEach((element) => {
-      this.http
-        .post<Ticket2[]>(`http://localhost:3000/cart`, {
+    if (userID) {
+      ticketList.forEach((element) => {
+        this.http
+          .post<TicketDetails[]>(`http://localhost:3000/cart`, {
+            ticketTypeName: element.ticketTypeName,
+            ticketPrice: element.ticketPrice,
+            rowSeat: element.rowSeat,
+            columnSeat: element.columnSeat,
+            userID: userID,
+            showingId: showingId,
+          })
+          .pipe(
+            tap({
+              next: (response) =>
+                this.cart$$.next([...this.cart$$.value, response[0]]),
+            })
+          )
+          .subscribe();
+      });
+    } else {
+      let guestTickets: TicketDetails[] = [];
+      if (localStorage.getItem('guestTickets') !== '') {
+        const guestTicketsFromLS = localStorage.getItem('guestTickets');
+        guestTickets = JSON.parse(guestTicketsFromLS!);
+      }
+      ticketList.forEach((element) => {
+        guestTickets.push({
           ticketTypeName: element.ticketTypeName,
           ticketPrice: element.ticketPrice,
           rowSeat: element.rowSeat,
           columnSeat: element.columnSeat,
-          userID: userID,
           showingId: showingId,
-        })
-        .pipe(
-          tap({
-            next: (response) =>
-              this.cart$$.next([...this.cart$$.value, response[0]]),
-          })
-        )
-        .subscribe();
-    });
+          id: createUuidv4(),
+        });
+      });
+
+      localStorage.setItem('guestTickets', JSON.stringify(guestTickets));
+      this.cart$$.next([...this.cart$$.value, ...guestTickets]);
+    }
   }
 
   getCart(userID: number) {
-    this.http
-      .get<Ticket2[]>(`http://localhost:3000/cart?userId=${userID}`)
-      .pipe(
-        tap({
-          next: (result) => {
-            this.cart$$.next(result);
-          },
-        })
-      )
-      .subscribe();
+    if (userID) {
+      this.http
+        .get<TicketDetails[]>(`http://localhost:3000/cart?userId=${userID}`)
+        .pipe(
+          tap({
+            next: (result) => {
+              this.cart$$.next([...this.cart$$.value, ...result]);
+            },
+          })
+        )
+        .subscribe();
+    } else {
+      const guestTickets = localStorage.getItem('guestTickets');
+      if (guestTickets) {
+        this.cart$$.next(JSON.parse(guestTickets));
+      }
+    }
   }
 
-  removeFromCart(ticketId: number) {
-    this.http
-      .delete<Ticket2[]>(`http://localhost:3000/cart/${ticketId}`)
-      .pipe(
-        tap({
-          next: () => {
-            this.cart$$.next(
-              this.cart$$.value.filter((item) => item.id !== ticketId)
-            );
-          },
-        })
-      )
-      .subscribe();
+  removeFromCart(ticketId: number | string, userID: number) {
+    if (userID) {
+      console.log('remove for logged user');
+      this.http
+        .delete<TicketDetails[]>(`http://localhost:3000/cart/${ticketId}`)
+        .pipe(
+          tap({
+            next: () => {
+              this.cart$$.next(
+                this.cart$$.value.filter((item) => item.id !== ticketId)
+              );
+            },
+            error: () => {
+              this.cart$$.next(
+                this.cart$$.value.filter((item) => item.id !== ticketId)
+              );
+              localStorage.setItem(
+                'guestTickets',
+                JSON.stringify(this.cart$$.value)
+              );
+            },
+          })
+        )
+        .subscribe();
+    } else {
+      this.cart$$.next(
+        this.cart$$.value.filter((item) => item.id !== ticketId)
+      );
+      localStorage.setItem('guestTickets', JSON.stringify(this.cart$$.value));
+    }
   }
 
   emptyCart() {

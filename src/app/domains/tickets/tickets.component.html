@@ -36,15 +36,16 @@
             <legend>Bilet</legend>
             <span>Rząd {{ ticket.controls.rowSeat.value }}</span>
             <span> Miejsce {{ ticket.controls.columnSeat.value }}</span>
-            <select formControlName="ticketTypeName">
-              <option
-                [ngValue]="ticketType.name"
-                (click)="changePrice(index)"
-                *ngFor="let ticketType of ticketTypes; let index = index"
-              >
-                {{ ticketType.name }}
-              </option></select
-            ><span>{{ ticket.controls.ticketPrice.value }}</span>
+            <mat-form-field appearance="fill">
+              <mat-label>Wybierz rodzaj biletu</mat-label>
+              <mat-select formControlName="ticketTypeName">
+                <mat-option
+                  [value]="ticketType.name"
+                  *ngFor="let ticketType of ticketTypes; let index = index"
+                  >{{ ticketType.name }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
 
             <button
               (click)="

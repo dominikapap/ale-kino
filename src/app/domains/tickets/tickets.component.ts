@@ -48,26 +48,15 @@ export class TicketsComponent implements OnInit {
   rowsA: string[] = [];
   paidSeats: PaidSeat[] = [];
   ticketsForm = this.createForm();
-  // ticketTypes: TicketType[] = [];
-  ticketTypes = [
-    {
-      name: 'Bilet normalny',
-      price: 22,
-    },
-    {
-      name: 'Bilet rodzinny',
-      price: 18,
-    },
-    {
-      name: 'Bilet ulgowy',
-      price: 17,
-    },
-    {
-      name: 'Voucher',
-      price: 22,
-    },
-  ];
-  ticketPrice = 0;
+  selected = 'Bilet normalny';
+  ticketTypes: TicketType[] = [];
+  //todo fix that any type
+  ticketPrices: any = {
+    'Bilet normalny': 22,
+    'Bilet ulgowy': 17,
+    'Bilet rodzinny': 18,
+    Voucher: 22,
+  };
   routeParams = this.route.snapshot.paramMap;
   showingIdFromRoute = Number(this.routeParams.get('id'));
   totalPrice = 0;
@@ -77,11 +66,12 @@ export class TicketsComponent implements OnInit {
     this.bookedSeatsService.getBookedSeats(this.showingIdFromRoute);
 
     // przenieść subscribe do serwisu
-    // this.movieApiService.getMovieApiDataTicketTypes().subscribe({
-    //   next: (response) => {
-    //     (this.ticketTypes = response)
-    //   },
-    // });
+    this.movieApiService.getMovieApiDataTicketTypes().subscribe({
+      next: (response) => {
+        this.ticketTypes = response;
+        console.log(this.ticketTypes);
+      },
+    });
 
     // this.ticketsForm.valueChanges.subscribe(() => {
     //   this.totalPrice = 0;
@@ -129,6 +119,7 @@ export class TicketsComponent implements OnInit {
     return this.bookedSeatsService.canBook(row, column);
   }
 
+  //move this to service grid should be a separate component
   private createSeatsGrid(showing: MovieShowing[]) {
     this.columns = [...Array(showing[0].columns + 1).keys()];
     this.columns.shift();

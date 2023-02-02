@@ -1,12 +1,11 @@
-export default class Utils {
-  sum(input: Array<number>, initial = 0): number {
-    return input.reduce(
-      (previous: number, current: number) => previous + current,
-      initial
-    );
-  }
+export function sum(input: Array<number>, initial = 0): number {
+  return input.reduce(
+    (previous: number, current: number) => previous + current,
+    initial
+  );
+}
 
-  isArray(value: any): boolean {
-    return Array.isArray(value);
-  }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function isArray(value: any): boolean {
+  return Array.isArray(value);
 }

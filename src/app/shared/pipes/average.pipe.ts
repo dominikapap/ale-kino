@@ -1,18 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { sum } from './utils';
 
 @Pipe({
   name: 'avg',
 })
 export class AveragePipe implements PipeTransform {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   transform(values: any) {
-    const numSum = this.sum(values);
+    const numSum = sum(values);
     return numSum / values.length;
-  }
-
-  sum(input: Array<number>, initial = 0): number {
-    return input.reduce(
-      (previous: number, current: number) => previous + current,
-      initial
-    );
   }
 }

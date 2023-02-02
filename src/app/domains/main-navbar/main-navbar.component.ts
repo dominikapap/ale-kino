@@ -19,7 +19,6 @@ import { CartService } from '../cart/cart.service';
           >
         </a>
       </button>
-
       <ng-container *ngIf="(auth$ | async)?.hasAuth; else zaloguj">
         <button mat-button mat-raised-button [matMenuTriggerFor]="menu">
           <ng-container *ngIf="userName$">

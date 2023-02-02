@@ -10,8 +10,8 @@ export class PaymentComponent {
   private builder = inject(NonNullableFormBuilder);
 
   blikForm = this.builder.group({
-    blikNum: this.builder.control(123456, {
-      validators: [Validators.required, Validators.minLength(6)],
+    blikNum: this.builder.control(null, {
+      validators: [Validators.required, Validators.pattern('[0-9]{6}')],
     }),
   });
 }

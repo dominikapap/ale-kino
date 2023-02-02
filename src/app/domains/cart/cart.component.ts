@@ -33,8 +33,8 @@ export default class CartComponent {
     this.cartService.getCart(this.userID);
   }
 
-  onRemoveFromCart(ticketId: number) {
-    this.cartService.removeFromCart(ticketId);
+  onRemoveFromCart(ticketId: number | string) {
+    this.cartService.removeFromCart(ticketId, this.userID);
     //todo remove from reserved tickets
   }
 

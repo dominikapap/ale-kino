@@ -65,7 +65,10 @@
       >
         Potwierdzenie email jest wymaganym polem </mat-error
       ><mat-error
-        *ngIf="checkoutForm.controls.confirmEmail.hasError('pattern')"
+        *ngIf="
+          checkoutForm.controls.confirmEmail.errors &&
+          checkoutForm.controls.confirmEmail.errors['pattern']
+        "
       >
         Niewłaściwy format adresu email
       </mat-error>

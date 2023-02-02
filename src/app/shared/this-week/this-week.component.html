@@ -1,5 +1,7 @@
 <div class="weekDays">
   <button
+    mat-raised-button
+    color="primary"
     [disabled]="day < currDay"
     *ngFor="let day of week"
     (click)="pickDay(day)"

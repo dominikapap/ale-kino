@@ -1,0 +1,14 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+}
+
+.brand-name {
+  font-size: 2rem;
+}
+
+.nav-buttons{
+    gap: 1rem;
+    display: inline-flex;
+}
