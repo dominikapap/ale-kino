@@ -1,3 +1,10 @@
-button {
+button,
+.mat-mdc-radio-button .mdc-form-field {
   color: white;
+}
+
+form {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
 }

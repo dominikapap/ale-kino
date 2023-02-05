@@ -4,7 +4,7 @@ import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { v4 as createUuidv4 } from 'uuid';
 
 interface Ticket {
-  ticketTypeName?: string | undefined;
+  ticketTypeName?: string;
   ticketPrice?: number;
   rowSeat?: string;
   columnSeat?: number;
@@ -32,9 +32,9 @@ export class CartService {
 
   addToCart(ticketList: Ticket[], userID: number, showingId: number) {
     if (userID) {
-      ticketList.forEach((element) => {
+      return ticketList.forEach((element) => {
         this.http
-          .post<TicketDetails[]>(`http://localhost:3000/cart`, {
+          .post<TicketDetails>(`http://localhost:3000/cart`, {
             ticketTypeName: element.ticketTypeName,
             ticketPrice: element.ticketPrice,
             rowSeat: element.rowSeat,
@@ -45,17 +45,18 @@ export class CartService {
           .pipe(
             tap({
               next: (response) =>
-                this.cart$$.next([...this.cart$$.value, response[0]]),
+                this.cart$$.next([...this.cart$$.value, response]),
             })
           )
           .subscribe();
       });
     } else {
-      let guestTickets: TicketDetails[] = [];
-      if (localStorage.getItem('guestTickets') !== '') {
-        const guestTicketsFromLS = localStorage.getItem('guestTickets');
-        guestTickets = JSON.parse(guestTicketsFromLS!);
-      }
+      const guestTickets: TicketDetails[] = [];
+      console.log(guestTickets);
+      // if (localStorage.getItem('guestTickets') !== '') {
+      //   const guestTicketsFromLS = localStorage.getItem('guestTickets');
+      //   guestTickets = JSON.parse(guestTicketsFromLS!);
+      // }
       ticketList.forEach((element) => {
         guestTickets.push({
           ticketTypeName: element.ticketTypeName,
@@ -69,12 +70,19 @@ export class CartService {
 
       localStorage.setItem('guestTickets', JSON.stringify(guestTickets));
       this.cart$$.next([...this.cart$$.value, ...guestTickets]);
+      console.log(guestTickets);
+      return;
     }
   }
 
   getCart(userID: number) {
+    const guestTickets = localStorage.getItem('guestTickets');
+    if (guestTickets) {
+      this.cart$$.next(JSON.parse(guestTickets));
+    }
+
     if (userID) {
-      this.http
+      return this.http
         .get<TicketDetails[]>(`http://localhost:3000/cart?userId=${userID}`)
         .pipe(
           tap({
@@ -84,18 +92,14 @@ export class CartService {
           })
         )
         .subscribe();
-    } else {
-      const guestTickets = localStorage.getItem('guestTickets');
-      if (guestTickets) {
-        this.cart$$.next(JSON.parse(guestTickets));
-      }
     }
+
+    return;
   }
 
   removeFromCart(ticketId: number | string, userID: number) {
     if (userID) {
-      console.log('remove for logged user');
-      this.http
+      return this.http
         .delete<TicketDetails[]>(`http://localhost:3000/cart/${ticketId}`)
         .pipe(
           tap({
@@ -121,6 +125,7 @@ export class CartService {
         this.cart$$.value.filter((item) => item.id !== ticketId)
       );
       localStorage.setItem('guestTickets', JSON.stringify(this.cart$$.value));
+      return;
     }
   }
 

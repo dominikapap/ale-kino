@@ -5,73 +5,22 @@
 <div *ngIf="filteredShowings.length">
   <div *ngFor="let movie of movieDetails" class="movie-container">
     <ng-container *ngIf="checkIfMovieHasShowings(movie.id)">
-      <div class="movie-container__img">
-        <img [src]="movie.imageUrl" alt="movie.title" />
-      </div>
+      <app-movie-details [movieId]="movie.id"></app-movie-details>
 
-      <div class="movie-container__info">
-        <span> {{ movie.title }}</span>
-        <div class="movie-container__details">
-          <span *ngFor="let genre of movie.genres">{{ genre }}</span>
-          <span>{{ movie.time }}</span>
-          <span>{{ movie.ageRestriction }}</span>
-
-          <p class="movie-details__description" *ngIf="description">
-            {{ movie.descriptionShort }}
-          </p>
-          <p class="movie-details__description" *ngIf="!description">
-            {{ movie.descriptionLong }}
-          </p>
-          <button (click)="description = !description">Więcej</button>
-        </div>
-
-        <ng-container *ngIf="hasAuth()">
-          <div class="additionalBtns">
-            <app-movie-rating [movieId]="movie.id"></app-movie-rating>
-
-            <ng-container *ngIf="onWatchlist(movie.title); else addToWatchlist"
-              ><p>
-                Zapisany na
-                <a routerLink="do-obejrzenia">liście do obejrzenia</a>
-              </p></ng-container
-            >
-
-            <ng-template #addToWatchlist
-              ><button (click)="onUpdateWatchlist(movie.title, movie.id)">
-                Chcę obejrzeć
-              </button></ng-template
-            >
-
-            <!-- <button (click)="getID()">show user id</button> -->
-          </div></ng-container
-        >
-      </div>
-
-      <span *ngFor="let showing of filteredShowings">
-        <span
-          class="movie-container__hours"
-          *ngIf="movie.id === showing.movieId"
-        >
-          <ng-container>
-            <span [routerLink]="['/kup-bilet/', showing.id]">
-              {{ showing.timeFrom }}
-            </span></ng-container
+      <div
+        class="movie-container__hours"
+        *ngFor="let showing of filteredShowings"
+      >
+        <div *ngIf="movie.id === showing.movieId">
+          <a
+            mat-raised-button
+            color="primary"
+            [routerLink]="['/kup-bilet/', showing.id]"
           >
-        </span>
-      </span>
+            {{ showing.timeFrom }}
+          </a>
+        </div>
+      </div>
     </ng-container>
   </div>
 </div>
-
-<!-- 
-<p *ngIf="filteredShowings.length">
-    <span *ngFor="let showing of filteredShowings">
-        <span *ngFor="let movieDetail of movieDetails">
-        <span *ngIf="showing.movieId === movieDetail.id">
-<p>Tytuł: {{movieDetail.title}}</p>
-<p>Data :{{ showing.date }}</p>
-<p>Godzina :{{ showing.timeFrom }}</p>
-        </span>
-        
-       </span></span>
-    </p> -->

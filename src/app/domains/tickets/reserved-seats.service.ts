@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, filter, map, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 
 export interface ReservedSeat {
   id: number;
@@ -48,6 +48,7 @@ export class ReservedSeatsService {
     userID: number,
     showingID: number
   ) {
+    console.log(rowSeat, columnSeat);
     if (!userID) {
       userID = -1;
     }
@@ -66,6 +67,7 @@ export class ReservedSeatsService {
               ...this.reservedSeats$$.value,
               response,
             ]);
+            console.log(this.reservedSeats$$.value);
           },
         })
       )

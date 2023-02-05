@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, tap } from 'rxjs';
-import { User } from '../interfaces/User';
+import { User } from './User.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +17,26 @@ export class UserStateService {
     phoneNumber: 0,
     role: 'Guest',
   });
+
+  userTest: User = {
+    userID: 22,
+    firstName: 'frfre',
+    lastName: 'fefef',
+    email: '',
+    password: '',
+    phoneNumber: 0,
+    role: 'Guest',
+  };
+
+  // constructor() {
+  //   const userIDFromLS = localStorage.getItem('userID');
+
+  //   if (userIDFromLS && parseInt(userIDFromLS) > 0) {
+  //     this.fetchUser(parseInt(userIDFromLS));
+  //     // this.updateUser(this.userTest);
+  //     console.log(this.user$$.value);
+  //   }
+  // }
 
   get user$() {
     return this.user$$.asObservable();
@@ -34,22 +54,16 @@ export class UserStateService {
     return this.user$$.value;
   }
 
-  //poprawić!!!
   getUserID() {
-    let userID!: number;
-    this.user$$.subscribe((result) => (userID = result.userID));
-    return userID;
+    return this.user$$.value.userID;
   }
 
-  //poprawić!!!
   getUserName() {
-    let userName!: string;
-    this.user$$.subscribe((result) => (userName = result.firstName));
-    return userName;
+    return this.user$$.value.firstName;
   }
 
-  fecthUser(userID: number) {
-    return this.http
+  fetchUser(userID: number) {
+    this.http
       .get<User[]>(`http://localhost:3000/users?userID=${userID}`)
       .pipe(
         map((user) => user[0]),

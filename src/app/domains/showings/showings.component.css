@@ -22,6 +22,11 @@
   margin-right: 2rem;
 }
 
+.movie-container__hours {
+  display: flex;
+  gap: 0.5rem;
+}
+
 /* .movie-details__description{
     display: -webkit-box;
     overflow: hidden;

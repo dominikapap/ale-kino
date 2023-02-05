@@ -15,19 +15,40 @@
 
 <ng-container *ngIf="showRatingForm">
   <form [formGroup]="ratingForm" (ngSubmit)="rateMovie(userID, movieId)">
-    <mat-radio-group formControlName="rating" aria-label="Oceń film">
-      <mat-radio-button name="rating" value="1">1</mat-radio-button
-      ><mat-radio-button name="rating" value="2">2</mat-radio-button
-      ><mat-radio-button name="rating" value="3">3</mat-radio-button
-      ><mat-radio-button name="rating" value="4">4</mat-radio-button
-      ><mat-radio-button name="rating" value="5">5</mat-radio-button
-      ><mat-radio-button name="rating" value="6">6</mat-radio-button
-      ><mat-radio-button name="rating" value="7">7</mat-radio-button
-      ><mat-radio-button name="rating" value="8">8</mat-radio-button
-      ><mat-radio-button name="rating" value="9">9</mat-radio-button
-      ><mat-radio-button name="rating" value="10">10</mat-radio-button><br
+    <mat-radio-group
+      color="primary"
+      formControlName="rating"
+      aria-label="Oceń film"
+    >
+      <mat-radio-button color="primary" name="rating" value="1"
+        >1</mat-radio-button
+      ><mat-radio-button color="primary" name="rating" value="2"
+        >2</mat-radio-button
+      ><mat-radio-button color="primary" name="rating" value="3"
+        >3</mat-radio-button
+      ><mat-radio-button color="primary" name="rating" value="4"
+        >4</mat-radio-button
+      ><mat-radio-button color="primary" name="rating" value="5"
+        >5</mat-radio-button
+      ><mat-radio-button color="primary" name="rating" value="6"
+        >6</mat-radio-button
+      ><mat-radio-button color="primary" name="rating" value="7"
+        >7</mat-radio-button
+      ><mat-radio-button color="primary" name="rating" value="8"
+        >8</mat-radio-button
+      ><mat-radio-button color="primary" name="rating" value="9"
+        >9</mat-radio-button
+      ><mat-radio-button color="primary" name="rating" value="10"
+        >10</mat-radio-button
+      ><br
     /></mat-radio-group>
-    <button [disabled]="!ratingForm.controls.rating.value">Potwierdzam</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!ratingForm.controls.rating.value"
+    >
+      Potwierdzam
+    </button>
   </form>
 </ng-container>
 

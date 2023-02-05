@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, tap } from 'rxjs';
-import { UserStateService } from 'src/app/core/user-state.service';
+import { UserStateService } from 'src/app/core/user.state.service';
 
 interface MovieRatings {
   id: number;
@@ -10,9 +10,7 @@ interface MovieRatings {
   rating: number;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class MovieRatingService {
   private http = inject(HttpClient);
   private movieRating$$ = new BehaviorSubject<MovieRatings[]>([]);

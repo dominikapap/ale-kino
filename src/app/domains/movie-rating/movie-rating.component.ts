@@ -1,6 +1,15 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
-import { UserStateService } from '../../core/user-state.service';
+import { CommonModule } from '@angular/common';
+import { Component, inject, Input } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  NonNullableFormBuilder,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import { AveragePipe } from 'src/app/shared/pipes';
+import { UserStateService } from '../../core/user.state.service';
 import { MovieRatingService } from './movie-rating.service';
 
 type RatingForm = FormGroup<{
@@ -9,24 +18,29 @@ type RatingForm = FormGroup<{
 
 @Component({
   selector: 'app-movie-rating',
+  standalone: true,
   templateUrl: './movie-rating.component.html',
   styleUrls: ['./movie-rating.component.css'],
+  imports: [
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatRadioModule,
+    AveragePipe,
+    CommonModule,
+  ],
   providers: [MovieRatingService],
 })
 export class MovieRatingComponent {
   @Input() movieId = 0;
-
+  private builder = inject(NonNullableFormBuilder);
   showRatingForm = false;
   ratingForm = this.createMovieRatingForm();
   showThankYou = false;
   movieRatingService = inject(MovieRatingService);
-
   userStateService = inject(UserStateService);
   userID = this.userStateService.getUserID();
   rating$ = inject(MovieRatingService).movieRating$;
   ratingList$ = inject(MovieRatingService).movieRatingList$;
-
-  constructor(private builder: NonNullableFormBuilder) {}
 
   ngOnInit() {
     this.movieRatingService.getMovieRatings(this.movieId);
@@ -54,7 +68,6 @@ export class MovieRatingComponent {
   }
 
   createMovieRatingForm(): RatingForm {
-    console.log('test');
     const ratingForm = this.builder.group({
       rating: this.builder.control(0),
     });

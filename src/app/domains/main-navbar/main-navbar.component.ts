@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { UserStateService } from 'src/app/core/user-state.service';
-import { AuthService } from '../../auth';
+import { UserStateService } from 'src/app/core/user.state.service';
+import { AuthStateService } from '../../auth';
 import { CartService } from '../cart/cart.service';
 
 @Component({
@@ -37,20 +37,21 @@ import { CartService } from '../cart/cart.service';
   styleUrls: ['./main-navbar.component.css'],
 })
 export class MainNavbarComponent implements OnInit {
-  private authService = inject(AuthService);
+  private auth = inject(AuthStateService);
   private cartService = inject(CartService);
-  userID = inject(UserStateService).getUserID();
+  private userStateService = inject(UserStateService);
+  userName = inject(UserStateService).getUserName();
   userName$ = inject(UserStateService).userName$;
+  userId$ = inject(UserStateService).userId$;
   cart$ = inject(CartService).cart$;
-  auth$ = inject(AuthService).auth$;
+  auth$ = inject(AuthStateService).auth$;
 
   ngOnInit() {
-    this.cartService.getCart(this.userID);
+    const userID = this.userStateService.getUserID();
+    this.cartService.getCart(userID);
+    console.log('username is: ' + this.userName + userID);
   }
   onLogout() {
-    this.authService.logout();
+    this.auth.logout();
   }
-  // hasAuth() {
-  //   return this.auth.checkIfHasAuth();
-  // }
 }

@@ -1,32 +1,38 @@
-<ol>
-  <li *ngFor="let item of cart$ | async as cart; let index = index">
-    {{ item.ticketTypeName }}, {{ item.ticketPrice }}, miejsce {{ item.rowSeat
-    }}{{ item.columnSeat }}
-    <a
-      mat-raised-button
-      color="primary"
-      [routerLink]="['/kup-bilet/', item.showingId]"
-      >Seans </a
-    ><app-showing-details [showingId]="item.showingId"></app-showing-details>
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="onRemoveFromCart(item.id)"
-      mat-raised-button
-      color="warn"
-    >
-      Usuń
-    </button>
-  </li>
-</ol>
-<ng-container *ngIf="cartPrices$ | async as cartPrices">
-  Łączna kwota: {{ cartPrices | sum }}PLN
+<ng-container *ngIf="cart$ | async as cart">
+  <ol>
+    <li *ngFor="let item of cart; let index = index">
+      {{ item.ticketTypeName }}, {{ item.ticketPrice }}, miejsce
+      {{ item.rowSeat }}{{ item.columnSeat }}
+      <a
+        mat-raised-button
+        color="primary"
+        [routerLink]="['/kup-bilet/', item.showingId]"
+      >
+        <app-showing-details [showingId]="item.showingId"></app-showing-details
+      ></a>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onRemoveFromCart(item.id, item.rowSeat!, item.columnSeat!)"
+        mat-raised-button
+        color="warn"
+      >
+        Usuń
+      </button>
+    </li>
+  </ol>
+  <ng-container *ngIf="cartPrices$ | async as cartPrices">
+    <ng-container *ngIf="cartPrices.length > 0; else cartIsEmpty">
+      Łączna kwota: {{ cartPrices | sum }}PLN<a
+        mat-raised-button
+        color="primary"
+        *ngIf="routerUrl === '/koszyk'"
+        routerLink="/zamowienie"
+        >Przejdź do zamówienia</a
+      ></ng-container
+    ></ng-container
+  ><ng-template #cartIsEmpty>
+    <h2>Koszyk jest pusty</h2>
+    <a routerLink="">Wróć do listy seansów</a>
+  </ng-template>
 </ng-container>
-
-<a
-  mat-raised-button
-  color="primary"
-  *ngIf="routerUrl === '/koszyk'"
-  routerLink="/zamowienie"
-  >Przejdź do zamówienia</a
->

@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserStateService } from 'src/app/core/user-state.service';
-import { User } from 'src/app/interfaces/User';
+import { UserStateService } from 'src/app/core/user.state.service';
+import { User } from 'src/app/core/User.interface';
 import { CheckoutForm } from '../../interfaces/CheckoutForm';
 import { confirmEmailValidator } from './confirmEmailValidator';
 

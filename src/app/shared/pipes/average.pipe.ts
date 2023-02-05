@@ -3,6 +3,7 @@ import { sum } from './utils';
 
 @Pipe({
   name: 'avg',
+  standalone: true,
 })
 export class AveragePipe implements PipeTransform {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

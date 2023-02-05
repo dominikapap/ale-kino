@@ -1,12 +1,9 @@
-import { createInjectableType } from '@angular/compiler';
 import { Component, inject, OnInit } from '@angular/core';
-import { AuthService } from '../../auth';
-import { UserStateService } from '../../core/user-state.service';
+import { UserStateService } from '../../core/user.state.service';
 import { MovieDetails } from '../../interfaces/MovieDetails';
 import { MovieShowing } from '../../interfaces/MovieShowing';
 import { DatesService } from '../../services/dates.service';
 import { MovieApiService } from '../../services/movieapi.service';
-import { WatchListService } from '../watch-list';
 
 export interface MovieRepertoire {
   title: string;
@@ -20,21 +17,18 @@ export interface MovieRepertoire {
   styleUrls: ['./showings.component.css'],
 })
 export class ShowingsComponent implements OnInit {
-  showings: MovieShowing[] = [];
-  filteredShowings: MovieShowing[] = [];
-  movieDetails: MovieDetails[] = [];
-  description = false;
-  currDay = '';
-  filteredShowingsId: MovieShowing[] = [];
-
   private movieApiService = inject(MovieApiService);
   private datesService = inject(DatesService);
-  private watchlistService = inject(WatchListService);
-  private auth = inject(AuthService);
   private userStateService = inject(UserStateService);
+  private showings: MovieShowing[] = [];
+  private currDay = '';
+  filteredShowings: MovieShowing[] = [];
+  movieDetails: MovieDetails[] = [];
+  filteredShowingsId: MovieShowing[] = [];
 
   ngOnInit(): void {
     this.currDay = this.datesService.getCurrentDay();
+    console.log(this.currDay);
     this.movieApiService.getMovieApiDataMovieDetails().subscribe({
       next: (response) => {
         this.movieDetails = response;
@@ -53,8 +47,9 @@ export class ShowingsComponent implements OnInit {
     this.filteredShowings = this.showings.filter(
       (element) => element.date == day
     );
+    console.log(this.filteredShowings);
     if (day == this.currDay) {
-      const now = new Date();
+      // const now = new Date();
 
       this.filteredShowings = this.filteredShowings.filter((element) =>
         this.checkIfHourPassed(element.timeFrom)
@@ -64,9 +59,6 @@ export class ShowingsComponent implements OnInit {
 
   getID() {
     this.userStateService.getUserID();
-  }
-  onWatchlist(movieTitle: string): boolean {
-    return this.watchlistService.checkIfOnWatchlist(movieTitle);
   }
 
   checkIfHourPassed(hour: string) {
@@ -89,13 +81,5 @@ export class ShowingsComponent implements OnInit {
       (el) => el.movieId == id
     );
     return this.filteredShowingsId.length > 0;
-  }
-
-  onUpdateWatchlist(movieTitle: string, movieID: number) {
-    this.watchlistService.addToWatchlist(movieTitle, movieID);
-  }
-
-  hasAuth() {
-    return this.auth.checkIfHasAuth();
   }
 }

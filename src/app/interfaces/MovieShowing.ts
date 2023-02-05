@@ -1,6 +1,3 @@
-import { BookedSeat } from './BookesSeats';
-import { PaidSeat } from './PaidSeats';
-
 export interface MovieShowing {
   id: number;
   movieId: number;
@@ -13,6 +10,4 @@ export interface MovieShowing {
   columns: number;
   numOfSeats: number;
   hallId: number;
-  paidSeats: PaidSeat[];
-  bookedSeats: BookedSeat[];
 }

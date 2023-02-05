@@ -1,27 +1,9 @@
 <ng-container *ngIf="movie.length"
   ><app-showing-details [showingId]="showing[0].id"></app-showing-details>
-
-  <!-- </ng-container> -->
-
-  <!-- <ng-container notFound> Nie znaleziono takiego seansu </ng-container> -->
-
-  <div class="rows" *ngFor="let row of rowsA">
-    <span class="row">{{ row }} </span>
-    <span
-      class="column-seats"
-      *ngFor="let column of columns; let index = index"
-      [ngClass]="
-        onCheckBookedSeats(row, column)
-          ? 'booked-seat'
-          : onCheckReservedSeats(row, column)
-          ? 'reserved-seat'
-          : ''
-      "
-      (click)="onReserveSeat(row, column)"
-    >
-      {{ column }}
-    </span>
-  </div>
+  <app-seat-grid
+    [showingId]="showing[0].id"
+    (chooseSeat)="onReserveSeat($event.row, $event.column)"
+  ></app-seat-grid>
 
   <ng-container *ngIf="ticketsForm.controls.tickets.controls.length > 0">
     <form [formGroup]="ticketsForm" (ngSubmit)="onSubmit()">
@@ -38,7 +20,10 @@
             <span> Miejsce {{ ticket.controls.columnSeat.value }}</span>
             <mat-form-field appearance="fill">
               <mat-label>Wybierz rodzaj biletu</mat-label>
-              <mat-select formControlName="ticketTypeName">
+              <mat-select
+                formControlName="ticketTypeName"
+                (selectionChange)="updatePrice(index, $event)"
+              >
                 <mat-option
                   [value]="ticketType.name"
                   *ngFor="let ticketType of ticketTypes; let index = index"
@@ -46,8 +31,11 @@
                 >
               </mat-select>
             </mat-form-field>
+            <p>Cena: {{ ticket.controls.ticketPrice.value }}</p>
 
             <button
+              mat-raised-button
+              color="warn"
               (click)="
                 removeTicket(
                   index,
@@ -56,14 +44,17 @@
                 )
               "
             >
-              X
+              <mat-icon>close</mat-icon>
             </button>
           </fieldset>
         </div>
       </ol>
 
-      <span>{{ totalPrice }}</span>
-      <button>Wyślij</button>
+      <p>Łączna kwota: {{ totalPrice }}</p>
+      <button mat-raised-button color="primary">Dodaj do koszyka</button>
+      <button mat-raised-button color="primary" routerLink="/zamowienie">
+        Przejdź do zamówienia
+      </button>
     </form>
   </ng-container>
 </ng-container>

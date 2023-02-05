@@ -5,20 +5,23 @@ import {
   FormGroup,
   NonNullableFormBuilder,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { UserStateService } from 'src/app/core/user-state.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserStateService } from 'src/app/core/user.state.service';
 import { MovieDetails } from '../../interfaces/MovieDetails';
 import { MovieShowing } from '../../interfaces/MovieShowing';
-import { PaidSeat } from '../../interfaces/PaidSeats';
 import { TicketType } from '../../interfaces/TicketType';
 import { MovieApiService } from '../../services/movieapi.service';
 import { CartService } from '../cart/cart.service';
-import { BookedSeatsService } from '../shared/booked-seats.service';
 import { ReservedSeatsService } from './reserved-seats.service';
 
 type Form = FormGroup<{
   tickets: FormArray<FormGroup<TicketForm>>;
 }>;
+type PricesTypes =
+  | 'Bilet normalny'
+  | 'Bilet ulgowy'
+  | 'Bilet rodzinny'
+  | 'Voucher';
 
 interface TicketForm {
   ticketTypeName: FormControl<string>;
@@ -33,52 +36,33 @@ interface TicketForm {
   styleUrls: ['./tickets.component.css'],
 })
 export class TicketsComponent implements OnInit {
-  private route = inject(ActivatedRoute);
+  private routeParams = inject(ActivatedRoute).snapshot.paramMap;
   private movieApiService = inject(MovieApiService);
   private cartService = inject(CartService);
   private builder = inject(NonNullableFormBuilder);
   private userID = inject(UserStateService).getUserID();
   private reservedSeatsService = inject(ReservedSeatsService);
-  private bookedSeatsService = inject(BookedSeatsService);
-
-  showing: MovieShowing[] = [];
-  movie: MovieDetails[] = [];
-  rows: number[] = [];
-  columns: number[] = [];
-  rowsA: string[] = [];
-  paidSeats: PaidSeat[] = [];
-  ticketsForm = this.createForm();
-  selected = 'Bilet normalny';
-  ticketTypes: TicketType[] = [];
-  //todo fix that any type
-  ticketPrices: any = {
+  ticketPrices = {
     'Bilet normalny': 22,
     'Bilet ulgowy': 17,
     'Bilet rodzinny': 18,
     Voucher: 22,
   };
-  routeParams = this.route.snapshot.paramMap;
+  showing: MovieShowing[] = [];
+  movie: MovieDetails[] = [];
+  ticketsForm = this.createForm();
+  selected = 'Bilet normalny';
+  ticketTypes: TicketType[] = [];
   showingIdFromRoute = Number(this.routeParams.get('id'));
   totalPrice = 0;
 
   ngOnInit(): void {
-    this.reservedSeatsService.getReservedSeats(this.showingIdFromRoute);
-    this.bookedSeatsService.getBookedSeats(this.showingIdFromRoute);
-
     // przenieść subscribe do serwisu
     this.movieApiService.getMovieApiDataTicketTypes().subscribe({
       next: (response) => {
         this.ticketTypes = response;
-        console.log(this.ticketTypes);
       },
     });
-
-    // this.ticketsForm.valueChanges.subscribe(() => {
-    //   this.totalPrice = 0;
-    //   this.ticketsForm.value.tickets!.forEach((element) => {
-    //     this.totalPrice += element.ticketPrice!;
-    //   });
-    // });
 
     ///tu powinno być switchMap, todo: refactor
     this.movieApiService
@@ -86,9 +70,6 @@ export class TicketsComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.showing = response;
-          this.createSeatsGrid(this.showing);
-          this.paidSeats = this.showing[0].paidSeats;
-
           this.movieApiService
             .getMovieApiDataMovie(this.showing[0].movieId)
             .subscribe({
@@ -99,39 +80,20 @@ export class TicketsComponent implements OnInit {
         },
       });
   }
+
   removeTicket(index: number, row: string, column: number) {
     this.ticketsForm.controls.tickets.removeAt(index);
     this.reservedSeatsService.removeSeat(row, column);
   }
 
-  changePrice(index: number) {
+  updatePrice(index: number, event: { value: PricesTypes }) {
     this.ticketsForm.controls.tickets
       .at(index)
-      .get('ticketPrice')
-      ?.setValue(30);
+      .patchValue({ ticketPrice: this.ticketPrices[event.value] });
+    this.updateTotalPrice();
   }
-
-  onCheckReservedSeats(row: string, column: number): boolean {
-    return this.reservedSeatsService.canReserve(row, column);
-  }
-
-  onCheckBookedSeats(row: string, column: number): boolean {
-    return this.bookedSeatsService.canBook(row, column);
-  }
-
-  //move this to service grid should be a separate component
-  private createSeatsGrid(showing: MovieShowing[]) {
-    this.columns = [...Array(showing[0].columns + 1).keys()];
-    this.columns.shift();
-    this.rows = Array.from(Array(showing[0].rows)).map((e, i) => i + 65);
-    this.rowsA = this.rows.map((x) => String.fromCharCode(x));
-  }
-
   onReserveSeat(row: string, column: number) {
-    if (
-      !this.reservedSeatsService.canReserve(row, column) &&
-      this.ticketsForm.controls.tickets.length < 10
-    ) {
+    if (this.ticketsForm.controls.tickets.length < 10) {
       this.ticketsForm.controls.tickets.push(
         this.createTicketsForm(row, column)
       );
@@ -141,20 +103,30 @@ export class TicketsComponent implements OnInit {
         this.userID,
         this.showingIdFromRoute
       );
+      this.updateTotalPrice();
     } else {
       alert('Nie można zarezerować więcej niż 10 billetów jednocześnie');
     }
   }
 
-  onSubmit() {
-    console.log(this.ticketsForm.value.tickets);
+  emptyCart() {
+    this.cartService.emptyCart();
+  }
 
+  onSubmit() {
     if (this.ticketsForm.value.tickets) {
       this.cartService.addToCart(
         Array.from(this.ticketsForm.value.tickets),
         this.userID,
         this.showingIdFromRoute
       );
+      //   this.router.navigate(['koszyk']);
+    }
+  }
+  private updateTotalPrice() {
+    this.totalPrice = 0;
+    for (const control of this.ticketsForm.controls.tickets.controls) {
+      this.totalPrice += control.value.ticketPrice!;
     }
   }
 

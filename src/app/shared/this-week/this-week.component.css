@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  margin-top: 2rem;
+}
+
+.week-days {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}

@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { UserStateService } from 'src/app/core/user-state.service';
+import { UserStateService } from 'src/app/core/user.state.service';
 import { CartService } from './cart.service';
 import { Router, RouterModule } from '@angular/router';
 import ShowingDetailsComponent from 'src/app/shared/showing-details/showing-details.component';
 import SumPipe from 'src/app/shared/pipes/sum.pipe';
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { ReservedSeatsService } from '../tickets/reserved-seats.service';
 
 @Component({
   selector: 'app-cart',
@@ -16,15 +17,15 @@ import { MatButtonModule } from '@angular/material/button';
     RouterModule,
     ShowingDetailsComponent,
     SumPipe,
-    AsyncPipe,
     CommonModule,
     MatButtonModule,
   ],
 })
 export default class CartComponent {
   private cartService = inject(CartService);
+  private reservedSeatsService = inject(ReservedSeatsService);
   routerUrl = inject(Router).url;
-  cart$ = this.cartService.cart$;
+  cart$ = inject(CartService).cart$;
   cartPrices$ = this.cartService.cartPrices$;
   test = [1, 2, 3];
   userID = inject(UserStateService).getUserID();
@@ -33,15 +34,14 @@ export default class CartComponent {
     this.cartService.getCart(this.userID);
   }
 
-  onRemoveFromCart(ticketId: number | string) {
+  onRemoveFromCart(ticketId: number | string, row: string, column: number) {
     this.cartService.removeFromCart(ticketId, this.userID);
-    //todo remove from reserved tickets
+    this.reservedSeatsService.removeSeat(row, column);
   }
 
-  sumPrice(cart: number[]) {
-    let sum = 0;
-    cart.forEach((item) => (sum += item));
-    console.log(sum);
-    return sum;
-  }
+  // sumPrice(cart: number[]) {
+  //   let sum = 0;
+  //   cart.forEach((item) => (sum += item));
+  //   return sum;
+  // }
 }

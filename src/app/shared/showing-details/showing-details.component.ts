@@ -3,6 +3,7 @@ import { Component, inject, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MovieShowing } from 'src/app/interfaces/MovieShowing';
 import { MovieApiService } from 'src/app/services/movieapi.service';
+import { ShowingDetailsService } from './showing-details.service';
 
 @Component({
   selector: 'app-showing-details',
@@ -14,7 +15,7 @@ import { MovieApiService } from 'src/app/services/movieapi.service';
 export default class ShowingDetailsComponent {
   @Input() showingId = 0;
 
-  private showingService = inject(MovieApiService);
+  private showingService = inject(ShowingDetailsService);
   showingDetails!: Observable<MovieShowing>;
 
   ngOnInit() {

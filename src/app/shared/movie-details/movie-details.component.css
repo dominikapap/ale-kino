@@ -1,0 +1,19 @@
+:host {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.favorite {
+  color: green;
+}
+.movie-container__info,
+.movie-container__details {
+  display: flex;
+
+  gap: 1rem;
+}
+
+.movie-container__info {
+  flex-direction: column;
+}

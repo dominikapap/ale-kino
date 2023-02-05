@@ -19,12 +19,6 @@ export class MovieApiService {
     );
   }
 
-  getShowingDetails(showingId: number) {
-    return this.http
-      .get<MovieShowing[]>(`http://localhost:3000/showings?id=${showingId}`)
-      .pipe(map((result) => result[0]));
-  }
-
   getMovieDetails(movieId: number): Observable<MovieDetails> {
     return this.http
       .get<MovieDetails[]>(`http://localhost:3000/movies?id=${movieId}`)

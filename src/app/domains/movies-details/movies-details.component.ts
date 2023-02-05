@@ -9,7 +9,7 @@ import { MoviesService } from '../../services/movies.service';
   template: 'hello',
   styleUrls: ['./movies-details.component.css'],
 })
-export class MoviesDetailsComponent implements OnInit {
+export class MoviesDetailsComponent {
   constructor(
     private moviesService: MoviesService,
     private datesService: DatesService
@@ -21,7 +21,7 @@ export class MoviesDetailsComponent implements OnInit {
   showMore(): void {}
 
   compareHours(hour: string): boolean {
-    let now = new Date();
+    const now = new Date();
     if (hour > `${now.getHours()}:${now.getMinutes()}`) {
       return true;
     } else {
@@ -32,10 +32,4 @@ export class MoviesDetailsComponent implements OnInit {
   movies: MovieDetails[] = [];
   dates: any = [];
   days: any;
-
-  ngOnInit(): void {
-    //for(let i=0; i< this.days.length; i++){
-    // this.dates.push(Object.keys(this.days[i]))
-    // }
-  }
 }
