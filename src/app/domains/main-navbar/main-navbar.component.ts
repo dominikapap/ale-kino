@@ -11,14 +11,18 @@ import { CartService } from '../cart/cart.service';
       <ng-template #zaloguj>
         <a mat-raised-button color="primary" routerLink="logowanie">Zaloguj</a>
       </ng-template>
-      <button class="btn cart-btn" mat-raised-button color="primary">
-        <a routerLink="koszyk"
-          ><mat-icon>add_shopping_cart</mat-icon>
-          <ng-container *ngIf="cart$ | async as cart"
-            ><sup *ngIf="cart.length > 0">{{ cart.length }} </sup></ng-container
-          >
-        </a>
-      </button>
+
+      <a
+        class="btn cart-btn"
+        mat-raised-button
+        color="primary"
+        routerLink="koszyk"
+        ><mat-icon>add_shopping_cart</mat-icon>
+        <ng-container *ngIf="cart$ | async as cart"
+          ><sup *ngIf="cart.length > 0">{{ cart.length }} </sup></ng-container
+        >
+      </a>
+
       <ng-container *ngIf="(auth$ | async)?.hasAuth; else zaloguj">
         <button mat-button mat-raised-button [matMenuTriggerFor]="menu">
           <ng-container *ngIf="userName$">

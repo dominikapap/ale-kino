@@ -8,7 +8,13 @@ nav {
   font-size: 2rem;
 }
 
-.nav-buttons{
-    gap: 1rem;
-    display: inline-flex;
+.nav-buttons {
+  gap: 1rem;
+  display: inline-flex;
+}
+
+.cart-btn .mat-icon {
+  font-size: 1.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }

@@ -1,3 +1,7 @@
+:host {
+  margin-right: 1rem;
+}
+
 button,
 .mat-mdc-radio-button .mdc-form-field {
   color: white;

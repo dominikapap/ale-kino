@@ -13,8 +13,26 @@
       <span>{{ movie.ageRestriction }}</span>
     </div>
     <div class="movie-details__description">
-      <p>{{ movie.descriptionShort }}</p>
-      <button mat-raised-button color="primary">Więcej</button>
+      <ng-container *ngIf="!showMore"
+        ><p>{{ movie.descriptionShort }}</p>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="showMore = !showMore"
+        >
+          Więcej
+        </button></ng-container
+      >
+      <ng-container *ngIf="showMore"
+        ><p *ngIf="showMore">{{ movie.descriptionLong }}</p>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="showMore = !showMore"
+        >
+          Mniej
+        </button></ng-container
+      >
     </div>
 
     <ng-container *ngIf="(auth$ | async)?.hasAuth">

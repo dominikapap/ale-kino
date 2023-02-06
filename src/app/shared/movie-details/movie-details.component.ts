@@ -22,6 +22,7 @@ export default class MovieDetailsComponent {
   private watchlistService = inject(WatchListService);
   auth$ = inject(AuthStateService).auth$;
   movieDetails!: Observable<MovieDetails>;
+  showMore = false;
 
   ngOnInit() {
     this.movieDetails = this.showingService.getMovieDetails(this.movieId);

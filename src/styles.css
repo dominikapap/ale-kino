@@ -52,4 +52,5 @@ button a {
 a {
   text-decoration: none;
   color: blue;
+  cursor: pointer;
 }

@@ -46,6 +46,12 @@
       "userID": 168395,
       "rating": 5,
       "id": 1
+    },
+    {
+      "movieId": 2437892,
+      "userID": 168395,
+      "rating": 9,
+      "id": 2
     }
   ],
   "ticketTypes": [
@@ -932,6 +938,20 @@
       "showingID": 323,
       "userID": -1,
       "id": 96
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 6,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 97
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 7,
+      "showingID": 153,
+      "userID": 168395,
+      "id": 98
     }
   ],
   "bookedSeats": [
@@ -1058,7 +1078,32 @@
       "movieID": 1267943,
       "movieTitle": "Apokawixa",
       "id": 4
+    },
+    {
+      "userID": 168395,
+      "movieID": 2437892,
+      "movieTitle": "Co w duszy gra",
+      "id": 5
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "B",
+      "columnSeat": 6,
+      "userID": 168395,
+      "showingId": 153,
+      "id": 1
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "B",
+      "columnSeat": 7,
+      "userID": 168395,
+      "showingId": 153,
+      "id": 2
+    }
+  ]
 }
