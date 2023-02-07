@@ -74,7 +74,7 @@ export class AuthStateService {
   //   return authState;
   // }
 
-  private setStateFromLocalStorage() {
+  setStateFromLocalStorage() {
     // naive checking with userID
     const userIDFromLS = localStorage.getItem('userID');
     if (userIDFromLS !== null) {

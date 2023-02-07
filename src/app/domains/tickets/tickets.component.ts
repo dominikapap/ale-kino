@@ -1,11 +1,18 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  inject,
+  OnInit,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import {
   FormArray,
   FormControl,
   FormGroup,
   NonNullableFormBuilder,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { UserStateService } from 'src/app/core/user.state.service';
 import { MovieDetails } from '../../interfaces/MovieDetails';
 import { MovieShowing } from '../../interfaces/MovieShowing';
@@ -13,6 +20,8 @@ import { TicketType } from '../../interfaces/TicketType';
 import { MovieApiService } from '../../services/movieapi.service';
 import { CartService } from '../cart/cart.service';
 import { ReservedSeatsService } from './reserved-seats.service';
+import { v4 as createUuidv4 } from 'uuid';
+import { AuthStateService } from 'src/app/auth';
 
 type Form = FormGroup<{
   tickets: FormArray<FormGroup<TicketForm>>;
@@ -28,6 +37,9 @@ interface TicketForm {
   ticketPrice: FormControl<number>;
   rowSeat: FormControl<string>;
   columnSeat: FormControl<number>;
+  userID: FormControl<number>;
+  showingId: FormControl<number>;
+  id: FormControl<string>;
 }
 
 @Component({
@@ -39,6 +51,8 @@ export class TicketsComponent implements OnInit {
   private routeParams = inject(ActivatedRoute).snapshot.paramMap;
   private movieApiService = inject(MovieApiService);
   private cartService = inject(CartService);
+  private userService = inject(UserStateService);
+  private auth = inject(AuthStateService);
   private builder = inject(NonNullableFormBuilder);
   private userID = inject(UserStateService).getUserID();
   private reservedSeatsService = inject(ReservedSeatsService);
@@ -51,10 +65,11 @@ export class TicketsComponent implements OnInit {
   showing: MovieShowing[] = [];
   movie: MovieDetails[] = [];
   ticketsForm = this.createForm();
-  selected = 'Bilet normalny';
   ticketTypes: TicketType[] = [];
   showingIdFromRoute = Number(this.routeParams.get('id'));
   totalPrice = 0;
+  @ViewChildren('myDiv')
+  myDiv!: QueryList<ElementRef>;
 
   ngOnInit(): void {
     // przenieść subscribe do serwisu
@@ -79,6 +94,9 @@ export class TicketsComponent implements OnInit {
             });
         },
       });
+
+    //to do tickets load only if website accessed from cart
+    this.setTicketsFromCart();
   }
 
   removeTicket(index: number, row: string, column: number) {
@@ -97,6 +115,7 @@ export class TicketsComponent implements OnInit {
       this.ticketsForm.controls.tickets.push(
         this.createTicketsForm(row, column)
       );
+
       this.reservedSeatsService.reserveSeat(
         row,
         column,
@@ -109,18 +128,12 @@ export class TicketsComponent implements OnInit {
     }
   }
 
-  emptyCart() {
-    this.cartService.emptyCart();
-  }
-
   onSubmit() {
     if (this.ticketsForm.value.tickets) {
       this.cartService.addToCart(
-        Array.from(this.ticketsForm.value.tickets),
-        this.userID,
-        this.showingIdFromRoute
+        this.ticketsForm.value.tickets,
+        this.userService.getUserID()
       );
-      //   this.router.navigate(['koszyk']);
     }
   }
   private updateTotalPrice() {
@@ -137,12 +150,51 @@ export class TicketsComponent implements OnInit {
     return form;
   }
 
-  private createTicketsForm(row: string, column: number) {
+  private createTicketsForm(
+    row: string,
+    column: number,
+    userID = this.userID,
+    showingId = this.showingIdFromRoute,
+    id: string = createUuidv4(),
+    ticketTypeName = 'Bilet normalny',
+    ticketPrice = 22
+  ) {
     return this.builder.group<TicketForm>({
-      ticketTypeName: this.builder.control('Bilet normalny'),
-      ticketPrice: this.builder.control(22),
       rowSeat: this.builder.control(row),
       columnSeat: this.builder.control(column),
+      userID: this.builder.control(userID),
+      showingId: this.builder.control(showingId),
+      id: this.builder.control(id),
+      ticketTypeName: this.builder.control(ticketTypeName),
+      ticketPrice: this.builder.control(ticketPrice),
+    });
+  }
+
+  private setTicketsFromCart() {
+    this.cartService.cartValue.forEach((ticket) => {
+      if (ticket.showingId === this.showingIdFromRoute) {
+        this.ticketsForm.controls.tickets.push(
+          this.createTicketsForm(
+            ticket.rowSeat!,
+            ticket.columnSeat!,
+            ticket.userID!,
+            ticket.showingId!,
+            ticket.id!,
+            ticket.ticketTypeName!,
+            ticket.ticketPrice
+          )
+        );
+      }
+    });
+    this.updateTotalPrice();
+  }
+
+  test() {
+    this.myDiv.forEach((div: ElementRef) => {
+      setTimeout(() => {
+        div.nativeElement.click();
+        console.log('clicked');
+      }, 5000);
     });
   }
 }

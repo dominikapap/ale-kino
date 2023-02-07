@@ -35,16 +35,8 @@
         *ngIf="checkoutForm.controls.phoneNumber.hasError('required')"
       >
         Numer telefonu jest wymaganym polem </mat-error
-      ><mat-error
-        *ngIf="checkoutForm.controls.phoneNumber.hasError('minlength')"
-      >
-        Numer telefonu musi się składać z minimum
-        {{
-          checkoutForm.controls.phoneNumber!.errors!["minlength"][
-            "requiredLength"
-          ]
-        }}
-        znaków
+      ><mat-error *ngIf="checkoutForm.controls.phoneNumber.hasError('pattern')">
+        Numer telefonu musi się składać z 9 cyfr
       </mat-error>
     </mat-form-field>
     <mat-form-field>
@@ -90,9 +82,18 @@
       >Chcę otrzymywać informacje o zniżkach i promocjach
     </mat-slide-toggle>
 
-    <mat-form-field class="full-width">
+    <mat-form-field class="full-width mb-1">
       <mat-label>Kod zniżkowy</mat-label>
       <input matInput formControlName="couponCode" />
+      <mat-error *ngIf="checkoutForm.controls.couponCode.hasError('minlength')">
+        Kod musi składać się z co najmniej
+        {{
+          checkoutForm.controls.couponCode.errors!["minlength"][
+            "requiredLength"
+          ]
+        }}
+        znaków
+      </mat-error>
     </mat-form-field>
 
     <button mat-raised-button color="primary">Zamawiam</button>

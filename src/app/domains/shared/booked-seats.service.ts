@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, tap } from 'rxjs';
+import { CartService, TD2 } from '../cart/cart.service';
+import { ReservedSeatsService } from '../tickets/reserved-seats.service';
 
 interface BookedSeat {
   id: number;
@@ -17,6 +19,8 @@ interface BookedSeat {
 })
 export class BookedSeatsService {
   private http = inject(HttpClient);
+  private cartService = inject(CartService);
+  private reservedSeatsService = inject(ReservedSeatsService);
   private bookedSeats$$ = new BehaviorSubject<BookedSeat[]>([]);
 
   get reservedSeats$() {
@@ -37,31 +41,21 @@ export class BookedSeatsService {
       )
       .subscribe();
   }
-  bookSeat(
-    rowSeat: string,
-    columnSeat: number,
-    ticketTypeName: string,
-    ticketPrice: number,
-    userID: number,
-    showingID: number
-  ) {
-    if (!userID) {
-      userID = -1;
-    }
-
+  bookSeat(ticket: TD2) {
     this.http
       .post<BookedSeat>('http://localhost:3000/bookedSeats', {
-        rowSeat,
-        columnSeat,
-        ticketTypeName,
-        ticketPrice,
-        showingID,
-        userID,
+        rowSeat: ticket.rowSeat,
+        columnSeat: ticket.columnSeat,
+        ticketTypeName: ticket.ticketTypeName,
+        ticketPrice: ticket.ticketPrice,
+        showingID: ticket.showingId,
+        userID: ticket.userID,
       })
       .pipe(
         tap({
           next: (response) => {
             this.bookedSeats$$.next([...this.bookedSeats$$.value, response]);
+            this.cartService.removeFromCart(ticket.id!, ticket.userID!);
           },
         })
       )

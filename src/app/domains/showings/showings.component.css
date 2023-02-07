@@ -23,7 +23,7 @@
 }
 
 .movie-container__hours {
-  display: flex;
+  display: inline-block;
   gap: 0.5rem;
 }
 

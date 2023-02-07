@@ -3,7 +3,7 @@
 <p *ngIf="filteredShowings.length === 0">Brak repertuaru na dany dzień</p>
 
 <div *ngIf="filteredShowings.length">
-  <div *ngFor="let movie of movieDetails" class="movie-container">
+  <div *ngFor="let movie of movieDetails$ | async" class="movie-container">
     <ng-container *ngIf="checkIfMovieHasShowings(movie.id)">
       <app-movie-details [movieId]="movie.id"></app-movie-details>
 

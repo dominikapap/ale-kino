@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { UserStateService } from '../../core/user.state.service';
 import { MovieDetails } from '../../interfaces/MovieDetails';
 import { MovieShowing } from '../../interfaces/MovieShowing';
@@ -23,19 +24,15 @@ export class ShowingsComponent implements OnInit {
   private showings: MovieShowing[] = [];
   private currDay = '';
   filteredShowings: MovieShowing[] = [];
-  movieDetails: MovieDetails[] = [];
+  movieDetails$: Observable<MovieDetails[]> = of([]);
   filteredShowingsId: MovieShowing[] = [];
 
   ngOnInit(): void {
     this.currDay = this.datesService.getCurrentDay();
-    console.log(this.currDay);
-    this.movieApiService.getMovieApiDataMovieDetails().subscribe({
-      next: (response) => {
-        this.movieDetails = response;
-      },
-    });
 
-    this.movieApiService.getMovieApiDataShowings().subscribe({
+    this.movieDetails$ = this.movieApiService.getMovieDetailsList();
+
+    this.movieApiService.getShowings().subscribe({
       next: (response) => {
         this.showings = response;
         this.filterShowings(this.currDay);
@@ -47,39 +44,24 @@ export class ShowingsComponent implements OnInit {
     this.filteredShowings = this.showings.filter(
       (element) => element.date == day
     );
-    console.log(this.filteredShowings);
     if (day == this.currDay) {
-      // const now = new Date();
-
       this.filteredShowings = this.filteredShowings.filter((element) =>
         this.checkIfHourPassed(element.timeFrom)
       );
     }
   }
 
-  getID() {
-    this.userStateService.getUserID();
+  getID(): number {
+    return this.userStateService.getUserID();
   }
 
-  checkIfHourPassed(hour: string) {
-    const now = new Date();
-    if (parseInt(hour.split(':')[0]) < now.getHours()) {
-      return false;
-    } else if (parseInt(hour.split(':')[0]) == now.getHours()) {
-      if (parseInt(hour.split(':')[1]) > now.getMinutes()) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return true;
-    }
-  }
-
-  checkIfMovieHasShowings(id: number) {
+  checkIfMovieHasShowings(id: number): boolean {
     this.filteredShowingsId = this.filteredShowings.filter(
       (el) => el.movieId == id
     );
     return this.filteredShowingsId.length > 0;
+  }
+  private checkIfHourPassed(hour: string): boolean {
+    return this.datesService.checkIfHourPassed(hour);
   }
 }

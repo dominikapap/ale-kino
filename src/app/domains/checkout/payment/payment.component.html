@@ -2,7 +2,7 @@
   src="https://blik.com/layout/default/dist/gfx/logo/logo.svg"
   alt="BLIK logo"
 />
-<form [formGroup]="blikForm">
+<form [formGroup]="blikForm" (ngSubmit)="onSubmit()">
   <mat-form-field class="example-full-width">
     <input type="number" matInput formControlName="blikNum" />
 

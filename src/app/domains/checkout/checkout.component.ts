@@ -53,8 +53,8 @@ export class CheckoutComponent implements OnInit {
       lastName: this.builder.control('', {
         validators: [Validators.required, Validators.minLength(2)],
       }),
-      phoneNumber: this.builder.control(0, {
-        validators: [Validators.required, Validators.minLength(9)],
+      phoneNumber: this.builder.control(null as unknown as number, {
+        validators: [Validators.required, Validators.pattern(/^\d{9}$/)],
       }),
       email: this.builder.control('', {
         validators: [

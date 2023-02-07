@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, tap } from 'rxjs';
+import { AuthStateService } from '../auth';
 import { User } from './User.interface';
 
 @Injectable({
@@ -13,7 +14,6 @@ export class UserStateService {
     firstName: '',
     lastName: '',
     email: '',
-    password: '',
     phoneNumber: 0,
     role: 'Guest',
   });
@@ -28,15 +28,14 @@ export class UserStateService {
     role: 'Guest',
   };
 
-  // constructor() {
-  //   const userIDFromLS = localStorage.getItem('userID');
+  constructor() {
+    const userIDFromLS = localStorage.getItem('userID');
+    console.log(userIDFromLS);
 
-  //   if (userIDFromLS && parseInt(userIDFromLS) > 0) {
-  //     this.fetchUser(parseInt(userIDFromLS));
-  //     // this.updateUser(this.userTest);
-  //     console.log(this.user$$.value);
-  //   }
-  // }
+    if (userIDFromLS && parseInt(userIDFromLS) > 0) {
+      this.fetchUser(parseInt(userIDFromLS));
+    }
+  }
 
   get user$() {
     return this.user$$.asObservable();
@@ -74,13 +73,14 @@ export class UserStateService {
 
   updateUser(user: User) {
     this.user$$.next({
-      ...this.user$$.value,
       userID: user.userID,
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
       phoneNumber: user.phoneNumber,
+      role: user.role,
     });
+    console.log(this.user$$.value);
   }
 
   clearUser() {

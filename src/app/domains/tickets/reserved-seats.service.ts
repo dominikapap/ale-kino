@@ -48,7 +48,6 @@ export class ReservedSeatsService {
     userID: number,
     showingID: number
   ) {
-    console.log(rowSeat, columnSeat);
     if (!userID) {
       userID = -1;
     }
@@ -67,7 +66,6 @@ export class ReservedSeatsService {
               ...this.reservedSeats$$.value,
               response,
             ]);
-            console.log(this.reservedSeats$$.value);
           },
         })
       )
@@ -91,6 +89,9 @@ export class ReservedSeatsService {
                 (seat) => seat.id !== seatColumn[0].id
               )
             );
+          },
+          error: (e) => {
+            console.log(e);
           },
         })
       )

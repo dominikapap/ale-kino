@@ -22,26 +22,20 @@ import { ReservedSeatsService } from '../tickets/reserved-seats.service';
   ],
 })
 export default class CartComponent {
-  private cartService = inject(CartService);
   private reservedSeatsService = inject(ReservedSeatsService);
-  routerUrl = inject(Router).url;
+  private cartService = inject(CartService);
   cart$ = inject(CartService).cart$;
+  routerUrl = inject(Router).url;
+
   cartPrices$ = this.cartService.cartPrices$;
-  test = [1, 2, 3];
   userID = inject(UserStateService).getUserID();
 
   ngOnInit() {
     this.cartService.getCart(this.userID);
   }
 
-  onRemoveFromCart(ticketId: number | string, row: string, column: number) {
+  onRemoveFromCart(ticketId: string, row: string, column: number) {
     this.cartService.removeFromCart(ticketId, this.userID);
     this.reservedSeatsService.removeSeat(row, column);
   }
-
-  // sumPrice(cart: number[]) {
-  //   let sum = 0;
-  //   cart.forEach((item) => (sum += item));
-  //   return sum;
-  // }
 }

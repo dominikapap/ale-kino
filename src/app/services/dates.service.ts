@@ -19,4 +19,19 @@ export class DatesService {
     const curr = new Date();
     return curr.toISOString().slice(0, 10);
   }
+
+  checkIfHourPassed(hour: string) {
+    const now = new Date();
+    if (parseInt(hour.split(':')[0]) < now.getHours()) {
+      return false;
+    } else if (parseInt(hour.split(':')[0]) == now.getHours()) {
+      if (parseInt(hour.split(':')[1]) > now.getMinutes()) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
+  }
 }

@@ -1,18 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { MovieDetails } from '../interfaces/MovieDetails';
 import { MovieShowing } from '../interfaces/MovieShowing';
 import { TicketType } from '../interfaces/TicketType';
+import { DatesService } from './dates.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MovieApiService {
-  constructor(private http: HttpClient) {}
-  getMovieApiDataShowings(): Observable<MovieShowing[]> {
+  private http = inject(HttpClient);
+  private datesService = inject(DatesService);
+  currDay = this.datesService.getCurrentDay();
+
+  getShowings(): Observable<MovieShowing[]> {
     return this.http.get<MovieShowing[]>('http://localhost:3000/showings');
   }
+
   getMovieApiDataShowing(showingId: number): Observable<MovieShowing[]> {
     return this.http.get<MovieShowing[]>(
       `http://localhost:3000/showings?id=${showingId}`
@@ -31,7 +36,7 @@ export class MovieApiService {
     );
   }
 
-  getMovieApiDataMovieDetails(): Observable<MovieDetails[]> {
+  getMovieDetailsList(): Observable<MovieDetails[]> {
     return this.http.get<MovieDetails[]>('http://localhost:3000/movies');
   }
 

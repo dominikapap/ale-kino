@@ -34,8 +34,7 @@
             <p>Cena: {{ ticket.controls.ticketPrice.value }}</p>
 
             <button
-              mat-raised-button
-              color="warn"
+              #myDiv
               (click)="
                 removeTicket(
                   index,
@@ -52,7 +51,12 @@
 
       <p>Łączna kwota: {{ totalPrice }}</p>
       <button mat-raised-button color="primary">Dodaj do koszyka</button>
-      <button mat-raised-button color="primary" routerLink="/zamowienie">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onSubmit()"
+        routerLink="/zamowienie"
+      >
         Przejdź do zamówienia
       </button>
     </form>

@@ -33,8 +33,12 @@ app-root {
   box-sizing: border-box;
 }
 
+button {
+  margin: 1rem;
+}
 button:disabled {
-  color: grey;
+  color: lightgrey !important;
+  background-color: gray !important;
 }
 
 html,
@@ -53,4 +57,12 @@ a {
   text-decoration: none;
   color: blue;
   cursor: pointer;
+}
+
+#mat-mdc-slide-toggle-1-label {
+  color: white;
+}
+
+.mat-mdc-slide-toggle {
+  margin-bottom: 1rem;
 }

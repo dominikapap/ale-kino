@@ -1,19 +1,22 @@
 <ng-container *ngIf="cart$ | async as cart">
   <ol>
     <li *ngFor="let item of cart; let index = index">
-      {{ item.ticketTypeName }}, {{ item.ticketPrice }}, miejsce
+      {{ item.ticketTypeName }}, cena: {{ item.ticketPrice }}, miejsce
       {{ item.rowSeat }}{{ item.columnSeat }}
-      <a
-        mat-raised-button
-        color="primary"
-        [routerLink]="['/kup-bilet/', item.showingId]"
-      >
-        <app-showing-details [showingId]="item.showingId"></app-showing-details
-      ></a>
+      <ng-container *ngIf="item.showingId">
+        <a
+          mat-raised-button
+          color="primary"
+          [routerLink]="['/kup-bilet/', item.showingId]"
+        >
+          <app-showing-details
+            [showingId]="item.showingId"
+          ></app-showing-details></a
+      ></ng-container>
       <button
         mat-raised-button
         color="primary"
-        (click)="onRemoveFromCart(item.id, item.rowSeat!, item.columnSeat!)"
+        (click)="onRemoveFromCart(item.id!, item.rowSeat!, item.columnSeat!)"
         mat-raised-button
         color="warn"
       >
