@@ -7,7 +7,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { BookedSeatsService } from '../../shared/booked-seats.service';
+import { BookedSeatsService } from '../../../shared/services/booked-seats.service';
 import { ReservedSeatsService } from '../reserved-seats.service';
 import { CreateSeatGridService } from './create-seat-grid.service';
 

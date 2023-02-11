@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -29,6 +34,7 @@ type RatingForm = FormGroup<{
     CommonModule,
   ],
   providers: [MovieRatingService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MovieRatingComponent {
   @Input() movieId = 0;

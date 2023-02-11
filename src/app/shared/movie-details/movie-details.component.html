@@ -42,7 +42,7 @@
         <ng-container *ngIf="onWatchlist(movie.title); else addToWatchlist"
           ><p>
             Zapisany na
-            <a routerLink="do-obejrzenia">liście do obejrzenia</a>
+            <a (click)="navigateToWatchlist()">liście do obejrzenia</a>
           </p></ng-container
         >
 

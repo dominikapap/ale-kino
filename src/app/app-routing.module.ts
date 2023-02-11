@@ -5,7 +5,6 @@ import { PageNotFoundComponent } from './domains/page-not-found/page-not-found.c
 import { SettingsComponent } from './domains/settings/settings.component';
 import { ShowingsComponent } from './domains/showings/showings.component';
 import { TicketsComponent } from './domains/tickets/tickets.component';
-import { UserTicketsComponent } from './domains/user-tickets/user-tickets.component';
 import { WatchListComponent } from './domains/watch-list/watch-list.component';
 import { hasAuthGuard } from './auth/has-auth-guard.guard';
 import { ShellComponent } from './shell/shell.component';
@@ -33,7 +32,8 @@ export const routes: Routes = [
           },
           {
             path: 'moje-bilety',
-            component: UserTicketsComponent,
+            loadComponent: () =>
+              import('./domains/user-tickets/user-tickets.component'),
           },
           {
             path: 'koszyk',

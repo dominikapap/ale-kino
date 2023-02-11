@@ -26,9 +26,7 @@ export class MovieRatingService {
 
   getMovieRatings(movieId: number) {
     return this.http
-      .get<MovieRatings[]>(
-        `http://localhost:3000/movieRatings?movieId=${movieId}`
-      )
+      .get<MovieRatings[]>(`/movieRatings?movieId=${movieId}`)
       .pipe(
         tap({
           next: (result) => this.movieRating$$.next(result),
@@ -39,7 +37,7 @@ export class MovieRatingService {
 
   updateMovieRating(userID: number, userRating: number, movieID: number) {
     return this.http
-      .post<MovieRatings>(`http://localhost:3000/movieRatings`, {
+      .post<MovieRatings>(`/movieRatings`, {
         movieId: movieID,
         userID: userID,
         rating: userRating,

@@ -1,8 +1,12 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+} from '@angular/core';
 import { Observable } from 'rxjs';
-import { MovieShowing } from 'src/app/interfaces/MovieShowing';
-import { MovieApiService } from 'src/app/services/movieapi.service';
+import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 import { ShowingDetailsService } from './showing-details.service';
 
 @Component({
@@ -11,6 +15,7 @@ import { ShowingDetailsService } from './showing-details.service';
   templateUrl: './showing-details.component.html',
   styleUrls: ['./showing-details.component.css'],
   imports: [NgIf, AsyncPipe],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ShowingDetailsComponent {
   @Input() showingId = 0;

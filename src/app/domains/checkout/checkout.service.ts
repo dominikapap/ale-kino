@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
-import { CheckoutForm } from 'src/app/interfaces/CheckoutForm';
+import { CheckoutForm } from 'src/app/shared/interfaces/CheckoutForm';
 
 interface CheckoutInfo {
   firstName: string;

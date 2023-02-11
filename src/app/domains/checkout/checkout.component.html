@@ -1,4 +1,4 @@
-<app-cart></app-cart>
+<app-cart [couponRate]="checkoutCouponRate"></app-cart>
 
 <form [formGroup]="checkoutForm" (ngSubmit)="sendForm()">
   <fieldset>

@@ -28,7 +28,7 @@ export class WatchListService {
       .pipe(
         switchMap((user) => {
           return this.http.get<WatchListItem[]>(
-            `http://localhost:3000/watchlist?userID=${user.userID}`
+            `/watchlist?userID=${user.userID}`
           );
         }),
         map((result) =>
@@ -47,14 +47,11 @@ export class WatchListService {
       this.currentUserID$
         .pipe(
           switchMap((user) => {
-            return this.http.post<WatchListItem>(
-              `http://localhost:3000/watchlist`,
-              {
-                userID: user.userID,
-                movieID: movieID,
-                movieTitle: movieTitle,
-              }
-            );
+            return this.http.post<WatchListItem>(`/watchlist`, {
+              userID: user.userID,
+              movieID: movieID,
+              movieTitle: movieTitle,
+            });
           })
         )
         .subscribe({
@@ -71,17 +68,15 @@ export class WatchListService {
   }
 
   removeFromWatchlist(titleId: number) {
-    this.http
-      .delete<WatchListItem>(`http://localhost:3000/watchlist/${titleId}`)
-      .subscribe({
-        next: () =>
-          this.watchList$$.next(
-            this.watchList$$.value.filter((item) => item.titleId !== titleId)
-          ),
-        error: (error) => {
-          console.error('There was an error!', error);
-        },
-      });
+    this.http.delete<WatchListItem>(`/watchlist/${titleId}`).subscribe({
+      next: () =>
+        this.watchList$$.next(
+          this.watchList$$.value.filter((item) => item.titleId !== titleId)
+        ),
+      error: (error) => {
+        console.error('There was an error!', error);
+      },
+    });
   }
 
   checkIfOnWatchlist(movieTitle: string): boolean {

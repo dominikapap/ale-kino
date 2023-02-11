@@ -28,9 +28,7 @@ export class AuthStateService {
 
   checkCredentials(email: string, password: string) {
     return this.http
-      .get<User[]>(
-        `http://localhost:3000/users?email=${email}&password=${password}`
-      )
+      .get<User[]>(`/users?email=${email}&password=${password}`)
       .subscribe({
         next: (results) => {
           if (results.length == 0) {

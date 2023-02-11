@@ -1,4 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { UserStateService } from 'src/app/core/user.state.service';
 import { AuthStateService } from '../../auth';
 import { CartService } from '../cart/cart.service';
@@ -39,6 +44,7 @@ import { CartService } from '../cart/cart.service';
     </div>
   </nav> `,
   styleUrls: ['./main-navbar.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainNavbarComponent implements OnInit {
   private auth = inject(AuthStateService);
@@ -53,7 +59,6 @@ export class MainNavbarComponent implements OnInit {
   ngOnInit() {
     const userID = this.userStateService.getUserID();
     this.cartService.getCart(userID);
-    console.log('username is: ' + this.userName + userID);
   }
   onLogout() {
     this.auth.logout();

@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, tap } from 'rxjs';
+import { v4 as createUuidv4 } from 'uuid';
 
 export interface ReservedSeat {
-  id: number;
+  id: string;
   rowSeat: string;
   columnSeat: number;
   showingID: number;
@@ -23,9 +24,7 @@ export class ReservedSeatsService {
 
   getReservedSeats(showingId: number) {
     this.http
-      .get<ReservedSeat[]>(
-        `http://localhost:3000/reservedSeats?showingID=${showingId}`
-      )
+      .get<ReservedSeat[]>(`/reservedSeats?showingID=${showingId}`)
       .pipe(
         tap({
           next: (seatsList) => {
@@ -53,11 +52,12 @@ export class ReservedSeatsService {
     }
 
     this.http
-      .post<ReservedSeat>('http://localhost:3000/reservedSeats', {
+      .post<ReservedSeat>('/reservedSeats', {
         rowSeat,
         columnSeat,
         showingID,
         userID,
+        id: showingID + rowSeat + columnSeat,
       })
       .pipe(
         tap({
@@ -72,22 +72,19 @@ export class ReservedSeatsService {
       .subscribe();
   }
 
-  removeSeat(row: string, column: number) {
-    const seatRow = this.reservedSeats$$.value.filter(
-      (seat) => seat.rowSeat === row
-    );
-    const seatColumn = seatRow.filter((seat) => seat.columnSeat === column);
+  removeSeat(row: string, column: number, showingID: number) {
+    // const seatRow = this.reservedSeats$$.value.filter(
+    //   (seat) => seat.rowSeat === row
+    // );
+    // const seatColumn = seatRow.filter((seat) => seat.columnSeat === column);
+    const seatID = showingID + row + column;
     this.http
-      .delete<ReservedSeat>(
-        `http://localhost:3000/reservedSeats/${seatColumn[0].id}`
-      )
+      .delete<ReservedSeat>(`/reservedSeats/${seatID}`)
       .pipe(
         tap({
           next: () => {
             this.reservedSeats$$.next(
-              this.reservedSeats$$.value.filter(
-                (seat) => seat.id !== seatColumn[0].id
-              )
+              this.reservedSeats$$.value.filter((seat) => seat.id !== seatID)
             );
           },
           error: (e) => {

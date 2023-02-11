@@ -30,7 +30,6 @@ export class UserStateService {
 
   constructor() {
     const userIDFromLS = localStorage.getItem('userID');
-    console.log(userIDFromLS);
 
     if (userIDFromLS && parseInt(userIDFromLS) > 0) {
       this.fetchUser(parseInt(userIDFromLS));
@@ -63,7 +62,7 @@ export class UserStateService {
 
   fetchUser(userID: number) {
     this.http
-      .get<User[]>(`http://localhost:3000/users?userID=${userID}`)
+      .get<User[]>(`/users?userID=${userID}`)
       .pipe(
         map((user) => user[0]),
         tap({ next: (result) => this.updateUser(result) })
@@ -80,7 +79,6 @@ export class UserStateService {
       phoneNumber: user.phoneNumber,
       role: user.role,
     });
-    console.log(this.user$$.value);
   }
 
   clearUser() {

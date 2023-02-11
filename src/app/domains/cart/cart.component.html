@@ -16,7 +16,14 @@
       <button
         mat-raised-button
         color="primary"
-        (click)="onRemoveFromCart(item.id!, item.rowSeat!, item.columnSeat!)"
+        (click)="
+          onRemoveFromCart(
+            item.id!,
+            item.rowSeat!,
+            item.columnSeat!,
+            item.showingId!
+          )
+        "
         mat-raised-button
         color="warn"
       >
@@ -24,9 +31,13 @@
       </button>
     </li>
   </ol>
-  <ng-container *ngIf="cartPrices$ | async as cartPrices">
-    <ng-container *ngIf="cartPrices.length > 0; else cartIsEmpty">
-      Łączna kwota: {{ cartPrices | sum }}PLN<a
+
+  <ng-container *ngIf="cart.length > 0; else cartIsEmpty">
+    <ng-container *ngIf="cartPrices$ | async as cartPrices">
+      <p class="text-body-big" [ngClass]="couponRate < 1 ? 'color-green' : ''">
+        Łączna kwota: {{ cartPrices | sum | multiply : couponRate }}PLN
+      </p>
+      <a
         mat-raised-button
         color="primary"
         *ngIf="routerUrl === '/koszyk'"

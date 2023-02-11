@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, tap } from 'rxjs';
-import { CartService, TD2 } from '../cart/cart.service';
-import { ReservedSeatsService } from '../tickets/reserved-seats.service';
+import { UserStateService } from 'src/app/core/user.state.service';
+import { CartService, TD2 } from '../../domains/cart/cart.service';
+import { ReservedSeatsService } from '../../domains/tickets/reserved-seats.service';
 
 interface BookedSeat {
   id: number;
@@ -20,7 +21,7 @@ interface BookedSeat {
 export class BookedSeatsService {
   private http = inject(HttpClient);
   private cartService = inject(CartService);
-  private reservedSeatsService = inject(ReservedSeatsService);
+  private userService = inject(UserStateService);
   private bookedSeats$$ = new BehaviorSubject<BookedSeat[]>([]);
 
   get reservedSeats$() {
@@ -29,9 +30,7 @@ export class BookedSeatsService {
 
   getBookedSeats(showingId: number) {
     this.http
-      .get<BookedSeat[]>(
-        `http://localhost:3000/bookedSeats?showingID=${showingId}`
-      )
+      .get<BookedSeat[]>(`/bookedSeats?showingID=${showingId}`)
       .pipe(
         tap({
           next: (seatsList) => {
@@ -43,13 +42,13 @@ export class BookedSeatsService {
   }
   bookSeat(ticket: TD2) {
     this.http
-      .post<BookedSeat>('http://localhost:3000/bookedSeats', {
+      .post<BookedSeat>('/bookedSeats', {
         rowSeat: ticket.rowSeat,
         columnSeat: ticket.columnSeat,
         ticketTypeName: ticket.ticketTypeName,
         ticketPrice: ticket.ticketPrice,
         showingID: ticket.showingId,
-        userID: ticket.userID,
+        userID: this.userService.getUserID(),
       })
       .pipe(
         tap({

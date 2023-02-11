@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-main-footer',
   templateUrl: './main-footer.component.html',
-  styleUrls: ['./main-footer.component.css']
+  styleUrls: ['./main-footer.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainFooterComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class MainFooterComponent {
+  constructor() {}
 }

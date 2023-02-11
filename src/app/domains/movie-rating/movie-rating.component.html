@@ -1,8 +1,13 @@
-<ng-container *ngIf="ratingList$ | async as movieRating"
-  ><span>
-    Rating: {{ movieRating | avg | number : "1.2-2" }}</span
-  ></ng-container
->
+<ng-container *ngIf="ratingList$ | async as movieRating">
+  <ng-container *ngIf="movieRating.length > 0; else notRated"
+    ><span>
+      Rating: {{ movieRating | avg | number : "1.2-2" }}</span
+    ></ng-container
+  >
+  <ng-template #notRated>
+    <p>Nikt jeszcze nie ocenił filmu</p>
+  </ng-template>
+</ng-container>
 
 <button
   mat-raised-button

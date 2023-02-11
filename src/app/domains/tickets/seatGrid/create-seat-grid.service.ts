@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
-import { MovieShowing } from 'src/app/interfaces/MovieShowing';
+import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 
 export interface SeatGridElements {
   columns: number[];
@@ -34,7 +34,7 @@ export class CreateSeatGridService {
 
   getSeatGrid(showingId: number) {
     this.http
-      .get<MovieShowing[]>(`http://localhost:3000/showings?id=${showingId}`)
+      .get<MovieShowing[]>(`/showings?id=${showingId}`)
       .pipe(
         tap({
           next: (response: MovieShowing[]) => {

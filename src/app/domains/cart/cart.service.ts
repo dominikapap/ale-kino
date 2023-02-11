@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { v4 as createUuidv4 } from 'uuid';
 
@@ -21,6 +22,7 @@ export type TD2 = Partial<{
   userID: number;
   showingId: number;
   id: string;
+  inCart: boolean;
 }>;
 
 @Injectable({
@@ -29,6 +31,10 @@ export type TD2 = Partial<{
 export class CartService {
   private http = inject(HttpClient);
   private cart$$ = new BehaviorSubject<TD2[]>([]);
+  private couponRates = {
+    123456: 0.8,
+    987654: 0.5,
+  };
 
   get cart$() {
     return this.cart$$.asObservable();
@@ -47,7 +53,7 @@ export class CartService {
     if (userID) {
       return ticketList.forEach((element) => {
         this.http
-          .post<TicketDetails>(`http://localhost:3000/cart`, {
+          .post<TicketDetails>(`/cart`, {
             ticketTypeName: element.ticketTypeName,
             ticketPrice: element.ticketPrice,
             rowSeat: element.rowSeat,
@@ -55,6 +61,7 @@ export class CartService {
             userID: element.userID,
             showingId: element.showingId,
             id: createUuidv4(),
+            inCart: true,
           })
           .pipe(
             tap({
@@ -81,7 +88,6 @@ export class CartService {
 
       localStorage.setItem('guestTickets', JSON.stringify(guestTickets));
       this.cart$$.next([...this.cart$$.value, ...guestTickets]);
-      console.log(this.cart$$.value);
       return;
     }
   }
@@ -95,7 +101,7 @@ export class CartService {
 
     if (userID) {
       return this.http
-        .get<TicketDetails[]>(`http://localhost:3000/cart?userId=${userID}`)
+        .get<TicketDetails[]>(`/cart?userId=${userID}`)
         .pipe(
           tap({
             next: (result) => {
@@ -112,7 +118,7 @@ export class CartService {
   removeFromCart(ticketId: number | string, userID: number) {
     if (userID) {
       return this.http
-        .delete<TicketDetails[]>(`http://localhost:3000/cart/${ticketId}`)
+        .delete<TicketDetails[]>(`/cart/${ticketId}`)
         .pipe(
           tap({
             next: () => {
@@ -143,5 +149,9 @@ export class CartService {
 
   emptyCart() {
     return this.cart$$.next([]);
+  }
+
+  applyCoupon() {
+    return 0.8;
   }
 }

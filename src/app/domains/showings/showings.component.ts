@@ -1,10 +1,16 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { UserStateService } from '../../core/user.state.service';
-import { MovieDetails } from '../../interfaces/MovieDetails';
-import { MovieShowing } from '../../interfaces/MovieShowing';
-import { DatesService } from '../../services/dates.service';
-import { MovieApiService } from '../../services/movieapi.service';
+import { MovieDetails } from '../../shared/interfaces/MovieDetails';
+import { MovieShowing } from '../../shared/interfaces/MovieShowing';
+import { DatesService } from '../../shared/services/dates.service';
+import { MovieApiService } from '../../shared/services/movieapi.service';
 
 export interface MovieRepertoire {
   title: string;
@@ -21,6 +27,7 @@ export class ShowingsComponent implements OnInit {
   private movieApiService = inject(MovieApiService);
   private datesService = inject(DatesService);
   private userStateService = inject(UserStateService);
+  private cdr = inject(ChangeDetectorRef);
   private showings: MovieShowing[] = [];
   private currDay = '';
   filteredShowings: MovieShowing[] = [];

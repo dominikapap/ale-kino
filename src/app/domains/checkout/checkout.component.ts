@@ -1,30 +1,44 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserStateService } from 'src/app/core/user.state.service';
 import { User } from 'src/app/core/User.interface';
-import { CheckoutForm } from '../../interfaces/CheckoutForm';
+import { CheckoutForm } from '../../shared/interfaces/CheckoutForm';
 import { confirmEmailValidator } from './confirmEmailValidator';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckoutComponent implements OnInit {
   private builder = inject(NonNullableFormBuilder);
   private router = inject(Router);
   user = inject(UserStateService).getUserInfo();
   checkoutForm = this.createCheckoutForm();
+  checkoutCouponRate = 1;
 
   ngOnInit() {
     if (this.user.userID > 0) {
       this.fillForm(this.user);
     }
+
+    this.couponValue();
   }
 
   get checkoutFormCtrls() {
     return this.checkoutForm.controls;
+  }
+
+  get couponCodeCtrl() {
+    return this.checkoutForm.controls.couponCode;
   }
   fillForm(user: User) {
     this.checkoutFormCtrls.firstName.setValue(user.firstName);
@@ -40,9 +54,16 @@ export class CheckoutComponent implements OnInit {
     if (this.checkoutForm.invalid) {
       alert('Niepoprawnie wypełniony formularz');
     } else {
-      console.log(this.checkoutForm.value);
       this.router.navigate(['zamowienie/platnosc']);
     }
+  }
+
+  couponValue() {
+    return this.couponCodeCtrl.statusChanges.subscribe(() =>
+      this.couponCodeCtrl.valid
+        ? (this.checkoutCouponRate = 0.8)
+        : (this.checkoutCouponRate = 1)
+    );
   }
 
   private createCheckoutForm(): CheckoutForm {
@@ -75,5 +96,9 @@ export class CheckoutComponent implements OnInit {
       }),
     });
     return form;
+  }
+
+  ngOnDestroy() {
+    this.couponValue().unsubscribe();
   }
 }

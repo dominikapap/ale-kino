@@ -49,16 +49,8 @@
         </div>
       </ol>
 
-      <p>Łączna kwota: {{ totalPrice }}</p>
+      <p class="text-body-big">Łączna kwota: {{ totalPrice }}</p>
       <button mat-raised-button color="primary">Dodaj do koszyka</button>
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="onSubmit()"
-        routerLink="/zamowienie"
-      >
-        Przejdź do zamówienia
-      </button>
     </form>
   </ng-container>
 </ng-container>

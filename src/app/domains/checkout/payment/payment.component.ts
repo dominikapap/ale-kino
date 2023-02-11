@@ -1,13 +1,14 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartService } from '../../cart/cart.service';
-import { BookedSeatsService } from '../../shared/booked-seats.service';
+import { BookedSeatsService } from '../../../shared/services/booked-seats.service';
 
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaymentComponent {
   private builder = inject(NonNullableFormBuilder);
@@ -30,7 +31,7 @@ export class PaymentComponent {
       alert('Bilety kupione');
       this.router.navigate(['']);
     } else {
-      alert('Podaj kod blik');
+      alert('Podaj prawidłowy kod blik');
     }
   }
 }

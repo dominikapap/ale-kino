@@ -33,8 +33,13 @@ app-root {
   box-sizing: border-box;
 }
 
+button + button,
+button + span,
+span + button {
+  margin-inline: 0.5rem;
+}
 button {
-  margin: 1rem;
+  margin: 1rem 0;
 }
 button:disabled {
   color: lightgrey !important;
@@ -65,4 +70,16 @@ a {
 
 .mat-mdc-slide-toggle {
   margin-bottom: 1rem;
+}
+
+.color-green {
+  color: green;
+}
+////TYPOGRAPHY
+///
+
+.text-body-big {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1rem;
 }

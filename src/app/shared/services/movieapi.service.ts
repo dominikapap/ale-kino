@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { MovieDetails } from '../interfaces/MovieDetails';
 import { MovieShowing } from '../interfaces/MovieShowing';
 import { TicketType } from '../interfaces/TicketType';
@@ -15,37 +15,31 @@ export class MovieApiService {
   currDay = this.datesService.getCurrentDay();
 
   getShowings(): Observable<MovieShowing[]> {
-    return this.http.get<MovieShowing[]>('http://localhost:3000/showings');
+    return this.http.get<MovieShowing[]>('/showings');
   }
 
   getMovieApiDataShowing(showingId: number): Observable<MovieShowing[]> {
-    return this.http.get<MovieShowing[]>(
-      `http://localhost:3000/showings?id=${showingId}`
-    );
+    return this.http.get<MovieShowing[]>(`/showings?id=${showingId}`);
   }
 
   getMovieDetails(movieId: number): Observable<MovieDetails> {
     return this.http
-      .get<MovieDetails[]>(`http://localhost:3000/movies?id=${movieId}`)
+      .get<MovieDetails[]>(`/movies?id=${movieId}`)
       .pipe(map((result) => result[0]));
   }
 
   getMovieApiDataShowingForWeek(dates: string): Observable<MovieShowing> {
-    return this.http.get<MovieShowing>(
-      `http://localhost:3000/showings?date>${dates}`
-    );
+    return this.http.get<MovieShowing>(`/showings?date>${dates}`);
   }
 
   getMovieDetailsList(): Observable<MovieDetails[]> {
-    return this.http.get<MovieDetails[]>('http://localhost:3000/movies');
+    return this.http.get<MovieDetails[]>('/movies');
   }
 
   getMovieApiDataMovie(movieId: number): Observable<MovieDetails[]> {
-    return this.http.get<MovieDetails[]>(
-      `http://localhost:3000/movies?id=${movieId}`
-    );
+    return this.http.get<MovieDetails[]>(`/movies?id=${movieId}`);
   }
   getMovieApiDataTicketTypes(): Observable<TicketType[]> {
-    return this.http.get<TicketType[]>(`http://localhost:3000/ticketTypes`);
+    return this.http.get<TicketType[]>(`/ticketTypes`);
   }
 }
