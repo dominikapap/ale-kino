@@ -1,0 +1,35 @@
+<h1>Moje zamówienia</h1>
+
+<ng-container *ngIf="userTickets$ | async as userOrders">
+  <ng-container *ngIf="userOrders.length > 0; else noOrders"></ng-container>
+  <ol class="user-tickets-container">
+    <ng-container *ngFor="let userOrder of userOrders">
+      <li>
+        <h2 class="user-tickets-container__order-num">
+          <a [routerLink]="['/tickets/', userOrder.orderID]">
+            Zamówienie nr: {{ userOrder.orderID }} z dnia {{ userOrder.date }}
+          </a>
+        </h2>
+      </li>
+      <p>Liczba biletów: {{ userOrder.tickets.length }}</p>
+
+      <!-- <ul>
+      <li
+        *ngFor="let ticket of userOrder.tickets"
+        class="user-tickets-container__tickets"
+      >
+        <span>
+          {{ ticket.ticketTypeName }}, cena: {{ ticket.ticketPrice }}, miejsce
+          {{ ticket.rowSeat }}{{ ticket.columnSeat }}
+          seans:
+
+          <app-showing-details
+            [showingId]="ticket.showingID"
+          ></app-showing-details
+        ></span>
+      </li></ul
+  >-->
+    </ng-container>
+  </ol>
+</ng-container>
+<ng-template #noOrders>Nie złożyłono jeszcze żadnego zamówienia</ng-template>

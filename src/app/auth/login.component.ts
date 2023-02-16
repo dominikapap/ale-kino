@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { CartService } from '../domains/cart/cart.service';
+import { CartStateService } from '../domains/order/cart/cart.state.service';
 import { AuthStateService } from './auth.state.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthStateService } from './auth.state.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  private cartService = inject(CartService);
+  private cartService = inject(CartStateService);
   private builder = inject(NonNullableFormBuilder);
   private auth = inject(AuthStateService);
   loginForm = this.createLoginForm();

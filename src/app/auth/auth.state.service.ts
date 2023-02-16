@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../core/User.interface';
 import { UserStateService } from '../core/user.state.service';
-import { CartService } from '../domains/cart/cart.service';
+import { CartStateService } from '../domains/order/cart/cart.state.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class AuthStateService {
   private http = inject(HttpClient);
   private router = inject(Router);
   private userStateService = inject(UserStateService);
-  private cartService = inject(CartService);
+  private cartService = inject(CartStateService);
 
   private auth$$ = new BehaviorSubject<{ hasAuth: boolean }>({
     hasAuth: false,

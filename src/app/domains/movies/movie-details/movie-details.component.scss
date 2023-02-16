@@ -1,0 +1,31 @@
+:host {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.favorite {
+  color: green;
+}
+
+.movie-container {
+  &__info,
+  &__details {
+    display: flex;
+
+    gap: 1rem;
+  }
+  &__info {
+    flex-direction: column;
+    flex: 2;
+  }
+
+  &__premiere {
+    color: white;
+    font-weight: 700;
+    position: absolute;
+    background-color: red;
+    padding: 4px;
+  }
+}

@@ -4,8 +4,3 @@ export function sum(input: Array<number>, initial = 0): number {
     initial
   );
 }
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isArray(value: any): boolean {
-  return Array.isArray(value);
-}

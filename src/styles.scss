@@ -20,6 +20,9 @@ app-root {
 }
 
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 .btn {
   min-width: 150px;
   border-radius: 25px;
@@ -41,9 +44,11 @@ span + button {
 button {
   margin: 1rem 0;
 }
-button:disabled {
+button:disabled,
+.mat-button-toggle-disabled {
   color: lightgrey !important;
   background-color: gray !important;
+  pointer-events: none;
 }
 
 html,
@@ -57,6 +62,11 @@ body {
 button a {
   color: white;
 }
+// button:focus {
+//   font-weight: 700;
+//   background-color: white !important;
+//   color: rgb(63, 81, 181) !important;
+// }
 
 a {
   text-decoration: none;
@@ -82,4 +92,25 @@ a {
   font-size: 1.5rem;
   font-weight: 600;
   margin-top: 1rem;
+}
+
+.user-tickets-container {
+  margin-top: 2rem;
+
+  &__order-num {
+    margin-top: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: solid 2px white;
+    width: fit-content;
+  }
+
+  &__tickets > span {
+    display: inline-flex;
+    align-items: center;
+    margin: 0.75rem 0;
+
+    app-showing-details {
+      margin: 0;
+    }
+  }
 }

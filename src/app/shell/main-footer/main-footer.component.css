@@ -1,0 +1,37 @@
+footer {
+  margin: 1rem 0;
+  fill: white;
+}
+
+footer .icons-and-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.social-icons a svg {
+  width: 36px;
+  height: 36px;
+}
+
+.social-icons {
+  display: flex;
+  flex-direction: row;
+}
+.social-icons a + a {
+  margin-left: 1rem;
+}
+
+footer a {
+  text-decoration: none;
+  padding-inline: 1rem;
+  color: white;
+}
+
+.useful-links a + a {
+  border-left: 2px solid black;
+}
+
+.copyright {
+  display: flex;
+  justify-content: center;
+}

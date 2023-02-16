@@ -1,0 +1,29 @@
+<app-this-week (chooseDay)="fetchShowings($event)"></app-this-week>
+<ng-container *ngIf="repertoire$ | async as repertoire; else noShowings">
+  <ng-container *ngIf="repertoire.length; else noShowings">
+    <div *ngFor="let movie of repertoire" class="movie-container">
+      <ng-container *ngIf="movie.showings.length">
+        <app-movie-details [movieId]="movie.movieId"></app-movie-details>
+
+        <div class="movie-container__hours">
+          <div *ngFor="let showing of movie.showings">
+            <a
+              mat-raised-button
+              color="primary"
+              [routerLink]="['/kup-bilet/', showing.showingId]"
+            >
+              {{
+                showing.timeFrom[0] !== "0"
+                  ? showing.timeFrom
+                  : (showing.timeFrom | slice : 1)
+              }}
+            </a>
+          </div>
+        </div></ng-container
+      >
+    </div>
+  </ng-container></ng-container
+>
+<ng-template #noShowings>
+  <p class="mt-2">Brak seansów na dany dzień</p></ng-template
+>

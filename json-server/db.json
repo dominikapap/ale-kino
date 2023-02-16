@@ -11,6 +11,26 @@
       "id": 2
     }
   ],
+  "coupons": [
+    {
+      "id": 1,
+      "code": "aleKino",
+      "couponRate": 0.8,
+      "wasUsed": false
+    },
+    {
+      "id": 2,
+      "code": "aleOkazja",
+      "couponRate": 0.75,
+      "wasUsed": false
+    },
+    {
+      "id": 3,
+      "code": "aleGratka",
+      "couponRate": 0.6,
+      "wasUsed": true
+    }
+  ],
   "users": [
     {
       "userID": 168395,
@@ -70,6 +90,12 @@
       "userID": 158395,
       "rating": 8,
       "id": 5
+    },
+    {
+      "movieId": 5633922,
+      "userID": 168395,
+      "rating": 7,
+      "id": 6
     }
   ],
   "ticketTypes": [
@@ -137,7 +163,7 @@
       "descriptionShort": " Lorem ipsum dolor sit amet In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
       "descriptionLong": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
       "duration": "240min",
-      "isPremiere": false
+      "isPremiere": true
     }
   ],
   "showings": [
@@ -145,10 +171,10 @@
       "id": 14,
       "movieId": 5633922,
       "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-02-10",
+      "date": "2023-02-14",
       "break": 15,
-      "timeFrom": "19:30",
-      "timeTo": "21:30",
+      "timeFrom": "09:30",
+      "timeTo": "11:30",
       "rows": 10,
       "columns": 11,
       "numOfSeats": 110,
@@ -158,9 +184,9 @@
       "id": 15,
       "movieId": 1267943,
       "movieTitle": "Apokawixa",
-      "date": "2023-02-12",
+      "date": "2023-02-13",
       "break": 15,
-      "timeFrom": "9:30",
+      "timeFrom": "09:30",
       "timeTo": "11:00",
       "rows": 10,
       "columns": 12,
@@ -171,7 +197,7 @@
       "id": 153,
       "movieId": 2437892,
       "movieTitle": "Co w duszy gra",
-      "date": "2023-02-11",
+      "date": "2023-02-13",
       "break": 15,
       "timeFrom": "21:30",
       "timeTo": "23:00",
@@ -184,7 +210,7 @@
       "id": 17,
       "movieId": 1267943,
       "movieTitle": "Apokawixa",
-      "date": "2023-02-11",
+      "date": "2023-02-13",
       "break": 15,
       "timeFrom": "16:00",
       "timeTo": "17:30",
@@ -197,7 +223,7 @@
       "id": 18,
       "movieId": 1267943,
       "movieTitle": "Apokawixa",
-      "date": "2023-02-12",
+      "date": "2023-02-14",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -210,7 +236,7 @@
       "id": 20,
       "movieId": 5633922,
       "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-02-12",
+      "date": "2023-02-15",
       "break": 15,
       "timeFrom": "18:30",
       "timeTo": "20:30",
@@ -222,7 +248,8 @@
     {
       "id": 22,
       "movieId": 2437892,
-      "date": "2023-02-11",
+      "movieTitle": "Co w duszy gra",
+      "date": "2023-02-15",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -235,7 +262,7 @@
       "id": 24,
       "movieId": 2437892,
       "movieTitle": "Co w duszy gra",
-      "date": "2023-02-11",
+      "date": "2023-02-15",
       "break": 15,
       "timeFrom": "18:00",
       "timeTo": "17:30",
@@ -248,7 +275,7 @@
       "id": 26,
       "movieId": 2437892,
       "movieTitle": "Co w duszy gra",
-      "date": "2023-02-12",
+      "date": "2023-02-16",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -261,7 +288,7 @@
       "id": 27,
       "movieId": 5633922,
       "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-02-09",
+      "date": "2023-02-16",
       "break": 15,
       "timeFrom": "19:30",
       "timeTo": "21:30",
@@ -274,7 +301,7 @@
       "id": 28,
       "movieId": 5633922,
       "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-02-09",
+      "date": "2023-02-17",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:30",
@@ -287,7 +314,7 @@
       "id": 156,
       "movieId": 1267943,
       "movieTitle": "Apokawixa",
-      "date": "2023-02-08",
+      "date": "2023-02-17",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -300,7 +327,7 @@
       "id": 99,
       "movieId": 1267943,
       "movieTitle": "Apokawixa",
-      "date": "2023-02-09",
+      "date": "2023-02-18",
       "break": 15,
       "timeFrom": "16:00",
       "timeTo": "17:30",
@@ -313,7 +340,7 @@
       "id": 263,
       "movieId": 1267943,
       "movieTitle": "Apokawixa",
-      "date": "2023-02-09",
+      "date": "2023-02-28",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -326,7 +353,7 @@
       "id": 276,
       "movieId": 2437892,
       "movieTitle": "Co w duszy gra",
-      "date": "2023-02-09",
+      "date": "2023-02-18",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -339,7 +366,7 @@
       "id": 303,
       "movieId": 2437892,
       "movieTitle": "Co w duszy gra",
-      "date": "2023-02-09",
+      "date": "2023-02-19",
       "break": 15,
       "timeFrom": "16:00",
       "timeTo": "17:30",
@@ -352,7 +379,7 @@
       "id": 323,
       "movieId": 2437892,
       "movieTitle": "Co w duszy gra",
-      "date": "2023-02-10",
+      "date": "2023-02-19",
       "break": 15,
       "timeFrom": "21:00",
       "timeTo": "21:30",
@@ -383,310 +410,289 @@
       "showingID": 17,
       "userID": 168395,
       "id": "17B10"
-    }
-  ],
-  "bookedSeats": [
-    {
-      "rowSeat": "D",
-      "columnSeat": 8,
-      "ticketType": "normalny",
-      "ticketPrice": 22,
-      "showingID": 323,
-      "id": 1
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 4,
-      "ticketType": "normalny",
-      "ticketPrice": 22,
-      "showingID": 303,
-      "id": 2
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 9,
-      "ticketType": "normalny",
-      "ticketPrice": 22,
-      "showingID": 263,
-      "id": 3
-    },
-    {
-      "rowSeat": "G",
-      "columnSeat": 11,
-      "ticketType": "normalny",
-      "ticketPrice": 22,
-      "showingID": 99,
-      "id": 4
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 2,
-      "ticketType": "normalny",
-      "ticketPrice": 22,
-      "showingID": 276,
-      "id": 5
-    },
-    {
-      "row": "E",
-      "columnSeat": 1,
-      "ticketType": "normalny",
-      "ticketPrice": 22,
-      "showingID": 156,
-      "id": 6
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 7,
-      "ticketType": "normalny",
-      "ticketPrice": 22,
-      "showingID": 26,
-      "id": 7
-    },
-    {
-      "rowSeat": "G",
-      "columnSeat": 4,
-      "ticketType": "normalny",
-      "ticketPrice": 22,
-      "showingID": 24,
-      "id": 8
-    },
-    {
-      "rowSeat": "G",
-      "columnSeat": 9,
-      "ticketType": "normalny",
-      "ticketPrice": 22,
-      "showingID": 22,
-      "id": 9
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 1,
-      "ticketType": "normalny",
-      "ticketPrice": 22,
-      "showingID": 18,
-      "id": 10
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 2,
-      "ticketType": "normalny",
-      "ticketPrice": 22,
-      "showingID": 17,
-      "id": 11
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 2,
-      "ticketType": "normalny",
-      "ticketPrice": 22,
-      "showingID": 153,
-      "id": 12
-    },
-    {
-      "rowSeat": "G",
-      "columnSeat": 1,
-      "ticketType": "normalny",
-      "ticketPrice": 22,
-      "showingID": 15,
-      "id": 13
-    },
-    {
-      "rowSeat": "L",
-      "columnSeat": 11,
-      "ticketTypeName": "Bilet rodzinny",
-      "ticketPrice": 18,
-      "showingID": 323,
-      "userID": 168395,
-      "id": 14
-    },
-    {
-      "rowSeat": "L",
-      "columnSeat": 12,
-      "ticketTypeName": "Bilet rodzinny",
-      "ticketPrice": 18,
-      "showingID": 323,
-      "userID": 168395,
-      "id": 15
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 1,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 156,
-      "userID": 168395,
-      "id": 16
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 2,
-      "ticketTypeName": "Bilet ulgowy",
-      "ticketPrice": 17,
-      "showingID": 156,
-      "userID": 168395,
-      "id": 17
     },
     {
       "rowSeat": "A",
       "columnSeat": 3,
-      "ticketTypeName": "Bilet ulgowy",
-      "ticketPrice": 17,
-      "showingID": 156,
-      "userID": 168395,
-      "id": 18
+      "showingID": 27,
+      "userID": -1,
+      "id": "27A3"
     },
     {
-      "rowSeat": "J",
-      "columnSeat": 1,
-      "ticketTypeName": "Bilet rodzinny",
-      "ticketPrice": 18,
-      "showingID": 156,
-      "userID": 168395,
-      "id": 19
+      "rowSeat": "A",
+      "columnSeat": 4,
+      "showingID": 27,
+      "userID": -1,
+      "id": "27A4"
     },
     {
-      "rowSeat": "J",
+      "rowSeat": "A",
       "columnSeat": 2,
-      "ticketTypeName": "Bilet ulgowy",
-      "ticketPrice": 17,
-      "showingID": 156,
+      "showingID": 18,
       "userID": 168395,
-      "id": 20
+      "id": "18A2"
     },
     {
-      "rowSeat": "J",
-      "columnSeat": 1,
-      "ticketTypeName": "Bilet rodzinny",
-      "ticketPrice": 18,
-      "showingID": 156,
-      "userID": 168395,
-      "id": 21
+      "rowSeat": "I",
+      "columnSeat": 3,
+      "showingID": 18,
+      "userID": -1,
+      "id": "18I3"
     },
     {
-      "rowSeat": "J",
-      "columnSeat": 2,
-      "ticketTypeName": "Bilet ulgowy",
-      "ticketPrice": 17,
-      "showingID": 156,
-      "userID": 168395,
-      "id": 22
+      "rowSeat": "I",
+      "columnSeat": 4,
+      "showingID": 18,
+      "userID": -1,
+      "id": "18I4"
     },
     {
-      "rowSeat": "J",
+      "rowSeat": "G",
+      "columnSeat": 3,
+      "showingID": 20,
+      "userID": -1,
+      "id": "20G3"
+    },
+    {
+      "rowSeat": "E",
+      "columnSeat": 4,
+      "showingID": 20,
+      "userID": -1,
+      "id": "20E4"
+    },
+    {
+      "rowSeat": "E",
       "columnSeat": 5,
-      "ticketTypeName": "Bilet ulgowy",
-      "ticketPrice": 17,
+      "showingID": 20,
+      "userID": -1,
+      "id": "20E5"
+    },
+    {
+      "rowSeat": "A",
+      "columnSeat": 1,
+      "showingID": 22,
+      "userID": 168395,
+      "id": "22A1"
+    },
+    {
+      "rowSeat": "A",
+      "columnSeat": 2,
+      "showingID": 22,
+      "userID": 168395,
+      "id": "22A2"
+    },
+    {
+      "rowSeat": "D",
+      "columnSeat": 4,
+      "showingID": 22,
+      "userID": 168395,
+      "id": "22D4"
+    },
+    {
+      "rowSeat": "I",
+      "columnSeat": 4,
+      "showingID": 20,
+      "userID": -1,
+      "id": "20I4"
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 6,
+      "showingID": 26,
+      "userID": 168395,
+      "id": "26B6"
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 7,
+      "showingID": 26,
+      "userID": 168395,
+      "id": "26B7"
+    },
+    {
+      "rowSeat": "D",
+      "columnSeat": 1,
+      "showingID": 26,
+      "userID": 168395,
+      "id": "26D1"
+    },
+    {
+      "rowSeat": "D",
+      "columnSeat": 2,
+      "showingID": 26,
+      "userID": 168395,
+      "id": "26D2"
+    },
+    {
+      "rowSeat": "D",
+      "columnSeat": 3,
+      "showingID": 26,
+      "userID": 168395,
+      "id": "26D3"
+    },
+    {
+      "rowSeat": "A",
+      "columnSeat": 1,
       "showingID": 156,
-      "userID": 0,
-      "id": 23
+      "userID": 168395,
+      "id": "156A1"
+    },
+    {
+      "rowSeat": "A",
+      "columnSeat": 2,
+      "showingID": 156,
+      "userID": 168395,
+      "id": "156A2"
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 1,
+      "showingID": 156,
+      "userID": 168395,
+      "id": "156B1"
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 2,
+      "showingID": 156,
+      "userID": 168395,
+      "id": "156B2"
+    },
+    {
+      "rowSeat": "I",
+      "columnSeat": 1,
+      "showingID": 26,
+      "userID": 168395,
+      "id": "26I1"
+    },
+    {
+      "rowSeat": "I",
+      "columnSeat": 2,
+      "showingID": 26,
+      "userID": 168395,
+      "id": "26I2"
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 1,
+      "showingID": 26,
+      "userID": 168395,
+      "id": "26J1"
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 2,
+      "showingID": 26,
+      "userID": 168395,
+      "id": "26J2"
     },
     {
       "rowSeat": "J",
       "columnSeat": 6,
-      "ticketTypeName": "Bilet rodzinny",
-      "ticketPrice": 18,
       "showingID": 156,
-      "userID": 0,
-      "id": 24
+      "userID": 168395,
+      "id": "156J6"
     },
     {
       "rowSeat": "J",
-      "columnSeat": 1,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 99,
+      "columnSeat": 7,
+      "showingID": 156,
       "userID": 168395,
-      "id": 25
+      "id": "156J7"
     },
     {
       "rowSeat": "J",
-      "columnSeat": 2,
-      "ticketTypeName": "Bilet rodzinny",
-      "ticketPrice": 18,
-      "showingID": 99,
-      "userID": 168395,
-      "id": 26
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 1,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 99,
-      "userID": 168395,
-      "id": 27
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 2,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 99,
-      "userID": 168395,
-      "id": 28
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 4,
-      "ticketTypeName": "Bilet rodzinny",
-      "ticketPrice": 18,
+      "columnSeat": 8,
       "showingID": 156,
       "userID": 168395,
-      "id": 29
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 5,
-      "ticketTypeName": "Bilet ulgowy",
-      "ticketPrice": 17,
-      "showingID": 156,
-      "userID": 168395,
-      "id": 30
-    },
-    {
-      "rowSeat": "F",
-      "columnSeat": 3,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 28,
-      "userID": 168395,
-      "id": 31
-    },
-    {
-      "rowSeat": "F",
-      "columnSeat": 4,
-      "ticketTypeName": "Bilet ulgowy",
-      "ticketPrice": 17,
-      "showingID": 28,
-      "userID": 168395,
-      "id": 32
+      "id": "156J8"
     },
     {
       "rowSeat": "J",
+      "columnSeat": 9,
+      "showingID": 156,
+      "userID": 168395,
+      "id": "156J9"
+    },
+    {
+      "rowSeat": "A",
+      "columnSeat": 9,
+      "showingID": 26,
+      "userID": 168395,
+      "id": "26A9"
+    },
+    {
+      "rowSeat": "A",
       "columnSeat": 10,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 263,
+      "showingID": 26,
       "userID": 168395,
-      "id": 33
+      "id": "26A10"
+    },
+    {
+      "rowSeat": "H",
+      "columnSeat": 10,
+      "showingID": 99,
+      "userID": 168395,
+      "id": "99H10"
+    },
+    {
+      "rowSeat": "H",
+      "columnSeat": 11,
+      "showingID": 99,
+      "userID": 168395,
+      "id": "99H11"
+    },
+    {
+      "rowSeat": "E",
+      "columnSeat": 1,
+      "showingID": 323,
+      "userID": 168395,
+      "id": "323E1"
+    },
+    {
+      "rowSeat": "E",
+      "columnSeat": 2,
+      "showingID": 323,
+      "userID": 168395,
+      "id": "323E2"
     },
     {
       "rowSeat": "A",
+      "columnSeat": 8,
+      "showingID": 28,
+      "userID": -1,
+      "id": "28A8"
+    },
+    {
+      "rowSeat": "A",
+      "columnSeat": 9,
+      "showingID": 28,
+      "userID": -1,
+      "id": "28A9"
+    }
+  ],
+  "bookedSeats": [
+    {
+      "rowSeat": "E",
       "columnSeat": 1,
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "showingID": 263,
-      "userID": 168395,
-      "id": 34
+      "showingID": 323,
+      "userID": 168396,
+      "orderID": "597d2ef8-b5ed-4ff2-a77d-496ab92f4d4e",
+      "date": "2023-02-16",
+      "id": 1
     },
     {
-      "rowSeat": "A",
+      "rowSeat": "E",
       "columnSeat": 2,
-      "ticketTypeName": "Bilet rodzinny",
-      "ticketPrice": 18,
-      "showingID": 27,
-      "userID": 168395,
-      "id": 35
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "showingID": 323,
+      "userID": 168396,
+      "orderID": "597d2ef8-b5ed-4ff2-a77d-496ab92f4d4e",
+      "date": "2023-02-16",
+      "id": 2
     }
   ],
   "screeningHall": [
@@ -704,10 +710,31 @@
     },
     {
       "userID": 168395,
-      "movieID": 1267943,
-      "movieTitle": "Apokawixa",
-      "id": 4
+      "movieID": 5633922,
+      "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
+      "id": 5
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "A",
+      "columnSeat": 8,
+      "userID": 0,
+      "showingId": 28,
+      "id": "1e8b13f5-c3a2-4086-8359-e46c8f7d317b",
+      "inCart": true
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "A",
+      "columnSeat": 9,
+      "userID": 0,
+      "showingId": 28,
+      "id": "9c6ef58b-5f4d-4d0e-beb3-35ea2aafadc3",
+      "inCart": true
+    }
+  ]
 }

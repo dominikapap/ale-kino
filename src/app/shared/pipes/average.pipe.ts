@@ -7,8 +7,12 @@ import { sum } from './utils';
 })
 export class AveragePipe implements PipeTransform {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  transform(values: any) {
-    const numSum = sum(values);
-    return numSum / values.length;
+  transform(values: number | number[]) {
+    if (typeof values === 'number') {
+      return values;
+    } else {
+      const numSum = sum(values);
+      return numSum / values.length;
+    }
   }
 }

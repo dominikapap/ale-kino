@@ -1,0 +1,62 @@
+<ng-container *ngIf="movieDetails | async as movie"
+  ><div class="movie-container__img">
+    <ng-container *ngIf="movie.isPremiere"
+      ><span class="movie-container__premiere">Premiera</span></ng-container
+    >
+    <img [src]="movie.imageUrl" alt="movie.title" />
+  </div>
+
+  <div class="movie-container__info">
+    <h2 [ngClass]="onWatchlist(movie.title) ? 'favorite' : ''">
+      {{ movie.title }}
+    </h2>
+    <div class="movie-container__details">
+      <span *ngFor="let genre of movie.genres">{{ genre }}</span>
+      <span>{{ movie.time }}</span>
+      <span>{{ movie.ageRestriction }}</span>
+    </div>
+    <div class="movie-details__description">
+      <ng-container *ngIf="!showMore"
+        ><p>{{ movie.descriptionShort }}</p>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="showMore = !showMore"
+        >
+          Więcej
+        </button></ng-container
+      >
+      <ng-container *ngIf="showMore"
+        ><p *ngIf="showMore">{{ movie.descriptionLong }}</p>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="showMore = !showMore"
+        >
+          Mniej
+        </button></ng-container
+      >
+    </div>
+    <app-movie-rating [movieId]="movie.id"></app-movie-rating>
+    <ng-container *ngIf="(auth$ | async)?.hasAuth">
+      <div class="additionalBtns">
+        <ng-container *ngIf="onWatchlist(movie.title); else addToWatchlist"
+          ><p>
+            Zapisany na
+            <a (click)="navigateToWatchlist()">liście do obejrzenia</a>
+          </p></ng-container
+        >
+
+        <ng-template #addToWatchlist
+          ><button
+            mat-raised-button
+            color="primary"
+            (click)="onUpdateWatchlist(movie.title, movie.id)"
+          >
+            Chcę obejrzeć
+          </button></ng-template
+        >
+      </div></ng-container
+    >
+  </div>
+</ng-container>
