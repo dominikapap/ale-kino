@@ -1,0 +1,117 @@
+<app-cart [couponRate]="checkoutCouponRate"></app-cart>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="sendForm()">
+  <fieldset>
+    <mat-form-field class="full-width">
+      <mat-label>Imię</mat-label>
+      <input matInput formControlName="firstName" />
+      <mat-error *ngIf="checkoutForm.controls.firstName.hasError('required')">
+        Imię jest wymaganym polem </mat-error
+      ><mat-error *ngIf="checkoutForm.controls.firstName.hasError('minlength')">
+        Imię musi się składać z minimum
+        {{
+          checkoutForm.controls.firstName.errors!["minlength"]["requiredLength"]
+        }}
+        znaków
+      </mat-error> </mat-form-field
+    ><mat-form-field class="full-width">
+      <mat-label>Nazwisko</mat-label
+      ><input matInput formControlName="lastName" /><mat-error
+        *ngIf="checkoutForm.controls.lastName.hasError('required')"
+      >
+        Nazwisko jest wymaganym polem
+      </mat-error>
+      <mat-error *ngIf="checkoutForm.controls.lastName.hasError('minlength')">
+        Nazwisko musi się składać z minimum
+        {{
+          checkoutForm.controls.lastName.errors!["minlength"]["requiredLength"]
+        }}
+        znaków
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Numer Telefonu</mat-label>
+      <input type="tel" matInput formControlName="phoneNumber" /><mat-error
+        *ngIf="checkoutForm.controls.phoneNumber.hasError('required')"
+      >
+        Numer telefonu jest wymaganym polem </mat-error
+      ><mat-error *ngIf="checkoutForm.controls.phoneNumber.hasError('pattern')">
+        Numer telefonu musi się składać z 9 cyfr
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Adres email</mat-label>
+      <input type="email" matInput formControlName="email" /><mat-error
+        *ngIf="checkoutForm.controls.email.hasError('required')"
+      >
+        Email jest wymaganym polem
+      </mat-error>
+      <mat-error *ngIf="checkoutForm.controls.email.hasError('pattern')">
+        Niewłaściwy format adresu email
+      </mat-error></mat-form-field
+    ><mat-form-field>
+      <mat-label>Potwierdź adres email</mat-label>
+      <input type="email" matInput formControlName="confirmEmail" />
+      <mat-error
+        *ngIf="checkoutForm.controls.confirmEmail.hasError('required')"
+      >
+        Potwierdzenie email jest wymaganym polem </mat-error
+      ><mat-error
+        *ngIf="
+          checkoutForm.controls.confirmEmail.errors &&
+          checkoutForm.controls.confirmEmail.errors['pattern']
+        "
+      >
+        Niewłaściwy format adresu email
+      </mat-error>
+      <mat-error
+        *ngIf="
+          checkoutForm.controls.confirmEmail.errors &&
+          !checkoutForm.controls.confirmEmail.errors['required'] &&
+          !checkoutForm.controls.confirmEmail.errors['pattern']
+        "
+      >
+        Adresy email nie są zgodne
+      </mat-error>
+    </mat-form-field>
+
+    <mat-slide-toggle
+      [checked]="true"
+      color="primary"
+      formControlName="newsletter"
+      >Chcę otrzymywać informacje o zniżkach i promocjach
+    </mat-slide-toggle>
+
+    <mat-form-field class="full-width mb-1">
+      <mat-label>Kod zniżkowy</mat-label>
+      <input matInput formControlName="couponCode" />
+
+      <mat-error *ngIf="checkoutForm.controls.couponCode.hasError('minlength')">
+        Kod musi składać się z co najmniej
+        {{
+          checkoutForm.controls.couponCode.errors!["minlength"][
+            "requiredLength"
+          ]
+        }}
+        znaków
+      </mat-error>
+      <mat-error
+        *ngIf="couponCodeCtrl.errors && couponCodeCtrl.errors['couponInvalid']"
+      >
+        Nieprawidłowy kod
+      </mat-error>
+      <mat-error
+        *ngIf="couponCodeCtrl.errors && couponCodeCtrl.errors['couponUsed']"
+      >
+        Kod wykorzystany
+      </mat-error>
+    </mat-form-field>
+    <span *ngIf="(couponCodeCtrl.statusChanges | async) && couponCodeCtrl.valid"
+      >Naliczono żniżkę</span
+    >
+
+    <button mat-raised-button color="primary">Zamawiam</button>
+  </fieldset>
+</form>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,10 @@
+<ng-container *ngIf="showingDetails$ | async as showing"
+  ><p>
+    {{ showing.movieTitle }}, {{ showing.date }},
+    {{
+      showing.timeFrom[0] !== "0"
+        ? showing.timeFrom
+        : (showing.timeFrom | slice : 1)
+    }}
+  </p>
+</ng-container>

@@ -1,0 +1,54 @@
+<ng-container *ngIf="cart$ | async as cart">
+  <ol>
+    <li *ngFor="let item of cart; let index = index">
+      {{ item.ticketTypeName }}, cena: {{ item.ticketPrice }}, miejsce
+      {{ item.rowSeat }}{{ item.columnSeat }}
+      <ng-container *ngIf="item.showingId">
+        <a
+          mat-raised-button
+          color="primary"
+          [routerLink]="['/kup-bilet/', item.showingId]"
+        >
+          <app-showing-details
+            [showingId]="item.showingId"
+          ></app-showing-details></a
+      ></ng-container>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="
+          onRemoveFromCart(
+            item.id!,
+            item.rowSeat!,
+            item.columnSeat!,
+            item.showingId!
+          )
+        "
+        mat-raised-button
+        color="warn"
+      >
+        Usuń
+      </button>
+    </li>
+  </ol>
+
+  <ng-container *ngIf="cart.length > 0; else cartIsEmpty">
+    <!-- <ng-container *ngIf="cartPrices$ | async as cartPrices">
+      <p class="text-body-big" [ngClass]="couponRate < 1 ? 'color-green' : ''">
+        Łączna kwota:
+        {{ cartPrices | sum | multiply : couponRate | number : "1.0-2" }}PLN
+      </p>
+      <a
+        mat-raised-button
+        color="primary"
+        *ngIf="routerUrl === '/koszyk'"
+        routerLink="/zamowienie"
+        >Przejdź do zamówienia</a
+      ></ng-container
+    >--><app-cart-price
+    ></app-cart-price> </ng-container
+  ><ng-template #cartIsEmpty>
+    <h2>Koszyk jest pusty</h2>
+    <a routerLink="">Wróć do listy seansów</a>
+  </ng-template>
+</ng-container>
