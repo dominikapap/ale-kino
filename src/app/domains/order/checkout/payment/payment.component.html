@@ -2,25 +2,38 @@
   src="https://blik.com/layout/default/dist/gfx/logo/logo.svg"
   alt="BLIK logo"
 />
-<form [formGroup]="blikForm" (ngSubmit)="onSubmit()">
-  <mat-form-field class="example-full-width">
-    <input
-      appNumbersOnly
-      [inputLength]="6"
-      type="text"
-      matInput
-      formControlName="blikNum"
-      ng-pattern="^\d{1,6}$"
-    />
-    />
 
-    <mat-error *ngIf="blikForm.controls.blikNum.hasError('required')">
-      Number BLIK jest <strong>wymagany</strong>
-    </mat-error>
-    <mat-error *ngIf="blikForm.controls.blikNum.hasError('pattern')">
-      Kod musi się składać z 6 cyfr
-    </mat-error>
-  </mat-form-field>
+<ng-container *ngIf="notPaid">
+  <span>Kod powinien składać się z {{ INPUT_LENGTH }} cyfr</span>
 
-  <button mat-raised-button color="primary">Płacę</button>
-</form>
+  <form [formGroup]="blikForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+      <input
+        appNumbersOnly
+        [inputLength]="INPUT_LENGTH"
+        type="text"
+        matInput
+        formControlName="blikNum"
+        ng-pattern="^\d{1,6}$"
+      />
+      />
+
+      <mat-error *ngIf="blikForm.controls.blikNum.hasError('required')">
+        Number BLIK jest <strong>wymagany</strong>
+      </mat-error>
+      <mat-error *ngIf="blikForm.controls.blikNum.hasError('pattern')">
+        Kod musi się składać z 6 cyfr
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">Płacę</button>
+  </form>
+</ng-container>
+<ng-container *ngIf="!notPaid">
+  <p class="text-body-big">Płatność zakończona sukcesem</p>
+  <mat-icon>check_circle_outline</mat-icon>
+
+  <a [routerLink]="['/tickets/', orderID]">
+    Przejdź do podsumowania zamówienia
+  </a>
+</ng-container>

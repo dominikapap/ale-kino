@@ -11,6 +11,21 @@
       "id": 2
     }
   ],
+  "orders": [
+    {
+      "id": "dd8dfc43-90a6-41c0-a162-aa5bdbc851c5",
+      "date": "2023-02-18",
+      "userData": {
+        "firstName": "John",
+        "lastName": "Wick",
+        "phoneNumber": 123456789,
+        "email": "john@wick.com",
+        "confirmEmail": "john@wick.com",
+        "newsletter": false,
+        "couponCode": ""
+      }
+    }
+  ],
   "coupons": [
     {
       "id": 1,
@@ -125,9 +140,7 @@
       "title": "Apokawixa",
       "id": 1267943,
       "imageUrl": "https://fwcdn.pl/fpo/55/10/10015510/8029347.6.jpg",
-      "genres": [
-        "Horror"
-      ],
+      "genres": ["Horror"],
       "time": "120 minut",
       "ageRestriction": "PG-13",
       "descriptionShort": " Apokawixa details:Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
@@ -139,10 +152,7 @@
       "title": "Co w duszy gra",
       "id": 2437892,
       "imageUrl": "https://fwcdn.pl/fpo/66/50/836650/7934792.6.jpg",
-      "genres": [
-        "Animowany",
-        "Obyczajowy"
-      ],
+      "genres": ["Animowany", "Obyczajowy"],
       "time": "120 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
@@ -154,10 +164,7 @@
       "title": "Władca Pierścieni: Drużyna Pierścienia",
       "id": 5633922,
       "imageUrl": "https://fwcdn.pl/fpo/10/65/1065/7912491.6.jpg",
-      "genres": [
-        "Fantasy",
-        "Przygodowy"
-      ],
+      "genres": ["Fantasy", "Przygodowy"],
       "time": "240 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": " Lorem ipsum dolor sit amet In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
@@ -391,308 +398,67 @@
   ],
   "reservedSeats": [
     {
-      "rowSeat": "G",
-      "columnSeat": 1,
+      "rowSeat": "D",
+      "columnSeat": 12,
       "showingID": 323,
       "userID": -1,
-      "id": "323G1"
+      "id": "323D12"
     },
     {
-      "rowSeat": "G",
+      "rowSeat": "A",
       "columnSeat": 2,
       "showingID": 323,
       "userID": -1,
-      "id": "323G2"
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 10,
-      "showingID": 17,
-      "userID": 168395,
-      "id": "17B10"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 3,
-      "showingID": 27,
-      "userID": -1,
-      "id": "27A3"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 4,
-      "showingID": 27,
-      "userID": -1,
-      "id": "27A4"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 2,
-      "showingID": 18,
-      "userID": 168395,
-      "id": "18A2"
-    },
-    {
-      "rowSeat": "I",
-      "columnSeat": 3,
-      "showingID": 18,
-      "userID": -1,
-      "id": "18I3"
-    },
-    {
-      "rowSeat": "I",
-      "columnSeat": 4,
-      "showingID": 18,
-      "userID": -1,
-      "id": "18I4"
-    },
-    {
-      "rowSeat": "G",
-      "columnSeat": 3,
-      "showingID": 20,
-      "userID": -1,
-      "id": "20G3"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 4,
-      "showingID": 20,
-      "userID": -1,
-      "id": "20E4"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 5,
-      "showingID": 20,
-      "userID": -1,
-      "id": "20E5"
+      "id": "323A2"
     },
     {
       "rowSeat": "A",
       "columnSeat": 1,
-      "showingID": 22,
+      "showingID": 276,
       "userID": 168395,
-      "id": "22A1"
+      "id": "276A1"
     },
     {
       "rowSeat": "A",
       "columnSeat": 2,
-      "showingID": 22,
+      "showingID": 276,
       "userID": 168395,
-      "id": "22A2"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 4,
-      "showingID": 22,
-      "userID": 168395,
-      "id": "22D4"
-    },
-    {
-      "rowSeat": "I",
-      "columnSeat": 4,
-      "showingID": 20,
-      "userID": -1,
-      "id": "20I4"
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 6,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26B6"
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 7,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26B7"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 1,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26D1"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 2,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26D2"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 3,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26D3"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 1,
-      "showingID": 156,
-      "userID": 168395,
-      "id": "156A1"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 2,
-      "showingID": 156,
-      "userID": 168395,
-      "id": "156A2"
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 1,
-      "showingID": 156,
-      "userID": 168395,
-      "id": "156B1"
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 2,
-      "showingID": 156,
-      "userID": 168395,
-      "id": "156B2"
-    },
-    {
-      "rowSeat": "I",
-      "columnSeat": 1,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26I1"
-    },
-    {
-      "rowSeat": "I",
-      "columnSeat": 2,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26I2"
-    },
-    {
-      "rowSeat": "J",
-      "columnSeat": 1,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26J1"
-    },
-    {
-      "rowSeat": "J",
-      "columnSeat": 2,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26J2"
-    },
-    {
-      "rowSeat": "J",
-      "columnSeat": 6,
-      "showingID": 156,
-      "userID": 168395,
-      "id": "156J6"
-    },
-    {
-      "rowSeat": "J",
-      "columnSeat": 7,
-      "showingID": 156,
-      "userID": 168395,
-      "id": "156J7"
-    },
-    {
-      "rowSeat": "J",
-      "columnSeat": 8,
-      "showingID": 156,
-      "userID": 168395,
-      "id": "156J8"
-    },
-    {
-      "rowSeat": "J",
-      "columnSeat": 9,
-      "showingID": 156,
-      "userID": 168395,
-      "id": "156J9"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 9,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26A9"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 10,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26A10"
-    },
-    {
-      "rowSeat": "H",
-      "columnSeat": 10,
-      "showingID": 99,
-      "userID": 168395,
-      "id": "99H10"
-    },
-    {
-      "rowSeat": "H",
-      "columnSeat": 11,
-      "showingID": 99,
-      "userID": 168395,
-      "id": "99H11"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 1,
-      "showingID": 323,
-      "userID": 168395,
-      "id": "323E1"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 2,
-      "showingID": 323,
-      "userID": 168395,
-      "id": "323E2"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 8,
-      "showingID": 28,
-      "userID": -1,
-      "id": "28A8"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 9,
-      "showingID": 28,
-      "userID": -1,
-      "id": "28A9"
+      "id": "276A2"
     }
   ],
   "bookedSeats": [
     {
-      "rowSeat": "E",
+      "rowSeat": "I",
       "columnSeat": 1,
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "showingID": 323,
-      "userID": 168396,
-      "orderID": "597d2ef8-b5ed-4ff2-a77d-496ab92f4d4e",
-      "date": "2023-02-16",
+      "showingID": 303,
+      "userID": 168395,
+      "orderID": "dd8dfc43-90a6-41c0-a162-aa5bdbc851c5",
+      "date": "2023-02-18",
       "id": 1
     },
     {
-      "rowSeat": "E",
+      "rowSeat": "I",
       "columnSeat": 2,
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "showingID": 323,
-      "userID": 168396,
-      "orderID": "597d2ef8-b5ed-4ff2-a77d-496ab92f4d4e",
-      "date": "2023-02-16",
+      "showingID": 303,
+      "userID": 168395,
+      "orderID": "dd8dfc43-90a6-41c0-a162-aa5bdbc851c5",
+      "date": "2023-02-18",
       "id": 2
+    },
+    {
+      "rowSeat": "I",
+      "columnSeat": 3,
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "showingID": 303,
+      "userID": 168395,
+      "orderID": "dd8dfc43-90a6-41c0-a162-aa5bdbc851c5",
+      "date": "2023-02-18",
+      "id": 3
     }
   ],
   "screeningHall": [
@@ -715,26 +481,5 @@
       "id": 5
     }
   ],
-  "cart": [
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "A",
-      "columnSeat": 8,
-      "userID": 0,
-      "showingId": 28,
-      "id": "1e8b13f5-c3a2-4086-8359-e46c8f7d317b",
-      "inCart": true
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "A",
-      "columnSeat": 9,
-      "userID": 0,
-      "showingId": 28,
-      "id": "9c6ef58b-5f4d-4d0e-beb3-35ea2aafadc3",
-      "inCart": true
-    }
-  ]
+  "cart": []
 }

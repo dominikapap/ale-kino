@@ -40,6 +40,7 @@ interface TicketForm {
   showingId: FormControl<number>;
   inCart: FormControl<boolean>;
   id: FormControl<string>;
+  timestamp: FormControl<number>;
 }
 
 @Component({
@@ -68,8 +69,6 @@ export class TicketsComponent implements OnInit {
   ticketTypes: TicketType[] = [];
   showingIdFromRoute = Number(this.routeParams.get('id'));
   totalPrice = 0;
-  @ViewChildren('myDiv')
-  myDiv!: QueryList<ElementRef>;
 
   ngOnInit(): void {
     // przenieść subscribe do serwisu
@@ -86,13 +85,6 @@ export class TicketsComponent implements OnInit {
     this.ticketsForm.controls.tickets.removeAt(index);
     this.reservedSeatsService.removeSeat(row, column, this.showingIdFromRoute);
     this.updateTotalPrice();
-    //to fix: remove tickets from cart
-    // if (this.ticketsForm.controls.tickets.at(index).controls.inCart.value) {
-    //   this.cartService.removeFromCart(
-    //     this.ticketsForm.controls.tickets.at(index).controls.id.value,
-    //     this.ticketsForm.controls.tickets.at(index).controls.userID.value
-    //   );
-    // }
   }
 
   updatePrice(index: number, event: { value: PricesTypes }) {
@@ -128,15 +120,12 @@ export class TicketsComponent implements OnInit {
         this.ticketsForm.getRawValue().tickets,
         this.userService.getUserID()
       );
-
-      if (
-        window.confirm(
-          'Bilety dodano do koszya, czy chcesz przejść do zamówienia?'
-        )
-      ) {
-        this.router.navigate(['/zamowienie']);
-      }
+      this.router.navigate(['/zamowienie']);
     }
+  }
+
+  updateTicket(ticketID: string, ticketTypeName: string, ticketPrice: number) {
+    this.cartService.updateTicket(ticketID, ticketTypeName, ticketPrice);
   }
 
   private updateTotalPrice() {
@@ -161,7 +150,8 @@ export class TicketsComponent implements OnInit {
     id: string = createUuidv4(),
     ticketTypeName = 'Bilet normalny',
     ticketPrice = 22,
-    inCart = false
+    inCart = false,
+    timestamp = new Date().getTime()
   ) {
     return this.builder.group<TicketForm>({
       rowSeat: this.builder.control(row, Validators.required),
@@ -172,6 +162,7 @@ export class TicketsComponent implements OnInit {
       ticketTypeName: this.builder.control(ticketTypeName, Validators.required),
       ticketPrice: this.builder.control(ticketPrice, Validators.required),
       inCart: this.builder.control(inCart, Validators.required),
+      timestamp: this.builder.control(timestamp, Validators.required),
     });
   }
 
@@ -193,17 +184,5 @@ export class TicketsComponent implements OnInit {
       }
     });
     this.updateTotalPrice();
-  }
-
-  removeReserved() {
-    this.myDiv.forEach((div: ElementRef) => {
-      setTimeout(() => {
-        div.nativeElement.click();
-      }, 1000);
-    });
-  }
-
-  ngOnDestroy() {
-    this.removeReserved();
   }
 }

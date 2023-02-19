@@ -103,14 +103,21 @@
       <mat-error
         *ngIf="couponCodeCtrl.errors && couponCodeCtrl.errors['couponUsed']"
       >
-        Kod wykorzystany
-      </mat-error>
+        Kod wykorzystany </mat-error
+      ><mat-hint
+        class="color-success"
+        *ngIf="
+          (couponCodeCtrl.statusChanges | async) &&
+          couponCodeCtrl.valid &&
+          couponCodeCtrl.value
+        "
+        >Zastosowano żniżkę</mat-hint
+      >
     </mat-form-field>
-    <span *ngIf="(couponCodeCtrl.statusChanges | async) && couponCodeCtrl.valid"
-      >Naliczono żniżkę</span
-    >
 
-    <button mat-raised-button color="primary">Zamawiam</button>
+    <button [disabled]="!checkoutForm.valid" mat-raised-button color="primary">
+      Zamawiam
+    </button>
   </fieldset>
 </form>
 

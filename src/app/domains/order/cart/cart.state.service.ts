@@ -23,6 +23,7 @@ export type TD2 = {
   showingId: number;
   id: string;
   inCart: boolean;
+  timestamp: number;
 };
 
 @Injectable({
@@ -39,10 +40,9 @@ export class CartStateService {
   get cartValue() {
     return this.cart$$.value;
   }
-
-  //  map(cart => cart.reduce((accumalatedTotal, cartItem) =>
-  //     accumalatedTotal + (cartItem.price * cartItem.quantity), 0)
-  //   )
+  get cartItemsQuantity() {
+    return this.cart$$.value.length;
+  }
 
   get cartPrices$(): Observable<number> {
     return this.cart$.pipe(
@@ -57,25 +57,31 @@ export class CartStateService {
 
     if (userID) {
       return ticketList.forEach((element) => {
-        this.http
-          .post<TD2>(`/cart`, {
-            ticketTypeName: element.ticketTypeName,
-            ticketPrice: element.ticketPrice,
-            rowSeat: element.rowSeat,
-            columnSeat: element.columnSeat,
-            userID: element.userID,
-            showingId: element.showingId,
-            id: createUuidv4(),
-            inCart: true,
-          })
-          .pipe(
-            tap({
-              next: (response) => {
-                this.cart$$.next([...this.cart$$.value, response]);
-              },
+        console.log('checking every element');
+        if (this.cart$$.value.find((item) => item.id === element.id)) {
+          return;
+        } else {
+          this.http
+            .post<TD2>(`/cart`, {
+              ticketTypeName: element.ticketTypeName,
+              ticketPrice: element.ticketPrice,
+              rowSeat: element.rowSeat,
+              columnSeat: element.columnSeat,
+              userID: element.userID,
+              showingId: element.showingId,
+              id: createUuidv4(),
+              inCart: true,
+              timestamp: element.timestamp,
             })
-          )
-          .subscribe();
+            .pipe(
+              tap({
+                next: (response) => {
+                  this.cart$$.next([...this.cart$$.value, response]);
+                },
+              })
+            )
+            .subscribe();
+        }
       });
     } else {
       const guestTickets: TD2[] = [];
@@ -89,6 +95,7 @@ export class CartStateService {
           showingId: element.showingId,
           id: createUuidv4(),
           inCart: element.inCart,
+          timestamp: element.timestamp,
         });
       });
 
@@ -122,7 +129,7 @@ export class CartStateService {
   }
 
   removeFromCart(ticketId: number | string, userID: number) {
-    if (userID) {
+    if (userID > 0) {
       return this.http
         .delete<TicketDetails[]>(`/cart/${ticketId}`)
         .pipe(
@@ -132,15 +139,6 @@ export class CartStateService {
                 this.cart$$.value.filter((item) => item.id !== ticketId)
               );
             },
-            error: () => {
-              this.cart$$.next(
-                this.cart$$.value.filter((item) => item.id !== ticketId)
-              );
-              localStorage.setItem(
-                'guestTickets',
-                JSON.stringify(this.cart$$.value)
-              );
-            },
           })
         )
         .subscribe();
@@ -148,7 +146,10 @@ export class CartStateService {
       this.cart$$.next(
         this.cart$$.value.filter((item) => item.id !== ticketId)
       );
-      localStorage.setItem('guestTickets', JSON.stringify(this.cart$$.value));
+      localStorage.setItem(
+        'guestTickets',
+        JSON.stringify(this.cart$$.value.filter((item) => item.userID > 0))
+      );
       return;
     }
   }
@@ -157,7 +158,25 @@ export class CartStateService {
     return this.cart$$.next([]);
   }
 
-  applyCoupon() {
-    return 0.8;
+  updateTicket(ticketID: string, ticketTypeName: string, ticketPrice: number) {
+    this.http
+      .patch(`/cart/${ticketID}`, {
+        ticketTypeName,
+        ticketPrice,
+      })
+      .pipe(
+        tap({
+          next: () => {
+            const ticketIndex = this.cart$$.value.findIndex(
+              (ticket) => ticket.id === ticketID
+            );
+            if (ticketIndex !== -1) {
+              this.cart$$.value[ticketIndex].ticketPrice = ticketPrice;
+              this.cart$$.value[ticketIndex].ticketTypeName = ticketTypeName;
+            }
+          },
+        })
+      )
+      .subscribe();
   }
 }

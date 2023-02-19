@@ -7,6 +7,7 @@ import { ConfirmationComponent } from './domains/order/confirmation/confirmation
 import { TicketsComponent } from './domains/order/tickets/tickets.component';
 import { SettingsComponent } from './domains/user/settings/settings.component';
 import { WatchListComponent } from './domains/user/watch-list';
+import { DirectAccessGuard } from './shared/guards/direct-access.guard';
 import { ShellComponent } from './shell/shell.component';
 
 export const routes: Routes = [
@@ -48,6 +49,7 @@ export const routes: Routes = [
             path: 'zamowienie',
             loadChildren: () =>
               import('./domains/order/checkout/checkout.module'),
+            canActivate: [DirectAccessGuard],
           },
           {
             path: 'potwierdzenie',

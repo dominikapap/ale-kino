@@ -1,4 +1,4 @@
-import { inject, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckoutComponent } from './checkout.component';
@@ -11,6 +11,8 @@ import { PaymentComponent } from './payment/payment.component';
 import CartComponent from '../cart/cart.component';
 import { NumbersOnlyDirective } from 'src/app/shared/directives/numbers-only.directive';
 import { MultiplyByDirective } from 'src/app/shared/directives/multiply.directive';
+import { MatIconModule } from '@angular/material/icon';
+import { DirectAccessGuard } from 'src/app/shared/guards/direct-access.guard';
 
 const routes: Routes = [
   {
@@ -29,6 +31,7 @@ const routes: Routes = [
     MatFormFieldModule,
     MatSlideToggleModule,
     MatButtonModule,
+    MatIconModule,
     NumbersOnlyDirective,
     MultiplyByDirective,
     RouterModule.forChild([
@@ -39,6 +42,7 @@ const routes: Routes = [
       {
         path: 'platnosc',
         component: PaymentComponent,
+        canActivate: [DirectAccessGuard],
       },
     ]),
   ],

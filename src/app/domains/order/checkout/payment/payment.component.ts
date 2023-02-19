@@ -1,10 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartStateService } from '../../cart/cart.state.service';
 import { BookedSeatsStateService } from '../../services/booked-seats.state.service';
 import { v4 as createUuidv4 } from 'uuid';
 import { DatesService } from 'src/app/domains/movies/services/dates.service';
+import { CouponRateService } from '../../cart/coupon-rate.service';
+import { OrderApiService } from './order-api.service';
+import { CheckoutUserDataStateService } from '../checkout-user-data.state.service';
 
 @Component({
   selector: 'app-payment',
@@ -18,6 +21,11 @@ export class PaymentComponent {
   private datesService = inject(DatesService);
   private router = inject(Router);
   private bookedSeatsService = inject(BookedSeatsStateService);
+  private orderApiService = inject(OrderApiService);
+  private checkoutUserDataService = inject(CheckoutUserDataStateService);
+  readonly INPUT_LENGTH = 6;
+  orderID = createUuidv4();
+  notPaid = true;
 
   blikForm = this.builder.group({
     blikNum: this.builder.control(null, {
@@ -25,23 +33,22 @@ export class PaymentComponent {
     }),
   });
 
+  navigateToSummary() {
+    this.router.navigate(['/tickets/', this.orderID]);
+  }
   onSubmit() {
     this.blikForm.markAllAsTouched();
     if (this.blikForm.valid) {
-      const orderID = createUuidv4();
       const currDay = this.datesService.getCurrentDay();
       this.cartValue.forEach((ticket) => {
-        this.bookedSeatsService.bookSeat(ticket, orderID, currDay);
+        this.bookedSeatsService.bookSeat(ticket, this.orderID, currDay);
       });
-      if (
-        window.confirm(
-          'Bilety kupione, czy chcesz przejść do podsumowania zamówienia?'
-        )
-      ) {
-        this.router.navigate(['/tickets/', orderID]);
-      } else {
-        this.router.navigate(['/user-tickets/']);
-      }
+      this.orderApiService.postOrderData(
+        this.orderID,
+        currDay,
+        this.checkoutUserDataService.checkoutUserDataValues
+      );
+      this.notPaid = false;
     } else {
       alert('Podaj prawidłowy kod blik');
     }

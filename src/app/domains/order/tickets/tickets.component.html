@@ -33,23 +33,43 @@
           </mat-form-field>
           <p>Cena: {{ ticket.controls.ticketPrice.value }}</p>
 
-          <button
-            #myDiv
-            (click)="
-              removeTicket(
-                index,
-                ticket.controls.rowSeat.value,
-                ticket.controls.columnSeat.value
-              )
-            "
+          <ng-container *ngIf="!ticket.controls.inCart.value"
+            >{{ ticket.controls.inCart.value
+            }}<button
+              (click)="
+                removeTicket(
+                  index,
+                  ticket.controls.rowSeat.value,
+                  ticket.controls.columnSeat.value
+                )
+              "
+            >
+              <mat-icon>close</mat-icon>
+            </button></ng-container
           >
-            <mat-icon>close</mat-icon>
-          </button>
+          <ng-container *ngIf="ticket.controls.inCart.value"
+            ><p>Bilet w koszyku</p>
+            <button
+              mat-raised-button
+              color="primary"
+              type="button"
+              [disabled]="!this.ticket.dirty"
+              (click)="
+                updateTicket(
+                  ticket.controls.id.value,
+                  ticket.controls.ticketTypeName.value,
+                  ticket.controls.ticketPrice.value
+                )
+              "
+            >
+              Aktualizuj
+            </button>
+          </ng-container>
         </fieldset>
       </div>
     </ol>
 
     <p class="text-body-big">Łączna kwota: {{ totalPrice }}</p>
-    <button mat-raised-button color="primary">Dodaj do koszyka</button>
+    <button mat-raised-button color="primary">Przejdź do zamówienia</button>
   </form>
 </ng-container>

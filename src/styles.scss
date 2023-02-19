@@ -82,12 +82,18 @@ a {
   margin-bottom: 1rem;
 }
 
-.color-green {
+.color-green,
+.color-success {
   color: green;
 }
 ////TYPOGRAPHY
 ///
 
+.text-body {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
 .text-body-big {
   font-size: 1.5rem;
   font-weight: 600;

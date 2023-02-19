@@ -50,9 +50,10 @@ export default class CartComponent {
     ticketId: string,
     row: string,
     column: number,
-    showingID: number
+    showingID: number,
+    userID: number
   ) {
-    this.cartService.removeFromCart(ticketId, this.userID);
+    this.cartService.removeFromCart(ticketId, userID);
     this.reservedSeatsService.removeSeat(row, column, showingID);
   }
 }
