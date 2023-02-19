@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, tap } from 'rxjs';
-import { UserStateService } from 'src/app/core/user.state.service';
+import { UserStateService } from 'src/app/auth/user.state.service';
 
 interface MovieRatings {
   id: number;
@@ -14,8 +14,7 @@ interface MovieRatings {
 export class MovieRatingStateService {
   private http = inject(HttpClient);
   private movieRating$$ = new BehaviorSubject<MovieRatings[]>([]);
-
-  userID = inject(UserStateService).getUserID();
+  private userID = inject(UserStateService).getUserID();
 
   get movieRating$() {
     return this.movieRating$$.asObservable();
@@ -37,16 +36,16 @@ export class MovieRatingStateService {
       .subscribe();
   }
 
-  updateMovieRating(userID: number, userRating: number, movieID: number) {
+  updateMovieRating(userID: number, rating: number, movieId: number) {
     return this.http
       .post<MovieRatings>(`/movieRatings`, {
-        movieId: movieID,
-        userID: userID,
-        rating: userRating,
+        movieId,
+        userID,
+        rating,
       })
       .pipe(
         tap({
-          next: (result) => {
+          next: (result: MovieRatings) => {
             this.movieRating$$.next([...this.movieRating$$.value, result]);
           },
         })

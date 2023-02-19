@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { MovieDetails } from 'src/app/domains/movies/movie-details/MovieDetails';
+import { MovieDetails } from './MovieDetails.interface';
 
 @Injectable({
   providedIn: 'root',

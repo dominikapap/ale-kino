@@ -4,7 +4,7 @@ import {
   inject,
   Input,
 } from '@angular/core';
-import { UserStateService } from 'src/app/core/user.state.service';
+import { UserStateService } from 'src/app/auth/user.state.service';
 import { CartStateService } from './cart.state.service';
 import { Router, RouterModule } from '@angular/router';
 
@@ -21,7 +21,7 @@ import { CartPriceComponent } from './cart-price/cart-price.component';
   selector: 'app-cart',
   standalone: true,
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css'],
+  styleUrls: ['./cart.component.scss'],
   imports: [
     RouterModule,
     ShowingDetailsComponent,
@@ -37,7 +37,7 @@ export default class CartComponent {
   @Input() couponRate = 1;
   private reservedSeatsService = inject(ReservedSeatsService);
   private cartService = inject(CartStateService);
-  cart$ = inject(CartStateService).cart$;
+  cart$ = this.cartService.cart$;
   routerUrl = inject(Router).url;
   userID = inject(UserStateService).getUserID();
   cartPrices$ = this.cartService.cartPrices$;
@@ -47,13 +47,13 @@ export default class CartComponent {
   }
 
   onRemoveFromCart(
-    ticketId: string,
+    ticketID: string,
     row: string,
     column: number,
     showingID: number,
     userID: number
   ) {
-    this.cartService.removeFromCart(ticketId, userID);
+    this.cartService.removeFromCart(ticketID, userID);
     this.reservedSeatsService.removeSeat(row, column, showingID);
   }
 }

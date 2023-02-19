@@ -40,7 +40,7 @@ const routes: Routes = [
         component: CheckoutComponent,
       },
       {
-        path: 'platnosc',
+        path: 'payment',
         component: PaymentComponent,
         canActivate: [DirectAccessGuard],
       },

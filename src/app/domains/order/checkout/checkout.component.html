@@ -1,77 +1,65 @@
-<app-cart [couponRate]="checkoutCouponRate"></app-cart>
+<app-cart></app-cart>
 
 <form [formGroup]="checkoutForm" (ngSubmit)="sendForm()">
   <fieldset>
     <mat-form-field class="full-width">
       <mat-label>Imię</mat-label>
       <input matInput formControlName="firstName" />
-      <mat-error *ngIf="checkoutForm.controls.firstName.hasError('required')">
+      <mat-error *ngIf="firstNameCtrl.hasError('required')">
         Imię jest wymaganym polem </mat-error
-      ><mat-error *ngIf="checkoutForm.controls.firstName.hasError('minlength')">
+      ><mat-error *ngIf="firstNameCtrl.hasError('minlength')">
         Imię musi się składać z minimum
-        {{
-          checkoutForm.controls.firstName.errors!["minlength"]["requiredLength"]
-        }}
+        {{ firstNameCtrl.errors!["minlength"]["requiredLength"] }}
         znaków
       </mat-error> </mat-form-field
-    ><mat-form-field class="full-width">
+    ><mat-form-field>
       <mat-label>Nazwisko</mat-label
-      ><input matInput formControlName="lastName" /><mat-error
-        *ngIf="checkoutForm.controls.lastName.hasError('required')"
-      >
+      ><input
+        appNumbersOnly
+        [inputLength]="9"
+        matInput
+        formControlName="lastName"
+      /><mat-error *ngIf="lastNameCtrl.hasError('required')">
         Nazwisko jest wymaganym polem
       </mat-error>
-      <mat-error *ngIf="checkoutForm.controls.lastName.hasError('minlength')">
+      <mat-error *ngIf="lastNameCtrl.hasError('minlength')">
         Nazwisko musi się składać z minimum
-        {{
-          checkoutForm.controls.lastName.errors!["minlength"]["requiredLength"]
-        }}
+        {{ lastNameCtrl.errors!["minlength"]["requiredLength"] }}
         znaków
       </mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Numer Telefonu</mat-label>
       <input type="tel" matInput formControlName="phoneNumber" /><mat-error
-        *ngIf="checkoutForm.controls.phoneNumber.hasError('required')"
+        *ngIf="phoneNumberCtrl.hasError('required')"
       >
         Numer telefonu jest wymaganym polem </mat-error
-      ><mat-error *ngIf="checkoutForm.controls.phoneNumber.hasError('pattern')">
+      ><mat-error *ngIf="phoneNumberCtrl.hasError('pattern')">
         Numer telefonu musi się składać z 9 cyfr
       </mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Adres email</mat-label>
       <input type="email" matInput formControlName="email" /><mat-error
-        *ngIf="checkoutForm.controls.email.hasError('required')"
+        *ngIf="emailCtrl.hasError('required')"
       >
         Email jest wymaganym polem
       </mat-error>
-      <mat-error *ngIf="checkoutForm.controls.email.hasError('pattern')">
+      <mat-error *ngIf="emailCtrl.hasError('emailPattern')">
         Niewłaściwy format adresu email
-      </mat-error></mat-form-field
+      </mat-error> </mat-form-field
     ><mat-form-field>
       <mat-label>Potwierdź adres email</mat-label>
       <input type="email" matInput formControlName="confirmEmail" />
-      <mat-error
-        *ngIf="checkoutForm.controls.confirmEmail.hasError('required')"
-      >
-        Potwierdzenie email jest wymaganym polem </mat-error
-      ><mat-error
-        *ngIf="
-          checkoutForm.controls.confirmEmail.errors &&
-          checkoutForm.controls.confirmEmail.errors['pattern']
-        "
-      >
-        Niewłaściwy format adresu email
-      </mat-error>
-      <mat-error
-        *ngIf="
-          checkoutForm.controls.confirmEmail.errors &&
-          !checkoutForm.controls.confirmEmail.errors['required'] &&
-          !checkoutForm.controls.confirmEmail.errors['pattern']
-        "
-      >
-        Adresy email nie są zgodne
+      <mat-error *ngIf="confirmEmailCtrl.errors" class="confirm-email-errors">
+        <span *ngIf="confirmEmailCtrl.hasError('required')">
+          {{ confirmEmailErrorMessages["required"] }}</span
+        >
+        <span *ngIf="confirmEmailCtrl.hasError('emailPattern')">
+          {{ confirmEmailErrorMessages["pattern"] }}</span
+        ><span *ngIf="confirmEmailCtrl.hasError('notMatch')">
+          {{ confirmEmailErrorMessages["notMatch"] }}</span
+        >
       </mat-error>
     </mat-form-field>
 
@@ -86,13 +74,9 @@
       <mat-label>Kod zniżkowy</mat-label>
       <input matInput formControlName="couponCode" />
 
-      <mat-error *ngIf="checkoutForm.controls.couponCode.hasError('minlength')">
+      <mat-error *ngIf="couponCodeCtrl.hasError('minlength')">
         Kod musi składać się z co najmniej
-        {{
-          checkoutForm.controls.couponCode.errors!["minlength"][
-            "requiredLength"
-          ]
-        }}
+        {{ couponCodeCtrl.errors!["minlength"]["requiredLength"] }}
         znaków
       </mat-error>
       <mat-error
@@ -112,8 +96,10 @@
           couponCodeCtrl.value
         "
         >Zastosowano żniżkę</mat-hint
-      >
-    </mat-form-field>
+      > </mat-form-field
+    ><button type="button" mat-raised-button color="primary">
+      Zastosuj kod
+    </button>
 
     <button [disabled]="!checkoutForm.valid" mat-raised-button color="primary">
       Zamawiam

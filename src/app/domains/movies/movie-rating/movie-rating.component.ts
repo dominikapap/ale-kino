@@ -4,6 +4,7 @@ import {
   Component,
   inject,
   Input,
+  OnInit,
 } from '@angular/core';
 import {
   FormControl,
@@ -13,9 +14,8 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
-import { AuthStateService } from 'src/app/auth';
-import { AveragePipe } from 'src/app/shared/pipes';
-import { UserStateService } from '../../../core/user.state.service';
+import { AuthStateService, UserStateService } from 'src/app/auth';
+import { AveragePipe } from 'src/app/shared';
 import { MovieRatingStateService } from './movie-rating.state.service';
 
 type RatingForm = FormGroup<{
@@ -26,7 +26,7 @@ type RatingForm = FormGroup<{
   selector: 'app-movie-rating',
   standalone: true,
   templateUrl: './movie-rating.component.html',
-  styleUrls: ['./movie-rating.component.css'],
+  styleUrls: ['./movie-rating.component.scss'],
   imports: [
     ReactiveFormsModule,
     MatButtonModule,
@@ -37,18 +37,16 @@ type RatingForm = FormGroup<{
   providers: [MovieRatingStateService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MovieRatingComponent {
+export class MovieRatingComponent implements OnInit {
   @Input() movieId = 0;
   private builder = inject(NonNullableFormBuilder);
   auth$ = inject(AuthStateService).auth$;
-  showRatingForm = false;
+  movieRatingStateService = inject(MovieRatingStateService);
+  ratingList$ = inject(MovieRatingStateService).movieRatingList$;
+  userID = inject(UserStateService).getUserID();
   ratingForm = this.createMovieRatingForm();
   showThankYou = false;
-  movieRatingStateService = inject(MovieRatingStateService);
-  userStateService = inject(UserStateService);
-  userID = this.userStateService.getUserID();
-  rating$ = inject(MovieRatingStateService).movieRating$;
-  ratingList$ = inject(MovieRatingStateService).movieRatingList$;
+  showRatingForm = false;
 
   ngOnInit() {
     this.movieRatingStateService.getMovieRatings(this.movieId);
@@ -68,14 +66,14 @@ export class MovieRatingComponent {
     this.showThankYouForm();
   }
 
-  hideRatingForm() {
+  private hideRatingForm() {
     this.showRatingForm = !this.showRatingForm;
   }
-  showThankYouForm() {
+  private showThankYouForm() {
     this.showThankYou = true;
   }
 
-  createMovieRatingForm(): RatingForm {
+  private createMovieRatingForm(): RatingForm {
     const ratingForm = this.builder.group({
       rating: this.builder.control(0),
     });

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   CanActivate,
   Router,
@@ -11,7 +11,8 @@ import {
   providedIn: 'root',
 })
 export class DirectAccessGuard implements CanActivate {
-  constructor(private router: Router) {}
+  private router = inject(Router);
+
   canActivate(
     _activatedRouteSnapshot: ActivatedRouteSnapshot,
     _routerStateSnapshot: RouterStateSnapshot

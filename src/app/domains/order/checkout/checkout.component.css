@@ -67,3 +67,7 @@ fieldset {
 .mat-mdc-form-field {
   width: min(500px, 100%);
 }
+
+.confirm-email-errors span:not(:first-child) {
+  display: none;
+}

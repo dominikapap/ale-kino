@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, tap } from 'rxjs';
-import { UserStateService } from 'src/app/core/user.state.service';
-import { CartStateService, TD2 } from '../cart/cart.state.service';
+import { UserStateService } from 'src/app/auth/user.state.service';
+import {
+  CartStateService,
+  TicketInCartDetails,
+} from '../cart/cart.state.service';
 import { v4 as createUuidv4 } from 'uuid';
 
 export interface BookedSeat {
@@ -42,7 +45,7 @@ export class BookedSeatsStateService {
       )
       .subscribe();
   }
-  bookSeat(ticket: TD2, orderID: string, date: string) {
+  bookSeat(ticket: TicketInCartDetails, orderID: string, date: string) {
     this.http
       .post<BookedSeat>('/bookedSeats', {
         rowSeat: ticket.rowSeat,

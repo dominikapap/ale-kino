@@ -1,8 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { BehaviorSubject, map, tap } from 'rxjs';
 import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 
+interface ShowingDetails {
+  id: number;
+  movieTitle: string;
+  date: string;
+  timeFrom: string;
+}
 @Injectable({
   providedIn: 'root',
 })

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DatesService } from '../services/dates.service';
 import { ShowingsStateService } from './showings.state.service';
 
@@ -16,7 +16,7 @@ export interface Repertoire {
 @Component({
   selector: 'app-showings',
   templateUrl: './showings.component.html',
-  styleUrls: ['./showings.component.css'],
+  styleUrls: ['./showings.component.scss'],
   providers: [ShowingsStateService],
 })
 export class ShowingsComponent implements OnInit {
@@ -33,7 +33,6 @@ export class ShowingsComponent implements OnInit {
     } else {
       this.router.navigate(['repertoire', this.currDay]);
     }
-    // this.fetchShowings(this.currDay);
   }
   fetchShowings(date: string) {
     this.router.navigate(['repertoire', date]);

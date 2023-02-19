@@ -4,3 +4,12 @@ button {
 form {
   margin-top: 1rem;
 }
+:host,
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+:host > * {
+  margin-top: 1rem;
+}

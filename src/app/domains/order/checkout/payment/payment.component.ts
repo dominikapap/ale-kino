@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CartStateService } from '../../cart/cart.state.service';
 import { BookedSeatsStateService } from '../../services/booked-seats.state.service';
 import { v4 as createUuidv4 } from 'uuid';
@@ -19,10 +19,13 @@ export class PaymentComponent {
   private builder = inject(NonNullableFormBuilder);
   private cartValue = inject(CartStateService).cartValue;
   private datesService = inject(DatesService);
-  private router = inject(Router);
   private bookedSeatsService = inject(BookedSeatsStateService);
   private orderApiService = inject(OrderApiService);
   private checkoutUserDataService = inject(CheckoutUserDataStateService);
+  private couponRateService = inject(CouponRateService);
+  private cartService = inject(CartStateService);
+  cartPrices$ = this.cartService.cartPrices$;
+  couponRate$ = this.couponRateService.couponRate$;
   readonly INPUT_LENGTH = 6;
   orderID = createUuidv4();
   notPaid = true;
@@ -33,9 +36,6 @@ export class PaymentComponent {
     }),
   });
 
-  navigateToSummary() {
-    this.router.navigate(['/tickets/', this.orderID]);
-  }
   onSubmit() {
     this.blikForm.markAllAsTouched();
     if (this.blikForm.valid) {
@@ -48,9 +48,10 @@ export class PaymentComponent {
         currDay,
         this.checkoutUserDataService.checkoutUserDataValues
       );
+      this.couponRateService.updateWasUsed();
       this.notPaid = false;
     } else {
-      alert('Podaj prawidłowy kod blik');
+      alert('Podaj prawidłowy kod BLIK');
     }
   }
 }

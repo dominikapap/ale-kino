@@ -13,47 +13,21 @@ export interface Coupon {
 })
 export class CouponRateService {
   private http = inject(HttpClient);
-  private couponRate$$ = new BehaviorSubject<{ couponRate: number }>({
+  private couponRate$$ = new BehaviorSubject<{
+    couponRate: number;
+    id: number;
+  }>({
     couponRate: 1,
+    id: 0,
   });
 
   get couponRate$() {
     return this.couponRate$$.asObservable();
   }
-  // get couponCodes$() {
-  //   return this.coupons$$
-  //     .asObservable()
-  //     .pipe(map((item) => item.map((el) => el.code)));
-  // }
 
-  // get couponValue() {
-  //   return this.coupons$$.value;
-  // }
-  // get couponCodes() {
-  //   return this.coupons$$.value.map((coupon) => coupon.code);
-  // }
-
-  constructor() {
-    // this.fetchCoupons();
+  get couponId() {
+    return this.couponRate$$.value.id;
   }
-
-  // fetchCoupons() {
-  //   return this.http
-  //     .get<Coupon[]>('/coupons')
-  //     .pipe(
-  //       tap({
-  //         next: (result) => {
-  //           this.coupons$$.next(result);
-  //         },
-  //       })
-  //     )
-  //     .subscribe();
-  // }
-  // fetchCouponsCodes(): Observable<string[]> {
-  //   return this.http
-  //     .get<Coupon[]>('/coupons')
-  //     .pipe(map((item) => item.map(({ code }) => code)));
-  // }
 
   checkIfCouponValid(couponCode: string) {
     return this.http
@@ -66,21 +40,28 @@ export class CouponRateService {
       return this.http
         .get<Coupon[]>(`/coupons?code=${coupon}`)
         .pipe(
-          map((code) => code[0].couponRate),
+          map((code) => code[0]),
           tap({
-            next: (result) => this.couponRate$$.next({ couponRate: result }),
+            next: (result) =>
+              this.couponRate$$.next({
+                couponRate: result.couponRate,
+                id: result.id,
+              }),
           })
         )
         .subscribe();
     } else {
-      return this.couponRate$$.next({ couponRate: 1 });
+      return this.couponRate$$.next({ couponRate: 1, id: 0 });
     }
   }
-  updateWasUsed(id: number) {
-    this.http
-      .patch<Coupon>(`/coupons/${id}`, {
-        wasUsed: true,
-      })
-      .subscribe();
+
+  updateWasUsed() {
+    if (this.couponId) {
+      this.http
+        .patch<Coupon>(`/coupons/${this.couponId}`, {
+          wasUsed: true,
+        })
+        .subscribe();
+    }
   }
 }

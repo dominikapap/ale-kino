@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { hasAuthGuard } from './auth/has-auth-guard.guard';
-import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
-import { ShowingsComponent } from './domains/movies/showings/showings.component';
-import { ConfirmationComponent } from './domains/order/confirmation/confirmation.component';
-import { TicketsComponent } from './domains/order/tickets/tickets.component';
-import { SettingsComponent } from './domains/user/settings/settings.component';
-import { WatchListComponent } from './domains/user/watch-list';
+import { hasAuthGuard } from './auth';
+import { PageNotFoundComponent } from './core';
+import { ShowingsComponent } from './domains/movies';
+import { TicketsComponent } from './domains/order';
+import { SettingsComponent, WatchListComponent } from './domains/user/';
 import { DirectAccessGuard } from './shared/guards/direct-access.guard';
-import { ShellComponent } from './shell/shell.component';
+import { ShellComponent } from './shell/';
 
 export const routes: Routes = [
   {
@@ -23,15 +21,15 @@ export const routes: Routes = [
           { path: 'repertoire/:date', component: ShowingsComponent },
 
           {
-            path: 'logowanie',
-            loadChildren: () => import('./auth/login.module'),
+            path: 'login',
+            loadChildren: () => import('./auth/login/login.module'),
           },
           {
-            path: 'kup-bilet/:id',
+            path: 'showing/:id',
             component: TicketsComponent,
           },
           {
-            path: 'ustawienia',
+            path: 'settings',
             component: SettingsComponent,
             canActivate: [hasAuthGuard],
           },
@@ -42,21 +40,17 @@ export const routes: Routes = [
             canActivate: [hasAuthGuard],
           },
           {
-            path: 'koszyk',
+            path: 'cart',
             loadComponent: () => import('./domains/order/cart/cart.component'),
           },
           {
-            path: 'zamowienie',
+            path: 'checkout',
             loadChildren: () =>
               import('./domains/order/checkout/checkout.module'),
             canActivate: [DirectAccessGuard],
           },
           {
-            path: 'potwierdzenie',
-            component: ConfirmationComponent,
-          },
-          {
-            path: 'do-obejrzenia',
+            path: 'watchlist',
             component: WatchListComponent,
             canActivate: [hasAuthGuard],
           },

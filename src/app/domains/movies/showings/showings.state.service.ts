@@ -27,25 +27,27 @@ export class ShowingsStateService {
         )
         .subscribe({
           next: (response) => {
-            let transformedShowings = [];
-            transformedShowings = this.transformShowings(response);
-            this.showings$$.next(transformedShowings);
+            this.updateShowingsState(response);
           },
           error: (e) => console.log(e),
         });
     } else {
       this.http.get<Repertoire[]>(`/showings?date=${date}`).subscribe({
         next: (response) => {
-          let transformedShowings = [];
-          transformedShowings = this.transformShowings(response);
-          this.showings$$.next(transformedShowings);
+          this.updateShowingsState(response);
         },
         error: (e) => console.log(e),
       });
     }
   }
 
-  transformShowings(list: any[]) {
+  private updateShowingsState(showings: Repertoire[]) {
+    let transformedShowings = [];
+    transformedShowings = this.transformShowings(showings);
+    this.showings$$.next(transformedShowings);
+  }
+
+  private transformShowings(list: any[]) {
     return list.reduce((acc, current) => {
       const existingMovie = acc.find(
         (movie: any) => movie.movieId === current.movieId
@@ -70,21 +72,5 @@ export class ShowingsStateService {
       }
       return acc;
     }, []);
-  }
-
-  filterByHour(showings: Repertoire[]) {
-    const currentDate = new Date();
-    const currentHour = currentDate.getHours();
-    const currentMinute = currentDate.getMinutes();
-    const filteredList = showings.map((item) => {
-      const filteredShowings = item.showings.filter((showing) => {
-        const [hour, minute] = showing.timeFrom.split(':').map(Number);
-        return (
-          hour > currentHour || (hour === currentHour && minute > currentMinute)
-        );
-      });
-      return { ...item, showings: filteredShowings };
-    });
-    showings = filteredList;
   }
 }

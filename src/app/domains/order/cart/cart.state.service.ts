@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject, map, Observable, reduce, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { v4 as createUuidv4 } from 'uuid';
 
 export interface TicketDetails {
@@ -14,24 +13,17 @@ export interface TicketDetails {
   id: string;
 }
 
-export type TD2 = {
-  ticketTypeName: string;
-  ticketPrice: number;
-  rowSeat: string;
-  columnSeat: number;
-  userID: number;
-  showingId: number;
-  id: string;
+export interface TicketInCartDetails extends TicketDetails {
   inCart: boolean;
-  timestamp: number;
-};
+  timestamp: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartStateService {
   private http = inject(HttpClient);
-  private cart$$ = new BehaviorSubject<TD2[]>([]);
+  private cart$$ = new BehaviorSubject<TicketInCartDetails[]>([]);
 
   get cart$() {
     return this.cart$$.asObservable();
@@ -39,9 +31,6 @@ export class CartStateService {
 
   get cartValue() {
     return this.cart$$.value;
-  }
-  get cartItemsQuantity() {
-    return this.cart$$.value.length;
   }
 
   get cartPrices$(): Observable<number> {
@@ -52,69 +41,30 @@ export class CartStateService {
     );
   }
 
-  addToCart(ticketList: TD2[], userID: number) {
-    // eslint-disable-next-line prefer-const
-
+  addToCart(ticketList: TicketDetails[], userID: number) {
+    const timestamp = new Date().toISOString();
     if (userID) {
-      return ticketList.forEach((element) => {
-        console.log('checking every element');
-        if (this.cart$$.value.find((item) => item.id === element.id)) {
-          return;
-        } else {
-          this.http
-            .post<TD2>(`/cart`, {
-              ticketTypeName: element.ticketTypeName,
-              ticketPrice: element.ticketPrice,
-              rowSeat: element.rowSeat,
-              columnSeat: element.columnSeat,
-              userID: element.userID,
-              showingId: element.showingId,
-              id: createUuidv4(),
-              inCart: true,
-              timestamp: element.timestamp,
-            })
-            .pipe(
-              tap({
-                next: (response) => {
-                  this.cart$$.next([...this.cart$$.value, response]);
-                },
-              })
-            )
-            .subscribe();
-        }
-      });
+      this.addToCartAsUser(ticketList, timestamp);
     } else {
-      const guestTickets: TD2[] = [];
-      ticketList.forEach((element) => {
-        guestTickets.push({
-          ticketTypeName: element.ticketTypeName,
-          ticketPrice: element.ticketPrice,
-          rowSeat: element.rowSeat,
-          columnSeat: element.columnSeat,
-          userID: -1,
-          showingId: element.showingId,
-          id: createUuidv4(),
-          inCart: element.inCart,
-          timestamp: element.timestamp,
-        });
-      });
-
-      localStorage.setItem('guestTickets', JSON.stringify(guestTickets));
-      this.cart$$.next([...this.cart$$.value, ...guestTickets]);
-      return;
+      this.addToCartAsGuest(ticketList, timestamp);
     }
   }
 
   getCart(userID: number) {
-    this.cart$$.next([]);
+    const now = new Date();
+    now.setMinutes(now.getMinutes() - 15);
+
     const guestTickets = localStorage.getItem('guestTickets');
+
     if (guestTickets) {
-      this.cart$$.next(JSON.parse(guestTickets));
+      this.getTicketsFromLS(guestTickets, now);
     }
 
     if (userID) {
       return this.http
-        .get<TD2[]>(`/cart?userId=${userID}`)
+        .get<TicketInCartDetails[]>(
+          `/cart?userId=${userID}&timestamp_gte=${now.toISOString()}`
+        )
         .pipe(
           tap({
             next: (result) => {
@@ -128,15 +78,15 @@ export class CartStateService {
     return;
   }
 
-  removeFromCart(ticketId: number | string, userID: number) {
+  removeFromCart(ticketID: number | string, userID: number) {
     if (userID > 0) {
       return this.http
-        .delete<TicketDetails[]>(`/cart/${ticketId}`)
+        .delete<TicketDetails[]>(`/cart/${ticketID}`)
         .pipe(
           tap({
             next: () => {
               this.cart$$.next(
-                this.cart$$.value.filter((item) => item.id !== ticketId)
+                this.cart$$.value.filter((item) => item.id !== ticketID)
               );
             },
           })
@@ -144,11 +94,11 @@ export class CartStateService {
         .subscribe();
     } else {
       this.cart$$.next(
-        this.cart$$.value.filter((item) => item.id !== ticketId)
+        this.cart$$.value.filter((item) => item.id !== ticketID)
       );
       localStorage.setItem(
         'guestTickets',
-        JSON.stringify(this.cart$$.value.filter((item) => item.userID > 0))
+        JSON.stringify(this.cart$$.value.filter((item) => item.userID < 0)) //remove tickets added with a role User
       );
       return;
     }
@@ -158,25 +108,111 @@ export class CartStateService {
     return this.cart$$.next([]);
   }
 
-  updateTicket(ticketID: string, ticketTypeName: string, ticketPrice: number) {
-    this.http
-      .patch(`/cart/${ticketID}`, {
-        ticketTypeName,
-        ticketPrice,
-      })
-      .pipe(
-        tap({
-          next: () => {
-            const ticketIndex = this.cart$$.value.findIndex(
-              (ticket) => ticket.id === ticketID
-            );
-            if (ticketIndex !== -1) {
-              this.cart$$.value[ticketIndex].ticketPrice = ticketPrice;
-              this.cart$$.value[ticketIndex].ticketTypeName = ticketTypeName;
-            }
-          },
+  updateTicket(
+    ticketID: string,
+    ticketTypeName: string,
+    ticketPrice: number,
+    userID: number
+  ) {
+    if (userID > 0) {
+      this.http
+        .patch(`/cart/${ticketID}`, {
+          ticketTypeName,
+          ticketPrice,
         })
+        .pipe(
+          tap({
+            next: () => {
+              const ticketIndex = this.getTicketIndexinCart(ticketID);
+              if (ticketIndex !== -1) {
+                this.updateTypeAndPrice(
+                  ticketIndex,
+                  ticketPrice,
+                  ticketTypeName
+                );
+              }
+            },
+          })
+        )
+        .subscribe();
+    } else {
+      const ticketIndex = this.getTicketIndexinCart(ticketID);
+      if (ticketIndex !== -1) {
+        this.updateTypeAndPrice(ticketIndex, ticketPrice, ticketTypeName);
+        localStorage.setItem('guestTickets', JSON.stringify(this.cart$$.value));
+      }
+    }
+  }
+
+  private addToCartAsUser(ticketList: TicketDetails[], timestamp: string) {
+    return ticketList.forEach((ticket) => {
+      if (this.cart$$.value.find((item) => item.id === ticket.id)) {
+        return;
+      } else {
+        this.http
+          .post<TicketInCartDetails>(`/cart`, {
+            ticketTypeName: ticket.ticketTypeName,
+            ticketPrice: ticket.ticketPrice,
+            rowSeat: ticket.rowSeat,
+            columnSeat: ticket.columnSeat,
+            userID: ticket.userID,
+            showingId: ticket.showingId,
+            id: createUuidv4(),
+            inCart: true,
+            timestamp,
+          })
+          .pipe(
+            tap({
+              next: (response) => {
+                this.cart$$.next([...this.cart$$.value, response]);
+              },
+            })
+          )
+          .subscribe();
+      }
+    });
+  }
+
+  private addToCartAsGuest(ticketList: TicketDetails[], timestamp: string) {
+    const guestTickets: TicketInCartDetails[] = [];
+    ticketList.forEach((ticket) => {
+      guestTickets.push({
+        ticketTypeName: ticket.ticketTypeName,
+        ticketPrice: ticket.ticketPrice,
+        rowSeat: ticket.rowSeat,
+        columnSeat: ticket.columnSeat,
+        userID: -1,
+        showingId: ticket.showingId,
+        id: createUuidv4(),
+        inCart: true,
+        timestamp: timestamp,
+      });
+    });
+
+    localStorage.setItem('guestTickets', JSON.stringify(guestTickets));
+    this.cart$$.next([...this.cart$$.value, ...guestTickets]);
+    return;
+  }
+
+  private getTicketsFromLS(guestTickets: string, now: Date) {
+    this.cart$$.next(JSON.parse(guestTickets));
+    this.cart$$.next(
+      this.cart$$.value.filter(
+        (cartItem) => cartItem.timestamp > now.toISOString()
       )
-      .subscribe();
+    );
+  }
+
+  private getTicketIndexinCart(ticketID: string) {
+    return this.cart$$.value.findIndex((ticket) => ticket.id === ticketID);
+  }
+
+  private updateTypeAndPrice(
+    ticketIndex: number,
+    ticketPrice: number,
+    ticketTypeName: string
+  ) {
+    this.cart$$.value[ticketIndex].ticketPrice = ticketPrice;
+    this.cart$$.value[ticketIndex].ticketTypeName = ticketTypeName;
   }
 }

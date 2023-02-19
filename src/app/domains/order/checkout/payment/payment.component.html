@@ -4,17 +4,18 @@
 />
 
 <ng-container *ngIf="notPaid">
-  <span>Kod powinien składać się z {{ INPUT_LENGTH }} cyfr</span>
+  <div>
+    <p>Kod powinien składać się z {{ INPUT_LENGTH }} cyfr</p>
+  </div>
 
   <form [formGroup]="blikForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="example-full-width">
+    <mat-form-field>
       <input
         appNumbersOnly
         [inputLength]="INPUT_LENGTH"
         type="text"
         matInput
         formControlName="blikNum"
-        ng-pattern="^\d{1,6}$"
       />
       />
 
@@ -26,7 +27,20 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-raised-button color="primary">Płacę</button>
+    <button mat-raised-button color="primary">
+      Płacę
+      <ng-container *ngIf="cartPrices$ | async as cartPrices">
+        <ng-container *ngIf="couponRate$ | async as couponRate">
+          <span
+            appMultiply
+            [multiplyBy]="couponRate.couponRate"
+            [valueToMultiply]="cartPrices"
+            >{{ cartPrices | number : "1.2-2" }}</span
+          >
+          PLN
+        </ng-container>
+      </ng-container>
+    </button>
   </form>
 </ng-container>
 <ng-container *ngIf="!notPaid">

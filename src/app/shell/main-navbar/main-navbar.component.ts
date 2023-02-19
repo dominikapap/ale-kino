@@ -4,7 +4,7 @@ import {
   inject,
   OnInit,
 } from '@angular/core';
-import { UserStateService } from 'src/app/core/user.state.service';
+import { UserStateService } from 'src/app/auth/user.state.service';
 import { AuthStateService } from '../../auth';
 import { CartStateService } from '../../domains/order/cart/cart.state.service';
 
@@ -14,14 +14,14 @@ import { CartStateService } from '../../domains/order/cart/cart.state.service';
     <div class="brand-name"><p routerLink="">Ale kino!</p></div>
     <div class="nav-buttons">
       <ng-template #zaloguj>
-        <a mat-raised-button color="primary" routerLink="logowanie">Zaloguj</a>
+        <a mat-raised-button color="primary" routerLink="login">Zaloguj</a>
       </ng-template>
 
       <a
         class="btn cart-btn"
         mat-raised-button
         color="primary"
-        routerLink="koszyk"
+        routerLink="cart"
         ><mat-icon>add_shopping_cart</mat-icon>
         <ng-container *ngIf="cart$ | async as cart"
           ><sup *ngIf="cart.length > 0">{{ cart.length }} </sup></ng-container
@@ -37,7 +37,7 @@ import { CartStateService } from '../../domains/order/cart/cart.state.service';
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="user-tickets">Moje bilety</button>
           <button mat-menu-item>Ustawienia</button>
-          <a mat-menu-item routerLink="do-obejrzenia">Watchlist</a>
+          <a mat-menu-item routerLink="watchlist">Watchlist</a>
           <button mat-menu-item (click)="onLogout()">Wyloguj</button>
         </mat-menu>
       </ng-container>

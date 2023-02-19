@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../core/User.interface';
-import { UserStateService } from '../core/user.state.service';
+import { BehaviorSubject } from 'rxjs';
+import { User } from './User.interface';
+import { UserStateService } from './user.state.service';
 import { CartStateService } from '../domains/order/cart/cart.state.service';
 
 @Injectable({
@@ -49,7 +49,7 @@ export class AuthStateService {
     this.auth$$.next({ ...this.auth$$.value, hasAuth: true });
     this.userStateService.updateUser(user);
     localStorage.setItem('userID', user.userID.toString());
-    this.router.navigate(['']); //todo change to navigate to page visited before login
+    this.router.navigate(['']);
   }
 
   logout() {
@@ -66,19 +66,13 @@ export class AuthStateService {
     alert('wylogowano');
   }
 
-  // checkIfHasAuth() {
-  //   let authState;
-  //   this.auth$.subscribe((result) => (authState = result.hasAuth));
-  //   return authState;
-  // }
-
-  setStateFromLocalStorage() {
-    // naive checking with userID
+  private setStateFromLocalStorage() {
+    // checking with userID
     const userIDFromLS = localStorage.getItem('userID');
     if (userIDFromLS !== null) {
       this.userStateService.fetchUser(parseInt(userIDFromLS));
       this.auth$$.next({ hasAuth: true });
+      this.cartService.getCart(parseInt(userIDFromLS));
     }
-    this.cartService.getCart(parseInt(userIDFromLS!));
   }
 }

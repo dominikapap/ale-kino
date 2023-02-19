@@ -4,11 +4,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthStateService } from 'src/app/auth';
-
-import { MovieDetails } from 'src/app/domains/movies/movie-details/MovieDetails';
-import { WatchListService } from '../../user/watch-list';
+import { WatchListService } from '../../user';
 import { MovieRatingComponent } from '../movie-rating/movie-rating.component';
 import { MovieDetailsService } from './movie-details.service';
+import { MovieDetails } from './MovieDetails.interface';
 
 @Component({
   selector: 'app-movie-details[movieId]',
@@ -39,6 +38,6 @@ export default class MovieDetailsComponent {
     this.watchlistService.addToWatchlist(movieTitle, movieID);
   }
   navigateToWatchlist() {
-    this.router.navigate(['do-obejrzenia']);
+    this.router.navigate(['watchlist']);
   }
 }

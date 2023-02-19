@@ -5,33 +5,18 @@ import { Injectable } from '@angular/core';
 })
 export class DatesService {
   getCurrentWeek() {
-    const curr = new Date();
+    const today = new Date();
     const week = [];
 
     for (let i = 1; i <= 7; i++) {
-      const first = curr.getDate() - curr.getDay() + i;
-      const day = new Date(curr.setDate(first)).toISOString().slice(0, 10);
+      const first = today.getDate() - today.getDay() + i;
+      const day = new Date(today.setDate(first)).toISOString().slice(0, 10);
       week.push(day);
     }
     return week;
   }
   getCurrentDay() {
-    const curr = new Date();
-    return curr.toISOString().slice(0, 10);
+    const today = new Date();
+    return today.toISOString().slice(0, 10);
   }
-
-  // checkIfHourPassed(hour: string) {
-  //   const now = new Date();
-  //   if (parseInt(hour.split(':')[0]) < now.getHours()) {
-  //     return false;
-  //   } else if (parseInt(hour.split(':')[0]) == now.getHours()) {
-  //     if (parseInt(hour.split(':')[1]) > now.getMinutes()) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   } else {
-  //     return true;
-  //   }
-  // }
 }

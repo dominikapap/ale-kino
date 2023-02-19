@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, tap } from 'rxjs';
-import { AuthStateService } from '../auth';
 import { User } from './User.interface';
 
 @Injectable({

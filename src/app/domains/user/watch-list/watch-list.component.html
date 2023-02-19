@@ -1,19 +1,20 @@
 <h1>Lista filmów do obejrzenia</h1>
-<!-- <div *ngIf="watchlist.length === 0">
-  <p>Nie ma jeszcze dodanych filmów</p>
-</div> -->
-<ol>
-  <li *ngFor="let movieTitle of titles$ | async">
-    {{ movieTitle.title }}
-    <button
-      mat-raised-button
-      color="accent"
-      (click)="onRemoveFromWatchList(movieTitle.titleId)"
-    >
-      usuń
-    </button>
-  </li>
-</ol>
-<!-- <button [id]="title" (click)="removeFromWatchList(title)">
-      Usuń z listy
-    </button> -->
+<ng-container *ngIf="titles$ | async as titles">
+  <ng-container *ngIf="titles.length > 0; else watchlistEmpty">
+    <ol>
+      <li *ngFor="let movieTitle of titles">
+        {{ movieTitle.title }}
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="onRemoveFromWatchList(movieTitle.titleId)"
+        >
+          usuń
+        </button>
+      </li>
+    </ol></ng-container
+  >
+</ng-container>
+<ng-template #watchlistEmpty>
+  <p>Brak filmów na liście do obejrzenia</p>
+</ng-template>

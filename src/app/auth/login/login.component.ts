@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { CartStateService } from '../domains/order/cart/cart.state.service';
-import { AuthStateService } from './auth.state.service';
+import { CartStateService } from '../../domains/order/cart/cart.state.service';
+import { AuthStateService } from '../auth.state.service';
 
 @Component({
   selector: 'app-login',

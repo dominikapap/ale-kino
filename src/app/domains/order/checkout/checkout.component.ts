@@ -6,14 +6,15 @@ import {
 } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserStateService } from 'src/app/core/user.state.service';
-import { User } from 'src/app/core/User.interface';
+import { UserStateService } from 'src/app/auth/user.state.service';
+import { User } from 'src/app/auth/User.interface';
 
 import { confirmEmailValidator } from './confirmEmailValidator';
 import { CheckoutForm } from 'src/app/shared/interfaces/CheckoutForm';
 import { CouponRateService } from '../cart/coupon-rate.service';
 import { couponCodeValidator } from './couponCodeValidator';
 import { CheckoutUserDataStateService } from './checkout-user-data.state.service';
+import { emailValidator } from './emailValidator';
 
 @Component({
   selector: 'app-checkout',
@@ -28,10 +29,12 @@ export class CheckoutComponent implements OnInit {
   private checkoutUserDataStateService = inject(CheckoutUserDataStateService);
   user = inject(UserStateService).getUserInfo();
   checkoutForm = this.createCheckoutForm();
-  checkoutCouponRate = 1;
-
   couponCodes$ = this.couponRateService.couponRate$;
-  // values: string[] = [];
+  confirmEmailErrorMessages = {
+    required: 'Potwierdzenie email jest wymaganym polem',
+    pattern: 'Niewłaściwy format adresu email',
+    notMatch: 'Adresy email nie są zgodne',
+  };
 
   ngOnInit() {
     if (this.user.userID > 0) {
@@ -44,9 +47,25 @@ export class CheckoutComponent implements OnInit {
     return this.checkoutForm.controls;
   }
 
+  get firstNameCtrl() {
+    return this.checkoutForm.controls.firstName;
+  }
+  get lastNameCtrl() {
+    return this.checkoutForm.controls.lastName;
+  }
+  get phoneNumberCtrl() {
+    return this.checkoutForm.controls.phoneNumber;
+  }
+  get emailCtrl() {
+    return this.checkoutForm.controls.email;
+  }
+  get confirmEmailCtrl() {
+    return this.checkoutForm.controls.confirmEmail;
+  }
   get couponCodeCtrl() {
     return this.checkoutForm.controls.couponCode;
   }
+
   fillForm(user: User) {
     this.checkoutFormCtrls.firstName.setValue(user.firstName);
     this.checkoutFormCtrls.lastName.setValue(user.lastName);
@@ -63,7 +82,7 @@ export class CheckoutComponent implements OnInit {
       this.checkoutUserDataStateService.updateUserDataState(
         this.checkoutForm.getRawValue()
       );
-      this.router.navigate(['zamowienie/platnosc']);
+      this.router.navigate(['checkout/payment']);
     }
   }
 
@@ -87,15 +106,12 @@ export class CheckoutComponent implements OnInit {
         validators: [Validators.required, Validators.pattern(/^\d{9}$/)],
       }),
       email: this.builder.control('', {
-        validators: [
-          Validators.required,
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
-        ],
+        validators: [Validators.required, emailValidator()],
       }),
       confirmEmail: this.builder.control('', {
         validators: [
           Validators.required,
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+          emailValidator(),
           confirmEmailValidator('email'),
         ],
       }),

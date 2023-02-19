@@ -7,12 +7,9 @@ import {
 } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { Observable } from 'rxjs';
 import { MultiplyByDirective } from 'src/app/shared/directives/multiply.directive';
-import { MultiplyPipe } from 'src/app/shared/pipes';
-import SumPipe from 'src/app/shared/pipes/sum.pipe';
 import { CartStateService } from '../cart.state.service';
-import { Coupon, CouponRateService } from '../coupon-rate.service';
+import { CouponRateService } from '../coupon-rate.service';
 
 @Component({
   selector: 'app-cart-price',
@@ -50,18 +47,16 @@ import { Coupon, CouponRateService } from '../coupon-rate.service';
       </ng-container>
 
       <a
-        *ngIf="routerUrl === '/koszyk'"
+        *ngIf="routerUrl === '/cart'"
         mat-raised-button
         color="primary"
-        routerLink="/zamowienie"
+        routerLink="/checkout"
         >Przejdź do zamówienia</a
       ></ng-container
     >
   `,
   styles: [],
   imports: [
-    MultiplyPipe,
-    SumPipe,
     NgClass,
     NgIf,
     AsyncPipe,
@@ -73,13 +68,7 @@ import { Coupon, CouponRateService } from '../coupon-rate.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartPriceComponent {
-  private cartService = inject(CartStateService);
-  cartPrices$ = this.cartService.cartPrices$;
+  cartPrices$ = inject(CartStateService).cartPrices$;
   couponRate$ = inject(CouponRateService).couponRate$;
-  couponRateService = inject(CouponRateService);
   routerUrl = inject(Router).url;
-
-  useCoupon(id: number) {
-    this.couponRateService.updateWasUsed(id);
-  }
 }

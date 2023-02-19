@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatest, map, of, switchMap } from 'rxjs';
-import { UserStateService } from '../../../core/user.state.service';
+import { UserStateService } from '../../../auth/user.state.service';
 interface WatchListItem {
   id: 1;
   userID: 168395;

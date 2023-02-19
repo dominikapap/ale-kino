@@ -1,11 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  inject,
-  OnInit,
-  QueryList,
-  ViewChildren,
-} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   FormArray,
   FormControl,
@@ -14,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserStateService } from 'src/app/core/user.state.service';
+import { UserStateService } from 'src/app/auth/user.state.service';
 import { ReservedSeatsService } from './reserved-seats.service';
 import { v4 as createUuidv4 } from 'uuid';
 import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
@@ -40,7 +33,6 @@ interface TicketForm {
   showingId: FormControl<number>;
   inCart: FormControl<boolean>;
   id: FormControl<string>;
-  timestamp: FormControl<number>;
 }
 
 @Component({
@@ -57,6 +49,7 @@ export class TicketsComponent implements OnInit {
   private userID = inject(UserStateService).getUserID();
   private router = inject(Router);
   private reservedSeatsService = inject(ReservedSeatsService);
+  cart$ = this.cartService.cart$;
   private readonly MAX_TICKETS_COUNT = 10;
   ticketPrices = {
     'Bilet normalny': 22,
@@ -120,12 +113,28 @@ export class TicketsComponent implements OnInit {
         this.ticketsForm.getRawValue().tickets,
         this.userService.getUserID()
       );
-      this.router.navigate(['/zamowienie']);
+      this.ticketsForm.controls.tickets.clear();
+
+      if (window.confirm('Czy chcesz przejść do zamówenia?')) {
+        this.router.navigate(['/checkout']);
+      }
     }
   }
 
-  updateTicket(ticketID: string, ticketTypeName: string, ticketPrice: number) {
-    this.cartService.updateTicket(ticketID, ticketTypeName, ticketPrice);
+  updateTicket(
+    ticketID: string,
+    ticketTypeName: string,
+    ticketPrice: number,
+    ticketUserID: number,
+    index: number
+  ) {
+    this.cartService.updateTicket(
+      ticketID,
+      ticketTypeName,
+      ticketPrice,
+      ticketUserID
+    );
+    this.ticketsForm.controls.tickets.at(index).markAsPristine();
   }
 
   private updateTotalPrice() {
@@ -150,8 +159,7 @@ export class TicketsComponent implements OnInit {
     id: string = createUuidv4(),
     ticketTypeName = 'Bilet normalny',
     ticketPrice = 22,
-    inCart = false,
-    timestamp = new Date().getTime()
+    inCart = false
   ) {
     return this.builder.group<TicketForm>({
       rowSeat: this.builder.control(row, Validators.required),
@@ -162,7 +170,6 @@ export class TicketsComponent implements OnInit {
       ticketTypeName: this.builder.control(ticketTypeName, Validators.required),
       ticketPrice: this.builder.control(ticketPrice, Validators.required),
       inCart: this.builder.control(inCart, Validators.required),
-      timestamp: this.builder.control(timestamp, Validators.required),
     });
   }
 
@@ -171,14 +178,14 @@ export class TicketsComponent implements OnInit {
       if (ticket.showingId === this.showingIdFromRoute) {
         this.ticketsForm.controls.tickets.push(
           this.createTicketsForm(
-            ticket.rowSeat!,
-            ticket.columnSeat!,
-            ticket.userID!,
-            ticket.showingId!,
-            ticket.id!,
-            ticket.ticketTypeName!,
-            ticket.ticketPrice!,
-            ticket.inCart!
+            ticket.rowSeat,
+            ticket.columnSeat,
+            ticket.userID,
+            ticket.showingId,
+            ticket.id,
+            ticket.ticketTypeName,
+            ticket.ticketPrice,
+            ticket.inCart
           )
         );
       }
