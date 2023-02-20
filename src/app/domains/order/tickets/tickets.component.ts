@@ -10,7 +10,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserStateService } from 'src/app/auth/user.state.service';
 import { ReservedSeatsService } from './reserved-seats.service';
 import { v4 as createUuidv4 } from 'uuid';
-import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 import { TicketType } from 'src/app/shared/interfaces/TicketType';
 import { CartStateService } from '../cart/cart.state.service';
 import { MovieApiService } from '../services/movieapi.service';
@@ -24,6 +23,9 @@ type PricesTypes =
   | 'Bilet rodzinny'
   | 'Voucher';
 
+type TicketPrices = {
+  [ticketName: string]: number;
+};
 interface TicketForm {
   ticketTypeName: FormControl<string>;
   ticketPrice: FormControl<number>;
@@ -51,26 +53,23 @@ export class TicketsComponent implements OnInit {
   private reservedSeatsService = inject(ReservedSeatsService);
   cart$ = this.cartService.cart$;
   private readonly MAX_TICKETS_COUNT = 10;
-  ticketPrices = {
-    'Bilet normalny': 22,
-    'Bilet ulgowy': 17,
-    'Bilet rodzinny': 18,
-    Voucher: 22,
-  };
-  showing: MovieShowing[] = [];
+  ticketPrices: TicketPrices = {};
   ticketsForm = this.createForm();
   ticketTypes: TicketType[] = [];
   showingIdFromRoute = Number(this.routeParams.get('id'));
   totalPrice = 0;
 
   ngOnInit(): void {
-    // przenieść subscribe do serwisu
     this.movieApiService.getMovieApiDataTicketTypes().subscribe({
-      next: (response) => {
-        this.ticketTypes = response;
+      next: (tickets) => {
+        this.ticketPrices = tickets.reduce((acc: TicketPrices, curr) => {
+          acc[curr.name] = curr.price;
+          return acc;
+        }, {});
+        this.ticketTypes = tickets;
       },
     });
-
+    this.cartService.getCart(this.userID);
     this.setTicketsFromCart();
   }
 

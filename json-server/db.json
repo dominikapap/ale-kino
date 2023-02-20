@@ -803,6 +803,34 @@
       "showingID": 18,
       "userID": -1,
       "id": "18F9"
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 7,
+      "showingID": 18,
+      "userID": -1,
+      "id": "18J7"
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 9,
+      "showingID": 18,
+      "userID": -1,
+      "id": "18J9"
+    },
+    {
+      "rowSeat": "D",
+      "columnSeat": 11,
+      "showingID": 18,
+      "userID": 168395,
+      "id": "18D11"
+    },
+    {
+      "rowSeat": "D",
+      "columnSeat": 12,
+      "showingID": 18,
+      "userID": 168395,
+      "id": "18D12"
     }
   ],
   "bookedSeats": [
@@ -1162,6 +1190,28 @@
       "id": "4b0c1cde-bde5-4252-90f7-edaacef50c21",
       "inCart": true,
       "timestamp": "2023-02-19T20:24:59.305Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "D",
+      "columnSeat": 11,
+      "userID": 168395,
+      "showingId": 18,
+      "id": "fc5c55fa-cf34-46b8-8e26-eb1b22798a1d",
+      "inCart": true,
+      "timestamp": "2023-02-20T08:44:56.574Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "D",
+      "columnSeat": 12,
+      "userID": 168395,
+      "showingId": 18,
+      "id": "0d67d7f6-51e0-47ab-a8fa-ca0f073c870e",
+      "inCart": true,
+      "timestamp": "2023-02-20T08:44:56.574Z"
     }
   ]
 }
