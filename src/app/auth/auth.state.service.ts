@@ -49,7 +49,12 @@ export class AuthStateService {
     this.auth$$.next({ ...this.auth$$.value, hasAuth: true });
     this.userStateService.updateUser(user);
     localStorage.setItem('userID', user.userID.toString());
-    this.router.navigate(['']);
+
+    if (user.role === 'Admin') {
+      this.router.navigate(['admin']);
+    } else {
+      this.router.navigate(['repertoire']);
+    }
   }
 
   logout() {
@@ -62,7 +67,7 @@ export class AuthStateService {
       hasAuth: false,
     });
 
-    this.router.navigate(['logowanie']);
+    this.router.navigate(['login']);
     alert('wylogowano');
   }
 
@@ -70,8 +75,9 @@ export class AuthStateService {
     // checking with userID
     const userIDFromLS = localStorage.getItem('userID');
     if (userIDFromLS !== null) {
-      this.userStateService.fetchUser(parseInt(userIDFromLS));
       this.auth$$.next({ hasAuth: true });
+      this.userStateService.updateUserRole('NotGuest');
+      this.userStateService.fetchUser(parseInt(userIDFromLS));
       this.cartService.getCart(parseInt(userIDFromLS));
     }
   }

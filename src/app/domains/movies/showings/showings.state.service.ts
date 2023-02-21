@@ -23,7 +23,7 @@ export class ShowingsStateService {
       const currMinutes = now.getMinutes();
       this.http
         .get<Repertoire[]>(
-          `/showings?date=${date}&timeFrom_gte=${currHour}:${currMinutes}`
+          `/showings?date_like=${date}&timeFrom_gte=${currHour}:${currMinutes}`
         )
         .subscribe({
           next: (response) => {
@@ -32,7 +32,7 @@ export class ShowingsStateService {
           error: (e) => console.log(e),
         });
     } else {
-      this.http.get<Repertoire[]>(`/showings?date=${date}`).subscribe({
+      this.http.get<Repertoire[]>(`/showings?date_like=${date}`).subscribe({
         next: (response) => {
           this.updateShowingsState(response);
         },

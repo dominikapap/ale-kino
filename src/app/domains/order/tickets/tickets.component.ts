@@ -69,7 +69,7 @@ export class TicketsComponent implements OnInit {
         this.ticketTypes = tickets;
       },
     });
-    this.cartService.getCart(this.userID);
+
     this.setTicketsFromCart();
   }
 

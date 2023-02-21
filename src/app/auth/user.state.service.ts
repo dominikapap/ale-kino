@@ -17,16 +17,6 @@ export class UserStateService {
     role: 'Guest',
   });
 
-  userTest: User = {
-    userID: 22,
-    firstName: 'frfre',
-    lastName: 'fefef',
-    email: '',
-    password: '',
-    phoneNumber: 0,
-    role: 'Guest',
-  };
-
   constructor() {
     const userIDFromLS = localStorage.getItem('userID');
 
@@ -46,9 +36,20 @@ export class UserStateService {
   get userName$() {
     return this.user$.pipe(map((user) => user.firstName));
   }
+  get userRole$() {
+    return this.user$.pipe(map((user) => user.role));
+  }
 
+  updateUserRole(userRole: User['role']) {
+    this.user$$.next({ ...this.user$$.value, role: userRole });
+  }
   getUserInfo() {
     return this.user$$.value;
+  }
+  getUserRole(userID: number) {
+    return this.http
+      .get<User[]>(`/users?userID=${userID}`)
+      .pipe(map((user) => user[0]));
   }
 
   getUserID() {

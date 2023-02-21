@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { v4 as createUuidv4 } from 'uuid';
+import { CartApiService } from './cart.api.service';
 
 export interface TicketDetails {
   ticketTypeName: string;
@@ -23,6 +24,7 @@ export interface TicketInCartDetails extends TicketDetails {
 })
 export class CartStateService {
   private http = inject(HttpClient);
+  private cartApiService = inject(CartApiService);
   private cart$$ = new BehaviorSubject<TicketInCartDetails[]>([]);
 
   get cart$() {
@@ -61,10 +63,8 @@ export class CartStateService {
     }
 
     if (userID) {
-      return this.http
-        .get<TicketInCartDetails[]>(
-          `/cart?userId=${userID}&timestamp_gte=${now.toISOString()}`
-        )
+      this.cartApiService
+        .getCartItems(now.toISOString(), userID)
         .pipe(
           tap({
             next: (result) => {
@@ -78,24 +78,20 @@ export class CartStateService {
     return;
   }
 
-  removeFromCart(ticketID: number | string, userID: number) {
+  removeFromCart(ticketID: string, userID: number) {
     if (userID > 0) {
-      return this.http
-        .delete<TicketDetails[]>(`/cart/${ticketID}`)
+      this.cartApiService
+        .deleteCartItems(ticketID)
         .pipe(
           tap({
             next: () => {
-              this.cart$$.next(
-                this.cart$$.value.filter((item) => item.id !== ticketID)
-              );
+              this.removeTicketFromCartState(ticketID);
             },
           })
         )
         .subscribe();
     } else {
-      this.cart$$.next(
-        this.cart$$.value.filter((item) => item.id !== ticketID)
-      );
+      this.removeTicketFromCartState(ticketID);
       localStorage.setItem(
         'guestTickets',
         JSON.stringify(this.cart$$.value.filter((item) => item.userID < 0)) //remove tickets added with a role User
@@ -115,11 +111,8 @@ export class CartStateService {
     userID: number
   ) {
     if (userID > 0) {
-      this.http
-        .patch(`/cart/${ticketID}`, {
-          ticketTypeName,
-          ticketPrice,
-        })
+      this.cartApiService
+        .patchTicketvalue(ticketID, ticketTypeName, ticketPrice)
         .pipe(
           tap({
             next: () => {
@@ -144,23 +137,17 @@ export class CartStateService {
     }
   }
 
+  private removeTicketFromCartState(ticketID: string) {
+    this.cart$$.next(this.cart$$.value.filter((item) => item.id !== ticketID));
+  }
+
   private addToCartAsUser(ticketList: TicketDetails[], timestamp: string) {
     return ticketList.forEach((ticket) => {
       if (this.cart$$.value.find((item) => item.id === ticket.id)) {
         return;
       } else {
-        this.http
-          .post<TicketInCartDetails>(`/cart`, {
-            ticketTypeName: ticket.ticketTypeName,
-            ticketPrice: ticket.ticketPrice,
-            rowSeat: ticket.rowSeat,
-            columnSeat: ticket.columnSeat,
-            userID: ticket.userID,
-            showingId: ticket.showingId,
-            id: createUuidv4(),
-            inCart: true,
-            timestamp,
-          })
+        this.cartApiService
+          .postCartItems(ticket, timestamp)
           .pipe(
             tap({
               next: (response) => {

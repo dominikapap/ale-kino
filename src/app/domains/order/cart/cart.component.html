@@ -15,6 +15,7 @@
           ></app-showing-details></a
       ></ng-container>
       <button
+        *ngIf="routerUrl === '/cart'"
         mat-raised-button
         color="primary"
         (click)="

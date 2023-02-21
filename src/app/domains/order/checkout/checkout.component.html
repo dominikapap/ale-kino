@@ -14,12 +14,9 @@
       </mat-error> </mat-form-field
     ><mat-form-field>
       <mat-label>Nazwisko</mat-label
-      ><input
-        appNumbersOnly
-        [inputLength]="9"
-        matInput
-        formControlName="lastName"
-      /><mat-error *ngIf="lastNameCtrl.hasError('required')">
+      ><input matInput formControlName="lastName" /><mat-error
+        *ngIf="lastNameCtrl.hasError('required')"
+      >
         Nazwisko jest wymaganym polem
       </mat-error>
       <mat-error *ngIf="lastNameCtrl.hasError('minlength')">
@@ -30,9 +27,13 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Numer Telefonu</mat-label>
-      <input type="tel" matInput formControlName="phoneNumber" /><mat-error
-        *ngIf="phoneNumberCtrl.hasError('required')"
-      >
+      <input
+        type="tel"
+        appNumbersOnly
+        [inputLength]="9"
+        matInput
+        formControlName="phoneNumber"
+      /><mat-error *ngIf="phoneNumberCtrl.hasError('required')">
         Numer telefonu jest wymaganym polem </mat-error
       ><mat-error *ngIf="phoneNumberCtrl.hasError('pattern')">
         Numer telefonu musi się składać z 9 cyfr

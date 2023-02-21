@@ -8,6 +8,5 @@ export interface MovieShowing {
   timeTo: string;
   rows: number;
   columns: number;
-  numOfSeats: number;
   hallId: number;
 }

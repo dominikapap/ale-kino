@@ -11,22 +11,27 @@ import { CartStateService } from '../../domains/order/cart/cart.state.service';
 @Component({
   selector: 'app-main-navbar',
   template: `<nav>
-    <div class="brand-name"><p routerLink="">Ale kino!</p></div>
+    <div class="brand-name">
+      <p [routerLink]="(userRole$ | async) !== 'Admin' ? '' : 'admin'">
+        Ale kino!
+      </p>
+    </div>
     <div class="nav-buttons">
       <ng-template #zaloguj>
         <a mat-raised-button color="primary" routerLink="login">Zaloguj</a>
       </ng-template>
-
-      <a
-        class="btn cart-btn"
-        mat-raised-button
-        color="primary"
-        routerLink="cart"
-        ><mat-icon>add_shopping_cart</mat-icon>
-        <ng-container *ngIf="cart$ | async as cart"
-          ><sup *ngIf="cart.length > 0">{{ cart.length }} </sup></ng-container
-        >
-      </a>
+      <ng-container *ngIf="(userRole$ | async) !== 'Admin'"
+        ><a
+          class="btn cart-btn"
+          mat-raised-button
+          color="primary"
+          routerLink="cart"
+          ><mat-icon>add_shopping_cart</mat-icon>
+          <ng-container *ngIf="cart$ | async as cart"
+            ><sup *ngIf="cart.length > 0">{{ cart.length }} </sup></ng-container
+          >
+        </a></ng-container
+      >
 
       <ng-container *ngIf="(auth$ | async)?.hasAuth; else zaloguj">
         <button mat-button mat-raised-button [matMenuTriggerFor]="menu">
@@ -35,9 +40,10 @@ import { CartStateService } from '../../domains/order/cart/cart.state.service';
           >
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item routerLink="user-tickets">Moje bilety</button>
-          <button mat-menu-item>Ustawienia</button>
-          <a mat-menu-item routerLink="watchlist">Watchlist</a>
+          <ng-container *ngIf="(userRole$ | async) !== 'Admin'">
+            <button mat-menu-item routerLink="user-tickets">Moje bilety</button>
+            <a mat-menu-item routerLink="watchlist">Watchlist</a></ng-container
+          ><a mat-menu-item>Ustawienia</a>
           <button mat-menu-item (click)="onLogout()">Wyloguj</button>
         </mat-menu>
       </ng-container>
@@ -53,6 +59,7 @@ export class MainNavbarComponent implements OnInit {
   userName = inject(UserStateService).getUserName();
   userName$ = inject(UserStateService).userName$;
   userId$ = inject(UserStateService).userId$;
+  userRole$ = inject(UserStateService).userRole$;
   cart$ = inject(CartStateService).cart$;
   auth$ = inject(AuthStateService).auth$;
 

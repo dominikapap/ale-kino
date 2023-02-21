@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { adminGuard } from './admin/admin.guard';
 import { hasAuthGuard } from './auth';
+import { userGuard } from './auth/user.guard';
+import { userOrGuestGuard } from './auth/userOrGuest.guard';
 import { PageNotFoundComponent } from './core';
 import { ShowingsComponent } from './domains/movies';
 import { TicketsComponent } from './domains/order';
@@ -13,17 +16,23 @@ export const routes: Routes = [
     path: '',
     children: [
       {
+        path: 'admin',
+        loadChildren: () => import('./admin/admin.module'),
+        canActivate: [adminGuard],
+      },
+      {
         path: '',
         component: ShellComponent,
+        canActivate: [userOrGuestGuard],
         children: [
           { path: '', redirectTo: `repertoire`, pathMatch: 'full' },
-          { path: 'repertoire', component: ShowingsComponent },
+          {
+            path: 'repertoire',
+            component: ShowingsComponent,
+            canActivate: [userOrGuestGuard],
+          },
           { path: 'repertoire/:date', component: ShowingsComponent },
 
-          {
-            path: 'login',
-            loadChildren: () => import('./auth/login/login.module'),
-          },
           {
             path: 'showing/:id',
             component: TicketsComponent,
@@ -52,7 +61,7 @@ export const routes: Routes = [
           {
             path: 'watchlist',
             component: WatchListComponent,
-            canActivate: [hasAuthGuard],
+            canActivate: [userOrGuestGuard],
           },
           {
             path: 'tickets/:id',
@@ -60,6 +69,10 @@ export const routes: Routes = [
               import('./domains/order/order-summary/order-summary.component'),
           },
         ],
+      },
+      {
+        path: 'login',
+        loadChildren: () => import('./auth/login/login.module'),
       },
       {
         path: '**',
