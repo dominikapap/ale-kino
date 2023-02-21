@@ -1,12 +1,12 @@
 /* eslint-disable @ngrx/on-function-explicit-return-type */
 import { createReducer, on } from '@ngrx/store';
-import { ShowingsActions } from './showings.actions';
+import { ShowingsActions, ShowingsAPIActions } from './showings.actions';
 import { initialShowingsState } from './showings.state';
 
 export const showingsReducer = createReducer(
   initialShowingsState,
 
-  on(ShowingsActions.addNewShowing, (state, action) => {
+  on(ShowingsAPIActions.addNewShowingSuccess, (state, action) => {
     return { ...state, showingsList: [...state.showingsList, action] };
   }),
   on(ShowingsActions.getAllShowings, (state, { showingsList }) => ({

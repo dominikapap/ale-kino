@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { User } from './User.interface';
 import { UserStateService } from './user.state.service';
 import { CartStateService } from '../domains/order/cart/cart.state.service';
+import { AuthApiService } from './auth.api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,7 @@ export class AuthStateService {
   private router = inject(Router);
   private userStateService = inject(UserStateService);
   private cartService = inject(CartStateService);
+  private authApiService = inject(AuthApiService);
 
   private auth$$ = new BehaviorSubject<{ hasAuth: boolean }>({
     hasAuth: false,
@@ -27,22 +29,20 @@ export class AuthStateService {
   }
 
   checkCredentials(email: string, password: string) {
-    return this.http
-      .get<User[]>(`/users?email=${email}&password=${password}`)
-      .subscribe({
-        next: (results) => {
-          if (results.length == 0) {
-            alert('Błędne dane, spróbuj ponownie');
-          } else {
-            this.authorize(results[0]);
-            this.cartService.getCart(results[0].userID);
-          }
-        },
-        error: (e) => {
-          console.log(e);
-          alert('Coś poszło nie tak, spróbuj ponownie później');
-        },
-      });
+    this.authApiService.checkCredentials(email, password).subscribe({
+      next: (results) => {
+        if (results.length == 0) {
+          alert('Błędne dane, spróbuj ponownie');
+        } else {
+          this.authorize(results[0]);
+          this.cartService.getCart(results[0].userID);
+        }
+      },
+      error: (e) => {
+        console.log(e);
+        alert('Coś poszło nie tak, spróbuj ponownie później');
+      },
+    });
   }
 
   authorize(user: User) {

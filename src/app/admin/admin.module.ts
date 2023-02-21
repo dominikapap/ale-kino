@@ -18,6 +18,8 @@ import { AddMovieComponent } from './movies/addMovie/add-movie.component';
 import { AddShowingComponent } from './showings/addShowings/add-showing.component';
 import { moviesFeatureKey } from './movies/store/movies.state';
 import { moviesReducer } from './movies/store/movies.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { ShowingsEffects } from './showings/store/showings.effects';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { moviesReducer } from './movies/store/movies.reducer';
     MatButtonModule,
     StoreModule.forFeature(showingsFeatureKey, showingsReducer),
     StoreModule.forFeature(moviesFeatureKey, moviesReducer),
+    EffectsModule.forFeature([ShowingsEffects]),
     RouterModule.forChild([
       {
         path: '',

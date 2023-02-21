@@ -80,7 +80,12 @@ export class AddShowingComponent {
   addShowing(movies: MovieDetails[]) {
     this.addShowingForm.markAllAsTouched();
     this.setTimeToValue(movies);
-    this.showingService.add(this.addShowingForm.getRawValue());
+    if (this.addShowingForm.valid) {
+      this.showingsApiService.add(this.addShowingForm.getRawValue());
+      alert('dodano seans');
+    } else {
+      alert('Nieprawidłowo wypełniony formularz');
+    }
   }
 
   updateMovieId(_event: { value: string }, movies: MovieDetails[]) {

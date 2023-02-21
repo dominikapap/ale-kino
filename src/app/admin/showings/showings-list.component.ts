@@ -7,7 +7,7 @@ import { selectShowingsList } from './store/showings.selector';
   selector: 'app-showings-list',
   template: `
     <ng-container *ngIf="showings$ | async as showings; else listEmpty">
-      <h1>Lista seansów</h1>
+      <h1 class="text-3xl font-bold  pb-1">Lista seansów</h1>
       <a routerLink="/admin/showings/add-showing">Dodaj nowy seans</a>
       <ol>
         <li *ngFor="let showing of showings">

@@ -514,6 +514,42 @@
       "rows": 8,
       "columns": 6,
       "id": 328
+    },
+    {
+      "movieId": 2437892,
+      "movieTitle": "Co w duszy gra",
+      "date": "2023-02-28T23:00:00.000Z",
+      "break": 15,
+      "timeFrom": "11:45",
+      "timeTo": " 13:00",
+      "hallId": 1,
+      "rows": 8,
+      "columns": 6,
+      "id": 329
+    },
+    {
+      "movieId": 2437892,
+      "movieTitle": "Co w duszy gra",
+      "date": "2023-02-28T23:00:00.000Z",
+      "break": 15,
+      "timeFrom": "11:45",
+      "timeTo": " 13:00",
+      "hallId": 1,
+      "rows": 8,
+      "columns": 6,
+      "id": 330
+    },
+    {
+      "movieId": 5633922,
+      "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
+      "date": "2023-03-01T23:00:00.000Z",
+      "break": "20",
+      "timeFrom": "21:20",
+      "timeTo": " 01:20",
+      "hallId": 2,
+      "rows": 10,
+      "columns": 10,
+      "id": 331
     }
   ],
   "reservedSeats": [

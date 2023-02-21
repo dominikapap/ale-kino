@@ -14,11 +14,12 @@ export class ShowingsService {
   private showingsStore = inject<Store<MovieShowing[]>>(Store);
 
   add(formValue: MovieShowing) {
-    this.showingsApiService.add(formValue).subscribe({
-      next: (result) => {
-        this.showingsStore.dispatch(ShowingsActions.addNewShowing(result));
-      },
-    });
+    this.showingsApiService.add(formValue);
+    // .subscribe({
+    //   next: (result) => {
+    //     this.showingsStore.dispatch(ShowingsActions.addNewShowing(result));
+    //   },
+    // });
   }
   getShowings() {
     this.showingsApiService.getShowings().subscribe({

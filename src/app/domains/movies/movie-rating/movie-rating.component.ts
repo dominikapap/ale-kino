@@ -16,6 +16,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { AuthStateService, UserStateService } from 'src/app/auth';
 import { AveragePipe } from 'src/app/shared';
+import { MovieApiService } from '../../order';
+import { MovieRatingApiService } from './movie-rating.api.service';
 import { MovieRatingStateService } from './movie-rating.state.service';
 
 type RatingForm = FormGroup<{
@@ -34,7 +36,7 @@ type RatingForm = FormGroup<{
     AveragePipe,
     CommonModule,
   ],
-  providers: [MovieRatingStateService],
+  providers: [MovieRatingStateService, MovieRatingApiService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MovieRatingComponent implements OnInit {
