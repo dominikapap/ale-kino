@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { adminGuard } from './admin/admin.guard';
 import { hasAuthGuard } from './auth';
-import { userGuard } from './auth/user.guard';
 import { userOrGuestGuard } from './auth/userOrGuest.guard';
 import { PageNotFoundComponent } from './core';
 import { ShowingsComponent } from './domains/movies';

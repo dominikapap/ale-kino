@@ -1,15 +1,16 @@
-import { createInjectableType } from '@angular/compiler';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
-import { AddShowingsService } from '../addShowings/add-showings.service';
+import { ShowingsService } from './showings.service';
+import { selectShowingsList } from './store/showings.selector';
 
 @Component({
   selector: 'app-showings-list',
   template: `
-    <ng-container *ngIf="showings$ | async as showings"
-      ><ol>
-        <li *ngFor="let showing of showings.showingsList">
+    <ng-container *ngIf="showings$ | async as showings; else listEmpty">
+      <h1>Lista seansów</h1>
+      <a routerLink="/admin/showings/add-showing">Dodaj nowy seans</a>
+      <ol>
+        <li *ngFor="let showing of showings">
           <p><b>Seans ID:</b> {{ showing.id }}</p>
           <p><b>Tytuł filmu : </b>{{ showing.movieTitle }}</p>
           <p><b>Data : </b>{{ showing.date }}</p>
@@ -22,6 +23,11 @@ import { AddShowingsService } from '../addShowings/add-showings.service';
         </li>
       </ol>
     </ng-container>
+    <ng-template #listEmpty
+      ><p>
+        Nie udało się załadować danych, spróbn ponwnie później
+      </p></ng-template
+    >
   `,
   styles: [
     `
@@ -33,10 +39,10 @@ import { AddShowingsService } from '../addShowings/add-showings.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShowingsListComponent {
-  private showingService = inject(AddShowingsService);
+  private showingService = inject(ShowingsService);
   private store = inject(Store);
 
-  showings$ = this.store.select((store) => store.showingsState);
+  showings$ = this.store.select(selectShowingsList);
 
   ngOnInit() {
     this.showingService.getShowings();

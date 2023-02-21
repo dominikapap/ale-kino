@@ -3,14 +3,14 @@ import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, tap } from 'rxjs';
 import { MovieShowing } from '../../shared/interfaces/MovieShowing';
-import { AddShowingsApiService } from './add-showings-api.service';
+import { ShowingsApiService } from './showings-api.service';
 import { ShowingsActions } from './store/showings.actions';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AddShowingsService {
-  private showingsApiService = inject(AddShowingsApiService);
+export class ShowingsService {
+  private showingsApiService = inject(ShowingsApiService);
   private showingsStore = inject<Store<MovieShowing[]>>(Store);
 
   add(formValue: MovieShowing) {

@@ -78,7 +78,7 @@ export class AuthStateService {
       this.auth$$.next({ hasAuth: true });
       this.userStateService.updateUserRole('NotGuest');
       this.userStateService.fetchUser(parseInt(userIDFromLS));
-      this.cartService.getCart(parseInt(userIDFromLS));
+      // this.cartService.getCart(parseInt(userIDFromLS));
     }
   }
 }

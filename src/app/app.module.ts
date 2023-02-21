@@ -26,7 +26,7 @@ import MovieDetailsComponent from './domains/movies/movie-details/movie-details.
 import { TicketsComponent, SeatGridComponent } from './domains/order';
 import { MainFooterComponent, MainNavbarComponent } from './shell';
 import { StoreModule } from '@ngrx/store';
-import { showingsReducer } from './admin/addShowings/store/showings.reducer';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -58,7 +58,8 @@ import { showingsReducer } from './admin/addShowings/store/showings.reducer';
     MatMenuModule,
     MatSelectModule,
     MatButtonToggleModule,
-    StoreModule.forRoot({ showingsState: showingsReducer }),
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     {

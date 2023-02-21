@@ -3,7 +3,6 @@ export interface MovieDetails {
   id: number;
   imageUrl: string;
   genres: string[];
-  time: string;
   ageRestriction: string;
   descriptionShort: string;
   descriptionLong: string;

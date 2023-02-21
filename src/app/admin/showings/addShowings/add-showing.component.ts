@@ -6,12 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { MovieDetails } from '../../domains/movies/movie-details/MovieDetails.interface';
-import {
-  AddShowingsApiService,
-  ScreeningHall,
-} from './add-showings-api.service';
-import { AddShowingsService } from './add-showings.service';
+import { MovieDetails } from '../../../domains/movies/movie-details/MovieDetails.interface';
+import { ScreeningHall, ShowingsApiService } from '../showings-api.service';
+import { ShowingsService } from '../showings.service';
 
 type ShowingForm = FormGroup<{
   movieTitle: FormControl<string>;
@@ -26,8 +23,8 @@ type ShowingForm = FormGroup<{
 }>;
 
 @Component({
-  selector: 'app-add-to-repertoire',
-  templateUrl: 'add-to-repertoire.component.html',
+  selector: 'app-add-showing',
+  templateUrl: 'add-showing.component.html',
   styles: [
     `
       form {
@@ -38,13 +35,13 @@ type ShowingForm = FormGroup<{
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AddToRepertoireComponent {
+export class AddShowingComponent {
   private builder = inject(NonNullableFormBuilder);
-  private addShowingsApiService = inject(AddShowingsApiService);
-  private addShowingService = inject(AddShowingsService);
+  private showingsApiService = inject(ShowingsApiService);
+  private showingService = inject(ShowingsService);
 
-  movies$ = this.addShowingsApiService.getMovies$();
-  halls$ = this.addShowingsApiService.getHalls$();
+  movies$ = this.showingsApiService.getMovies$();
+  halls$ = this.showingsApiService.getHalls$();
   addShowingForm = this.createShowingForm();
 
   tommorrow = '2023-02-22';
@@ -83,7 +80,7 @@ export class AddToRepertoireComponent {
   addShowing(movies: MovieDetails[]) {
     this.addShowingForm.markAllAsTouched();
     this.setTimeToValue(movies);
-    this.addShowingService.add(this.addShowingForm.getRawValue());
+    this.showingService.add(this.addShowingForm.getRawValue());
   }
 
   updateMovieId(_event: { value: string }, movies: MovieDetails[]) {

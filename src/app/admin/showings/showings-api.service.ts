@@ -15,7 +15,7 @@ export interface ScreeningHall {
 @Injectable({
   providedIn: 'root',
 })
-export class AddShowingsApiService {
+export class ShowingsApiService {
   private http = inject(HttpClient);
   private currDay = inject(DatesService).getCurrentDay();
 
