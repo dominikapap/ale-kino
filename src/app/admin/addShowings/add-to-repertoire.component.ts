@@ -5,7 +5,8 @@ import {
   NonNullableFormBuilder,
   Validators,
 } from '@angular/forms';
-import { MovieDetails } from '../domains/movies/movie-details/MovieDetails.interface';
+
+import { MovieDetails } from '../../domains/movies/movie-details/MovieDetails.interface';
 import {
   AddShowingsApiService,
   ScreeningHall,
@@ -19,7 +20,7 @@ type ShowingForm = FormGroup<{
   break: FormControl<number>;
   timeFrom: FormControl<string>;
   timeTo: FormControl<string>;
-  hall: FormControl<number>;
+  hallId: FormControl<number>;
   rows: FormControl<number>;
   columns: FormControl<number>;
 }>;
@@ -40,7 +41,8 @@ type ShowingForm = FormGroup<{
 export class AddToRepertoireComponent {
   private builder = inject(NonNullableFormBuilder);
   private addShowingsApiService = inject(AddShowingsApiService);
-  private addShowingStateService = inject(AddShowingsService);
+  private addShowingService = inject(AddShowingsService);
+
   movies$ = this.addShowingsApiService.getMovies$();
   halls$ = this.addShowingsApiService.getHalls$();
   addShowingForm = this.createShowingForm();
@@ -67,7 +69,7 @@ export class AddToRepertoireComponent {
       timeTo: this.builder.control('', {
         validators: [Validators.required],
       }),
-      hall: this.builder.control(1, Validators.required),
+      hallId: this.builder.control(1, Validators.required),
       rows: this.builder.control(10, {
         validators: [Validators.required],
       }),
@@ -81,15 +83,7 @@ export class AddToRepertoireComponent {
   addShowing(movies: MovieDetails[]) {
     this.addShowingForm.markAllAsTouched();
     this.setTimeToValue(movies);
-    // this.setDateValue();
-    console.log(this.addShowingForm.value);
-    this.addShowingStateService.add(this.addShowingForm.getRawValue());
-  }
-
-  private setDateValue() {
-    this.addShowingForm.controls.date.setValue(
-      this.addShowingForm.controls.date.value
-    );
+    this.addShowingService.add(this.addShowingForm.getRawValue());
   }
 
   updateMovieId(_event: { value: string }, movies: MovieDetails[]) {
@@ -102,7 +96,7 @@ export class AddToRepertoireComponent {
     if (hall) {
       this.addShowingForm.controls.rows.setValue(hall.rows);
       this.addShowingForm.controls.columns.setValue(hall.columns);
-      this.addShowingForm.controls.hall.setValue(hall.id);
+      this.addShowingForm.controls.hallId.setValue(hall.id);
     }
   }
 

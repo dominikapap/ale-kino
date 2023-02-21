@@ -224,7 +224,9 @@
       "title": "Apokawixa",
       "id": 1267943,
       "imageUrl": "https://fwcdn.pl/fpo/55/10/10015510/8029347.6.jpg",
-      "genres": ["Horror"],
+      "genres": [
+        "Horror"
+      ],
       "time": "120 minut",
       "ageRestriction": "PG-13",
       "descriptionShort": " Apokawixa details:Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
@@ -236,7 +238,10 @@
       "title": "Co w duszy gra",
       "id": 2437892,
       "imageUrl": "https://fwcdn.pl/fpo/66/50/836650/7934792.6.jpg",
-      "genres": ["Animowany", "Obyczajowy"],
+      "genres": [
+        "Animowany",
+        "Obyczajowy"
+      ],
       "time": "120 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
@@ -248,7 +253,10 @@
       "title": "Władca Pierścieni: Drużyna Pierścienia",
       "id": 5633922,
       "imageUrl": "https://fwcdn.pl/fpo/10/65/1065/7912491.6.jpg",
-      "genres": ["Fantasy", "Przygodowy"],
+      "genres": [
+        "Fantasy",
+        "Przygodowy"
+      ],
       "time": "240 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": " Lorem ipsum dolor sit amet In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
@@ -483,6 +491,29 @@
       "rows": 10,
       "columns": 10,
       "id": 326
+    },
+    {
+      "movieId": 1267943,
+      "movieTitle": "Apokawixa",
+      "date": "2023-02-26T23:00:00.000Z",
+      "break": 15,
+      "timeFrom": "15:30",
+      "timeTo": " 17:00",
+      "rows": 10,
+      "columns": 10,
+      "id": 327
+    },
+    {
+      "movieId": 1267943,
+      "movieTitle": "Apokawixa",
+      "date": "2023-02-25T23:00:00.000Z",
+      "break": 15,
+      "timeFrom": "16:10",
+      "timeTo": " 17:40",
+      "hallId": 1,
+      "rows": 8,
+      "columns": 6,
+      "id": 328
     }
   ],
   "reservedSeats": [
