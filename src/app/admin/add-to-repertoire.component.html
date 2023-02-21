@@ -1,0 +1,82 @@
+<ng-container *ngIf="movies$ | async as movies"
+  ><form [formGroup]="addShowingForm" (ngSubmit)="addShowing(movies)">
+    <mat-form-field appearance="fill">
+      <mat-label>Wybierz film</mat-label>
+      <mat-select
+        formControlName="movieTitle"
+        (selectionChange)="updateMovieId($event, movies)"
+      >
+        <mat-option
+          [value]="movie.title"
+          *ngFor="let movie of movies; let index = index"
+          >{{ movie.title }}</mat-option
+        >
+      </mat-select>
+
+      <mat-error
+        *ngIf="addShowingForm.controls['movieTitle'].hasError('required')"
+      >
+        Movie Title is required.
+      </mat-error>
+      <mat-error
+        *ngIf="addShowingForm.controls['movieTitle'].hasError('minlength')"
+      >
+        Movie Title must be at least 2 characters long.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Wybierz datę</mat-label>
+      <input
+        formControlName="date"
+        matInput
+        [min]="tommorrow"
+        [matDatepicker]="picker"
+      />
+      <mat-hint>YYYY/MM/DD/</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="addShowingForm.controls['date'].hasError('required')">
+        Date is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Time From</mat-label>
+      <input type="time" matInput formControlName="timeFrom" />
+      <mat-error
+        *ngIf="addShowingForm.controls['timeFrom'].hasError('required')"
+      >
+        Time From is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Break</mat-label>
+      <input matInput formControlName="break" />
+      <mat-error *ngIf="addShowingForm.controls['break'].hasError('required')">
+        Break is required.
+      </mat-error>
+    </mat-form-field>
+    <ng-container *ngIf="halls$ | async as halls">
+      <mat-form-field appearance="fill">
+        <mat-label>Wybierz salę</mat-label>
+        <mat-select (selectionChange)="updateRowsAndColumns($event, halls)">
+          <mat-option
+            [value]="hall.name"
+            *ngFor="let hall of halls; let index = index"
+            >{{ hall.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <p>Liczba kolumn: {{ addShowingForm.controls.columns.value }}</p>
+      <p>
+        Liczba rzędów: {{ addShowingForm.controls.rows.value }}
+      </p></ng-container
+    >
+
+    <button mat-raised-button color="primary">Utwórz seans</button>
+  </form></ng-container
+>
