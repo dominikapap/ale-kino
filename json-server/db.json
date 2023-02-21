@@ -224,44 +224,36 @@
       "title": "Apokawixa",
       "id": 1267943,
       "imageUrl": "https://fwcdn.pl/fpo/55/10/10015510/8029347.6.jpg",
-      "genres": [
-        "Horror"
-      ],
+      "genres": ["Horror"],
       "time": "120 minut",
       "ageRestriction": "PG-13",
       "descriptionShort": " Apokawixa details:Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
       "descriptionLong": " Apokawixa details:Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "duration": "90min",
+      "duration": 90,
       "isPremiere": false
     },
     {
       "title": "Co w duszy gra",
       "id": 2437892,
       "imageUrl": "https://fwcdn.pl/fpo/66/50/836650/7934792.6.jpg",
-      "genres": [
-        "Animowany",
-        "Obyczajowy"
-      ],
+      "genres": ["Animowany", "Obyczajowy"],
       "time": "120 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
       "descriptionLong": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
-      "duration": "75min",
+      "duration": 75,
       "isPremiere": false
     },
     {
       "title": "Władca Pierścieni: Drużyna Pierścienia",
       "id": 5633922,
       "imageUrl": "https://fwcdn.pl/fpo/10/65/1065/7912491.6.jpg",
-      "genres": [
-        "Fantasy",
-        "Przygodowy"
-      ],
+      "genres": ["Fantasy", "Przygodowy"],
       "time": "240 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": " Lorem ipsum dolor sit amet In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
       "descriptionLong": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
-      "duration": "240min",
+      "duration": 240,
       "isPremiere": true
     }
   ],
@@ -276,7 +268,6 @@
       "timeTo": "11:30",
       "rows": 10,
       "columns": 11,
-      "numOfSeats": 110,
       "hallId": 1
     },
     {
@@ -289,7 +280,6 @@
       "timeTo": "11:00",
       "rows": 10,
       "columns": 12,
-      "numOfSeats": 120,
       "hallId": 1
     },
     {
@@ -302,7 +292,6 @@
       "timeTo": "23:00",
       "rows": 10,
       "columns": 12,
-      "numOfSeats": 120,
       "hallId": 1
     },
     {
@@ -315,7 +304,6 @@
       "timeTo": "17:30",
       "rows": 10,
       "columns": 12,
-      "numOfSeats": 120,
       "hallId": 1
     },
     {
@@ -328,7 +316,6 @@
       "timeTo": "21:30",
       "rows": 12,
       "columns": 12,
-      "numOfSeats": 144,
       "hallId": 2
     },
     {
@@ -341,7 +328,6 @@
       "timeTo": "20:30",
       "rows": 9,
       "columns": 10,
-      "numOfSeats": 90,
       "hallId": 2
     },
     {
@@ -354,7 +340,6 @@
       "timeTo": "14:00",
       "rows": 10,
       "columns": 12,
-      "numOfSeats": 120,
       "hallId": 2
     },
     {
@@ -367,7 +352,6 @@
       "timeTo": "17:30",
       "rows": 10,
       "columns": 12,
-      "numOfSeats": 120,
       "hallId": 1
     },
     {
@@ -380,7 +364,6 @@
       "timeTo": "21:30",
       "rows": 12,
       "columns": 12,
-      "numOfSeats": 144,
       "hallId": 2
     },
     {
@@ -393,7 +376,6 @@
       "timeTo": "21:30",
       "rows": 10,
       "columns": 11,
-      "numOfSeats": 110,
       "hallId": 1
     },
     {
@@ -406,7 +388,6 @@
       "timeTo": "14:30",
       "rows": 10,
       "columns": 11,
-      "numOfSeats": 110,
       "hallId": 1
     },
     {
@@ -419,7 +400,6 @@
       "timeTo": "14:00",
       "rows": 10,
       "columns": 12,
-      "numOfSeats": 120,
       "hallId": 1
     },
     {
@@ -432,7 +412,6 @@
       "timeTo": "17:30",
       "rows": 10,
       "columns": 12,
-      "numOfSeats": 120,
       "hallId": 1
     },
     {
@@ -445,7 +424,6 @@
       "timeTo": "21:30",
       "rows": 12,
       "columns": 12,
-      "numOfSeats": 144,
       "hallId": 2
     },
     {
@@ -458,7 +436,6 @@
       "timeTo": "14:00",
       "rows": 10,
       "columns": 12,
-      "numOfSeats": 120,
       "hallId": 2
     },
     {
@@ -471,7 +448,6 @@
       "timeTo": "17:30",
       "rows": 10,
       "columns": 12,
-      "numOfSeats": 120,
       "hallId": 1
     },
     {
@@ -484,8 +460,29 @@
       "timeTo": "21:30",
       "rows": 12,
       "columns": 12,
-      "numOfSeats": 144,
       "hallId": 2
+    },
+    {
+      "movieId": 1267943,
+      "movieTitle": "Apokawixa",
+      "date": "2023-02-23T23:00:00.000Z",
+      "break": 15,
+      "timeFrom": "16:30",
+      "timeTo": " 18:00",
+      "rows": 10,
+      "columns": 10,
+      "id": 324
+    },
+    {
+      "movieId": 5633922,
+      "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
+      "date": "2023-02-26T23:00:00.000Z",
+      "break": 15,
+      "timeFrom": "20:45",
+      "timeTo": " 00:45",
+      "rows": 10,
+      "columns": 10,
+      "id": 326
     }
   ],
   "reservedSeats": [
@@ -831,6 +828,34 @@
       "showingID": 18,
       "userID": 168395,
       "id": "18D12"
+    },
+    {
+      "rowSeat": "A",
+      "columnSeat": 11,
+      "showingID": 18,
+      "userID": -1,
+      "id": "18A11"
+    },
+    {
+      "rowSeat": "A",
+      "columnSeat": 10,
+      "showingID": 18,
+      "userID": -1,
+      "id": "18A10"
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 7,
+      "showingID": 26,
+      "userID": 168395,
+      "id": "26F7"
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 5,
+      "showingID": 99,
+      "userID": 168395,
+      "id": "99F5"
     }
   ],
   "bookedSeats": [
@@ -978,10 +1003,18 @@
       "id": 13
     }
   ],
-  "screeningHall": [
+  "screeningHalls": [
+    {
+      "id": 1,
+      "name": "Mała sala",
+      "rows": 8,
+      "columns": 6
+    },
     {
       "id": 2,
-      "name": "Duża sala"
+      "name": "Duża sala",
+      "rows": 10,
+      "columns": 10
     }
   ],
   "watchlist": [
@@ -990,6 +1023,12 @@
       "userID": 168363,
       "movieID": 2437892,
       "movieTitle": "Co w duszy gra"
+    },
+    {
+      "userID": 680235,
+      "movieID": 2437892,
+      "movieTitle": "Co w duszy gra",
+      "id": 4
     }
   ],
   "cart": [
@@ -1212,6 +1251,28 @@
       "id": "0d67d7f6-51e0-47ab-a8fa-ca0f073c870e",
       "inCart": true,
       "timestamp": "2023-02-20T08:44:56.574Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "F",
+      "columnSeat": 7,
+      "userID": 168395,
+      "showingId": 26,
+      "id": "da0dfb3e-bc9f-4093-9751-6bb787a77d93",
+      "inCart": true,
+      "timestamp": "2023-02-20T12:48:43.836Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "F",
+      "columnSeat": 5,
+      "userID": 168395,
+      "showingId": 99,
+      "id": "c318571a-07b4-45f5-bdff-e2bff699e26f",
+      "inCart": true,
+      "timestamp": "2023-02-20T15:37:43.337Z"
     }
   ]
 }
