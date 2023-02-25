@@ -5,11 +5,13 @@ import {
   NonNullableFormBuilder,
   Validators,
 } from '@angular/forms';
-import { MoviesApiService, ScreeningHall } from '../movies-api.service';
-import { MoviesService } from '../movies.service';
+import { Store } from '@ngrx/store';
+import { MoviesApiService } from '../movies-api.service';
+import { MoviesActions } from '../store/movies.actions';
 
 type MovieForm = FormGroup<{
   title: FormControl<string>;
+  id: FormControl<string>;
   imageUrl: FormControl<string>;
   genres: FormControl<string[]>;
   duration: FormControl<string>;
@@ -24,9 +26,10 @@ type MovieForm = FormGroup<{
   templateUrl: 'add-movie.component.html',
   styles: [
     `
-      form {
-        display: flex;
-        flex-direction: column;
+      .form-fields {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
       }
     `,
   ],
@@ -34,32 +37,83 @@ type MovieForm = FormGroup<{
 })
 export class AddMovieComponent {
   private builder = inject(NonNullableFormBuilder);
+  private store = inject(Store);
   private moviesApiService = inject(MoviesApiService);
-  private moviesService = inject(MoviesService);
+
+  get titleCtrl() {
+    return this.addMovieForm.controls.title;
+  }
+  get imageUrlCtrl() {
+    return this.addMovieForm.controls.imageUrl;
+  }
+  get ageRestrictionCtrl() {
+    return this.addMovieForm.controls.ageRestriction;
+  }
+  get descriptionLongCtrl() {
+    return this.addMovieForm.controls.descriptionLong;
+  }
+  get descriptionShortCtrl() {
+    return this.addMovieForm.controls.descriptionShort;
+  }
+  get durationCtrl() {
+    return this.addMovieForm.controls.duration;
+  }
+  get genresCtrl() {
+    return this.addMovieForm.controls.genres;
+  }
+  get isPremiereCtrl() {
+    return this.addMovieForm.controls.isPremiere;
+  }
 
   addMovieForm = this.createMovieForm();
-
+  genres$ = this.moviesApiService.getGenres$();
+  ageRestriction$ = this.moviesApiService.getAgeRestrictions$();
   createMovieForm(): MovieForm {
     const form = this.builder.group({
       title: this.builder.control('', {
-        validators: [Validators.required, Validators.minLength(2)],
+        validators: [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(50),
+        ],
       }),
       imageUrl: this.builder.control('', {
-        validators: [Validators.required, Validators.minLength(5)],
+        validators: [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(150),
+        ],
       }),
-      genres: this.builder.control([''], {
+      id: this.builder.control('', {
         validators: [Validators.required],
       }),
-      duration: this.builder.control('90', {
-        validators: [Validators.required],
+      genres: this.builder.control([] as Array<string>, {
+        validators: [Validators.required, Validators.maxLength(5)],
       }),
-      ageRestriction: this.builder.control('Dla wszystkich', {
+      duration: this.builder.control('', {
+        validators: [
+          Validators.required,
+          Validators.min(5),
+          Validators.max(3000),
+        ],
+      }),
+      ageRestriction: this.builder.control('', {
         validators: [Validators.required],
       }),
       descriptionShort: this.builder.control('', {
-        validators: [Validators.required],
+        validators: [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(1000),
+        ],
       }),
-      descriptionLong: this.builder.control('1', Validators.required),
+      descriptionLong: this.builder.control('', {
+        validators: [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(1500),
+        ],
+      }),
       isPremiere: this.builder.control(false, {
         validators: [Validators.required],
       }),
@@ -67,10 +121,13 @@ export class AddMovieComponent {
     return form;
   }
 
-  addMovie() {
+  onSubmit() {
     this.addMovieForm.markAllAsTouched();
+    this.addMovieForm.controls.id.setValue('6');
     if (this.addMovieForm.valid) {
-      this.moviesService.add(this.addMovieForm.getRawValue());
+      this.store.dispatch(
+        MoviesActions.addNewMovie(this.addMovieForm.getRawValue())
+      );
     }
   }
 }

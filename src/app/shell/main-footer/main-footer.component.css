@@ -1,3 +1,6 @@
+:host {
+  margin-top: auto;
+}
 footer {
   margin: 1rem 0;
   fill: white;

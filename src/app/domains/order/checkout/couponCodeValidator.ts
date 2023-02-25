@@ -1,13 +1,13 @@
 import { AbstractControl, AsyncValidatorFn } from '@angular/forms';
 import { map } from 'rxjs';
-import { CouponRateService } from '../cart/coupon-rate.service';
+import { CouponRateApiService } from '../cart/coupon-rate.api.service';
 
 export function couponCodeValidator(
-  couponRateService: CouponRateService
+  couponRateApiService: CouponRateApiService
 ): AsyncValidatorFn {
   return (control: AbstractControl) => {
-    return couponRateService
-      .checkIfCouponValid(control.value)
+    return couponRateApiService
+      .getCouponByName(control.value)
       .pipe(
         map((code) =>
           code.length == 0

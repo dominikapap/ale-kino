@@ -1,26 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  NonNullableFormBuilder,
-  Validators,
-} from '@angular/forms';
-
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 import { MovieDetails } from '../../../domains/movies/movie-details/MovieDetails.interface';
 import { ScreeningHall, ShowingsApiService } from '../showings-api.service';
-import { ShowingsService } from '../showings.service';
-
-type ShowingForm = FormGroup<{
-  movieTitle: FormControl<string>;
-  movieId: FormControl<number>;
-  date: FormControl<string>;
-  break: FormControl<number>;
-  timeFrom: FormControl<string>;
-  timeTo: FormControl<string>;
-  hallId: FormControl<number>;
-  rows: FormControl<number>;
-  columns: FormControl<number>;
-}>;
+import { ShowingsActions } from '../store/showings.actions';
+import { AddShowingFormService } from './add-showing.form.service';
 
 @Component({
   selector: 'app-add-showing',
@@ -31,94 +16,105 @@ type ShowingForm = FormGroup<{
         display: flex;
         flex-direction: column;
       }
+      .option-img {
+        height: 150px;
+        width: auto;
+      }
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddShowingComponent {
-  private builder = inject(NonNullableFormBuilder);
+  private addShowingFormService = inject(AddShowingFormService);
   private showingsApiService = inject(ShowingsApiService);
-  private showingService = inject(ShowingsService);
+  private store = inject(Store);
+  addShowingForm = this.addShowingFormService.createShowingForm();
+  showings$!: Observable<MovieShowing[]>;
+  movies$ = this.showingsApiService.getMovies();
+  halls$ = this.showingsApiService.getHalls();
 
-  movies$ = this.showingsApiService.getMovies$();
-  halls$ = this.showingsApiService.getHalls$();
-  addShowingForm = this.createShowingForm();
+  tomorrow = this.addShowingFormService.tomorrow;
 
-  tommorrow = '2023-02-22';
+  get movieTitleCtrl() {
+    return this.addShowingForm.controls.movieTitle;
+  }
+  get dateCtrl() {
+    return this.addShowingForm.controls.date;
+  }
+  get breakCtrl() {
+    return this.addShowingForm.controls.break;
+  }
+  get hallIdCtrl() {
+    return this.addShowingForm.controls.hallId;
+  }
+  get timeFromCtrl() {
+    return this.addShowingForm.controls.timeFrom;
+  }
 
-  createShowingForm(): ShowingForm {
-    const form = this.builder.group({
-      movieTitle: this.builder.control('', {
-        validators: [Validators.required, Validators.minLength(2)],
-      }),
-      movieId: this.builder.control(0, {
-        validators: [Validators.required, Validators.minLength(2)],
-      }),
-      date: this.builder.control('', {
-        validators: [Validators.required],
-      }),
-      break: this.builder.control(15, {
-        validators: [Validators.required],
-      }),
-      timeFrom: this.builder.control('', {
-        validators: [Validators.required],
-      }),
-      timeTo: this.builder.control('', {
-        validators: [Validators.required],
-      }),
-      hallId: this.builder.control(1, Validators.required),
-      rows: this.builder.control(10, {
-        validators: [Validators.required],
-      }),
-      columns: this.builder.control(10, {
-        validators: [Validators.required],
-      }),
-    });
-    return form;
+  get timeToCtrl() {
+    return this.addShowingForm.controls.timeTo;
+  }
+  get hallAvailableCtrl() {
+    return this.addShowingForm.controls.hallAvailableAfter;
+  }
+  get rowsCtrl() {
+    return this.addShowingForm.controls.rows;
+  }
+  get columnsCtrl() {
+    return this.addShowingForm.controls.columns;
+  }
+
+  getShowings() {
+    this.showings$ = this.showingsApiService.getShowingsWithParams(
+      this.addShowingForm.getRawValue()
+    );
+  }
+
+  setTimeCtrlValues(movies: MovieDetails[]) {
+    this.addShowingFormService.setTimeToValue(
+      movies,
+      this.movieTitleCtrl.value,
+      this.timeToCtrl,
+      this.timeFromCtrl
+    );
+    this.addShowingFormService.setHallAvailableValue(
+      this.hallAvailableCtrl,
+      this.timeToCtrl,
+      this.breakCtrl
+    );
+    console.log(this.addShowingForm.value);
   }
 
   addShowing(movies: MovieDetails[]) {
     this.addShowingForm.markAllAsTouched();
-    this.setTimeToValue(movies);
-    if (this.addShowingForm.valid) {
-      this.showingsApiService.add(this.addShowingForm.getRawValue());
-      alert('dodano seans');
-    } else {
-      alert('Nieprawidłowo wypełniony formularz');
-    }
-  }
-
-  updateMovieId(_event: { value: string }, movies: MovieDetails[]) {
-    const movie = movies.find((movie) => movie.title === _event.value);
-    movie ? this.addShowingForm.controls.movieId.setValue(movie.id) : null;
-  }
-  updateRowsAndColumns(_event: { value: string }, halls: ScreeningHall[]) {
-    const hall = halls.find((hall) => hall.name === _event.value);
-
-    if (hall) {
-      this.addShowingForm.controls.rows.setValue(hall.rows);
-      this.addShowingForm.controls.columns.setValue(hall.columns);
-      this.addShowingForm.controls.hallId.setValue(hall.id);
-    }
-  }
-
-  private setTimeToValue(movies: MovieDetails[]) {
-    const movie = movies.find(
-      (movie) => movie.title === this.addShowingForm.controls.movieTitle.value
+    this.addShowingFormService.setControlsValues(
+      movies,
+      this.movieTitleCtrl.value,
+      this.timeToCtrl,
+      this.timeFromCtrl,
+      this.hallAvailableCtrl,
+      this.breakCtrl,
+      this.dateCtrl
     );
-    const movieDuration = movie?.duration as string;
-    this.addShowingForm.controls.timeTo.setValue(
-      this.countTimeTo(
-        this.addShowingForm.controls.timeFrom.value,
-        movieDuration
-      )
+
+    this.store.dispatch(
+      ShowingsActions.addNewShowing(this.addShowingForm.getRawValue())
+    );
+    this.addShowingForm.reset();
+  }
+
+  updateMovieId(event: { value: string }, movies: MovieDetails[]) {
+    this.addShowingFormService.updateMovieId(
+      event,
+      movies,
+      this.addShowingForm
     );
   }
-  private countTimeTo(timeFrom: string, duration: string) {
-    return new Date(
-      new Date('1970/01/01 ' + timeFrom).getTime() + parseInt(duration) * 60000
-    )
-      .toString()
-      .slice(15, 21);
+  updateRowsAndColumns(event: { value: string }, halls: ScreeningHall[]) {
+    this.addShowingFormService.updateRowsAndColumns(
+      event,
+      halls,
+      this.addShowingForm
+    );
   }
 }

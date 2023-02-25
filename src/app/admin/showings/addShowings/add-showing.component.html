@@ -1,28 +1,25 @@
-<ng-container *ngIf="movies$ | async as movies"
+<ng-container *ngIf="movies$ | async as movies; else loading"
   ><form [formGroup]="addShowingForm" (ngSubmit)="addShowing(movies)">
     <mat-form-field appearance="fill">
       <mat-label>Wybierz film</mat-label>
       <mat-select
         formControlName="movieTitle"
-        (selectionChange)="updateMovieId($event, movies)"
+        (selectionChange)="
+          updateMovieId($event, movies); setTimeCtrlValues(movies)
+        "
       >
         <mat-option
           [value]="movie.title"
           *ngFor="let movie of movies; let index = index"
-          >{{ movie.title }}</mat-option
-        >
+          >{{ movie.title }} <img class="option-img" [src]="movie.imageUrl"
+        /></mat-option>
       </mat-select>
 
-      <mat-error
-        *ngIf="addShowingForm.controls['movieTitle'].hasError('required')"
+      <mat-error *ngIf="movieTitleCtrl.errors"
+        ><span *ngIf="movieTitleCtrl.errors['required']"
+          >Kategorie są wymaganym polem</span
+        ></mat-error
       >
-        Movie Title is required.
-      </mat-error>
-      <mat-error
-        *ngIf="addShowingForm.controls['movieTitle'].hasError('minlength')"
-      >
-        Movie Title must be at least 2 characters long.
-      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -30,35 +27,49 @@
       <input
         formControlName="date"
         matInput
-        [min]="tommorrow"
+        [min]="tomorrow"
         [matDatepicker]="picker"
       />
-      <mat-hint>YYYY/MM/DD/</mat-hint>
+      <mat-hint>DD.MM.YYYY</mat-hint>
       <mat-datepicker-toggle
         matIconSuffix
         [for]="picker"
       ></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="addShowingForm.controls['date'].hasError('required')">
-        Date is required.
-      </mat-error>
+      <mat-error *ngIf="dateCtrl.errors"
+        ><span *ngIf="dateCtrl.errors['required']"
+          >Data jest wymaganym polem</span
+        ></mat-error
+      >
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Time From</mat-label>
-      <input type="time" matInput formControlName="timeFrom" />
-      <mat-error
-        *ngIf="addShowingForm.controls['timeFrom'].hasError('required')"
+      <input
+        type="time"
+        matInput
+        formControlName="timeFrom"
+        (change)="setTimeCtrlValues(movies)"
+      />
+      <mat-error *ngIf="timeFromCtrl.errors"
+        ><span *ngIf="timeFromCtrl.errors['required']"
+          >Czas rozpoczęcia jest wymaganym polem</span
+        ></mat-error
       >
-        Time From is required.
-      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Break</mat-label>
-      <input matInput formControlName="break" />
-      <mat-error *ngIf="addShowingForm.controls['break'].hasError('required')">
-        Break is required.
-      </mat-error>
+      <mat-label>Przerwa po filmie</mat-label>
+      <input
+        matInput
+        appNumbersOnly
+        formControlName="break"
+        (change)="setTimeCtrlValues(movies)"
+      />
+      <mat-error *ngIf="breakCtrl.errors"
+        ><span *ngIf="breakCtrl.errors['required']"
+          >Przerwa jest wymaganym polem</span
+        ></mat-error
+      >
     </mat-form-field>
     <ng-container *ngIf="halls$ | async as halls">
       <mat-form-field appearance="fill">
@@ -76,7 +87,60 @@
         Liczba rzędów: {{ addShowingForm.controls.rows.value }}
       </p></ng-container
     >
+    <ng-container *ngIf="addShowingForm.statusChanges | async">
+      <ng-container *ngIf="addShowingForm.valid && addShowingForm.touched">
+        <p>Sala dostępna</p>
+      </ng-container>
+      <ng-container *ngIf="addShowingForm.pending">
+        <p>Sprawdzam dostępność sali</p>
+        <mat-spinner></mat-spinner>
+      </ng-container>
+    </ng-container>
 
-    <button mat-raised-button color="primary">Utwórz seans</button>
-  </form></ng-container
->
+    <ng-container *ngIf="!addShowingForm.pending"
+      ><button
+        [disabled]="!addShowingForm.valid"
+        mat-raised-button
+        color="primary"
+      >
+        Utwórz seans
+      </button></ng-container
+    >
+
+    <ng-container *ngIf="addShowingForm.errors as errors">
+      <ng-container *ngIf="errors['timeslotTaken']">
+        Nie można dodać seansu, w tym czasie na wybranej sali odbywa się inny
+        seans.
+        <button
+          type="button"
+          mat-raised-button
+          color="primary"
+          (click)="getShowings()"
+        >
+          Pokaż seansa
+        </button>
+        <ng-container *ngIf="showings$ | async as showings">
+          <ol>
+            <li *ngFor="let showing of showings">
+              <p><b>Seans ID:</b> {{ showing.id }}</p>
+              <p><b>Tytuł filmu : </b>{{ showing.movieTitle }}</p>
+              <p><b>Data : </b>{{ showing.date }}</p>
+              <p><b>Godzina rozpoczęcia : </b>{{ showing.timeFrom }}</p>
+              <p><b>Godzina zakończenia : </b>{{ showing.timeTo }}</p>
+              <p><b>Długość przerwy : </b>{{ showing.break }}min</p>
+              <p>
+                <b>Sala dostępna po: </b>{{ showing.hallAvailableAfter }}min
+              </p>
+              <p><b>Sala : </b>{{ showing.hallId }}</p>
+              <p><b>Liczba rzędów w sali: </b>{{ showing.rows }}</p>
+              <p><b>Liczba kolumn w sali: </b>{{ showing.columns }}</p>
+            </li>
+          </ol>
+        </ng-container>
+      </ng-container></ng-container
+    >
+  </form>
+</ng-container>
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

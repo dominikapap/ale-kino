@@ -1,16 +1,4 @@
 {
-  "login": [
-    {
-      "email": "",
-      "password": "",
-      "id": 1
-    },
-    {
-      "email": "",
-      "password": "",
-      "id": 2
-    }
-  ],
   "orders": [
     {
       "id": "dd8dfc43-90a6-41c0-a162-aa5bdbc851c5",
@@ -102,6 +90,19 @@
         "newsletter": false,
         "couponCode": "aleKino"
       }
+    },
+    {
+      "id": "017e82d7-a3ca-4c70-9f64-dacaec28ef55",
+      "date": "2023-02-23",
+      "userData": {
+        "firstName": "John",
+        "lastName": "Wick",
+        "phoneNumber": 123456789,
+        "email": "john@wick.com",
+        "confirmEmail": "john@wick.com",
+        "newsletter": false,
+        "couponCode": "aleFilm"
+      }
     }
   ],
   "coupons": [
@@ -127,7 +128,7 @@
       "id": 4,
       "code": "aleFilm",
       "couponRate": 0.7,
-      "wasUsed": false
+      "wasUsed": true
     }
   ],
   "users": [
@@ -161,37 +162,37 @@
   ],
   "movieRatings": [
     {
-      "movieId": 1267943,
+      "movieId": "1267943",
       "userID": 168395,
       "rating": 5,
       "id": 1
     },
     {
-      "movieId": 2437892,
+      "movieId": "2437892",
       "userID": 168395,
       "rating": 9,
       "id": 2
     },
     {
-      "movieId": 2437892,
+      "movieId": "2437892",
       "userID": 168355,
       "rating": 3,
       "id": 3
     },
     {
-      "movieId": 2437892,
+      "movieId": "2437892",
       "userID": 148395,
       "rating": 7,
       "id": 4
     },
     {
-      "movieId": 1267943,
+      "movieId": "1267943",
       "userID": 158395,
       "rating": 8,
       "id": 5
     },
     {
-      "movieId": 5633922,
+      "movieId": "5633922",
       "userID": 168395,
       "rating": 7,
       "id": 6
@@ -222,7 +223,7 @@
   "movies": [
     {
       "title": "Apokawixa",
-      "id": 1267943,
+      "id": "1267943",
       "imageUrl": "https://fwcdn.pl/fpo/55/10/10015510/8029347.6.jpg",
       "genres": [
         "Horror"
@@ -236,7 +237,7 @@
     },
     {
       "title": "Co w duszy gra",
-      "id": 2437892,
+      "id": "2437892",
       "imageUrl": "https://fwcdn.pl/fpo/66/50/836650/7934792.6.jpg",
       "genres": [
         "Animowany",
@@ -251,7 +252,7 @@
     },
     {
       "title": "Władca Pierścieni: Drużyna Pierścienia",
-      "id": 5633922,
+      "id": "5633922",
       "imageUrl": "https://fwcdn.pl/fpo/10/65/1065/7912491.6.jpg",
       "genres": [
         "Fantasy",
@@ -263,293 +264,127 @@
       "descriptionLong": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
       "duration": 240,
       "isPremiere": true
+    },
+    {
+      "title": "Glass Onion: Film z serii \"Na noże\"",
+      "imageUrl": "https://fwcdn.pl/fpo/62/42/876242/8038804.6.jpg",
+      "genres": [
+        "Komedia",
+        "Dramat"
+      ],
+      "ageRestriction": "PG-13",
+      "descriptionShort": "Harlan Thrombey, senior zamożnej rodziny, zostaje znaleziony we własnym pokoju z podciętym gardłem. Rozwikłania zagadki podejmuje się detektyw Benoit Blanc. ",
+      "descriptionLong": "Harlan Thrombey, senior zamożnej rodziny, zostaje znaleziony we własnym pokoju z podciętym gardłem. Rozwikłania zagadki podejmuje się detektyw Benoit Blanc. Okazuje się, że tuż przed śmiercią, bogacz wydziedziczył rodzinę, a jedyną spadkobierczynią uczynił swą pielęgniarkę. Intryga się komplikuje i wkrótce pojawia się kolejny trup, a rodzina Harlana nie daje spokoju nowej właścicielce ich własnego domu, zdeterminowana odzyskać pieniądze.",
+      "duration": 139,
+      "isPremere": true,
+      "id": "678367"
+    },
+    {
+      "title": "Duma i uprzedzenie",
+      "imageUrl": "https://fwcdn.pl/fpo/54/87/125487/7530410.6.jpg",
+      "genres": [
+        "Dramat",
+        "Romans"
+      ],
+      "ageRestriction": "Dla wszystkich",
+      "descriptionShort": "Do Netherfield przybywa przystojny i bogaty Charles Bingley z zamiarem osiedlenia się tam na stałe. Przybysz wzbudza żywe zainteresowanie lokalnej społeczności, zwłaszcza niezamożnych panien na wydaniu. Na zawarciu bliższej znajomości z nowym sąsiadem zależy szczególnie pani Bennet, matce pięciu dorosłych córek, których jedyną szansą na dostatnie życie jest bogate zamążpójście",
+      "descriptionLong": "Do Netherfield przybywa przystojny i bogaty Charles Bingley z zamiarem osiedlenia się tam na stałe. Przybysz wzbudza żywe zainteresowanie lokalnej społeczności, zwłaszcza niezamożnych panien na wydaniu. Na zawarciu bliższej znajomości z nowym sąsiadem zależy szczególnie pani Bennet, matce pięciu dorosłych córek, których jedyną szansą na dostatnie życie jest bogate zamążpójście. Sprawa jest paląca, gdyż cały rodzinny majątek ma wkrótce przejść w ręce antypatycznego kuzyna, pana Collinsa. Początkowo wszystko układa się po myśli pani Bennet. Bingley zakochuje się w jej najstarszej i najładniejszej córce, Jane. Tymczasem jego najlepszy przyjaciel, ponury i wyniosły pan Darcy, obdarza zainteresowaniem jej młodszą siostrę, Elżbietę.",
+      "duration": 127,
+      "isPremere": false,
+      "id": "930174"
     }
   ],
   "showings": [
     {
-      "id": 14,
-      "movieId": 5633922,
-      "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-02-19",
-      "break": 15,
-      "timeFrom": "09:30",
-      "timeTo": "11:30",
-      "rows": 10,
-      "columns": 11,
-      "hallId": 1
-    },
-    {
-      "id": 15,
-      "movieId": 1267943,
+      "movieId": "1267943",
       "movieTitle": "Apokawixa",
-      "date": "2023-02-19",
-      "break": 15,
-      "timeFrom": "09:30",
-      "timeTo": "11:00",
-      "rows": 10,
-      "columns": 12,
-      "hallId": 1
-    },
-    {
-      "id": 153,
-      "movieId": 2437892,
-      "movieTitle": "Co w duszy gra",
-      "date": "2023-02-20",
+      "date": "2023-02-25",
       "break": 15,
       "timeFrom": "21:30",
       "timeTo": "23:00",
-      "rows": 10,
-      "columns": 12,
-      "hallId": 1
-    },
-    {
-      "id": 17,
-      "movieId": 1267943,
-      "movieTitle": "Apokawixa",
-      "date": "2023-02-20",
-      "break": 15,
-      "timeFrom": "16:00",
-      "timeTo": "17:30",
-      "rows": 10,
-      "columns": 12,
-      "hallId": 1
-    },
-    {
-      "id": 18,
-      "movieId": 1267943,
-      "movieTitle": "Apokawixa",
-      "date": "2023-02-21",
-      "break": 15,
-      "timeFrom": "21:00",
-      "timeTo": "21:30",
-      "rows": 12,
-      "columns": 12,
-      "hallId": 2
-    },
-    {
-      "id": 20,
-      "movieId": 5633922,
-      "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-02-22",
-      "break": 15,
-      "timeFrom": "18:30",
-      "timeTo": "20:30",
-      "rows": 9,
-      "columns": 10,
-      "hallId": 2
-    },
-    {
-      "id": 22,
-      "movieId": 2437892,
-      "movieTitle": "Co w duszy gra",
-      "date": "2023-02-22",
-      "break": 15,
-      "timeFrom": "12:30",
-      "timeTo": "14:00",
-      "rows": 10,
-      "columns": 12,
-      "hallId": 2
-    },
-    {
-      "id": 24,
-      "movieId": 2437892,
-      "movieTitle": "Co w duszy gra",
-      "date": "2023-02-22",
-      "break": 15,
-      "timeFrom": "18:00",
-      "timeTo": "17:30",
-      "rows": 10,
-      "columns": 12,
-      "hallId": 1
-    },
-    {
-      "id": 26,
-      "movieId": 2437892,
-      "movieTitle": "Co w duszy gra",
-      "date": "2023-02-23",
-      "break": 15,
-      "timeFrom": "21:00",
-      "timeTo": "21:30",
-      "rows": 12,
-      "columns": 12,
-      "hallId": 2
-    },
-    {
-      "id": 27,
-      "movieId": 5633922,
-      "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-02-23",
-      "break": 15,
-      "timeFrom": "19:30",
-      "timeTo": "21:30",
-      "rows": 10,
-      "columns": 11,
-      "hallId": 1
-    },
-    {
-      "id": 28,
-      "movieId": 5633922,
-      "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-02-24",
-      "break": 15,
-      "timeFrom": "12:30",
-      "timeTo": "14:30",
-      "rows": 10,
-      "columns": 11,
-      "hallId": 1
-    },
-    {
-      "id": 156,
-      "movieId": 1267943,
-      "movieTitle": "Apokawixa",
-      "date": "2023-02-24",
-      "break": 15,
-      "timeFrom": "12:30",
-      "timeTo": "14:00",
-      "rows": 10,
-      "columns": 12,
-      "hallId": 1
-    },
-    {
-      "id": 99,
-      "movieId": 1267943,
-      "movieTitle": "Apokawixa",
-      "date": "2023-02-25",
-      "break": 15,
-      "timeFrom": "16:00",
-      "timeTo": "17:30",
-      "rows": 10,
-      "columns": 12,
-      "hallId": 1
-    },
-    {
-      "id": 263,
-      "movieId": 1267943,
-      "movieTitle": "Apokawixa",
-      "date": "2023-02-25",
-      "break": 15,
-      "timeFrom": "21:00",
-      "timeTo": "21:30",
-      "rows": 12,
-      "columns": 12,
-      "hallId": 2
-    },
-    {
-      "id": 276,
-      "movieId": 2437892,
-      "movieTitle": "Co w duszy gra",
-      "date": "2023-02-25",
-      "break": 15,
-      "timeFrom": "12:30",
-      "timeTo": "14:00",
-      "rows": 10,
-      "columns": 12,
-      "hallId": 2
-    },
-    {
-      "id": 303,
-      "movieId": 2437892,
-      "movieTitle": "Co w duszy gra",
-      "date": "2023-02-26",
-      "break": 15,
-      "timeFrom": "16:00",
-      "timeTo": "17:30",
-      "rows": 10,
-      "columns": 12,
-      "hallId": 1
-    },
-    {
-      "id": 323,
-      "movieId": 2437892,
-      "movieTitle": "Co w duszy gra",
-      "date": "2023-02-26",
-      "break": 15,
-      "timeFrom": "21:00",
-      "timeTo": "21:30",
-      "rows": 12,
-      "columns": 12,
-      "hallId": 2
-    },
-    {
-      "movieId": 1267943,
-      "movieTitle": "Apokawixa",
-      "date": "2023-02-23T23:00:00.000Z",
-      "break": 15,
-      "timeFrom": "16:30",
-      "timeTo": " 18:00",
-      "rows": 10,
-      "columns": 10,
-      "id": 324
-    },
-    {
-      "movieId": 5633922,
-      "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-02-26T23:00:00.000Z",
-      "break": 15,
-      "timeFrom": "20:45",
-      "timeTo": " 00:45",
-      "rows": 10,
-      "columns": 10,
-      "id": 326
-    },
-    {
-      "movieId": 1267943,
-      "movieTitle": "Apokawixa",
-      "date": "2023-02-26T23:00:00.000Z",
-      "break": 15,
-      "timeFrom": "15:30",
-      "timeTo": " 17:00",
-      "rows": 10,
-      "columns": 10,
-      "id": 327
-    },
-    {
-      "movieId": 1267943,
-      "movieTitle": "Apokawixa",
-      "date": "2023-02-25T23:00:00.000Z",
-      "break": 15,
-      "timeFrom": "16:10",
-      "timeTo": " 17:40",
-      "hallId": 1,
-      "rows": 8,
-      "columns": 6,
-      "id": 328
-    },
-    {
-      "movieId": 2437892,
-      "movieTitle": "Co w duszy gra",
-      "date": "2023-02-28T23:00:00.000Z",
-      "break": 15,
-      "timeFrom": "11:45",
-      "timeTo": " 13:00",
-      "hallId": 1,
-      "rows": 8,
-      "columns": 6,
-      "id": 329
-    },
-    {
-      "movieId": 2437892,
-      "movieTitle": "Co w duszy gra",
-      "date": "2023-02-28T23:00:00.000Z",
-      "break": 15,
-      "timeFrom": "11:45",
-      "timeTo": " 13:00",
-      "hallId": 1,
-      "rows": 8,
-      "columns": 6,
-      "id": 330
-    },
-    {
-      "movieId": 5633922,
-      "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-03-01T23:00:00.000Z",
-      "break": "20",
-      "timeFrom": "21:20",
-      "timeTo": " 01:20",
+      "hallAvailableAfter": "23:15",
       "hallId": 2,
       "rows": 10,
       "columns": 10,
-      "id": 331
+      "id": 1
+    },
+    {
+      "movieId": "5633922",
+      "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
+      "date": "2023-02-25",
+      "break": 15,
+      "timeFrom": "12:30",
+      "timeTo": "16:30",
+      "hallAvailableAfter": "16:45",
+      "hallId": 2,
+      "rows": 10,
+      "columns": 10,
+      "id": 2
+    },
+    {
+      "movieId": "5633922",
+      "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
+      "date": "2023-02-26",
+      "break": 15,
+      "timeFrom": "17:00",
+      "timeTo": "21:00",
+      "hallAvailableAfter": "21:15",
+      "hallId": 2,
+      "rows": 10,
+      "columns": 10,
+      "id": 3
+    },
+    {
+      "movieId": "5633922",
+      "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
+      "date": "2023-02-27",
+      "break": 15,
+      "timeFrom": "15:00",
+      "timeTo": "19:00",
+      "hallAvailableAfter": "19:15",
+      "hallId": 2,
+      "rows": 10,
+      "columns": 10,
+      "id": 4
+    },
+    {
+      "movieId": "1267943",
+      "movieTitle": "Apokawixa",
+      "date": "2023-02-28",
+      "break": "20",
+      "timeFrom": "12:30",
+      "timeTo": "14:00",
+      "hallAvailableAfter": "14:20",
+      "hallId": 1,
+      "rows": 8,
+      "columns": 6,
+      "id": 5
+    },
+    {
+      "movieId": "678367",
+      "movieTitle": "Glass Onion: Film z serii \"Na noże\"",
+      "date": "2023-02-26",
+      "break": 15,
+      "timeFrom": "17:20",
+      "timeTo": "19:39",
+      "hallAvailableAfter": "19:54",
+      "hallId": 1,
+      "rows": 8,
+      "columns": 6,
+      "id": 6
+    },
+    {
+      "movieId": "930174",
+      "movieTitle": "Duma i uprzedzenie",
+      "date": "2023-02-27",
+      "break": 15,
+      "timeFrom": "15:30",
+      "timeTo": "17:37",
+      "hallAvailableAfter": "17:52",
+      "hallId": 1,
+      "rows": 8,
+      "columns": 6,
+      "id": 7
     }
   ],
   "reservedSeats": [
@@ -923,6 +758,111 @@
       "showingID": 99,
       "userID": 168395,
       "id": "99F5"
+    },
+    {
+      "rowSeat": "D",
+      "columnSeat": 4,
+      "showingID": 3,
+      "userID": -1,
+      "id": "3D4"
+    },
+    {
+      "rowSeat": "D",
+      "columnSeat": 5,
+      "showingID": 3,
+      "userID": -1,
+      "id": "3D5"
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 7,
+      "showingID": 3,
+      "userID": 168395,
+      "id": "3F7"
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 8,
+      "showingID": 3,
+      "userID": 168395,
+      "id": "3F8"
+    },
+    {
+      "rowSeat": "H",
+      "columnSeat": 2,
+      "showingID": 3,
+      "userID": 168395,
+      "id": "3H2"
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 4,
+      "showingID": 3,
+      "userID": -1,
+      "id": "3J4"
+    },
+    {
+      "rowSeat": "G",
+      "columnSeat": 6,
+      "showingID": 3,
+      "userID": -1,
+      "id": "3G6"
+    },
+    {
+      "rowSeat": "G",
+      "columnSeat": 7,
+      "showingID": 3,
+      "userID": -1,
+      "id": "3G7"
+    },
+    {
+      "rowSeat": "E",
+      "columnSeat": 2,
+      "showingID": 3,
+      "userID": 168395,
+      "id": "3E2"
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 9,
+      "showingID": 3,
+      "userID": 168395,
+      "id": "3J9"
+    },
+    {
+      "rowSeat": "H",
+      "columnSeat": 10,
+      "showingID": 3,
+      "userID": 168395,
+      "id": "3H10"
+    },
+    {
+      "rowSeat": "D",
+      "columnSeat": 1,
+      "showingID": 3,
+      "userID": -1,
+      "id": "3D1"
+    },
+    {
+      "rowSeat": "I",
+      "columnSeat": 5,
+      "showingID": 3,
+      "userID": -1,
+      "id": "3I5"
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 2,
+      "showingID": 1,
+      "userID": 168395,
+      "id": "1F2"
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 3,
+      "showingID": 1,
+      "userID": 168395,
+      "id": "1F3"
     }
   ],
   "bookedSeats": [
@@ -1068,6 +1008,28 @@
       "orderID": "25c7943d-d5d5-4b8c-9b37-9af0041c9da9",
       "date": "2023-02-19",
       "id": 13
+    },
+    {
+      "rowSeat": "D",
+      "columnSeat": 4,
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "showingID": 3,
+      "userID": 168395,
+      "orderID": "017e82d7-a3ca-4c70-9f64-dacaec28ef55",
+      "date": "2023-02-23",
+      "id": 14
+    },
+    {
+      "rowSeat": "D",
+      "columnSeat": 5,
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "showingID": 3,
+      "userID": 168395,
+      "orderID": "017e82d7-a3ca-4c70-9f64-dacaec28ef55",
+      "date": "2023-02-23",
+      "id": 15
     }
   ],
   "screeningHalls": [
@@ -1086,161 +1048,62 @@
   ],
   "watchlist": [
     {
-      "id": 3,
+      "id": "3",
       "userID": 168363,
-      "movieID": 2437892,
+      "movieID": "2437892",
       "movieTitle": "Co w duszy gra"
     },
     {
       "userID": 680235,
-      "movieID": 2437892,
+      "movieID": "2437892",
       "movieTitle": "Co w duszy gra",
-      "id": 4
+      "id": "4"
     }
   ],
   "cart": [
     {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "E",
-      "columnSeat": 1,
-      "userID": 168395,
-      "showingId": 26,
-      "id": "039ad338-c5dd-495e-a5c9-b4d029834fb5",
-      "inCart": true,
-      "timestamp": "2023-02-19T14:40:"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "E",
-      "columnSeat": 2,
-      "userID": 168395,
-      "showingId": 26,
-      "id": "c7cbe402-22a1-4dc1-887b-034ac7d55e37",
-      "inCart": true,
-      "timestamp": "2023-02-19T14:40:"
-    },
-    {
-      "ticketTypeName": "Bilet ulgowy",
-      "ticketPrice": 17,
-      "rowSeat": "D",
-      "columnSeat": 1,
-      "userID": 168395,
-      "showingId": 20,
-      "id": "6b273ac4-9a49-445b-9849-a7d68d3bd139",
-      "inCart": true,
-      "timestamp": "2023-02-19T15:08:59.330Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "D",
-      "columnSeat": 2,
-      "userID": 168395,
-      "showingId": 20,
-      "id": "495f0de7-3944-42f9-97f0-30f8b8e2f2b1",
-      "inCart": true,
-      "timestamp": "2023-02-19T15:08:59.330Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "A",
-      "columnSeat": 1,
-      "userID": 168395,
-      "showingId": 18,
-      "id": "be494169-bf25-4855-bb13-a2c6a6695db8",
-      "inCart": true,
-      "timestamp": "2023-02-19T15:32:48.090Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "A",
-      "columnSeat": 2,
-      "userID": 168395,
-      "showingId": 18,
-      "id": "c73ef38b-f6e7-4de0-92fb-8c38c4696f9e",
-      "inCart": true,
-      "timestamp": "2023-02-19T15:32:48.090Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "E",
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "rowSeat": "F",
       "columnSeat": 7,
       "userID": 168395,
-      "showingId": 26,
-      "id": "023dd749-ad37-4074-b2de-fcec0ada13c1",
+      "showingId": 3,
+      "id": "f7ec9974-7701-4303-b599-7ca920be0482",
       "inCart": true,
-      "timestamp": "2023-02-19T15:32:57.145Z"
+      "timestamp": "2023-02-23T14:25:23.565Z"
     },
     {
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "rowSeat": "E",
+      "rowSeat": "F",
       "columnSeat": 8,
       "userID": 168395,
-      "showingId": 26,
-      "id": "c203ca47-2685-4e27-8bc7-10273281543a",
+      "showingId": 3,
+      "id": "1c799f77-64c0-4817-8e3f-7974ba90776b",
       "inCart": true,
-      "timestamp": "2023-02-19T15:32:57.145Z"
+      "timestamp": "2023-02-23T14:25:23.565Z"
     },
     {
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "rowSeat": "C",
-      "columnSeat": 3,
-      "userID": 168395,
-      "showingId": 20,
-      "id": "2db9d4ff-72cf-42c9-81e4-0e10eb9b6b60",
-      "inCart": true,
-      "timestamp": "2023-02-19T15:56:39.535Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "C",
+      "rowSeat": "H",
       "columnSeat": 2,
       "userID": 168395,
-      "showingId": 99,
-      "id": "55372eec-c1c2-4de6-a762-442b9895a0a2",
+      "showingId": 3,
+      "id": "79903381-dfcc-4c1a-8ca7-6134b9994619",
       "inCart": true,
-      "timestamp": "2023-02-19T15:56:53.642Z"
+      "timestamp": "2023-02-24T12:45:30.823Z"
     },
     {
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "rowSeat": "D",
-      "columnSeat": 5,
-      "userID": 168395,
-      "showingId": 20,
-      "id": "3b272ab2-22b0-421a-8285-59470e50fed5",
+      "rowSeat": "J",
+      "columnSeat": 4,
+      "userID": 0,
+      "showingId": 3,
+      "id": "febc44d5-7be0-4838-b10b-0f119214edc1",
       "inCart": true,
-      "timestamp": "2023-02-19T16:00:59.107Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "D",
-      "columnSeat": 8,
-      "userID": 168395,
-      "showingId": 99,
-      "id": "68ee3a2a-c8d2-4d1e-87a2-85a12ce86c87",
-      "inCart": true,
-      "timestamp": "2023-02-19T16:35:15.591Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "D",
-      "columnSeat": 9,
-      "userID": 168395,
-      "showingId": 99,
-      "id": "1fc39ded-d0ea-419e-a81d-a33519886914",
-      "inCart": true,
-      "timestamp": "2023-02-19T16:35:15.591Z"
+      "timestamp": "2023-02-24T12:48:55.004Z"
     },
     {
       "ticketTypeName": "Bilet normalny",
@@ -1248,98 +1111,208 @@
       "rowSeat": "G",
       "columnSeat": 6,
       "userID": 0,
-      "showingId": 99,
-      "id": "9bd098c6-aa2b-453f-9dde-476d3d21178a",
+      "showingId": 3,
+      "id": "efdf5e0f-756e-4d93-89d5-3ddc805d1dd7",
       "inCart": true,
-      "timestamp": "2023-02-19T16:38:29.058Z"
+      "timestamp": "2023-02-24T12:49:34.415Z"
     },
     {
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "rowSeat": "L",
+      "rowSeat": "G",
+      "columnSeat": 7,
+      "userID": 0,
+      "showingId": 3,
+      "id": "f10374a2-7967-4cb2-9576-115099a246d8",
+      "inCart": true,
+      "timestamp": "2023-02-24T12:49:34.415Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "G",
+      "columnSeat": 3,
+      "userID": 0,
+      "showingId": 6,
+      "id": "0bd24be4-00da-46ca-8eaf-dc33ed5577c8",
+      "inCart": true,
+      "timestamp": "2023-02-24T13:11:12.424Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "F",
+      "columnSeat": 2,
+      "userID": 0,
+      "showingId": 6,
+      "id": "6117c535-47fc-45f3-9569-90d78fdaa776",
+      "inCart": true,
+      "timestamp": "2023-02-24T13:12:06.238Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "H",
+      "columnSeat": 1,
+      "userID": 0,
+      "showingId": 6,
+      "id": "e20307cb-d7aa-4d12-b19c-cf6c770e6371",
+      "inCart": true,
+      "timestamp": "2023-02-24T13:13:28.157Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "H",
+      "columnSeat": 3,
+      "userID": 0,
+      "showingId": 6,
+      "id": "75b06a71-e352-40bc-bec2-78afeae26aae",
+      "inCart": true,
+      "timestamp": "2023-02-24T13:15:22.451Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "E",
+      "columnSeat": 2,
+      "userID": 168395,
+      "showingId": 3,
+      "id": "0bcbb151-2f0e-44f0-982b-a04b91b3e254",
+      "inCart": true,
+      "timestamp": "2023-02-24T13:16:37.532Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "D",
+      "columnSeat": 1,
+      "userID": 0,
+      "showingId": 3,
+      "id": "e9c179fe-d0ca-4bbd-9889-7cf8a091b8e6",
+      "inCart": true,
+      "timestamp": "2023-02-24T13:49:00.292Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "I",
+      "columnSeat": 5,
+      "userID": 0,
+      "showingId": 3,
+      "id": "0c615598-7fcb-4e63-ac7a-ac10715ca188",
+      "inCart": true,
+      "timestamp": "2023-02-24T13:53:32.161Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "F",
+      "columnSeat": 2,
+      "userID": 168395,
+      "showingId": 1,
+      "id": "6e8b3c3e-edae-4a51-a266-c308ccdc8e1e",
+      "inCart": true,
+      "timestamp": "2023-02-24T14:50:19.982Z"
+    },
+    {
+      "ticketTypeName": "Bilet ulgowy",
+      "ticketPrice": 17,
+      "rowSeat": "F",
       "columnSeat": 3,
       "userID": 168395,
-      "showingId": 18,
-      "id": "c2e36fae-b1e3-498a-ac0c-ef761b47323d",
+      "showingId": 1,
+      "id": "54ef8eea-5a92-4b78-b846-53168b6375c0",
       "inCart": true,
-      "timestamp": "2023-02-19T16:57:01.544Z"
+      "timestamp": "2023-02-24T14:50:19.982Z"
+    }
+  ],
+  "ageRestrictions": [
+    {
+      "id": 1,
+      "name": "Dla wszystkich"
     },
     {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "E",
-      "columnSeat": 8,
-      "userID": 168395,
-      "showingId": 18,
-      "id": "f0651d3b-7fc4-4604-af5d-5b4f00893ce9",
-      "inCart": true,
-      "timestamp": "2023-02-19T18:08:21.136Z"
+      "id": 2,
+      "name": "PG"
     },
     {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "E",
-      "columnSeat": 9,
-      "userID": 168395,
-      "showingId": 18,
-      "id": "3f0e15a2-8b65-47fb-9399-c33f119988e2",
-      "inCart": true,
-      "timestamp": "2023-02-19T18:08:21.136Z"
+      "id": 3,
+      "name": "PG-13"
     },
     {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "B",
-      "columnSeat": 7,
-      "userID": 168395,
-      "showingId": 99,
-      "id": "4b0c1cde-bde5-4252-90f7-edaacef50c21",
-      "inCart": true,
-      "timestamp": "2023-02-19T20:24:59.305Z"
+      "id": 4,
+      "name": "R"
     },
     {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "D",
-      "columnSeat": 11,
-      "userID": 168395,
-      "showingId": 18,
-      "id": "fc5c55fa-cf34-46b8-8e26-eb1b22798a1d",
-      "inCart": true,
-      "timestamp": "2023-02-20T08:44:56.574Z"
+      "id": 5,
+      "name": "NC-17"
+    }
+  ],
+  "genres": [
+    {
+      "id": 1,
+      "name": "Animowany"
     },
     {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "D",
-      "columnSeat": 12,
-      "userID": 168395,
-      "showingId": 18,
-      "id": "0d67d7f6-51e0-47ab-a8fa-ca0f073c870e",
-      "inCart": true,
-      "timestamp": "2023-02-20T08:44:56.574Z"
+      "id": 2,
+      "name": "Obyczajowy"
     },
     {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "F",
-      "columnSeat": 7,
-      "userID": 168395,
-      "showingId": 26,
-      "id": "da0dfb3e-bc9f-4093-9751-6bb787a77d93",
-      "inCart": true,
-      "timestamp": "2023-02-20T12:48:43.836Z"
+      "id": 3,
+      "name": "Fantasy"
     },
     {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "F",
-      "columnSeat": 5,
-      "userID": 168395,
-      "showingId": 99,
-      "id": "c318571a-07b4-45f5-bdff-e2bff699e26f",
-      "inCart": true,
-      "timestamp": "2023-02-20T15:37:43.337Z"
+      "id": 4,
+      "name": "Przygodowy"
+    },
+    {
+      "id": 5,
+      "name": "Horror"
+    },
+    {
+      "id": 6,
+      "name": "Akcja"
+    },
+    {
+      "id": 7,
+      "name": "Komedia"
+    },
+    {
+      "id": 8,
+      "name": "Dramat"
+    },
+    {
+      "id": 9,
+      "name": "Historyczny"
+    },
+    {
+      "id": 10,
+      "name": "Musical"
+    },
+    {
+      "id": 11,
+      "name": "Romans"
+    },
+    {
+      "id": 12,
+      "name": "Noir"
+    },
+    {
+      "id": 13,
+      "name": "Science fiction"
+    },
+    {
+      "id": 14,
+      "name": "Thriller"
+    },
+    {
+      "id": 15,
+      "name": "Western"
+    },
+    {
+      "id": 16,
+      "name": "Kryminał"
     }
   ]
 }

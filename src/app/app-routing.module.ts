@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { adminGuard } from './admin/admin.guard';
 import { hasAuthGuard } from './auth';
 import { userOrGuestGuard } from './auth/userOrGuest.guard';
-import { PageNotFoundComponent } from './core';
+
 import { ShowingsComponent } from './domains/movies';
 import { TicketsComponent } from './domains/order';
 import { SettingsComponent, WatchListComponent } from './domains/user/';
@@ -75,7 +75,11 @@ export const routes: Routes = [
       },
       {
         path: '**',
-        component: PageNotFoundComponent,
+        loadComponent: () => import('./core/page-not-found.component'),
+      },
+      {
+        path: 'error',
+        loadComponent: () => import('./core/error-page.component'),
       },
     ],
   },

@@ -1,6 +1,6 @@
 export interface MovieDetails {
   title: string;
-  id: number;
+  id: string;
   imageUrl: string;
   genres: string[];
   ageRestriction: string;

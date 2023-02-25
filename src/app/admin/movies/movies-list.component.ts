@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { MoviesService } from './movies.service';
+import { MoviesActions } from './store/movies.actions';
 import { selectMoviesList } from './store/movies.selector';
 
 @Component({
@@ -12,6 +12,9 @@ import { selectMoviesList } from './store/movies.selector';
       <ol>
         <li *ngFor="let movie of movies">
           <p><b>Tytuł filmu : </b>{{ movie.title }}</p>
+          <p>
+            <b>Plakat : </b><img [src]="movie.imageUrl" alt="movie.title" />
+          </p>
           <p><b>Kategorie : </b>{{ movie.genres }}</p>
           <p><b>Czas trwania : </b>{{ movie.duration }} min</p>
           <p><b>Ograniczenia wiekowe : </b>{{ movie.ageRestriction }}</p>
@@ -32,12 +35,11 @@ import { selectMoviesList } from './store/movies.selector';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MoviesListComponent {
-  private moviesService = inject(MoviesService);
   private store = inject(Store);
 
   movies$ = this.store.select(selectMoviesList);
 
   ngOnInit() {
-    this.moviesService.getMovies();
+    this.store.dispatch(MoviesActions.getAllMovies());
   }
 }

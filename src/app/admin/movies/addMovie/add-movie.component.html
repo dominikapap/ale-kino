@@ -1,82 +1,150 @@
-<!-- <ng-container *ngIf="movies$ | async as movies"
-  ><form [formGroup]="addShowingForm" (ngSubmit)="addShowing(movies)">
-    <mat-form-field appearance="fill">
-      <mat-label>Wybierz film</mat-label>
-      <mat-select
-        formControlName="movieTitle"
-        (selectionChange)="updateMovieId($event, movies)"
-      >
+<h1 class="text-4xl font-bold pb-1 my-2">Dodaj nowy film</h1>
+
+<form [formGroup]="addMovieForm" (ngSubmit)="onSubmit()">
+  <div class="form-fields">
+    <mat-form-field>
+      <input
+        matInput
+        appNoEmptyChars
+        placeholder="Tytuł"
+        formControlName="title"
+      />
+      <mat-error *ngIf="titleCtrl.errors">
+        <span *ngIf="titleCtrl.errors['required']"
+          >Tytuł filmu jest wymaganym polem.</span
+        >
+        <span *ngIf="titleCtrl.errors['maxlength']"
+          >Dopuszczalna liczba znaków dla tytułu to
+          {{ titleCtrl.errors["maxlength"]["requiredLength"] }}</span
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Link do plakatu"
+        formControlName="imageUrl"
+      />
+
+      <mat-error *ngIf="imageUrlCtrl.errors">
+        <span *ngIf="imageUrlCtrl.errors['required']"
+          >Link do plakatu jest wymaganym polem</span
+        >
+        <span *ngIf="imageUrlCtrl.errors['minlength']"
+          >Minimalna liczba znaków dla linku to
+          {{ imageUrlCtrl.errors["minlength"]["requiredLength"] }}.</span
+        >
+        <span *ngIf="imageUrlCtrl.errors['maxlength']"
+          >Dopuszczalna liczba znaków dla linku to
+          {{ imageUrlCtrl.errors["maxlength"]["requiredLength"] }}</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <img [src]="imageUrlCtrl.value" />
+    <mat-form-field>
+      <mat-select placeholder="Kategorie" formControlName="genres" multiple>
         <mat-option
-          [value]="movie.title"
-          *ngFor="let movie of movies; let index = index"
-          >{{ movie.title }}</mat-option
+          *ngFor="let genre of genres$ | async"
+          [value]="genre.name"
+          >{{ genre.name }}</mat-option
         >
       </mat-select>
-
-      <mat-error
-        *ngIf="addShowingForm.controls['movieTitle'].hasError('required')"
+      <mat-error *ngIf="genresCtrl.errors"
+        ><span *ngIf="genresCtrl.errors['required']"
+          >Kategorie są wymaganym polem</span
+        ><span *ngIf="genresCtrl.errors['maxlength']"
+          >Maksymalna liczba kategorii to
+          {{ genresCtrl.errors["maxlength"]["requiredLength"] }}</span
+        ></mat-error
       >
-        Movie Title is required.
-      </mat-error>
-      <mat-error
-        *ngIf="addShowingForm.controls['movieTitle'].hasError('minlength')"
-      >
-        Movie Title must be at least 2 characters long.
-      </mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Wybierz datę</mat-label>
-      <input
-        formControlName="date"
+    <mat-form-field>
+      <mat-select
+        placeholder="Ograniczenie wiekowe"
+        formControlName="ageRestriction"
+      >
+        <mat-option
+          *ngFor="let restriction of ageRestriction$ | async"
+          [value]="restriction.name"
+          >{{ restriction.name }}</mat-option
+        >
+      </mat-select>
+      <mat-error *ngIf="ageRestrictionCtrl.errors"
+        ><span *ngIf="ageRestrictionCtrl.errors['required']"
+          >Ograniczenie wiekowe jest wymaganym polem</span
+        ></mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea
         matInput
-        [min]="tommorrow"
-        [matDatepicker]="picker"
-      />
-      <mat-hint>YYYY/MM/DD/</mat-hint>
-      <mat-datepicker-toggle
-        matIconSuffix
-        [for]="picker"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="addShowingForm.controls['date'].hasError('required')">
-        Date is required.
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Time From</mat-label>
-      <input type="time" matInput formControlName="timeFrom" />
-      <mat-error
-        *ngIf="addShowingForm.controls['timeFrom'].hasError('required')"
+        placeholder="Krótki opis"
+        formControlName="descriptionShort"
+      ></textarea>
+      <mat-error *ngIf="descriptionShortCtrl.errors"
+        ><span *ngIf="descriptionShortCtrl.errors['required']"
+          >Krótki opis jest wymaganym polem</span
+        >
+        <span *ngIf="descriptionShortCtrl.errors['minlength']"
+          >Minimalna liczba znaków dla dla krótkiego opisu to
+          {{
+            descriptionShortCtrl.errors["minlength"]["requiredLength"]
+          }}.</span
+        >
+        <span *ngIf="descriptionShortCtrl.errors['maxlength']"
+          >Dopuszczalna liczba znaków dla krótkiego opisu to
+          {{ descriptionShortCtrl.errors["maxlength"]["requiredLength"] }}</span
+        ></mat-error
       >
-        Time From is required.
-      </mat-error>
     </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Break</mat-label>
-      <input matInput formControlName="break" />
-      <mat-error *ngIf="addShowingForm.controls['break'].hasError('required')">
-        Break is required.
-      </mat-error>
-    </mat-form-field>
-    <ng-container *ngIf="halls$ | async as halls">
-      <mat-form-field appearance="fill">
-        <mat-label>Wybierz salę</mat-label>
-        <mat-select (selectionChange)="updateRowsAndColumns($event, halls)">
-          <mat-option
-            [value]="hall.name"
-            *ngFor="let hall of halls; let index = index"
-            >{{ hall.name }}</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
-      <p>Liczba kolumn: {{ addShowingForm.controls.columns.value }}</p>
-      <p>
-        Liczba rzędów: {{ addShowingForm.controls.rows.value }}
-      </p></ng-container
-    >
 
-    <button mat-raised-button color="primary">Utwórz seans</button>
-  </form></ng-container
-> -->
+    <mat-form-field>
+      <textarea
+        matInput
+        placeholder="Długi opis"
+        formControlName="descriptionLong"
+      ></textarea>
+      <mat-error *ngIf="descriptionLongCtrl.errors"
+        ><span *ngIf="descriptionLongCtrl.errors['required']"
+          >Krótki opis jest wymaganym polem</span
+        >
+        <span *ngIf="descriptionLongCtrl.errors['minlength']"
+          >Minimalna liczba znaków dla dla długiego opisu to
+          {{ descriptionLongCtrl.errors["minlength"]["requiredLength"] }}.</span
+        >
+        <span *ngIf="descriptionLongCtrl.errors['maxlength']"
+          >Dopuszczalna liczba znaków dla długiego opisu to
+          {{ descriptionLongCtrl.errors["maxlength"]["requiredLength"] }}</span
+        ></mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        appNumbersOnly
+        matInput
+        type="number"
+        placeholder="Czas trwania w min"
+        formControlName="duration"
+      />
+      <mat-error *ngIf="durationCtrl.errors"
+        ><span *ngIf="durationCtrl.errors['required']"
+          >Czas trwania jest wymaganym polem</span
+        ><span *ngIf="durationCtrl.errors['min']"
+          >Minimalny czas trwania to
+          {{ durationCtrl.errors["min"]["min"] }} minut</span
+        >
+        <span *ngIf="durationCtrl.errors['max']"
+          >Maksymalny czas trwania to
+          {{ durationCtrl.errors["max"]["max"] }} minut</span
+        ></mat-error
+      >
+    </mat-form-field>
+    <mat-slide-toggle color="primary" formControlName="isPremiere"
+      >Premiera
+    </mat-slide-toggle>
+  </div>
+  <button mat-raised-button color="primary">Dodaj film</button>
+</form>

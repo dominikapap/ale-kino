@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ShowingsService } from './showings.service';
+import { ShowingsActions } from './store/showings.actions';
 import { selectShowingsList } from './store/showings.selector';
 
 @Component({
@@ -17,6 +17,10 @@ import { selectShowingsList } from './store/showings.selector';
           <p><b>Godzina rozpoczęcia : </b>{{ showing.timeFrom }}</p>
           <p><b>Godzina zakończenia : </b>{{ showing.timeTo }}</p>
           <p><b>Długość przerwy : </b>{{ showing.break }}min</p>
+          <p>
+            <b>Sala dostępna po godzinie : </b
+            >{{ showing.hallAvailableAfter }}min
+          </p>
           <p><b>Sala : </b>{{ showing.hallId }}</p>
           <p><b>Liczba rzędów w sali: </b>{{ showing.rows }}</p>
           <p><b>Liczba kolumn w sali: </b>{{ showing.columns }}</p>
@@ -39,12 +43,11 @@ import { selectShowingsList } from './store/showings.selector';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShowingsListComponent {
-  private showingService = inject(ShowingsService);
   private store = inject(Store);
 
   showings$ = this.store.select(selectShowingsList);
 
   ngOnInit() {
-    this.showingService.getShowings();
+    this.store.dispatch(ShowingsActions.getAllShowings());
   }
 }

@@ -1,10 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  OnInit,
-} from '@angular/core';
-import { WatchListService } from './watch-list.service';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { WatchListStateService } from './watch-list.state.service';
 
 @Component({
   selector: 'app-watch-list',
@@ -15,10 +10,10 @@ import { WatchListService } from './watch-list.service';
 export class WatchListComponent {
   watchlist: string[] = [];
 
-  titles$ = inject(WatchListService).watchList$;
-  watchListService = inject(WatchListService);
+  titles$ = inject(WatchListStateService).watchList$;
+  watchListStateService = inject(WatchListStateService);
 
-  onRemoveFromWatchList(titleId: number) {
-    this.watchListService.removeFromWatchlist(titleId);
+  onRemoveFromWatchList(titleId: string) {
+    this.watchListStateService.removeFromWatchlist(titleId);
   }
 }

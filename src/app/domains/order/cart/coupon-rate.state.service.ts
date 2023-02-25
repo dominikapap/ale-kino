@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, map, tap } from 'rxjs';
+import { CouponRateApiService } from './coupon-rate.api.service';
 export interface Coupon {
   id: number;
   code: string;
@@ -11,8 +12,8 @@ export interface Coupon {
 @Injectable({
   providedIn: 'root',
 })
-export class CouponRateService {
-  private http = inject(HttpClient);
+export class CouponRateStateService {
+  private couponRateApiService = inject(CouponRateApiService);
   private couponRate$$ = new BehaviorSubject<{
     couponRate: number;
     id: number;
@@ -29,16 +30,10 @@ export class CouponRateService {
     return this.couponRate$$.value.id;
   }
 
-  checkIfCouponValid(couponCode: string) {
-    return this.http
-      .get<Coupon[]>('/coupons')
-      .pipe(map((code) => code.filter((item) => item.code === couponCode)));
-  }
-
   updateCouponRate(coupon: string) {
     if (coupon) {
-      return this.http
-        .get<Coupon[]>(`/coupons?code=${coupon}`)
+      this.couponRateApiService
+        .getCouponByName(coupon)
         .pipe(
           map((code) => code[0]),
           tap({
@@ -47,6 +42,11 @@ export class CouponRateService {
                 couponRate: result.couponRate,
                 id: result.id,
               }),
+            error: (e) => {
+              alert(
+                'Nie udało się pobrać kodów rabatowych, spróbuj ponownie później'
+              );
+            },
           })
         )
         .subscribe();
@@ -57,11 +57,7 @@ export class CouponRateService {
 
   updateWasUsed() {
     if (this.couponId) {
-      this.http
-        .patch<Coupon>(`/coupons/${this.couponId}`, {
-          wasUsed: true,
-        })
-        .subscribe();
+      this.couponRateApiService.patch(this.couponId).subscribe();
     }
   }
 }

@@ -49,7 +49,7 @@ export class AuthStateService {
     this.auth$$.next({ ...this.auth$$.value, hasAuth: true });
     this.userStateService.updateUser(user);
     localStorage.setItem('userID', user.userID.toString());
-
+    localStorage.setItem('userRole', user.role.toString());
     if (user.role === 'Admin') {
       this.router.navigate(['admin']);
     } else {
@@ -60,7 +60,7 @@ export class AuthStateService {
   logout() {
     this.userStateService.clearUser();
     localStorage.removeItem('userID');
-    localStorage.removeItem('userName');
+    localStorage.removeItem('userRole');
     this.cartService.emptyCart();
     this.auth$$.next({
       ...this.auth$$.value,
@@ -74,11 +74,17 @@ export class AuthStateService {
   private setStateFromLocalStorage() {
     // checking with userID
     const userIDFromLS = localStorage.getItem('userID');
+    const userRoleFromLS = localStorage.getItem('userRole');
+    console.log(userRoleFromLS);
     if (userIDFromLS !== null) {
       this.auth$$.next({ hasAuth: true });
-      this.userStateService.updateUserRole('NotGuest');
       this.userStateService.fetchUser(parseInt(userIDFromLS));
-      // this.cartService.getCart(parseInt(userIDFromLS));
+    }
+    if (userRoleFromLS == 'Admin' || userRoleFromLS == 'User') {
+      this.userStateService.updateUserRole(userRoleFromLS);
+      if (userRoleFromLS == 'User') {
+        this.cartService.getCart(parseInt(userIDFromLS!));
+      }
     }
   }
 }

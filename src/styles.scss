@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+$accent-error: #ff4040;
+$accent-success: #88b42d;
+
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +19,9 @@ body {
 }
 
 app-root {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #01172f;
   min-height: 100vh;
   width: min(100vw, 1920px);
@@ -135,4 +140,25 @@ body {
 
 ol {
   list-style-type: decimal;
+}
+
+///SNACKBAR
+/// ////// SNACKBAR
+.red-snackbar {
+  background: $accent-error;
+  color: white;
+}
+.red-snackbar button {
+  background-color: $accent-error;
+  color: white !important;
+  border: none;
+}
+.green-snackbar {
+  background: $accent-success;
+  color: white;
+}
+.green-snackbar button {
+  background-color: $accent-success;
+  color: white !important;
+  border: none;
 }

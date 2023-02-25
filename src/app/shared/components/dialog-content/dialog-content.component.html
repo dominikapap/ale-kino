@@ -1,0 +1,28 @@
+<div mat-dialog-content id="dialog-container">
+  <div mat-dialog-actions>
+    <button
+      mat-button
+      mat-dialog-close
+      class="form-result-view-container__close-btn"
+    >
+      <mat-icon fontIcon="close"></mat-icon>
+    </button>
+  </div>
+  <div class="dialog-content">
+    <p class="text-body mt-4">
+      {{ message }}
+    </p>
+    <div *ngIf="routerLink && linkText">
+      <p class="mt-7">
+        <a [mat-dialog-close]="true" [routerLink]="routerLink">{{
+          linkText
+        }}</a>
+      </p>
+    </div>
+    <div *ngIf="secondRouterLink && secondLinkText">
+      <a mat-dialog-close [routerLink]="secondRouterLink">{{
+        secondLinkText
+      }}</a>
+    </div>
+  </div>
+</div>

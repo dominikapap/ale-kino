@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 
 interface CheckoutInfo {
@@ -14,7 +13,6 @@ interface CheckoutInfo {
   providedIn: 'root',
 })
 export class CheckoutStateService {
-  private http = inject(HttpClient);
   private checkout$$ = new ReplaySubject<CheckoutInfo>(1);
 
   get checkout$() {

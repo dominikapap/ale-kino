@@ -9,7 +9,7 @@ import { MovieDetails } from './MovieDetails.interface';
 export class MovieDetailsService {
   private http = inject(HttpClient);
 
-  getMovieDetails(movieId: number): Observable<MovieDetails> {
+  getMovieDetails(movieId: string): Observable<MovieDetails> {
     return this.http
       .get<MovieDetails[]>(`/movies?id=${movieId}`)
       .pipe(map((result) => result[0]));

@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MultiplyByDirective } from 'src/app/shared/directives/multiply.directive';
 import { CartStateService } from '../cart.state.service';
-import { CouponRateService } from '../coupon-rate.service';
+import { CouponRateStateService } from '../coupon-rate.state.service';
 
 @Component({
   selector: 'app-cart-price',
@@ -69,6 +69,6 @@ import { CouponRateService } from '../coupon-rate.service';
 })
 export class CartPriceComponent {
   cartPrices$ = inject(CartStateService).cartPrices$;
-  couponRate$ = inject(CouponRateService).couponRate$;
+  couponRate$ = inject(CouponRateStateService).couponRate$;
   routerUrl = inject(Router).url;
 }

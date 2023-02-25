@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthStateService } from 'src/app/auth';
-import { WatchListService } from '../../user';
+import { WatchListStateService } from '../../user';
 import { MovieRatingComponent } from '../movie-rating/movie-rating.component';
 import { MovieDetailsService } from './movie-details.service';
 import { MovieDetails } from './MovieDetails.interface';
@@ -18,10 +18,10 @@ import { MovieDetails } from './MovieDetails.interface';
   providers: [MovieDetailsService],
 })
 export default class MovieDetailsComponent {
-  @Input() movieId = 0;
+  @Input() movieId = '';
 
   private showingService = inject(MovieDetailsService);
-  private watchlistService = inject(WatchListService);
+  private watchlistStateService = inject(WatchListStateService);
   private router = inject(Router);
   auth$ = inject(AuthStateService).auth$;
   movieDetails!: Observable<MovieDetails>;
@@ -32,10 +32,10 @@ export default class MovieDetailsComponent {
   }
 
   onWatchlist(movieTitle: string): boolean {
-    return this.watchlistService.checkIfOnWatchlist(movieTitle);
+    return this.watchlistStateService.checkIfOnWatchlist(movieTitle);
   }
-  onUpdateWatchlist(movieTitle: string, movieID: number) {
-    this.watchlistService.addToWatchlist(movieTitle, movieID);
+  onUpdateWatchlist(movieTitle: string, movieID: string) {
+    this.watchlistStateService.addToWatchlist(movieTitle, movieID);
   }
   navigateToWatchlist() {
     this.router.navigate(['watchlist']);

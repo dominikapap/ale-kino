@@ -5,7 +5,7 @@ export const ShowingsActions = createActionGroup({
   source: 'Showings',
   events: {
     'add new showing': props<MovieShowing>(),
-    'get all showings': props<{ showingsList: MovieShowing[] }>(),
+    'get all showings': emptyProps(),
   },
 });
 export const ShowingsAPIActions = createActionGroup({
@@ -13,5 +13,7 @@ export const ShowingsAPIActions = createActionGroup({
   events: {
     ['add new showing success']: props<MovieShowing>(),
     ['add new showing failure']: emptyProps(),
+    ['get all showings success']: props<{ showingsList: MovieShowing[] }>(),
+    ['get all showings failure']: emptyProps(),
   },
 });

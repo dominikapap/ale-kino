@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatesService } from '../services/dates.service';
+import { ShowingsApiService } from './showings.api.service';
 import { ShowingsStateService } from './showings.state.service';
 
 interface Showing {
@@ -9,7 +10,7 @@ interface Showing {
   date: string;
 }
 export interface Repertoire {
-  movieId: number;
+  movieId: string;
   showings: Showing[];
 }
 
@@ -17,7 +18,7 @@ export interface Repertoire {
   selector: 'app-showings',
   templateUrl: './showings.component.html',
   styleUrls: ['./showings.component.scss'],
-  providers: [ShowingsStateService],
+  providers: [ShowingsStateService, ShowingsApiService],
 })
 export class ShowingsComponent implements OnInit {
   private showingsService = inject(ShowingsStateService);

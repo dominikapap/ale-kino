@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { CartStateService } from '../../cart/cart.state.service';
 import { BookedSeatsStateService } from '../../services/booked-seats.state.service';
 import { v4 as createUuidv4 } from 'uuid';
 import { DatesService } from 'src/app/domains/movies/services/dates.service';
-import { CouponRateService } from '../../cart/coupon-rate.service';
+import { CouponRateStateService } from '../../cart/coupon-rate.state.service';
 import { OrderApiService } from './order-api.service';
 import { CheckoutUserDataStateService } from '../checkout-user-data.state.service';
 
@@ -22,10 +21,10 @@ export class PaymentComponent {
   private bookedSeatsService = inject(BookedSeatsStateService);
   private orderApiService = inject(OrderApiService);
   private checkoutUserDataService = inject(CheckoutUserDataStateService);
-  private couponRateService = inject(CouponRateService);
+  private couponRateStateService = inject(CouponRateStateService);
   private cartService = inject(CartStateService);
   cartPrices$ = this.cartService.cartPrices$;
-  couponRate$ = this.couponRateService.couponRate$;
+  couponRate$ = this.couponRateStateService.couponRate$;
   readonly INPUT_LENGTH = 6;
   orderID = createUuidv4();
   notPaid = true;
@@ -48,7 +47,7 @@ export class PaymentComponent {
         currDay,
         this.checkoutUserDataService.checkoutUserDataValues
       );
-      this.couponRateService.updateWasUsed();
+      this.couponRateStateService.updateWasUsed();
       this.notPaid = false;
     } else {
       alert('Podaj prawidłowy kod BLIK');

@@ -40,7 +40,7 @@ type RatingForm = FormGroup<{
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MovieRatingComponent implements OnInit {
-  @Input() movieId = 0;
+  @Input() movieId = '';
   private builder = inject(NonNullableFormBuilder);
   auth$ = inject(AuthStateService).auth$;
   movieRatingStateService = inject(MovieRatingStateService);
@@ -58,7 +58,7 @@ export class MovieRatingComponent implements OnInit {
     return this.movieRatingStateService.checkIfUserRated();
   }
 
-  rateMovie(userID: number, movieID: number) {
+  rateMovie(userID: number, movieID: string) {
     this.movieRatingStateService.updateMovieRating(
       userID,
       +this.ratingForm.controls.rating.value,

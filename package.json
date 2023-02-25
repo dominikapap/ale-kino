@@ -6,14 +6,13 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
     "server": "json-server db.json --watch",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "test": "jest --no-cache"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^15.0.4",
-    "@angular/cdk": "^15.0.3",
     "@angular/common": "^15.0.4",
     "@angular/compiler": "^15.0.4",
     "@angular/core": "^15.0.4",
@@ -24,7 +23,10 @@
     "@angular/router": "^15.0.4",
     "@ngrx/effects": "^15.3.0",
     "@ngrx/store": "^15.3.0",
+    "@types/jest": "^29.4.0",
+    "@types/node": "^18.14.0",
     "angular-pipes": "^10.0.0",
+    "jest-preset-angular": "^13.0.0",
     "moment": "^2.29.4",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
@@ -39,6 +41,7 @@
     "@angular-eslint/template-parser": "15.1.0",
     "@angular/cli": "~15.0.4",
     "@angular/compiler-cli": "^15.0.4",
+    "@babel/preset-typescript": "^7.21.0",
     "@ngrx/eslint-plugin": "^15.3.0",
     "@types/jasmine": "~4.0.0",
     "@types/uuid": "^9.0.0",
@@ -47,6 +50,7 @@
     "autoprefixer": "^10.4.13",
     "eslint": "^8.28.0",
     "jasmine-core": "~4.3.0",
+    "jest": "^29.4.3",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
@@ -55,5 +59,12 @@
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7",
     "typescript": "~4.8.4"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setup-jest.ts"
+    ],
+    "globalSetup": "jest-preset-angular/global-setup"
   }
 }

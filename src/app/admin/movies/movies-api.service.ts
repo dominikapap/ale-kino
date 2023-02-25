@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import { DatesService } from 'src/app/domains/movies';
-import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
+import { Observable } from 'rxjs';
 import { MovieDetails } from '../../domains/movies/movie-details/MovieDetails.interface';
 
-export interface ScreeningHall {
+interface Genre {
   id: number;
   name: string;
-  rows: number;
-  columns: number;
+}
+interface ageRestriction {
+  id: number;
+  name: string;
 }
 
 @Injectable({
@@ -18,16 +18,24 @@ export interface ScreeningHall {
 export class MoviesApiService {
   private http = inject(HttpClient);
 
-  getMovies$(): Observable<MovieDetails[]> {
-    return this.http.get<MovieDetails[]>('/movies');
+  getGenres$(): Observable<Genre[]> {
+    return this.http.get<Genre[]>('/genres?_sort=name&_order=asc');
   }
-  getHalls$(): Observable<ScreeningHall[]> {
-    return this.http.get<ScreeningHall[]>('/screeningHalls');
+  getAgeRestrictions$(): Observable<ageRestriction[]> {
+    return this.http.get<ageRestriction[]>('/ageRestrictions');
   }
 
-  add(movieData: Partial<MovieDetails>) {
+  add(movieData: MovieDetails) {
     return this.http.post<MovieDetails>('/movies', {
       title: movieData.title,
+      imageUrl: movieData.imageUrl,
+      genres: movieData.genres,
+      ageRestriction: movieData.ageRestriction,
+      descriptionShort: movieData.descriptionShort,
+      descriptionLong: movieData.descriptionLong,
+      duration: movieData.duration,
+      isPremere: movieData.isPremiere,
+      id: movieData,
     });
   }
 

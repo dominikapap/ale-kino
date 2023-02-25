@@ -1,6 +1,6 @@
 <ng-container *ngIf="showingDetails$ | async as showing"
   ><p>
-    {{ showing.movieTitle }}, {{ showing.date }},
+    {{ showing.movieTitle }}, {{ showing.date | slice : 0 : 10 }},
     {{
       showing.timeFrom[0] !== "0"
         ? showing.timeFrom

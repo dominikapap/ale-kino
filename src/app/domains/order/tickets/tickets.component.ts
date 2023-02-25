@@ -6,13 +6,14 @@ import {
   NonNullableFormBuilder,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { UserStateService } from 'src/app/auth/user.state.service';
 import { ReservedSeatsService } from './reserved-seats.service';
 import { v4 as createUuidv4 } from 'uuid';
 import { TicketType } from 'src/app/shared/interfaces/TicketType';
 import { CartStateService } from '../cart/cart.state.service';
 import { MovieApiService } from '../services/movieapi.service';
+import { DialogSontentService } from 'src/app/shared/components/dialog-content/dialog-content-service';
 
 type TicketGroupForm = FormGroup<{
   tickets: FormArray<FormGroup<TicketForm>>;
@@ -47,9 +48,9 @@ export class TicketsComponent implements OnInit {
   private movieApiService = inject(MovieApiService);
   private cartService = inject(CartStateService);
   private userService = inject(UserStateService);
+  private dialogContentService = inject(DialogSontentService);
   private builder = inject(NonNullableFormBuilder);
   private userID = inject(UserStateService).getUserID();
-  private router = inject(Router);
   private reservedSeatsService = inject(ReservedSeatsService);
   cart$ = this.cartService.cart$;
   private readonly MAX_TICKETS_COUNT = 10;
@@ -113,10 +114,12 @@ export class TicketsComponent implements OnInit {
         this.userService.getUserID()
       );
       this.ticketsForm.controls.tickets.clear();
-
-      if (window.confirm('Czy chcesz przejść do zamówenia?')) {
-        this.router.navigate(['/checkout']);
-      }
+      this.setTicketsFromCart();
+      this.dialogContentService.dialogInstance(
+        'Bilety dodano do koszyka',
+        '/checkout',
+        'Przejdź do zamówienia'
+      );
     }
   }
 

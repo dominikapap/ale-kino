@@ -7,6 +7,7 @@ import {
   TicketInCartDetails,
 } from '../cart/cart.state.service';
 import { v4 as createUuidv4 } from 'uuid';
+import { BookedSeatsApiService } from './booked-seats.api.service';
 
 export interface BookedSeat {
   id: number;
@@ -27,6 +28,7 @@ export class BookedSeatsStateService {
   private http = inject(HttpClient);
   private cartService = inject(CartStateService);
   private userService = inject(UserStateService);
+  private bookedSeatsApiService = inject(BookedSeatsApiService);
   private bookedSeats$$ = new BehaviorSubject<BookedSeat[]>([]);
 
   get bookedSeats$() {
@@ -34,8 +36,8 @@ export class BookedSeatsStateService {
   }
 
   getBookedSeats(showingId: number) {
-    this.http
-      .get<BookedSeat[]>(`/bookedSeats?showingID=${showingId}`)
+    this.bookedSeatsApiService
+      .get(showingId)
       .pipe(
         tap({
           next: (seatsList) => {
@@ -46,17 +48,8 @@ export class BookedSeatsStateService {
       .subscribe();
   }
   bookSeat(ticket: TicketInCartDetails, orderID: string, date: string) {
-    this.http
-      .post<BookedSeat>('/bookedSeats', {
-        rowSeat: ticket.rowSeat,
-        columnSeat: ticket.columnSeat,
-        ticketTypeName: ticket.ticketTypeName,
-        ticketPrice: ticket.ticketPrice,
-        showingID: ticket.showingId,
-        userID: this.userService.getUserID(),
-        orderID,
-        date,
-      })
+    this.bookedSeatsApiService
+      .bookSeat(ticket, orderID, date)
       .pipe(
         tap({
           next: (response) => {

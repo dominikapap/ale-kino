@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PageNotFoundComponent } from './core/';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,6 +26,10 @@ import { TicketsComponent, SeatGridComponent } from './domains/order';
 import { MainFooterComponent, MainNavbarComponent } from './shell';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,6 @@ import { EffectsModule } from '@ngrx/effects';
     MainNavbarComponent,
     MainFooterComponent,
     WatchListComponent,
-    PageNotFoundComponent,
     ShowingsComponent,
     ThisWeekComponent,
     TicketsComponent,
@@ -57,11 +59,16 @@ import { EffectsModule } from '@ngrx/effects';
     MatIconModule,
     MatMenuModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
     MatButtonToggleModule,
+    MatBadgeModule,
+    MatSnackBarModule,
+    MatDialogModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
   ],
   providers: [
+    MatSnackBarModule,
     {
       provide: API_URL,
       useValue: environment.API_URL,

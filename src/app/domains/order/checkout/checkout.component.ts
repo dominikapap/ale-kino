@@ -6,15 +6,15 @@ import {
 } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserStateService } from 'src/app/auth/user.state.service';
 import { User } from 'src/app/auth/User.interface';
-
 import { confirmEmailValidator } from './confirmEmailValidator';
 import { CheckoutForm } from 'src/app/shared/interfaces/CheckoutForm';
-import { CouponRateService } from '../cart/coupon-rate.service';
+import { CouponRateStateService } from '../cart/coupon-rate.state.service';
 import { couponCodeValidator } from './couponCodeValidator';
 import { CheckoutUserDataStateService } from './checkout-user-data.state.service';
 import { emailValidator } from './emailValidator';
+import { CouponRateApiService } from '../cart/coupon-rate.api.service';
+import { UserStateService } from 'src/app/auth';
 
 @Component({
   selector: 'app-checkout',
@@ -25,11 +25,12 @@ import { emailValidator } from './emailValidator';
 export class CheckoutComponent implements OnInit {
   private builder = inject(NonNullableFormBuilder);
   private router = inject(Router);
-  private couponRateService = inject(CouponRateService);
+  private couponRateStateService = inject(CouponRateStateService);
+  private couponRateApiService = inject(CouponRateApiService);
   private checkoutUserDataStateService = inject(CheckoutUserDataStateService);
   user = inject(UserStateService).getUserInfo();
   checkoutForm = this.createCheckoutForm();
-  couponCodes$ = this.couponRateService.couponRate$;
+  couponCodes$ = this.couponRateStateService.couponRate$;
   confirmEmailErrorMessages = {
     required: 'Potwierdzenie email jest wymaganym polem',
     pattern: 'Niewłaściwy format adresu email',
@@ -89,8 +90,10 @@ export class CheckoutComponent implements OnInit {
   couponValue() {
     return this.couponCodeCtrl.statusChanges.subscribe(() =>
       this.couponCodeCtrl.valid && this.couponCodeCtrl.value
-        ? this.couponRateService.updateCouponRate(this.couponCodeCtrl.value)
-        : this.couponRateService.updateCouponRate('')
+        ? this.couponRateStateService.updateCouponRate(
+            this.couponCodeCtrl.value
+          )
+        : this.couponRateStateService.updateCouponRate('')
     );
   }
 
@@ -118,7 +121,7 @@ export class CheckoutComponent implements OnInit {
       newsletter: this.builder.control(false),
       couponCode: this.builder.control('', {
         validators: [Validators.minLength(1)],
-        asyncValidators: [couponCodeValidator(this.couponRateService)],
+        asyncValidators: [couponCodeValidator(this.couponRateApiService)],
         updateOn: 'blur' || 'submit',
       }),
     });

@@ -1,7 +1,4 @@
-export * from './cart/cart.component';
-export * from './cart/cart.state.service';
-export * from './cart/coupon-rate.service';
-export * from './cart/cart-price/cart-price.component';
+export * from './cart/coupon-rate.state.service';
 export * from './checkout/checkout-user-data.state.service';
 export * from './checkout/checkout.component';
 export * from './checkout/checkout.state.service';
@@ -11,7 +8,7 @@ export * from './order-summary/order-summary.component';
 export * from './services/booked-seats.state.service';
 export * from './services/movieapi.service';
 export * from './showing-details/showing-details.component';
-export * from './showing-details/showing-details.service';
+export * from './showing-details/showing-details.api.service';
 export * from './tickets/reserved-seats.service';
 export * from './tickets/tickets.component';
 export * from './tickets/seat-grid/create-seat-grid.service';

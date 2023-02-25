@@ -4,18 +4,16 @@ import {
   inject,
   Input,
 } from '@angular/core';
-import { UserStateService } from 'src/app/auth/user.state.service';
 import { CartStateService } from './cart.state.service';
 import { Router, RouterModule } from '@angular/router';
-
 import SumPipe from 'src/app/shared/pipes/sum.pipe';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-
 import { MultiplyPipe } from 'src/app/shared/pipes/multiply.pipe';
 import { ReservedSeatsService } from '../tickets/reserved-seats.service';
 import ShowingDetailsComponent from '../showing-details/showing-details.component';
 import { CartPriceComponent } from './cart-price/cart-price.component';
+import { UserStateService } from 'src/app/auth';
 
 @Component({
   selector: 'app-cart',

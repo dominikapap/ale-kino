@@ -21,7 +21,7 @@ export class MovieRatingStateService {
     );
   }
 
-  getMovieRatings(movieId: number) {
+  getMovieRatings(movieId: string) {
     this.movieRatingApiService
       .get(movieId)
       .pipe(
@@ -32,7 +32,7 @@ export class MovieRatingStateService {
       .subscribe();
   }
 
-  updateMovieRating(userID: number, rating: number, movieId: number) {
+  updateMovieRating(userID: number, rating: number, movieId: string) {
     this.movieRatingApiService
       .update(userID, rating, movieId)
       .pipe(
