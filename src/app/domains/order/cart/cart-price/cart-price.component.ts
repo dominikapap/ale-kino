@@ -69,6 +69,11 @@ import { CouponRateStateService } from '../coupon-rate.state.service';
 })
 export class CartPriceComponent {
   cartPrices$ = inject(CartStateService).cartPrices$;
-  couponRate$ = inject(CouponRateStateService).couponRate$;
+  private couponRateService = inject(CouponRateStateService);
+  couponRate$ = this.couponRateService.couponRate$;
   routerUrl = inject(Router).url;
+
+  ngOnDestroy() {
+    this.couponRateService.updateCouponRate('');
+  }
 }

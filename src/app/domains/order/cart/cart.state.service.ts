@@ -161,19 +161,30 @@ export class CartStateService {
   }
 
   private addToCartAsGuest(ticketList: TicketDetails[], timestamp: string) {
-    const guestTickets: TicketInCartDetails[] = [];
+    let guestTickets: TicketInCartDetails[] = [];
+
+    if (localStorage.getItem('guestTickets')! == '') {
+      guestTickets = localStorage.getItem(
+        'guestTickets'
+      ) as unknown as TicketInCartDetails[];
+    }
+
     ticketList.forEach((ticket) => {
-      guestTickets.push({
-        ticketTypeName: ticket.ticketTypeName,
-        ticketPrice: ticket.ticketPrice,
-        rowSeat: ticket.rowSeat,
-        columnSeat: ticket.columnSeat,
-        userID: -1,
-        showingId: ticket.showingId,
-        id: createUuidv4(),
-        inCart: true,
-        timestamp: timestamp,
-      });
+      if (this.cart$$.value.find((item) => item.id === ticket.id)) {
+        return;
+      } else {
+        guestTickets.push({
+          ticketTypeName: ticket.ticketTypeName,
+          ticketPrice: ticket.ticketPrice,
+          rowSeat: ticket.rowSeat,
+          columnSeat: ticket.columnSeat,
+          userID: -1,
+          showingId: ticket.showingId,
+          id: createUuidv4(),
+          inCart: true,
+          timestamp: timestamp,
+        });
+      }
     });
 
     localStorage.setItem('guestTickets', JSON.stringify(guestTickets));

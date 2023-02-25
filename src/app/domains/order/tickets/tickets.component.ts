@@ -8,17 +8,19 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UserStateService } from 'src/app/auth/user.state.service';
-import { ReservedSeatsService } from './reserved-seats.service';
+import { ReservedSeatsService } from './reserved-seats.state.service';
 import { v4 as createUuidv4 } from 'uuid';
 import { TicketType } from 'src/app/shared/interfaces/TicketType';
 import { CartStateService } from '../cart/cart.state.service';
 import { MovieApiService } from '../services/movieapi.service';
-import { DialogSontentService } from 'src/app/shared/components/dialog-content/dialog-content-service';
+import { DialogSontentService } from 'src/app/shared/services/dialog-content-service';
+import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
+import { Subscription } from 'rxjs';
 
-type TicketGroupForm = FormGroup<{
+export type TicketGroupForm = FormGroup<{
   tickets: FormArray<FormGroup<TicketForm>>;
 }>;
-type PricesTypes =
+export type PricesTypes =
   | 'Bilet normalny'
   | 'Bilet ulgowy'
   | 'Bilet rodzinny'
@@ -27,7 +29,7 @@ type PricesTypes =
 type TicketPrices = {
   [ticketName: string]: number;
 };
-interface TicketForm {
+export interface TicketForm {
   ticketTypeName: FormControl<string>;
   ticketPrice: FormControl<number>;
   rowSeat: FormControl<string>;
@@ -41,7 +43,7 @@ interface TicketForm {
 @Component({
   selector: 'app-tickets',
   templateUrl: './tickets.component.html',
-  styleUrls: ['./tickets.component.css'],
+  styleUrls: ['./tickets.component.scss'],
 })
 export class TicketsComponent implements OnInit {
   private routeParams = inject(ActivatedRoute).snapshot.paramMap;
@@ -49,9 +51,12 @@ export class TicketsComponent implements OnInit {
   private cartService = inject(CartStateService);
   private userService = inject(UserStateService);
   private dialogContentService = inject(DialogSontentService);
+  private snackBarService = inject(SnackBarService);
   private builder = inject(NonNullableFormBuilder);
   private userID = inject(UserStateService).getUserID();
   private reservedSeatsService = inject(ReservedSeatsService);
+  private subscriptions = new Subscription();
+
   cart$ = this.cartService.cart$;
   private readonly MAX_TICKETS_COUNT = 10;
   ticketPrices: TicketPrices = {};
@@ -71,7 +76,8 @@ export class TicketsComponent implements OnInit {
       },
     });
 
-    this.setTicketsFromCart();
+    const cartSub = this.updateTicketsFromCart();
+    this.subscriptions.add(cartSub);
   }
 
   removeTicket(index: number, row: string, column: number) {
@@ -106,20 +112,32 @@ export class TicketsComponent implements OnInit {
       );
     }
   }
-
+  updateTicketsFromCart() {
+    return this.cartService.cart$.subscribe({
+      next: () => {
+        return this.setTicketsFromCart();
+      },
+    });
+  }
   onSubmit() {
-    if (this.ticketsForm.value.tickets) {
+    if (
+      this.ticketsForm.value.tickets &&
+      this.ticketsForm.value.tickets.filter((item) => item.inCart === false)
+        .length > 0
+    ) {
       this.cartService.addToCart(
         this.ticketsForm.getRawValue().tickets,
         this.userService.getUserID()
       );
-      this.ticketsForm.controls.tickets.clear();
       this.setTicketsFromCart();
       this.dialogContentService.dialogInstance(
         'Bilety dodano do koszyka',
+        true,
         '/checkout',
         'Przejdź do zamówienia'
       );
+    } else {
+      this.snackBarService.openSnackBar('Bilety już w koszyku', 3000);
     }
   }
 
@@ -176,6 +194,7 @@ export class TicketsComponent implements OnInit {
   }
 
   private setTicketsFromCart() {
+    this.ticketsForm.controls.tickets.clear();
     this.cartService.cartValue.forEach((ticket) => {
       if (ticket.showingId === this.showingIdFromRoute) {
         this.ticketsForm.controls.tickets.push(
@@ -193,5 +212,9 @@ export class TicketsComponent implements OnInit {
       }
     });
     this.updateTotalPrice();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 }

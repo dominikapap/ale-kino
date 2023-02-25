@@ -9,7 +9,7 @@ export * from './services/booked-seats.state.service';
 export * from './services/movieapi.service';
 export * from './showing-details/showing-details.component';
 export * from './showing-details/showing-details.api.service';
-export * from './tickets/reserved-seats.service';
+export * from './tickets/reserved-seats.state.service';
 export * from './tickets/tickets.component';
 export * from './tickets/seat-grid/create-seat-grid.service';
 export * from './tickets/seat-grid/seat-grid.component';

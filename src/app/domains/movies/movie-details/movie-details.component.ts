@@ -1,24 +1,31 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthStateService } from 'src/app/auth';
+import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 import { WatchListStateService } from '../../user';
 import { MovieRatingComponent } from '../movie-rating/movie-rating.component';
 import { MovieDetailsService } from './movie-details.service';
 import { MovieDetails } from './MovieDetails.interface';
+interface ShowingInMovieDetails {
+  showingId: number;
+  timeFrom: string;
+  date: string;
+}
 
 @Component({
   selector: 'app-movie-details[movieId]',
   standalone: true,
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.scss'],
-  imports: [CommonModule, MovieRatingComponent, MatButtonModule],
+  imports: [CommonModule, MovieRatingComponent, MatButtonModule, RouterLink],
   providers: [MovieDetailsService],
 })
 export default class MovieDetailsComponent {
   @Input() movieId = '';
+  @Input() movieShowings: ShowingInMovieDetails[] = [];
 
   private showingService = inject(MovieDetailsService);
   private watchlistStateService = inject(WatchListStateService);

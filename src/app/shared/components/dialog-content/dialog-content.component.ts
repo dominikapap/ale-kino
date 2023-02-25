@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: 'dialog-content.component.html',
   styles: [
     `
-      #dialog-container {
+      .dialog-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -24,9 +24,13 @@ import { RouterLink } from '@angular/router';
         overflow: hidden;
       }
 
-      .dialog-content {
-        padding: 4rem;
+      .dialog-container__dialog-content {
+        padding: clamp(8px, 4vw, 4rem);
       }
+      .dialog-container__close-btn {
+        margin: 0;
+      }
+
       .mdc-dialog__actions {
         position: absolute;
         top: 0;
@@ -41,11 +45,13 @@ import { RouterLink } from '@angular/router';
     MatButtonModule,
     MatDialogModule,
     RouterLink,
+    MatIconModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogContentComponent {
   @Input() message!: string;
+  @Input() iconSuccess = true;
   @Input() routerLink?: string;
   @Input() linkText?: string;
   @Input() secondRouterLink?: string;

@@ -122,7 +122,7 @@
       "id": 3,
       "code": "aleGratka",
       "couponRate": 0.6,
-      "wasUsed": true
+      "wasUsed": false
     },
     {
       "id": 4,
@@ -389,480 +389,81 @@
   ],
   "reservedSeats": [
     {
-      "rowSeat": "D",
-      "columnSeat": 12,
-      "showingID": 323,
-      "userID": -1,
-      "id": "323D12"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 2,
-      "showingID": 323,
-      "userID": -1,
-      "id": "323A2"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 1,
-      "showingID": 276,
-      "userID": 168395,
-      "id": "276A1"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 2,
-      "showingID": 276,
-      "userID": 168395,
-      "id": "276A2"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 1,
-      "showingID": 99,
-      "userID": -1,
-      "id": "99A1"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 2,
-      "showingID": 99,
-      "userID": -1,
-      "id": "99A2"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 2,
-      "showingID": 26,
-      "userID": -1,
-      "id": "26A2"
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 1,
-      "showingID": 28,
-      "userID": -1,
-      "id": "28B1"
-    },
-    {
-      "rowSeat": "C",
-      "columnSeat": 11,
-      "showingID": 99,
-      "userID": 168395,
-      "id": "99C11"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 11,
-      "showingID": 99,
-      "userID": -1,
-      "id": "99A11"
-    },
-    {
-      "rowSeat": "C",
-      "columnSeat": 11,
-      "showingID": 263,
-      "userID": 168395,
-      "id": "263C11"
-    },
-    {
-      "rowSeat": "C",
-      "columnSeat": 12,
-      "showingID": 263,
-      "userID": 168395,
-      "id": "263C12"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 1,
-      "showingID": 263,
-      "userID": 168395,
-      "id": "263A1"
-    },
-    {
-      "rowSeat": "C",
-      "columnSeat": 5,
-      "showingID": 263,
-      "userID": 168395,
-      "id": "263C5"
-    },
-    {
-      "rowSeat": "C",
-      "columnSeat": 6,
-      "showingID": 263,
-      "userID": 168395,
-      "id": "263C6"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 1,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26E1"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 2,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26E2"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 1,
-      "showingID": 20,
-      "userID": 168395,
-      "id": "20D1"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 2,
-      "showingID": 20,
-      "userID": 168395,
-      "id": "20D2"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 1,
-      "showingID": 18,
-      "userID": 168395,
-      "id": "18A1"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 2,
-      "showingID": 18,
-      "userID": 168395,
-      "id": "18A2"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 7,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26E7"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 8,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26E8"
-    },
-    {
-      "rowSeat": "C",
-      "columnSeat": 3,
-      "showingID": 20,
-      "userID": 168395,
-      "id": "20C3"
-    },
-    {
-      "rowSeat": "C",
-      "columnSeat": 2,
-      "showingID": 99,
-      "userID": 168395,
-      "id": "99C2"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 5,
-      "showingID": 20,
-      "userID": 168395,
-      "id": "20D5"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 5,
-      "showingID": 99,
-      "userID": -1,
-      "id": "99D5"
-    },
-    {
-      "rowSeat": "J",
-      "columnSeat": 5,
-      "showingID": 18,
-      "userID": 168395,
-      "id": "18J5"
-    },
-    {
-      "rowSeat": "J",
-      "columnSeat": 5,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26J5"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 8,
-      "showingID": 99,
-      "userID": 168395,
-      "id": "99D8"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 9,
-      "showingID": 99,
-      "userID": 168395,
-      "id": "99D9"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 7,
-      "showingID": 323,
-      "userID": 168395,
-      "id": "323E7"
-    },
-    {
-      "rowSeat": "L",
-      "columnSeat": 3,
-      "showingID": 18,
-      "userID": 168395,
-      "id": "18L3"
-    },
-    {
-      "rowSeat": "G",
-      "columnSeat": 5,
-      "showingID": 18,
-      "userID": -1,
-      "id": "18G5"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 8,
-      "showingID": 18,
-      "userID": 168395,
-      "id": "18E8"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 9,
-      "showingID": 18,
-      "userID": 168395,
-      "id": "18E9"
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 7,
-      "showingID": 99,
-      "userID": 168395,
-      "id": "99B7"
-    },
-    {
-      "rowSeat": "G",
-      "columnSeat": 4,
-      "showingID": 20,
-      "userID": -1,
-      "id": "20G4"
-    },
-    {
-      "rowSeat": "G",
-      "columnSeat": 5,
-      "showingID": 20,
-      "userID": -1,
-      "id": "20G5"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 7,
-      "showingID": 303,
-      "userID": -1,
-      "id": "303D7"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 8,
-      "showingID": 303,
-      "userID": -1,
-      "id": "303D8"
-    },
-    {
-      "rowSeat": "C",
-      "columnSeat": 7,
-      "showingID": 26,
-      "userID": -1,
-      "id": "26C7"
-    },
-    {
-      "rowSeat": "C",
-      "columnSeat": 8,
-      "showingID": 26,
-      "userID": -1,
-      "id": "26C8"
-    },
-    {
       "rowSeat": "F",
-      "columnSeat": 8,
-      "showingID": 18,
-      "userID": -1,
-      "id": "18F8"
-    },
-    {
-      "rowSeat": "F",
-      "columnSeat": 9,
-      "showingID": 18,
-      "userID": -1,
-      "id": "18F9"
-    },
-    {
-      "rowSeat": "J",
-      "columnSeat": 7,
-      "showingID": 18,
-      "userID": -1,
-      "id": "18J7"
-    },
-    {
-      "rowSeat": "J",
-      "columnSeat": 9,
-      "showingID": 18,
-      "userID": -1,
-      "id": "18J9"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 11,
-      "showingID": 18,
-      "userID": 168395,
-      "id": "18D11"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 12,
-      "showingID": 18,
-      "userID": 168395,
-      "id": "18D12"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 11,
-      "showingID": 18,
-      "userID": -1,
-      "id": "18A11"
-    },
-    {
-      "rowSeat": "A",
-      "columnSeat": 10,
-      "showingID": 18,
-      "userID": -1,
-      "id": "18A10"
-    },
-    {
-      "rowSeat": "F",
-      "columnSeat": 7,
-      "showingID": 26,
-      "userID": 168395,
-      "id": "26F7"
-    },
-    {
-      "rowSeat": "F",
-      "columnSeat": 5,
-      "showingID": 99,
-      "userID": 168395,
-      "id": "99F5"
-    },
-    {
-      "rowSeat": "D",
       "columnSeat": 4,
       "showingID": 3,
       "userID": -1,
-      "id": "3D4"
+      "id": "3F4"
     },
     {
-      "rowSeat": "D",
+      "rowSeat": "F",
       "columnSeat": 5,
       "showingID": 3,
       "userID": -1,
-      "id": "3D5"
-    },
-    {
-      "rowSeat": "F",
-      "columnSeat": 7,
-      "showingID": 3,
-      "userID": 168395,
-      "id": "3F7"
-    },
-    {
-      "rowSeat": "F",
-      "columnSeat": 8,
-      "showingID": 3,
-      "userID": 168395,
-      "id": "3F8"
+      "id": "3F5"
     },
     {
       "rowSeat": "H",
-      "columnSeat": 2,
-      "showingID": 3,
-      "userID": 168395,
-      "id": "3H2"
-    },
-    {
-      "rowSeat": "J",
-      "columnSeat": 4,
-      "showingID": 3,
-      "userID": -1,
-      "id": "3J4"
-    },
-    {
-      "rowSeat": "G",
       "columnSeat": 6,
       "showingID": 3,
       "userID": -1,
-      "id": "3G6"
-    },
-    {
-      "rowSeat": "G",
-      "columnSeat": 7,
-      "showingID": 3,
-      "userID": -1,
-      "id": "3G7"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 2,
-      "showingID": 3,
-      "userID": 168395,
-      "id": "3E2"
-    },
-    {
-      "rowSeat": "J",
-      "columnSeat": 9,
-      "showingID": 3,
-      "userID": 168395,
-      "id": "3J9"
-    },
-    {
-      "rowSeat": "H",
-      "columnSeat": 10,
-      "showingID": 3,
-      "userID": 168395,
-      "id": "3H10"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 1,
-      "showingID": 3,
-      "userID": -1,
-      "id": "3D1"
+      "id": "3H6"
     },
     {
       "rowSeat": "I",
-      "columnSeat": 5,
+      "columnSeat": 7,
       "showingID": 3,
       "userID": -1,
-      "id": "3I5"
+      "id": "3I7"
     },
     {
-      "rowSeat": "F",
+      "rowSeat": "G",
+      "columnSeat": 8,
+      "showingID": 3,
+      "userID": -1,
+      "id": "3G8"
+    },
+    {
+      "rowSeat": "J",
+      "columnSeat": 7,
+      "showingID": 3,
+      "userID": -1,
+      "id": "3J7"
+    },
+    {
+      "rowSeat": "D",
       "columnSeat": 2,
-      "showingID": 1,
+      "showingID": 5,
       "userID": 168395,
-      "id": "1F2"
+      "id": "5D2"
     },
     {
-      "rowSeat": "F",
+      "rowSeat": "E",
+      "columnSeat": 4,
+      "showingID": 5,
+      "userID": -1,
+      "id": "5E4"
+    },
+    {
+      "rowSeat": "H",
       "columnSeat": 3,
-      "showingID": 1,
-      "userID": 168395,
-      "id": "1F3"
+      "showingID": 5,
+      "userID": -1,
+      "id": "5H3"
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 2,
+      "showingID": 5,
+      "userID": -1,
+      "id": "5B2"
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 3,
+      "showingID": 5,
+      "userID": -1,
+      "id": "5B3"
     }
   ],
   "bookedSeats": [
@@ -1062,169 +663,103 @@
   ],
   "cart": [
     {
-      "ticketTypeName": "Bilet rodzinny",
-      "ticketPrice": 18,
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
       "rowSeat": "F",
-      "columnSeat": 7,
-      "userID": 168395,
+      "columnSeat": 4,
+      "userID": 0,
       "showingId": 3,
-      "id": "f7ec9974-7701-4303-b599-7ca920be0482",
+      "id": "7d249088-95af-4600-a3b7-ef5b93a094a5",
       "inCart": true,
-      "timestamp": "2023-02-23T14:25:23.565Z"
+      "timestamp": "2023-02-25T22:36:46.261Z"
     },
     {
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
       "rowSeat": "F",
-      "columnSeat": 8,
-      "userID": 168395,
+      "columnSeat": 5,
+      "userID": 0,
       "showingId": 3,
-      "id": "1c799f77-64c0-4817-8e3f-7974ba90776b",
+      "id": "3c2001a9-421e-4848-b512-acc7f3dfae86",
       "inCart": true,
-      "timestamp": "2023-02-23T14:25:23.565Z"
+      "timestamp": "2023-02-25T22:36:53.449Z"
     },
     {
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
       "rowSeat": "H",
-      "columnSeat": 2,
-      "userID": 168395,
+      "columnSeat": 6,
+      "userID": 0,
       "showingId": 3,
-      "id": "79903381-dfcc-4c1a-8ca7-6134b9994619",
+      "id": "81962320-4166-4d03-88f8-656cae6ce9d4",
       "inCart": true,
-      "timestamp": "2023-02-24T12:45:30.823Z"
+      "timestamp": "2023-02-25T22:43:49.659Z"
     },
     {
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
       "rowSeat": "J",
-      "columnSeat": 4,
+      "columnSeat": 8,
       "userID": 0,
       "showingId": 3,
-      "id": "febc44d5-7be0-4838-b10b-0f119214edc1",
+      "id": "d565078f-d9bc-4d54-a9e2-3d49e4b7e04c",
       "inCart": true,
-      "timestamp": "2023-02-24T12:48:55.004Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "G",
-      "columnSeat": 6,
-      "userID": 0,
-      "showingId": 3,
-      "id": "efdf5e0f-756e-4d93-89d5-3ddc805d1dd7",
-      "inCart": true,
-      "timestamp": "2023-02-24T12:49:34.415Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "G",
-      "columnSeat": 7,
-      "userID": 0,
-      "showingId": 3,
-      "id": "f10374a2-7967-4cb2-9576-115099a246d8",
-      "inCart": true,
-      "timestamp": "2023-02-24T12:49:34.415Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "G",
-      "columnSeat": 3,
-      "userID": 0,
-      "showingId": 6,
-      "id": "0bd24be4-00da-46ca-8eaf-dc33ed5577c8",
-      "inCart": true,
-      "timestamp": "2023-02-24T13:11:12.424Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "F",
-      "columnSeat": 2,
-      "userID": 0,
-      "showingId": 6,
-      "id": "6117c535-47fc-45f3-9569-90d78fdaa776",
-      "inCart": true,
-      "timestamp": "2023-02-24T13:12:06.238Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "H",
-      "columnSeat": 1,
-      "userID": 0,
-      "showingId": 6,
-      "id": "e20307cb-d7aa-4d12-b19c-cf6c770e6371",
-      "inCart": true,
-      "timestamp": "2023-02-24T13:13:28.157Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "H",
-      "columnSeat": 3,
-      "userID": 0,
-      "showingId": 6,
-      "id": "75b06a71-e352-40bc-bec2-78afeae26aae",
-      "inCart": true,
-      "timestamp": "2023-02-24T13:15:22.451Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "E",
-      "columnSeat": 2,
-      "userID": 168395,
-      "showingId": 3,
-      "id": "0bcbb151-2f0e-44f0-982b-a04b91b3e254",
-      "inCart": true,
-      "timestamp": "2023-02-24T13:16:37.532Z"
+      "timestamp": "2023-02-25T22:56:16.692Z"
     },
     {
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
       "rowSeat": "D",
-      "columnSeat": 1,
-      "userID": 0,
-      "showingId": 3,
-      "id": "e9c179fe-d0ca-4bbd-9889-7cf8a091b8e6",
-      "inCart": true,
-      "timestamp": "2023-02-24T13:49:00.292Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "I",
-      "columnSeat": 5,
-      "userID": 0,
-      "showingId": 3,
-      "id": "0c615598-7fcb-4e63-ac7a-ac10715ca188",
-      "inCart": true,
-      "timestamp": "2023-02-24T13:53:32.161Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "F",
       "columnSeat": 2,
       "userID": 168395,
-      "showingId": 1,
-      "id": "6e8b3c3e-edae-4a51-a266-c308ccdc8e1e",
+      "showingId": 5,
+      "id": "0d3c492f-3a41-4727-b9e5-baadf3b32b34",
       "inCart": true,
-      "timestamp": "2023-02-24T14:50:19.982Z"
+      "timestamp": "2023-02-25T23:04:18.934Z"
     },
     {
-      "ticketTypeName": "Bilet ulgowy",
-      "ticketPrice": 17,
-      "rowSeat": "F",
-      "columnSeat": 3,
-      "userID": 168395,
-      "showingId": 1,
-      "id": "54ef8eea-5a92-4b78-b846-53168b6375c0",
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "E",
+      "columnSeat": 4,
+      "userID": 0,
+      "showingId": 5,
+      "id": "1a8bfad9-4e20-4056-9552-20c983ed16f6",
       "inCart": true,
-      "timestamp": "2023-02-24T14:50:19.982Z"
+      "timestamp": "2023-02-25T23:05:17.155Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "H",
+      "columnSeat": 3,
+      "userID": 0,
+      "showingId": 5,
+      "id": "ba8619ac-fa7a-445c-a7e7-fa225721e4a5",
+      "inCart": true,
+      "timestamp": "2023-02-25T23:07:56.015Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "B",
+      "columnSeat": 2,
+      "userID": 0,
+      "showingId": 5,
+      "id": "6f90b61c-a87c-455e-aa16-74513ede09c1",
+      "inCart": true,
+      "timestamp": "2023-02-25T23:11:18.017Z"
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "B",
+      "columnSeat": 3,
+      "userID": 0,
+      "showingId": 5,
+      "id": "cd3b348d-d4bd-45b7-824c-09138c23eb32",
+      "inCart": true,
+      "timestamp": "2023-02-25T23:16:09.721Z"
     }
   ],
   "ageRestrictions": [

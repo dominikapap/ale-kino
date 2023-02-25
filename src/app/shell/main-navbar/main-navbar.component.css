@@ -1,3 +1,12 @@
+:host {
+  position: fixed;
+  width: calc(min(100vw, 1920px) - clamp(16px, 10vw, 10rem));
+  isolation: isolate;
+  z-index: 2;
+  background-color: #01172f;
+  border-bottom: 2px solid white;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -6,12 +15,15 @@ nav {
 
 .brand-name {
   font-size: 2rem;
+  display: flex;
+  align-items: center;
 }
 
 .nav-buttons {
   gap: 1rem;
   display: inline-flex;
   align-items: center;
+  margin-right: 1rem;
 }
 
 .cart-btn .mat-icon {

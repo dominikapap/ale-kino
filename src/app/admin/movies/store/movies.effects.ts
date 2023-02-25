@@ -20,7 +20,11 @@ export class MoviesEffects {
       exhaustMap((action) =>
         this.moviesApiService.add(action).pipe(
           catchError((error) => {
-            alert('Akcja nie powiodła sie, spróbuj ponownie później');
+            this.snackBarService.openSnackBar(
+              'Akcja nie powiodła sie, spróbuj ponownie później',
+              0,
+              ['red-snackbar']
+            );
             return throwError(() => new Error(error));
           })
         )

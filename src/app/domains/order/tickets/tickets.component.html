@@ -1,4 +1,7 @@
-<app-showing-details [showingId]="showingIdFromRoute"></app-showing-details>
+<app-showing-details
+  class="text-3xl font-semibold leading-relaxed"
+  [showingId]="showingIdFromRoute"
+></app-showing-details>
 
 <app-seat-grid
   [showingId]="showingIdFromRoute"
@@ -14,7 +17,7 @@
       "
     >
       <div [formGroup]="ticket">
-        <fieldset>
+        <fieldset class="tickets-fieldset">
           <legend>Bilet</legend>
           <span>Rząd {{ ticket.controls.rowSeat.value }}</span>
           <span> Miejsce {{ ticket.controls.columnSeat.value }}</span>
@@ -31,21 +34,24 @@
               >
             </mat-select>
           </mat-form-field>
-          <p>Cena: {{ ticket.controls.ticketPrice.value }}</p>
+          <div class="flex flex-nowrap">
+            <p>Cena: {{ ticket.controls.ticketPrice.value }} PLN</p>
 
-          <ng-container *ngIf="!ticket.controls.inCart.value"
-            ><button
-              (click)="
-                removeTicket(
-                  index,
-                  ticket.controls.rowSeat.value,
-                  ticket.controls.columnSeat.value
-                )
-              "
+            <ng-container *ngIf="!ticket.controls.inCart.value"
+              ><button
+                class="mx-4 my-0"
+                (click)="
+                  removeTicket(
+                    index,
+                    ticket.controls.rowSeat.value,
+                    ticket.controls.columnSeat.value
+                  )
+                "
+              >
+                <mat-icon>close</mat-icon>
+              </button></ng-container
             >
-              <mat-icon>close</mat-icon>
-            </button></ng-container
-          >
+          </div>
           <ng-container *ngIf="ticket.controls.inCart.value"
             ><p>Bilet w koszyku</p>
             <button
@@ -71,9 +77,11 @@
     </ol>
 
     <p class="text-body-big">Łączna kwota: {{ totalPrice }}</p>
-    <button mat-raised-button color="primary">Dodaj do koszyka</button>
+    <button class="mr-2" mat-raised-button color="primary">
+      Dodaj do koszyka
+    </button>
     <ng-container *ngIf="(cart$ | async)!.length"
-      ><a routerLink="/checkout">Przejdź do zamówienia</a></ng-container
+      ><a routerLink="/checkout">Przejdź do zamówienia -></a></ng-container
     >
   </form>
 </ng-container>

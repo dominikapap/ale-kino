@@ -10,7 +10,7 @@ import SumPipe from 'src/app/shared/pipes/sum.pipe';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MultiplyPipe } from 'src/app/shared/pipes/multiply.pipe';
-import { ReservedSeatsService } from '../tickets/reserved-seats.service';
+import { ReservedSeatsService } from '../tickets/reserved-seats.state.service';
 import ShowingDetailsComponent from '../showing-details/showing-details.component';
 import { CartPriceComponent } from './cart-price/cart-price.component';
 import { UserStateService } from 'src/app/auth';

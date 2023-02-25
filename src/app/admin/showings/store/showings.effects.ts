@@ -24,7 +24,7 @@ export class ShowingsEffects {
         )
       ),
       map((movieShowing) => {
-        this.snackBarService.openSnackBar('Seans pomyślnie dodano do bazy', [
+        this.snackBarService.openSnackBar('Seans pomyślnie dodano do bazy', 0, [
           'green-snackbar',
         ]);
         return ShowingsAPIActions.addNewShowingSuccess(movieShowing);

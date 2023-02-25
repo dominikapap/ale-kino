@@ -8,7 +8,7 @@ import {
   Output,
 } from '@angular/core';
 import { BookedSeatsStateService } from '../../services/booked-seats.state.service';
-import { ReservedSeatsService } from '../reserved-seats.service';
+import { ReservedSeatsService } from '../reserved-seats.state.service';
 import { CreateSeatGridStateService } from './create-seat-grid.service';
 
 @Component({

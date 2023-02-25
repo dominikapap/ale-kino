@@ -3,6 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-shell',
   template: '<router-outlet></router-outlet>',
-  styleUrls: [],
+  styles: [
+    `
+      :host {
+        padding-top: 120px;
+      }
+    `,
+  ],
 })
 export class ShellComponent {}

@@ -9,6 +9,8 @@ footer {
 footer .icons-and-links {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .social-icons a svg {
@@ -30,8 +32,15 @@ footer a {
   color: white;
 }
 
-.useful-links a + a {
-  border-left: 2px solid black;
+.useful-links a {
+  display: inline-block;
+  min-width: 150px;
+  border-right: 2px solid white;
+  margin-top: 0.5rem;
+
+  &:last-child {
+    border-right: none;
+  }
 }
 
 .copyright {

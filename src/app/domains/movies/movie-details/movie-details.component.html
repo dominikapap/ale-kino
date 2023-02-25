@@ -13,6 +13,22 @@
     >
       {{ movie.title }}
     </h2>
+    <div class="movie-container__hours">
+      <div *ngFor="let showing of movieShowings">
+        <a
+          class="text-xl"
+          mat-raised-button
+          color="primary"
+          [routerLink]="['/showing/', showing.showingId]"
+        >
+          {{
+            showing.timeFrom[0] !== "0"
+              ? showing.timeFrom
+              : (showing.timeFrom | slice : 1)
+          }}
+        </a>
+      </div>
+    </div>
     <div class="movie-container__details">
       <span
         class="border-r-2 pr-2 font-semibold tracking-wide"

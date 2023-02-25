@@ -26,12 +26,13 @@ app-root {
   min-height: 100vh;
   width: min(100vw, 1920px);
   margin-inline: auto;
-  padding-inline: 5rem;
+  padding-inline: clamp(8px, 5vw, 5rem);
 }
 
 /// TYPOGRAPHY
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #022143;
 }
 
 .btn {
@@ -144,12 +145,19 @@ ol {
 
 ///SNACKBAR
 /// ////// SNACKBAR
+
+.mat-mdc-snack-bar-container {
+  max-width: 80vw;
+}
+.mat-mdc-simple-snack-bar {
+  align-items: center;
+}
 .red-snackbar {
-  background: $accent-error;
+  --mdc-snackbar-container-color: #d33030;
   color: white;
 }
 .red-snackbar button {
-  background-color: $accent-error;
+  background-color: #a90c0c;
   color: white !important;
   border: none;
 }
@@ -161,4 +169,18 @@ ol {
   background-color: $accent-success;
   color: white !important;
   border: none;
+}
+
+///Ticket form
+.tickets-fieldset .mat-mdc-text-field-wrapper {
+  width: 185px;
+}
+
+////DIALOG
+.dialog-icon.mat-icon {
+  font-size: 60px;
+  height: 60px;
+  width: 60px;
+  color: green;
+  margin-top: 1rem;
 }

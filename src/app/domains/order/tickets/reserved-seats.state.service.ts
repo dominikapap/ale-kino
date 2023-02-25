@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, tap } from 'rxjs';
+import { ReservedSeatsApiService } from './reserved-seats.api.service';
 
 export interface ReservedSeat {
   id: string;
@@ -14,7 +15,7 @@ export interface ReservedSeat {
   providedIn: 'root',
 })
 export class ReservedSeatsService {
-  private http = inject(HttpClient);
+  private reservedSeatsApiService = inject(ReservedSeatsApiService);
   private reservedSeats$$ = new BehaviorSubject<ReservedSeat[]>([]);
 
   get reservedSeats$() {
@@ -22,8 +23,8 @@ export class ReservedSeatsService {
   }
 
   getReservedSeats(showingId: number) {
-    this.http
-      .get<ReservedSeat[]>(`/reservedSeats?showingID=${showingId}`)
+    this.reservedSeatsApiService
+      .getByShowing(showingId)
       .pipe(
         tap({
           next: (seatsList) => {
@@ -50,14 +51,8 @@ export class ReservedSeatsService {
       userID = -1;
     }
 
-    this.http
-      .post<ReservedSeat>('/reservedSeats', {
-        rowSeat,
-        columnSeat,
-        showingID,
-        userID,
-        id: showingID + rowSeat + columnSeat,
-      })
+    this.reservedSeatsApiService
+      .reserveSeat(rowSeat, columnSeat, userID, showingID)
       .pipe(
         tap({
           next: (response) => {
@@ -72,13 +67,9 @@ export class ReservedSeatsService {
   }
 
   removeSeat(row: string, column: number, showingID: number) {
-    // const seatRow = this.reservedSeats$$.value.filter(
-    //   (seat) => seat.rowSeat === row
-    // );
-    // const seatColumn = seatRow.filter((seat) => seat.columnSeat === column);
     const seatID = showingID + row + column;
-    this.http
-      .delete<ReservedSeat>(`/reservedSeats/${seatID}`)
+    this.reservedSeatsApiService
+      .removeSeat(seatID)
       .pipe(
         tap({
           next: () => {

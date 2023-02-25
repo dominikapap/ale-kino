@@ -1,0 +1,22 @@
+fieldset {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  border: 1px solid white;
+  padding: 0.5rem;
+  border-radius: 10px;
+
+  .mat-mdc-text-field-wrapper {
+    width: 185px;
+  }
+}
+
+app-showing-details {
+  display: block;
+
+  p {
+    margin: 0 auto;
+    width: fit-content;
+  }
+}
