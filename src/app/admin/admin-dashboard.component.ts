@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'app-admin-dashboard',
   template: `
-    <h1>DASHBOARD</h1>
-    <div class="flex gap-8">
+    <h1 class="text-3xl font-semibold text-center">ADMIN DASHBOARD</h1>
+    <div class="flex gap-8 ">
       <div>
         <h2 class="text-3xl font-bold  pb-1">Seanse</h2>
         <ol>
@@ -27,6 +27,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `
       * {
         margin-top: 1rem;
+      }
+      :host {
+        margin-top: 120px;
       }
     `,
   ],

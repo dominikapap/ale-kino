@@ -12,7 +12,7 @@ export class CartApiService {
 
   getCartItems(now: string, userID: number) {
     return this.http.get<TicketInCartDetails[]>(
-      `/cart?userId=${userID}&timestamp_gte=${now}`
+      `/cart?userId=${userID}&timestamp_gte=${now}&toBeDeleted=false`
     );
   }
 
@@ -41,10 +41,13 @@ export class CartApiService {
       id: createUuidv4(),
       inCart: true,
       timestamp,
+      toBeDeleted: false,
     });
   }
 
   deleteCartItems(ticketID: string) {
-    return this.http.delete<TicketDetails[]>(`/cart/${ticketID}`);
+    return this.http.patch<TicketDetails[]>(`/cart/${ticketID}`, {
+      toBeDeleted: true,
+    });
   }
 }

@@ -103,6 +103,84 @@
         "newsletter": false,
         "couponCode": "aleFilm"
       }
+    },
+    {
+      "id": "39d8afd9-5c58-40f3-a431-2cec04559894",
+      "date": "2023-02-26",
+      "userData": {
+        "firstName": "John",
+        "lastName": "Wick",
+        "phoneNumber": 123456789,
+        "email": "john@wick.com",
+        "confirmEmail": "john@wick.com",
+        "newsletter": false,
+        "couponCode": ""
+      }
+    },
+    {
+      "id": "19db32bb-15af-47a1-b7b9-939182c9ab17",
+      "date": "2023-02-26",
+      "userData": {
+        "firstName": "John",
+        "lastName": "Wick",
+        "phoneNumber": 123456789,
+        "email": "john@wick.com",
+        "confirmEmail": "john@wick.com",
+        "newsletter": false,
+        "couponCode": ""
+      }
+    },
+    {
+      "id": "a2ff8598-707c-4235-ba27-3150bb396dd0",
+      "date": "2023-02-26",
+      "userData": {
+        "firstName": "John",
+        "lastName": "Wick",
+        "phoneNumber": 123456789,
+        "email": "john@wick.com",
+        "confirmEmail": "john@wick.com",
+        "newsletter": false,
+        "couponCode": ""
+      }
+    },
+    {
+      "id": "6e3e33fa-d6e3-481a-ba3d-83126b4a9504",
+      "date": "2023-02-26",
+      "userData": {
+        "firstName": "John",
+        "lastName": "Wick",
+        "phoneNumber": 123456789,
+        "email": "john@wick.com",
+        "confirmEmail": "john@wick.com",
+        "newsletter": false,
+        "couponCode": ""
+      }
+    },
+    {
+      "id": "c05bf856-e758-4db7-bfe8-1b07dee6f9fb",
+      "date": "2023-02-26",
+      "userData": {
+        "firstName": "John",
+        "lastName": "Wick",
+        "phoneNumber": 123456789,
+        "email": "john@wick.com",
+        "confirmEmail": "john@wick.com",
+        "newsletter": false,
+        "couponCode": ""
+      }
+    },
+    {
+      "id": "8bf107c5-f787-45cd-a222-079abe38bff0",
+      "date": "2023-02-26",
+      "userData": {
+        "firstName": "John",
+        "lastName": "Wick",
+        "phoneNumber": 123456789,
+        "email": "john@wick.com",
+        "confirmEmail": "john@wick.com",
+        "newsletter": false,
+        "couponCode": ""
+      }
     }
   ],
   "coupons": [
@@ -298,7 +376,7 @@
     {
       "movieId": "1267943",
       "movieTitle": "Apokawixa",
-      "date": "2023-02-25",
+      "date": "2023-02-27",
       "break": 15,
       "timeFrom": "21:30",
       "timeTo": "23:00",
@@ -311,7 +389,7 @@
     {
       "movieId": "5633922",
       "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-02-25",
+      "date": "2023-02-28",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "16:30",
@@ -324,7 +402,7 @@
     {
       "movieId": "5633922",
       "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-02-26",
+      "date": "2023-03-01",
       "break": 15,
       "timeFrom": "17:00",
       "timeTo": "21:00",
@@ -363,7 +441,7 @@
     {
       "movieId": "678367",
       "movieTitle": "Glass Onion: Film z serii \"Na noże\"",
-      "date": "2023-02-26",
+      "date": "2023-03-02",
       "break": 15,
       "timeFrom": "17:20",
       "timeTo": "19:39",
@@ -438,11 +516,81 @@
       "id": "5D2"
     },
     {
-      "rowSeat": "E",
-      "columnSeat": 4,
+      "rowSeat": "F",
+      "columnSeat": 3,
       "showingID": 5,
+      "userID": 168395,
+      "id": "5F3"
+    },
+    {
+      "rowSeat": "C",
+      "columnSeat": 2,
+      "showingID": 3,
+      "userID": 168395,
+      "id": "3C2"
+    },
+    {
+      "rowSeat": "A",
+      "columnSeat": 1,
+      "showingID": 5,
+      "userID": 168395,
+      "id": "5A1"
+    },
+    {
+      "rowSeat": "A",
+      "columnSeat": 3,
+      "showingID": 5,
+      "userID": 168395,
+      "id": "5A3"
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 3,
+      "showingID": 5,
+      "userID": 168395,
+      "id": "5B3"
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 2,
+      "showingID": 5,
+      "userID": 168395,
+      "id": "5B2"
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 6,
+      "showingID": 7,
       "userID": -1,
-      "id": "5E4"
+      "id": "7B6"
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 5,
+      "showingID": 7,
+      "userID": -1,
+      "id": "7B5"
+    },
+    {
+      "rowSeat": "H",
+      "columnSeat": 1,
+      "showingID": 5,
+      "userID": 168395,
+      "id": "5H1"
+    },
+    {
+      "rowSeat": "E",
+      "columnSeat": 2,
+      "showingID": 2,
+      "userID": 168395,
+      "id": "2E2"
+    },
+    {
+      "rowSeat": "E",
+      "columnSeat": 3,
+      "showingID": 2,
+      "userID": 168395,
+      "id": "2E3"
     },
     {
       "rowSeat": "H",
@@ -453,17 +601,45 @@
     },
     {
       "rowSeat": "B",
-      "columnSeat": 2,
+      "columnSeat": 1,
+      "showingID": 2,
+      "userID": 168395,
+      "id": "2B1"
+    },
+    {
+      "rowSeat": "H",
+      "columnSeat": 4,
       "showingID": 5,
-      "userID": -1,
-      "id": "5B2"
+      "userID": 168395,
+      "id": "5H4"
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 1,
+      "showingID": 5,
+      "userID": 168395,
+      "id": "5F1"
     },
     {
       "rowSeat": "B",
-      "columnSeat": 3,
-      "showingID": 5,
-      "userID": -1,
-      "id": "5B3"
+      "columnSeat": 2,
+      "showingID": 2,
+      "userID": 168395,
+      "id": "2B2"
+    },
+    {
+      "rowSeat": "G",
+      "columnSeat": 4,
+      "showingID": 2,
+      "userID": 168395,
+      "id": "2G4"
+    },
+    {
+      "rowSeat": "I",
+      "columnSeat": 2,
+      "showingID": 2,
+      "userID": 168395,
+      "id": "2I2"
     }
   ],
   "bookedSeats": [
@@ -631,6 +807,83 @@
       "orderID": "017e82d7-a3ca-4c70-9f64-dacaec28ef55",
       "date": "2023-02-23",
       "id": 15
+    },
+    {
+      "rowSeat": "E",
+      "columnSeat": 2,
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "showingID": 2,
+      "userID": 168395,
+      "orderID": "39d8afd9-5c58-40f3-a431-2cec04559894",
+      "date": "2023-02-26",
+      "id": 16
+    },
+    {
+      "rowSeat": "E",
+      "columnSeat": 3,
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "showingID": 2,
+      "userID": 168395,
+      "orderID": "39d8afd9-5c58-40f3-a431-2cec04559894",
+      "date": "2023-02-26",
+      "id": 17
+    },
+    {
+      "rowSeat": "H",
+      "columnSeat": 3,
+      "ticketTypeName": "Bilet ulgowy",
+      "ticketPrice": 17,
+      "showingID": 5,
+      "userID": 168395,
+      "orderID": "19db32bb-15af-47a1-b7b9-939182c9ab17",
+      "date": "2023-02-26",
+      "id": 18
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 1,
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "showingID": 2,
+      "userID": 168395,
+      "orderID": "a2ff8598-707c-4235-ba27-3150bb396dd0",
+      "date": "2023-02-26",
+      "id": 19
+    },
+    {
+      "rowSeat": "H",
+      "columnSeat": 4,
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "showingID": 5,
+      "userID": 168395,
+      "orderID": "6e3e33fa-d6e3-481a-ba3d-83126b4a9504",
+      "date": "2023-02-26",
+      "id": 20
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 1,
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "showingID": 5,
+      "userID": 168395,
+      "orderID": "c05bf856-e758-4db7-bfe8-1b07dee6f9fb",
+      "date": "2023-02-26",
+      "id": 21
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 2,
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "showingID": 2,
+      "userID": 168395,
+      "orderID": "8bf107c5-f787-45cd-a222-079abe38bff0",
+      "date": "2023-02-26",
+      "id": 22
     }
   ],
   "screeningHalls": [
@@ -649,117 +902,144 @@
   ],
   "watchlist": [
     {
-      "id": "3",
-      "userID": 168363,
-      "movieID": "2437892",
-      "movieTitle": "Co w duszy gra"
-    },
-    {
-      "userID": 680235,
-      "movieID": "2437892",
-      "movieTitle": "Co w duszy gra",
-      "id": "4"
+      "userID": 168395,
+      "movieID": "5633922",
+      "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
+      "id": 1
     }
   ],
   "cart": [
     {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "F",
-      "columnSeat": 4,
-      "userID": 0,
-      "showingId": 3,
-      "id": "7d249088-95af-4600-a3b7-ef5b93a094a5",
-      "inCart": true,
-      "timestamp": "2023-02-25T22:36:46.261Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "F",
-      "columnSeat": 5,
-      "userID": 0,
-      "showingId": 3,
-      "id": "3c2001a9-421e-4848-b512-acc7f3dfae86",
-      "inCart": true,
-      "timestamp": "2023-02-25T22:36:53.449Z"
-    },
-    {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "H",
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "rowSeat": "B",
       "columnSeat": 6,
       "userID": 0,
-      "showingId": 3,
-      "id": "81962320-4166-4d03-88f8-656cae6ce9d4",
+      "showingId": 7,
+      "id": "9509cd0e-3798-43df-9d8d-18e0e41ae5ac",
       "inCart": true,
-      "timestamp": "2023-02-25T22:43:49.659Z"
+      "timestamp": "2023-02-26T20:55:42.779Z",
+      "toBeDeleted": false
     },
     {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "J",
-      "columnSeat": 8,
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "rowSeat": "B",
+      "columnSeat": 5,
       "userID": 0,
-      "showingId": 3,
-      "id": "d565078f-d9bc-4d54-a9e2-3d49e4b7e04c",
+      "showingId": 7,
+      "id": "5b1b633f-782d-4234-be49-c93a2ad0add2",
       "inCart": true,
-      "timestamp": "2023-02-25T22:56:16.692Z"
+      "timestamp": "2023-02-26T20:55:42.779Z",
+      "toBeDeleted": false
     },
     {
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "rowSeat": "D",
-      "columnSeat": 2,
+      "ticketTypeName": "Bilet ulgowy",
+      "ticketPrice": 17,
+      "rowSeat": "H",
+      "columnSeat": 1,
       "userID": 168395,
       "showingId": 5,
-      "id": "0d3c492f-3a41-4727-b9e5-baadf3b32b34",
+      "id": "96bbe9bc-2f53-492d-ba81-69f8e672f760",
       "inCart": true,
-      "timestamp": "2023-02-25T23:04:18.934Z"
+      "timestamp": "2023-02-26T21:12:28.821Z",
+      "toBeDeleted": false
+    },
+    {
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "rowSeat": "E",
+      "columnSeat": 2,
+      "userID": 168395,
+      "showingId": 2,
+      "id": "8a2e64fe-8307-4b49-9440-66654614b6fa",
+      "inCart": true,
+      "timestamp": "2023-02-26T21:31:11.287Z",
+      "toBeDeleted": true
     },
     {
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
       "rowSeat": "E",
-      "columnSeat": 4,
-      "userID": 0,
-      "showingId": 5,
-      "id": "1a8bfad9-4e20-4056-9552-20c983ed16f6",
+      "columnSeat": 3,
+      "userID": 168395,
+      "showingId": 2,
+      "id": "f7cd49d7-23aa-4e2e-8a65-622668b0fa01",
       "inCart": true,
-      "timestamp": "2023-02-25T23:05:17.155Z"
+      "timestamp": "2023-02-26T21:31:11.287Z",
+      "toBeDeleted": true
+    },
+    {
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "rowSeat": "B",
+      "columnSeat": 1,
+      "userID": 168395,
+      "showingId": 2,
+      "id": "4a2ea193-bdc1-47aa-a091-8a0e48fefbaa",
+      "inCart": true,
+      "timestamp": "2023-02-26T21:42:49.977Z",
+      "toBeDeleted": true
     },
     {
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
       "rowSeat": "H",
-      "columnSeat": 3,
-      "userID": 0,
+      "columnSeat": 4,
+      "userID": 168395,
       "showingId": 5,
-      "id": "ba8619ac-fa7a-445c-a7e7-fa225721e4a5",
+      "id": "900a7a02-f5cd-4f50-84cf-6175a66cb6b6",
       "inCart": true,
-      "timestamp": "2023-02-25T23:07:56.015Z"
+      "timestamp": "2023-02-26T21:46:23.794Z",
+      "toBeDeleted": true
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "F",
+      "columnSeat": 1,
+      "userID": 168395,
+      "showingId": 5,
+      "id": "16f80655-1cbe-4849-9edd-31cb6554a7b0",
+      "inCart": true,
+      "timestamp": "2023-02-26T21:55:59.616Z",
+      "toBeDeleted": true
     },
     {
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
       "rowSeat": "B",
       "columnSeat": 2,
-      "userID": 0,
-      "showingId": 5,
-      "id": "6f90b61c-a87c-455e-aa16-74513ede09c1",
+      "userID": 168395,
+      "showingId": 2,
+      "id": "e482813e-5dcd-4452-8ed3-1e399ef2807c",
       "inCart": true,
-      "timestamp": "2023-02-25T23:11:18.017Z"
+      "timestamp": "2023-02-26T21:59:49.746Z",
+      "toBeDeleted": true
     },
     {
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "rowSeat": "B",
-      "columnSeat": 3,
-      "userID": 0,
-      "showingId": 5,
-      "id": "cd3b348d-d4bd-45b7-824c-09138c23eb32",
+      "rowSeat": "G",
+      "columnSeat": 4,
+      "userID": 168395,
+      "showingId": 2,
+      "id": "1e4ec8f0-6b72-47c8-ad36-ddce0c7ac98f",
       "inCart": true,
-      "timestamp": "2023-02-25T23:16:09.721Z"
+      "timestamp": "2023-02-26T22:01:39.258Z",
+      "toBeDeleted": false
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "I",
+      "columnSeat": 2,
+      "userID": 168395,
+      "showingId": 2,
+      "id": "3cf05751-3adb-4802-a5f5-f2b98587508b",
+      "inCart": true,
+      "timestamp": "2023-02-26T22:26:51.954Z",
+      "toBeDeleted": false
     }
   ],
   "ageRestrictions": [

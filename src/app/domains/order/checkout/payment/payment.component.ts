@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  inject,
+} from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { CartStateService } from '../../cart/cart.state.service';
 import { BookedSeatsStateService } from '../../services/booked-seats.state.service';
@@ -7,11 +12,13 @@ import { DatesService } from 'src/app/domains/movies/services/dates.service';
 import { CouponRateStateService } from '../../cart/coupon-rate.state.service';
 import { OrderApiService } from './order-api.service';
 import { CheckoutUserDataStateService } from '../checkout-user-data.state.service';
+import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
+import { combineLatest, map } from 'rxjs';
 
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.css'],
+  styleUrls: ['./payment.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaymentComponent {
@@ -23,11 +30,14 @@ export class PaymentComponent {
   private checkoutUserDataService = inject(CheckoutUserDataStateService);
   private couponRateStateService = inject(CouponRateStateService);
   private cartService = inject(CartStateService);
+  private snackBarService = inject(SnackBarService);
+  private cdr = inject(ChangeDetectorRef);
   cartPrices$ = this.cartService.cartPrices$;
   couponRate$ = this.couponRateStateService.couponRate$;
   readonly INPUT_LENGTH = 6;
   orderID = createUuidv4();
   notPaid = true;
+  showSpinner = false;
 
   blikForm = this.builder.group({
     blikNum: this.builder.control(null, {
@@ -39,18 +49,35 @@ export class PaymentComponent {
     this.blikForm.markAllAsTouched();
     if (this.blikForm.valid) {
       const currDay = this.datesService.getCurrentDay();
-      this.cartValue.forEach((ticket) => {
-        this.bookedSeatsService.bookSeat(ticket, this.orderID, currDay);
-      });
-      this.orderApiService.postOrderData(
-        this.orderID,
-        currDay,
-        this.checkoutUserDataService.checkoutUserDataValues
-      );
+      this.bookSeats(currDay);
+      this.postOrder(currDay);
       this.couponRateStateService.updateWasUsed();
-      this.notPaid = false;
+      this.showConfirmation();
     } else {
-      alert('Podaj prawidłowy kod BLIK');
+      this.snackBarService.openSnackBar('Podaj prawidłowy kod BLIK', 3000);
     }
+  }
+
+  private showConfirmation() {
+    this.showSpinner = true;
+    return setTimeout(() => {
+      this.notPaid = false;
+      this.showSpinner = false;
+      this.cdr.detectChanges();
+    }, 3000);
+  }
+
+  private bookSeats(currDay: string) {
+    this.cartValue.forEach((ticket) => {
+      this.bookedSeatsService.bookSeat(ticket, this.orderID, currDay);
+    });
+  }
+
+  private postOrder(currDay: string) {
+    this.orderApiService.postOrderData(
+      this.orderID,
+      currDay,
+      this.checkoutUserDataService.checkoutUserDataValues
+    );
   }
 }

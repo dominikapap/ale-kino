@@ -9,7 +9,7 @@ import { selectMoviesList } from './store/movies.selector';
     <ng-container *ngIf="movies$ | async as movies">
       <h1 class="text-3xl font-bold  pb-1">Lista filmów</h1>
       <a routerLink="/admin/movies/add-movie">Dodaj nowy film</a>
-      <ol>
+      <ol class="pl-2">
         <li *ngFor="let movie of movies">
           <p><b>Tytuł filmu : </b>{{ movie.title }}</p>
           <p>

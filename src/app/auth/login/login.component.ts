@@ -1,24 +1,24 @@
 import { Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { CartStateService } from '../../domains/order/cart/cart.state.service';
+import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
 import { AuthStateService } from '../auth.state.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  private cartService = inject(CartStateService);
   private builder = inject(NonNullableFormBuilder);
   private auth = inject(AuthStateService);
+  private snackBarService = inject(SnackBarService);
   loginForm = this.createLoginForm();
 
   sendForm() {
     this.loginForm.markAllAsTouched();
 
     if (this.loginForm.invalid) {
-      alert('Nie wypełniono formularza');
+      this.snackBarService.openSnackBar('Nie wypełniono formularza', 3000);
     }
     this.auth.checkCredentials(
       this.loginForm.controls.email.value,

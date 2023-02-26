@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
+import { UserStateService } from 'src/app/auth';
 import { BookedSeat } from '../../order/services/booked-seats.state.service';
 
 interface Tickets {
@@ -24,12 +25,14 @@ export interface TransformedOrder {
 })
 export class UserTicketsService {
   private http = inject(HttpClient);
+  private userID = inject(UserStateService).getUserID();
 
-  getUserOrders(userID: number): Observable<TransformedOrder[]> {
+  getUserOrders(): Observable<TransformedOrder[]> {
     return this.http
-      .get<BookedSeat[]>(`/bookedSeats?userID=${userID}`)
+      .get<BookedSeat[]>(`/bookedSeats?userID=${this.userID}`)
       .pipe(map((response) => (response = this.transformOrders(response))));
   }
+
   getOrderById(orderID: string): Observable<TransformedOrder[]> {
     return this.http
       .get<BookedSeat[]>(`/bookedSeats?orderID=${orderID}`)

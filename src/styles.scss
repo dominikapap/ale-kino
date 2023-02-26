@@ -4,6 +4,17 @@
 
 $accent-error: #ff4040;
 $accent-success: #88b42d;
+$primary-400: #4d4442;
+$primary-500: #5e4139;
+$primary-700: #2c2120;
+$primary-800: #211918;
+$primary-900: #211e1d;
+
+$neutral-100: #ffffff;
+$neutral-300: #f7f3f2;
+$neutral-500: #adadad;
+$neutral-600: #a7a4a5;
+$neutral-800: #323232;
 
 * {
   margin: 0;
@@ -162,11 +173,11 @@ ol {
   border: none;
 }
 .green-snackbar {
-  background: $accent-success;
+  --mdc-snackbar-container-color: #1f9e52;
   color: white;
 }
 .green-snackbar button {
-  background-color: $accent-success;
+  background-color: #136032;
   color: white !important;
   border: none;
 }
@@ -177,10 +188,22 @@ ol {
 }
 
 ////DIALOG
-.dialog-icon.mat-icon {
+.dialog-container__dialog-icon.mat-icon,
+.success-icon.mat-icon {
   font-size: 60px;
   height: 60px;
   width: 60px;
   color: green;
   margin-top: 1rem;
+}
+
+/////
+.overflow-visible,
+.mat-icon.overflow-visible {
+  overflow: visible;
+}
+
+////MAT-ERRORS
+.blik-form .mat-mdc-form-field-error-wrapper {
+  padding: 0;
 }

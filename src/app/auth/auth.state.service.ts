@@ -12,7 +12,6 @@ import { SnackBarService } from '../shared/services/snack-bar.service';
   providedIn: 'root',
 })
 export class AuthStateService {
-  private http = inject(HttpClient);
   private router = inject(Router);
   private userStateService = inject(UserStateService);
   private cartService = inject(CartStateService);
@@ -36,8 +35,7 @@ export class AuthStateService {
         if (results.length == 0) {
           this.snackBarService.openSnackBar(
             'Błędne dane, sprawdź poprawność i spróbuj ponownie',
-            0,
-            ['red-snackbar']
+            3000
           );
         } else {
           this.authorize(results[0]);
@@ -48,8 +46,7 @@ export class AuthStateService {
         console.log(e);
         this.snackBarService.openSnackBar(
           'Coś poszło nie tak, spróbuj ponownie później',
-          0,
-          ['red-snackbar']
+          3000
         );
       },
     });
@@ -78,7 +75,7 @@ export class AuthStateService {
     });
 
     this.router.navigate(['login']);
-    alert('wylogowano');
+    this.snackBarService.openSnackBar('Wylogowano', 3000, ['green-snackbar']);
   }
 
   private setStateFromLocalStorage() {

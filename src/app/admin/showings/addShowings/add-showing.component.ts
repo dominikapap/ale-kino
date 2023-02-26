@@ -12,6 +12,9 @@ import { AddShowingFormService } from './add-showing.form.service';
   templateUrl: 'add-showing.component.html',
   styles: [
     `
+      :host {
+        padding-top: 120px;
+      }
       form {
         display: flex;
         flex-direction: column;

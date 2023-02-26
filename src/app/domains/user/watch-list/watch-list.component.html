@@ -1,13 +1,14 @@
-<h1>Lista filmów do obejrzenia</h1>
+<h1 class="text-2xl font-semibold mt-4">Lista filmów do obejrzenia</h1>
 <ng-container *ngIf="titles$ | async as titles">
   <ng-container *ngIf="titles.length > 0; else watchlistEmpty">
-    <ol>
-      <li *ngFor="let movieTitle of titles">
+    <ol class="pl-4 inline-block">
+      <li *ngFor="let movieTitle of titles" class="text-xl mt-2">
         {{ movieTitle.title }}
         <button
           mat-raised-button
           color="accent"
           (click)="onRemoveFromWatchList(movieTitle.titleId)"
+          class="ml-2 text-base"
         >
           usuń
         </button>
@@ -16,5 +17,5 @@
   >
 </ng-container>
 <ng-template #watchlistEmpty>
-  <p>Brak filmów na liście do obejrzenia</p>
+  <p class="text-xl mt-2">Brak filmów na liście</p>
 </ng-template>

@@ -6,7 +6,6 @@ import { userOrGuestGuard } from './auth/userOrGuest.guard';
 
 import { ShowingsComponent } from './domains/movies';
 import { TicketsComponent } from './domains/order';
-import { SettingsComponent, WatchListComponent } from './domains/user/';
 import { DirectAccessGuard } from './shared/guards/direct-access.guard';
 import { ShellComponent } from './shell/';
 
@@ -38,7 +37,8 @@ export const routes: Routes = [
           },
           {
             path: 'settings',
-            component: SettingsComponent,
+            loadComponent: () =>
+              import('./domains/user/settings/settings.component'),
             canActivate: [hasAuthGuard],
           },
           {
@@ -59,7 +59,8 @@ export const routes: Routes = [
           },
           {
             path: 'watchlist',
-            component: WatchListComponent,
+            loadComponent: () =>
+              import('./domains/user/watch-list/watch-list.component'),
             canActivate: [userOrGuestGuard],
           },
           {

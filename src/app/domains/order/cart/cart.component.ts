@@ -14,6 +14,7 @@ import { ReservedSeatsService } from '../tickets/reserved-seats.state.service';
 import ShowingDetailsComponent from '../showing-details/showing-details.component';
 import { CartPriceComponent } from './cart-price/cart-price.component';
 import { UserStateService } from 'src/app/auth';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-cart',
@@ -27,6 +28,7 @@ import { UserStateService } from 'src/app/auth';
     MultiplyPipe,
     CommonModule,
     MatButtonModule,
+    MatIconModule,
     CartPriceComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,

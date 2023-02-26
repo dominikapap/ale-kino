@@ -19,7 +19,6 @@ import { CustomHttpInterceptor } from './core/custom-http.interceptor';
 import { environment } from 'src/environments/environment';
 import { API_URL, IS_PRODUCTION } from './core/env.token';
 import ShowingDetailsComponent from './domains/order/showing-details/showing-details.component';
-import { WatchListComponent } from './domains/user';
 import { ShowingsComponent, ThisWeekComponent } from './domains/movies';
 import MovieDetailsComponent from './domains/movies/movie-details/movie-details.component';
 import { TicketsComponent, SeatGridComponent } from './domains/order';
@@ -36,7 +35,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     AppComponent,
     MainNavbarComponent,
     MainFooterComponent,
-    WatchListComponent,
     ShowingsComponent,
     ThisWeekComponent,
     TicketsComponent,

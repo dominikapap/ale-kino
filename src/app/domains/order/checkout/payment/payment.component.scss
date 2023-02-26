@@ -10,6 +10,14 @@ form {
   flex-direction: column;
   align-items: center;
 }
+:host {
+  background-color: #ffffff;
+  width: fit-content;
+  padding: 5rem;
+  margin-top: 2rem;
+  margin-inline: auto;
+  border-radius: 10px;
+}
 :host > * {
   margin-top: 1rem;
 }

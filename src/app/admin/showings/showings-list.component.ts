@@ -9,7 +9,7 @@ import { selectShowingsList } from './store/showings.selector';
     <ng-container *ngIf="showings$ | async as showings; else listEmpty">
       <h1 class="text-3xl font-bold  pb-1">Lista seansów</h1>
       <a routerLink="/admin/showings/add-showing">Dodaj nowy seans</a>
-      <ol>
+      <ol class="pl-2">
         <li *ngFor="let showing of showings">
           <p><b>Seans ID:</b> {{ showing.id }}</p>
           <p><b>Tytuł filmu : </b>{{ showing.movieTitle }}</p>
@@ -29,7 +29,7 @@ import { selectShowingsList } from './store/showings.selector';
     </ng-container>
     <ng-template #listEmpty
       ><p>
-        Nie udało się załadować danych, spróbn ponwnie później
+        Nie udało się załadować danych, spróbuj ponwnie później
       </p></ng-template
     >
   `,

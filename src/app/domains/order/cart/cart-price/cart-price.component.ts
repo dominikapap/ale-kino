@@ -51,6 +51,7 @@ import { CouponRateStateService } from '../coupon-rate.state.service';
         mat-raised-button
         color="primary"
         routerLink="/checkout"
+        class="mt-2 inline-block"
         >Przejdź do zamówienia</a
       ></ng-container
     >

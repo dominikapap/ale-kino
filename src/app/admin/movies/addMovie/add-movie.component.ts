@@ -26,6 +26,9 @@ type MovieForm = FormGroup<{
   templateUrl: 'add-movie.component.html',
   styles: [
     `
+      :host {
+        padding-top: 120px;
+      }
       .form-fields {
         display: grid;
         grid-gap: 1rem;

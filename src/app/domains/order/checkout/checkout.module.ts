@@ -12,6 +12,7 @@ import CartComponent from '../cart/cart.component';
 import { NumbersOnlyDirective } from 'src/app/shared/directives/numbers-only.directive';
 import { MultiplyByDirective } from 'src/app/shared/directives/multiply.directive';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DirectAccessGuard } from 'src/app/shared/guards/direct-access.guard';
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
     MatSlideToggleModule,
     MatButtonModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     NumbersOnlyDirective,
     MultiplyByDirective,
     RouterModule.forChild([
