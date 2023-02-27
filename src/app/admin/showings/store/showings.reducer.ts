@@ -11,6 +11,6 @@ export const showingsReducer = createReducer(
   }),
   on(ShowingsAPIActions.getAllShowingsSuccess, (state, { showingsList }) => ({
     ...state,
-    showingsList: [...state.showingsList, ...showingsList],
+    showingsList: [...showingsList],
   }))
 );

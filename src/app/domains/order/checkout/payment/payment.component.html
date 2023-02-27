@@ -30,16 +30,14 @@
 
     <button mat-raised-button color="primary" [disabled]="!blikForm.valid">
       Zapłać
-      <ng-container *ngIf="cartPrices$ | async as cartPrices">
-        <ng-container *ngIf="couponRate$ | async as couponRate">
-          <span
-            appMultiply
-            [multiplyBy]="couponRate.couponRate"
-            [valueToMultiply]="cartPrices"
-            >{{ cartPrices | number : "1.2-2" }}</span
-          >
-          PLN
-        </ng-container>
+      <ng-container *ngIf="paymentData$ | async as data">
+        <span
+          appMultiply
+          [multiplyBy]="data.couponRate.couponRate"
+          [valueToMultiply]="data.cart"
+          >{{ data.cart | number : "1.2-2" }}</span
+        >
+        PLN
       </ng-container>
     </button>
   </form>

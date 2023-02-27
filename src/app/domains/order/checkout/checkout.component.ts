@@ -15,6 +15,7 @@ import { CheckoutUserDataStateService } from './checkout-user-data.state.service
 import { emailValidator } from './emailValidator';
 import { CouponRateApiService } from '../cart/coupon-rate.api.service';
 import { UserStateService } from 'src/app/auth';
+import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
 
 @Component({
   selector: 'app-checkout',
@@ -28,6 +29,7 @@ export class CheckoutComponent implements OnInit {
   private couponRateStateService = inject(CouponRateStateService);
   private couponRateApiService = inject(CouponRateApiService);
   private checkoutUserDataStateService = inject(CheckoutUserDataStateService);
+  private snackBarService = inject(SnackBarService);
   user = inject(UserStateService).getUserInfo();
   checkoutForm = this.createCheckoutForm();
   couponCodes$ = this.couponRateStateService.couponRate$;
@@ -42,6 +44,9 @@ export class CheckoutComponent implements OnInit {
       this.fillForm(this.user);
     }
     this.couponValue();
+    if (this.couponCodeCtrl.invalid) {
+      this.couponRateStateService.updateCouponRate('');
+    }
   }
 
   get checkoutFormCtrls() {
@@ -78,7 +83,10 @@ export class CheckoutComponent implements OnInit {
   sendForm() {
     this.checkoutForm.markAllAsTouched();
     if (this.checkoutForm.invalid) {
-      alert('Niepoprawnie wypełniony formularz');
+      this.snackBarService.openSnackBar(
+        'Niepoprawnie wypełniony formularz',
+        3000
+      );
     } else {
       this.checkoutUserDataStateService.updateUserDataState(
         this.checkoutForm.getRawValue()
@@ -100,10 +108,18 @@ export class CheckoutComponent implements OnInit {
   private createCheckoutForm(): CheckoutForm {
     const form = this.builder.group({
       firstName: this.builder.control('', {
-        validators: [Validators.required, Validators.minLength(2)],
+        validators: [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(50),
+        ],
       }),
       lastName: this.builder.control('', {
-        validators: [Validators.required, Validators.minLength(2)],
+        validators: [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(50),
+        ],
       }),
       phoneNumber: this.builder.control(null as unknown as number, {
         validators: [Validators.required, Validators.pattern(/^\d{9}$/)],

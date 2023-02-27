@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, switchMap } from 'rxjs';
+import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
 import { UserStateService } from '../../../auth/user.state.service';
 import { WatchListApiService } from './watch-list.api.service';
 export interface WatchListItem {
@@ -14,6 +15,7 @@ export interface WatchListItem {
 })
 export class WatchListStateService {
   private watchlistApiService = inject(WatchListApiService);
+  private snackBarService = inject(SnackBarService);
   private watchList$$ = new BehaviorSubject<
     { title: string; titleId: string }[]
   >([]);
@@ -32,7 +34,7 @@ export class WatchListStateService {
           this.watchlistApiService.getUserWatchlist(user.userID)
         ),
         map((result) =>
-          result.map((res: { movieTitle: any; id: any }) => {
+          result.map((res: { movieTitle: string; id: string }) => {
             return { title: res.movieTitle, titleId: res.id };
           })
         )
@@ -42,7 +44,7 @@ export class WatchListStateService {
 
   addToWatchlist(movieTitle: string, movieID: string) {
     if (this.watchList$$.value.some((item) => item.title === movieTitle)) {
-      alert('movie already on the watchlist');
+      this.snackBarService.openSnackBar('Film jest już na liście', 3000);
     } else {
       this.currentUserID$
         .pipe(

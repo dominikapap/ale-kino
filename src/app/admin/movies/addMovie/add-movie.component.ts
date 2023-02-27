@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { combineLatest, map } from 'rxjs';
 import { MoviesApiService } from '../movies-api.service';
 import { MoviesActions } from '../store/movies.actions';
 
@@ -29,10 +30,19 @@ type MovieForm = FormGroup<{
       :host {
         padding-top: 120px;
       }
-      .form-fields {
-        display: grid;
-        grid-gap: 1rem;
-        grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
+      form {
+        display: flex;
+        flex-direction: column;
+        min-width: min(500px, 80vw);
+        max-width: 800px;
+        margin: 1rem auto 0;
+        background-color: #0d4a80;
+        padding: 1rem;
+        border-radius: 10px;
+      }
+      .poster {
+        max-height: 400px;
+        max-width: 200px;
       }
     `,
   ],
@@ -71,6 +81,9 @@ export class AddMovieComponent {
   addMovieForm = this.createMovieForm();
   genres$ = this.moviesApiService.getGenres$();
   ageRestriction$ = this.moviesApiService.getAgeRestrictions$();
+  movieData$ = combineLatest([this.genres$, this.ageRestriction$]).pipe(
+    map(([genres, ageRestrictions]) => ({ genres, ageRestrictions }))
+  );
   createMovieForm(): MovieForm {
     const form = this.builder.group({
       title: this.builder.control('', {
@@ -85,6 +98,7 @@ export class AddMovieComponent {
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(150),
+          Validators.pattern(/\.(jpg|jpeg|png|webp|avif|gif|svg)$/),
         ],
       }),
       id: this.builder.control('', {

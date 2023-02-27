@@ -1,9 +1,9 @@
 import { AsyncPipe, JsonPipe, NgFor, NgIf } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Observable } from 'rxjs';
 import { UserStateService } from 'src/app/auth/user.state.service';
-import { TransformedOrder, UserTicketsService } from './user-tickets.service';
+import { UserTicketsApiService } from './user-tickets.api.service';
+import { UserTicketsStateService } from './user-tickets.state.service';
 
 @Component({
   selector: 'app-user-tickets',
@@ -13,10 +13,9 @@ import { TransformedOrder, UserTicketsService } from './user-tickets.service';
   imports: [AsyncPipe, NgIf, JsonPipe, NgFor, RouterModule],
 })
 export default class UserTicketsComponent {
-  private userID = inject(UserStateService).getUserID();
-  private userTicketsService = inject(UserTicketsService);
-  userTickets$!: Observable<TransformedOrder[]>;
+  private userTicketsStateService = inject(UserTicketsStateService);
+  userTickets$ = this.userTicketsStateService.userTickets$;
   ngOnInit() {
-    this.userTickets$ = this.userTicketsService.getUserOrders();
+    this.userTicketsStateService.getUserTickets();
   }
 }

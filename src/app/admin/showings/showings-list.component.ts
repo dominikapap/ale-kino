@@ -7,23 +7,13 @@ import { selectShowingsList } from './store/showings.selector';
   selector: 'app-showings-list',
   template: `
     <ng-container *ngIf="showings$ | async as showings; else listEmpty">
-      <h1 class="text-3xl font-bold  pb-1">Lista seansów</h1>
-      <a routerLink="/admin/showings/add-showing">Dodaj nowy seans</a>
-      <ol class="pl-2">
+      <h1 class="text-3xl font-bold  pb-1">Lista nadchodzących seansów</h1>
+      <a routerLink="/admin/showings/add-showing" class="text-xl inline-flex"
+        >Dodaj nowy seans <mat-icon class="ml-2 text-lg">create</mat-icon></a
+      >
+      <ol class="pl-2 showing-list mt-4">
         <li *ngFor="let showing of showings">
-          <p><b>Seans ID:</b> {{ showing.id }}</p>
-          <p><b>Tytuł filmu : </b>{{ showing.movieTitle }}</p>
-          <p><b>Data : </b>{{ showing.date }}</p>
-          <p><b>Godzina rozpoczęcia : </b>{{ showing.timeFrom }}</p>
-          <p><b>Godzina zakończenia : </b>{{ showing.timeTo }}</p>
-          <p><b>Długość przerwy : </b>{{ showing.break }}min</p>
-          <p>
-            <b>Sala dostępna po godzinie : </b
-            >{{ showing.hallAvailableAfter }}min
-          </p>
-          <p><b>Sala : </b>{{ showing.hallId }}</p>
-          <p><b>Liczba rzędów w sali: </b>{{ showing.rows }}</p>
-          <p><b>Liczba kolumn w sali: </b>{{ showing.columns }}</p>
+          <app-showings-list-item [showing]="showing"></app-showings-list-item>
         </li>
       </ol>
     </ng-container>
@@ -35,8 +25,25 @@ import { selectShowingsList } from './store/showings.selector';
   `,
   styles: [
     `
+      :host {
+        padding-top: 130px;
+      }
       p {
         line-height: 2;
+      }
+      .showing-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(350px, 80vw), 1fr));
+        gap: 2rem;
+      }
+
+      li {
+        border: 2px solid white;
+        padding: 0.5rem;
+        border-radius: 10px;
+      }
+      li p:not(:last-child) {
+        border-bottom: dashed 1px white;
       }
     `,
   ],

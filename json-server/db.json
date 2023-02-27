@@ -1,110 +1,6 @@
 {
   "orders": [
     {
-      "id": "dd8dfc43-90a6-41c0-a162-aa5bdbc851c5",
-      "date": "2023-02-18",
-      "userData": {
-        "firstName": "John",
-        "lastName": "Wick",
-        "phoneNumber": 123456789,
-        "email": "john@wick.com",
-        "confirmEmail": "john@wick.com",
-        "newsletter": false,
-        "couponCode": ""
-      }
-    },
-    {
-      "id": "edf37065-494e-4416-8c36-e8da958f6a8f",
-      "date": "2023-02-19",
-      "userData": {
-        "firstName": "John",
-        "lastName": "Wick",
-        "phoneNumber": 123456789,
-        "email": "john@wick.com",
-        "confirmEmail": "john@wick.com",
-        "newsletter": false,
-        "couponCode": ""
-      }
-    },
-    {
-      "id": "dcc78d3f-cbe0-4f4a-aba0-b00074d43a61",
-      "date": "2023-02-19",
-      "userData": {
-        "firstName": "John",
-        "lastName": "Wick",
-        "phoneNumber": 123456789,
-        "email": "john@wick.com",
-        "confirmEmail": "john@wick.com",
-        "newsletter": false,
-        "couponCode": ""
-      }
-    },
-    {
-      "id": "c005a6a9-7bef-4eee-893e-312f199cdd78",
-      "date": "2023-02-19",
-      "userData": {
-        "firstName": "John",
-        "lastName": "Wick",
-        "phoneNumber": 123456789,
-        "email": "john@wick.com",
-        "confirmEmail": "john@wick.com",
-        "newsletter": false,
-        "couponCode": "aleKino"
-      }
-    },
-    {
-      "id": "0fd420ee-b8f1-4167-a508-de84733bb01a",
-      "date": "2023-02-19",
-      "userData": {
-        "firstName": "John",
-        "lastName": "Wick",
-        "phoneNumber": 123456789,
-        "email": "john@wick.com",
-        "confirmEmail": "john@wick.com",
-        "newsletter": false,
-        "couponCode": "aleKino"
-      }
-    },
-    {
-      "id": "dfd47640-5acc-4bc5-8c7e-5d51492fb610",
-      "date": "2023-02-19",
-      "userData": {
-        "firstName": "John",
-        "lastName": "Wick",
-        "phoneNumber": 123456789,
-        "email": "john@wick.com",
-        "confirmEmail": "john@wick.com",
-        "newsletter": false,
-        "couponCode": ""
-      }
-    },
-    {
-      "id": "25c7943d-d5d5-4b8c-9b37-9af0041c9da9",
-      "date": "2023-02-19",
-      "userData": {
-        "firstName": "John",
-        "lastName": "Wick",
-        "phoneNumber": 123456789,
-        "email": "john@wick.com",
-        "confirmEmail": "john@wick.com",
-        "newsletter": false,
-        "couponCode": "aleKino"
-      }
-    },
-    {
-      "id": "017e82d7-a3ca-4c70-9f64-dacaec28ef55",
-      "date": "2023-02-23",
-      "userData": {
-        "firstName": "John",
-        "lastName": "Wick",
-        "phoneNumber": 123456789,
-        "email": "john@wick.com",
-        "confirmEmail": "john@wick.com",
-        "newsletter": false,
-        "couponCode": "aleFilm"
-      }
-    },
-    {
       "id": "39d8afd9-5c58-40f3-a431-2cec04559894",
       "date": "2023-02-26",
       "userData": {
@@ -119,7 +15,7 @@
     },
     {
       "id": "19db32bb-15af-47a1-b7b9-939182c9ab17",
-      "date": "2023-02-26",
+      "date": "2023-02-25",
       "userData": {
         "firstName": "John",
         "lastName": "Wick",
@@ -132,7 +28,7 @@
     },
     {
       "id": "a2ff8598-707c-4235-ba27-3150bb396dd0",
-      "date": "2023-02-26",
+      "date": "2023-02-22",
       "userData": {
         "firstName": "John",
         "lastName": "Wick",
@@ -303,9 +199,7 @@
       "title": "Apokawixa",
       "id": "1267943",
       "imageUrl": "https://fwcdn.pl/fpo/55/10/10015510/8029347.6.jpg",
-      "genres": [
-        "Horror"
-      ],
+      "genres": ["Horror"],
       "time": "120 minut",
       "ageRestriction": "PG-13",
       "descriptionShort": " Apokawixa details:Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
@@ -317,10 +211,7 @@
       "title": "Co w duszy gra",
       "id": "2437892",
       "imageUrl": "https://fwcdn.pl/fpo/66/50/836650/7934792.6.jpg",
-      "genres": [
-        "Animowany",
-        "Obyczajowy"
-      ],
+      "genres": ["Animowany", "Obyczajowy"],
       "time": "120 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
@@ -332,10 +223,7 @@
       "title": "Władca Pierścieni: Drużyna Pierścienia",
       "id": "5633922",
       "imageUrl": "https://fwcdn.pl/fpo/10/65/1065/7912491.6.jpg",
-      "genres": [
-        "Fantasy",
-        "Przygodowy"
-      ],
+      "genres": ["Fantasy", "Przygodowy"],
       "time": "240 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": " Lorem ipsum dolor sit amet In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
@@ -346,29 +234,23 @@
     {
       "title": "Glass Onion: Film z serii \"Na noże\"",
       "imageUrl": "https://fwcdn.pl/fpo/62/42/876242/8038804.6.jpg",
-      "genres": [
-        "Komedia",
-        "Dramat"
-      ],
+      "genres": ["Komedia", "Dramat"],
       "ageRestriction": "PG-13",
       "descriptionShort": "Harlan Thrombey, senior zamożnej rodziny, zostaje znaleziony we własnym pokoju z podciętym gardłem. Rozwikłania zagadki podejmuje się detektyw Benoit Blanc. ",
       "descriptionLong": "Harlan Thrombey, senior zamożnej rodziny, zostaje znaleziony we własnym pokoju z podciętym gardłem. Rozwikłania zagadki podejmuje się detektyw Benoit Blanc. Okazuje się, że tuż przed śmiercią, bogacz wydziedziczył rodzinę, a jedyną spadkobierczynią uczynił swą pielęgniarkę. Intryga się komplikuje i wkrótce pojawia się kolejny trup, a rodzina Harlana nie daje spokoju nowej właścicielce ich własnego domu, zdeterminowana odzyskać pieniądze.",
       "duration": 139,
-      "isPremere": true,
+      "isPremiere": true,
       "id": "678367"
     },
     {
       "title": "Duma i uprzedzenie",
       "imageUrl": "https://fwcdn.pl/fpo/54/87/125487/7530410.6.jpg",
-      "genres": [
-        "Dramat",
-        "Romans"
-      ],
+      "genres": ["Dramat", "Romans"],
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": "Do Netherfield przybywa przystojny i bogaty Charles Bingley z zamiarem osiedlenia się tam na stałe. Przybysz wzbudza żywe zainteresowanie lokalnej społeczności, zwłaszcza niezamożnych panien na wydaniu. Na zawarciu bliższej znajomości z nowym sąsiadem zależy szczególnie pani Bennet, matce pięciu dorosłych córek, których jedyną szansą na dostatnie życie jest bogate zamążpójście",
       "descriptionLong": "Do Netherfield przybywa przystojny i bogaty Charles Bingley z zamiarem osiedlenia się tam na stałe. Przybysz wzbudza żywe zainteresowanie lokalnej społeczności, zwłaszcza niezamożnych panien na wydaniu. Na zawarciu bliższej znajomości z nowym sąsiadem zależy szczególnie pani Bennet, matce pięciu dorosłych córek, których jedyną szansą na dostatnie życie jest bogate zamążpójście. Sprawa jest paląca, gdyż cały rodzinny majątek ma wkrótce przejść w ręce antypatycznego kuzyna, pana Collinsa. Początkowo wszystko układa się po myśli pani Bennet. Bingley zakochuje się w jej najstarszej i najładniejszej córce, Jane. Tymczasem jego najlepszy przyjaciel, ponury i wyniosły pan Darcy, obdarza zainteresowaniem jej młodszą siostrę, Elżbietę.",
       "duration": 127,
-      "isPremere": false,
+      "isPremiere": false,
       "id": "930174"
     }
   ],
@@ -463,6 +345,45 @@
       "rows": 8,
       "columns": 6,
       "id": 7
+    },
+    {
+      "movieId": "678367",
+      "movieTitle": "Glass Onion: Film z serii \"Na noże\"",
+      "date": "2023-03-01",
+      "break": 15,
+      "timeFrom": "12:30",
+      "timeTo": "14:49",
+      "hallAvailableAfter": "15:04",
+      "hallId": 2,
+      "rows": 10,
+      "columns": 10,
+      "id": 8
+    },
+    {
+      "movieId": "930174",
+      "movieTitle": "Duma i uprzedzenie",
+      "date": "2023-03-01",
+      "break": 20,
+      "timeFrom": "16:45",
+      "timeTo": "18:52",
+      "hallAvailableAfter": "19:12",
+      "hallId": 1,
+      "rows": 8,
+      "columns": 6,
+      "id": 9
+    },
+    {
+      "movieId": "678367",
+      "movieTitle": "Glass Onion: Film z serii \"Na noże\"",
+      "date": "2023-02-28",
+      "break": 15,
+      "timeFrom": "14:50",
+      "timeTo": "17:09",
+      "hallAvailableAfter": "17:24",
+      "hallId": 1,
+      "rows": 8,
+      "columns": 6,
+      "id": 10
     }
   ],
   "reservedSeats": [
@@ -640,6 +561,27 @@
       "showingID": 2,
       "userID": 168395,
       "id": "2I2"
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 1,
+      "showingID": 1,
+      "userID": 168395,
+      "id": "1B1"
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 2,
+      "showingID": 1,
+      "userID": 168395,
+      "id": "1B2"
+    },
+    {
+      "rowSeat": "E",
+      "columnSeat": 1,
+      "showingID": 6,
+      "userID": 168395,
+      "id": "6E1"
     }
   ],
   "bookedSeats": [
@@ -1039,6 +981,42 @@
       "id": "3cf05751-3adb-4802-a5f5-f2b98587508b",
       "inCart": true,
       "timestamp": "2023-02-26T22:26:51.954Z",
+      "toBeDeleted": false
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "B",
+      "columnSeat": 1,
+      "userID": 168395,
+      "showingId": 1,
+      "id": "79b07693-78f4-4713-9afa-ef08112e85d6",
+      "inCart": true,
+      "timestamp": "2023-02-27T13:46:52.610Z",
+      "toBeDeleted": false
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "B",
+      "columnSeat": 2,
+      "userID": 168395,
+      "showingId": 1,
+      "id": "342d8caa-3223-4eee-b3ed-3ea5e8fd7aa1",
+      "inCart": true,
+      "timestamp": "2023-02-27T13:46:52.610Z",
+      "toBeDeleted": false
+    },
+    {
+      "ticketTypeName": "Bilet ulgowy",
+      "ticketPrice": 17,
+      "rowSeat": "E",
+      "columnSeat": 1,
+      "userID": 168395,
+      "showingId": 6,
+      "id": "735bc61b-f992-4c41-bb6f-9d9abcf8e9b4",
+      "inCart": true,
+      "timestamp": "2023-02-27T14:06:06.232Z",
       "toBeDeleted": false
     }
   ],

@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import {
   TransformedOrder,
-  UserTicketsService,
-} from '../../user/user-tickets/user-tickets.service';
+  UserTicketsApiService,
+} from '../../user/user-tickets/user-tickets.api.service';
 import ShowingDetailsComponent from '../showing-details/showing-details.component';
 
 @Component({
@@ -40,7 +40,7 @@ import ShowingDetailsComponent from '../showing-details/showing-details.componen
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class OrderSummaryComponent {
-  private userTicketsService = inject(UserTicketsService);
+  private userTicketsService = inject(UserTicketsApiService);
   private routeParams = inject(ActivatedRoute).snapshot.paramMap;
   orderTickets$?: Observable<TransformedOrder[]>;
 

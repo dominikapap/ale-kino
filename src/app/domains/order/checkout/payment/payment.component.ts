@@ -34,6 +34,9 @@ export class PaymentComponent {
   private cdr = inject(ChangeDetectorRef);
   cartPrices$ = this.cartService.cartPrices$;
   couponRate$ = this.couponRateStateService.couponRate$;
+  paymentData$ = combineLatest([this.cartPrices$, this.couponRate$]).pipe(
+    map(([cart, couponRate]) => ({ cart, couponRate }))
+  );
   readonly INPUT_LENGTH = 6;
   orderID = createUuidv4();
   notPaid = true;
@@ -44,6 +47,18 @@ export class PaymentComponent {
       validators: [Validators.required, Validators.pattern('[0-9]{6}')],
     }),
   });
+
+  ngOnInit() {
+    if (this.checkoutUserDataService.checkoutUserDataValues.couponCode) {
+      this.couponRateStateService.updateCouponRate(
+        this.checkoutUserDataService.checkoutUserDataValues.couponCode
+      );
+    }
+  }
+
+  ngOnDestroy() {
+    this.couponRateStateService.updateCouponRate('');
+  }
 
   onSubmit() {
     this.blikForm.markAllAsTouched();

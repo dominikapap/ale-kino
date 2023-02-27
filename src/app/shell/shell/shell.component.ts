@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styles: [
     `
       :host {
-        padding-top: 120px;
+        padding-top: 165px;
       }
     `,
   ],

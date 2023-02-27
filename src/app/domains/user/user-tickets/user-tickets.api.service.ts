@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { UserStateService } from 'src/app/auth';
 import { BookedSeat } from '../../order/services/booked-seats.state.service';
+import { UserTicketsStateService } from './user-tickets.state.service';
 
 interface Tickets {
   rowSeat: string;
@@ -23,13 +25,12 @@ export interface TransformedOrder {
 @Injectable({
   providedIn: 'root',
 })
-export class UserTicketsService {
+export class UserTicketsApiService {
   private http = inject(HttpClient);
-  private userID = inject(UserStateService).getUserID();
 
-  getUserOrders(): Observable<TransformedOrder[]> {
+  getUserOrders(userID: number) {
     return this.http
-      .get<BookedSeat[]>(`/bookedSeats?userID=${this.userID}`)
+      .get<BookedSeat[]>(`/bookedSeats?userID=${userID}&_sort=date&_order=desc`)
       .pipe(map((response) => (response = this.transformOrders(response))));
   }
 

@@ -34,8 +34,7 @@ export class MoviesApiService {
       descriptionShort: movieData.descriptionShort,
       descriptionLong: movieData.descriptionLong,
       duration: movieData.duration,
-      isPremere: movieData.isPremiere,
-      id: movieData,
+      isPremiere: movieData.isPremiere,
     });
   }
 

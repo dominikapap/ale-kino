@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { combineLatest, map, Observable } from 'rxjs';
 import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 import { MovieDetails } from '../../../domains/movies/movie-details/MovieDetails.interface';
 import { ScreeningHall, ShowingsApiService } from '../showings-api.service';
 import { ShowingsActions } from '../store/showings.actions';
+import { TimeslotShowingsStateService } from '../timeslot-showings.state.service';
 import { AddShowingFormService } from './add-showing.form.service';
 
 @Component({
@@ -13,15 +14,36 @@ import { AddShowingFormService } from './add-showing.form.service';
   styles: [
     `
       :host {
-        padding-top: 120px;
+        padding-top: 140px;
       }
       form {
         display: flex;
         flex-direction: column;
+        min-width: min(500px, 80vw);
+        max-width: 800px;
+        margin: 1rem auto 0;
+        background-color: #0d4a80;
+        padding: 1rem;
+        border-radius: 10px;
       }
+
       .option-img {
         height: 150px;
         width: auto;
+      }
+      .showing-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      li {
+        border: 2px solid white;
+        padding: 0.5rem;
+        border-radius: 10px;
+      }
+      li p:not(:last-child) {
+        border-bottom: dashed 1px white;
       }
     `,
   ],
@@ -31,11 +53,14 @@ export class AddShowingComponent {
   private addShowingFormService = inject(AddShowingFormService);
   private showingsApiService = inject(ShowingsApiService);
   private store = inject(Store);
+  private timeslotShowingsStateService = inject(TimeslotShowingsStateService);
   addShowingForm = this.addShowingFormService.createShowingForm();
   showings$!: Observable<MovieShowing[]>;
   movies$ = this.showingsApiService.getMovies();
   halls$ = this.showingsApiService.getHalls();
-
+  dataForShowing$ = combineLatest([this.movies$, this.halls$]).pipe(
+    map(([movies, halls]) => ({ movies, halls }))
+  );
   tomorrow = this.addShowingFormService.tomorrow;
 
   get movieTitleCtrl() {
@@ -68,9 +93,7 @@ export class AddShowingComponent {
   }
 
   getShowings() {
-    this.showings$ = this.showingsApiService.getShowingsWithParams(
-      this.addShowingForm.getRawValue()
-    );
+    this.showings$ = this.timeslotShowingsStateService.timeslotShowings$;
   }
 
   setTimeCtrlValues(movies: MovieDetails[]) {
@@ -85,7 +108,6 @@ export class AddShowingComponent {
       this.timeToCtrl,
       this.breakCtrl
     );
-    console.log(this.addShowingForm.value);
   }
 
   addShowing(movies: MovieDetails[]) {

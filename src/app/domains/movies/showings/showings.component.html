@@ -1,14 +1,15 @@
 <app-this-week (chooseDay)="fetchShowings($event)"></app-this-week>
 <ng-container *ngIf="repertoire$ | async as repertoire; else noShowings">
   <ng-container *ngIf="repertoire.length; else noShowings">
-    <div *ngFor="let movie of repertoire" class="movie-container">
-      <ng-container *ngIf="movie.showings.length">
-        <app-movie-details
-          [movieId]="movie.movieId"
-          [movieShowings]="movie.showings"
-        ></app-movie-details>
-      </ng-container>
-    </div> </ng-container
+    <div>
+      <div *ngFor="let movie of repertoire" class="movie-container">
+        <ng-container *ngIf="movie.showings.length">
+          <app-movie-details
+            [movieId]="movie.movieId"
+            [movieShowings]="movie.showings"
+          ></app-movie-details>
+        </ng-container>
+      </div></div></ng-container
 ></ng-container>
 <ng-template #noShowings>
   <div class="flex align-middle justify-center">

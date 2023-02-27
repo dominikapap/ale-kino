@@ -17,6 +17,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { MoviesEffects } from './store/movies.effects';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NoEmptyCharsDirective } from 'src/app/shared/directives/noEmptyChars.directive';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [MoviesListComponent, AddMovieComponent],
@@ -31,6 +33,8 @@ import { NoEmptyCharsDirective } from 'src/app/shared/directives/noEmptyChars.di
     NoEmptyCharsDirective,
     MatSnackBarModule,
     MatSlideToggleModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
     StoreModule.forFeature(moviesFeatureKey, moviesReducer),
     EffectsModule.forFeature([MoviesEffects]),
     RouterModule.forChild([

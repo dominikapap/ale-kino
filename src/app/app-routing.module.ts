@@ -55,7 +55,7 @@ export const routes: Routes = [
             path: 'checkout',
             loadChildren: () =>
               import('./domains/order/checkout/checkout.module'),
-            canActivate: [DirectAccessGuard],
+            // canActivate: [DirectAccessGuard],
           },
           {
             path: 'watchlist',

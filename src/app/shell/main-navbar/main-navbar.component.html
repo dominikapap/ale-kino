@@ -1,38 +1,38 @@
 <nav>
-  <ng-container *ngIf="userRole$ | async as userRole">
+  <ng-container *ngIf="navbarData$ | async as data">
     <div class="brand-name">
-      <p [routerLink]="userRole !== 'Admin' ? '' : 'admin'">Ale kino!</p>
+      <p [routerLink]="data.userRole !== 'Admin' ? '' : 'admin'">Ale kino!</p>
     </div>
     <div class="nav-buttons">
       <ng-template #zaloguj>
         <a mat-raised-button color="primary" routerLink="login">Zaloguj</a>
       </ng-template>
-      <ng-container *ngIf="userRole !== 'Admin'"
+      <ng-container *ngIf="data.userRole !== 'Admin'"
         ><a
           class="btn cart-btn"
           mat-raised-button
           color="primary"
           routerLink="cart"
           ><mat-icon>add_shopping_cart</mat-icon>
-          <ng-container *ngIf="cart$ | async as cart"
-            ><sup *ngIf="cart.length > 0">{{ cart.length }} </sup></ng-container
-          >
+          <sup *ngIf="data.cart.length > 0">{{ data.cart.length }} </sup>
         </a></ng-container
       >
 
-      <ng-container *ngIf="(auth$ | async)?.hasAuth; else zaloguj">
+      <ng-container *ngIf="data.auth.hasAuth; else zaloguj">
         <button mat-button mat-raised-button [matMenuTriggerFor]="menu">
           <ng-container *ngIf="userName$">
             <p>Witaj, {{ userName$ | async }}</p></ng-container
           >
         </button>
         <mat-menu #menu="matMenu" class="mr-2 inline-block">
-          <ng-container *ngIf="userRole !== 'Admin'">
+          <ng-container *ngIf="data.userRole !== 'Admin'">
             <button mat-menu-item routerLink="user-tickets">Moje bilety</button>
             <a mat-menu-item routerLink="watchlist">Watchlist</a></ng-container
           ><a
             mat-menu-item
-            [routerLink]="userRole !== 'Admin' ? 'settings' : 'admin/settings'"
+            [routerLink]="
+              data.userRole !== 'Admin' ? 'settings' : 'admin/settings'
+            "
             >Ustawienia</a
           >
           <button mat-menu-item (click)="onLogout()">Wyloguj</button>

@@ -22,14 +22,21 @@ export class MoviesEffects {
           catchError((error) => {
             this.snackBarService.openSnackBar(
               'Akcja nie powiodła sie, spróbuj ponownie później',
-              0,
-              ['red-snackbar']
+              3000
             );
             return throwError(() => new Error(error));
           })
         )
       ),
-      map((movie) => MoviesAPIActions.addNewMovieSuccess(movie))
+      map((movie) => {
+        this.snackBarService.openSnackBar(
+          'Film pomyślnie dodano do bazy',
+          5000,
+          ['green-snackbar']
+        );
+        this.router.navigate(['admin/movies/movies-list']);
+        return MoviesAPIActions.addNewMovieSuccess(movie);
+      })
     );
   });
 
@@ -39,7 +46,10 @@ export class MoviesEffects {
       exhaustMap(() =>
         this.moviesApiService.getMovies().pipe(
           catchError((error) => {
-            alert('Akcja nie powiodła sie, spróbuj ponownie później');
+            this.snackBarService.openSnackBar(
+              'Akcja nie powiodła sie, spróbuj ponownie później',
+              3000
+            );
             return throwError(() => new Error(error));
           })
         )

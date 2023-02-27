@@ -5,25 +5,37 @@
     <mat-form-field class="full-width">
       <mat-label>Imię</mat-label>
       <input matInput formControlName="firstName" />
-      <mat-error *ngIf="firstNameCtrl.hasError('required')">
-        Imię jest wymaganym polem </mat-error
-      ><mat-error *ngIf="firstNameCtrl.hasError('minlength')">
-        Imię musi się składać z minimum
-        {{ firstNameCtrl.errors!["minlength"]["requiredLength"] }}
-        znaków
-      </mat-error> </mat-form-field
+      <mat-error *ngIf="firstNameCtrl.errors">
+        <span *ngIf="firstNameCtrl.hasError('required')">
+          Imię jest wymaganym polem</span
+        >
+        <span *ngIf="firstNameCtrl.hasError('minlength')">
+          Imię musi się składać z minimum
+          {{ firstNameCtrl.errors!["minlength"]["requiredLength"] }}
+          znaków
+        </span>
+        <span *ngIf="firstNameCtrl.hasError('maxlength')">
+          Maksymalna liczna znaków to
+          {{ firstNameCtrl.errors!["maxlength"]["requiredLength"] }}
+        </span></mat-error
+      > </mat-form-field
     ><mat-form-field>
       <mat-label>Nazwisko</mat-label
       ><input matInput formControlName="lastName" /><mat-error
-        *ngIf="lastNameCtrl.hasError('required')"
+        *ngIf="lastNameCtrl.errors"
+        ><span *ngIf="lastNameCtrl.hasError('required')">
+          Nazwisko jest wymaganym polem</span
+        >
+
+        <span *ngIf="lastNameCtrl.hasError('minlength')">
+          Nazwisko musi się składać z minimum
+          {{ lastNameCtrl.errors!["minlength"]["requiredLength"] }}
+          znaków </span
+        ><span *ngIf="lastNameCtrl.hasError('maxlength')">
+          Maksymalna liczba znaków to
+          {{ lastNameCtrl.errors!["maxlength"]["requiredLength"] }}
+        </span></mat-error
       >
-        Nazwisko jest wymaganym polem
-      </mat-error>
-      <mat-error *ngIf="lastNameCtrl.hasError('minlength')">
-        Nazwisko musi się składać z minimum
-        {{ lastNameCtrl.errors!["minlength"]["requiredLength"] }}
-        znaków
-      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Numer Telefonu</mat-label>
@@ -33,22 +45,28 @@
         [inputLength]="9"
         matInput
         formControlName="phoneNumber"
-      /><mat-error *ngIf="phoneNumberCtrl.hasError('required')">
-        Numer telefonu jest wymaganym polem </mat-error
-      ><mat-error *ngIf="phoneNumberCtrl.hasError('pattern')">
-        Numer telefonu musi się składać z 9 cyfr
+      /><mat-error *ngIf="phoneNumberCtrl.errors">
+        <span *ngIf="phoneNumberCtrl.hasError('required')">
+          Numer telefonu jest wymaganym polem</span
+        >
+        <span *ngIf="phoneNumberCtrl.hasError('pattern')">
+          Numer telefonu musi się składać z 9 cyfr
+        </span>
       </mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Adres email</mat-label>
       <input type="email" matInput formControlName="email" /><mat-error
-        *ngIf="emailCtrl.hasError('required')"
+        *ngIf="emailCtrl.errors"
       >
-        Email jest wymaganym polem
-      </mat-error>
-      <mat-error *ngIf="emailCtrl.hasError('emailPattern')">
-        Niewłaściwy format adresu email
-      </mat-error> </mat-form-field
+        <span *ngIf="emailCtrl.hasError('required')"
+          >Email jest wymaganym polem</span
+        >
+
+        <span *ngIf="emailCtrl.hasError('emailPattern')">
+          Niewłaściwy format adresu email
+        </span></mat-error
+      > </mat-form-field
     ><mat-form-field>
       <mat-label>Potwierdź adres email</mat-label>
       <input type="email" matInput formControlName="confirmEmail" />
@@ -75,21 +93,26 @@
       <mat-label>Kod zniżkowy</mat-label>
       <input matInput formControlName="couponCode" />
 
-      <mat-error *ngIf="couponCodeCtrl.hasError('minlength')">
-        Kod musi składać się z co najmniej
-        {{ couponCodeCtrl.errors!["minlength"]["requiredLength"] }}
-        znaków
+      <mat-error *ngIf="couponCodeCtrl.errors">
+        <span *ngIf="couponCodeCtrl.hasError('minlength')"
+          >Kod musi składać się z co najmniej
+          {{ couponCodeCtrl.errors!["minlength"]["requiredLength"] }}
+          znaków</span
+        >
+
+        <span
+          *ngIf="
+            couponCodeCtrl.errors && couponCodeCtrl.errors['couponInvalid']
+          "
+        >
+          Nieprawidłowy kod </span
+        ><span
+          *ngIf="couponCodeCtrl.errors && couponCodeCtrl.errors['couponUsed']"
+        >
+          Kod wykorzystany
+        </span>
       </mat-error>
-      <mat-error
-        *ngIf="couponCodeCtrl.errors && couponCodeCtrl.errors['couponInvalid']"
-      >
-        Nieprawidłowy kod
-      </mat-error>
-      <mat-error
-        *ngIf="couponCodeCtrl.errors && couponCodeCtrl.errors['couponUsed']"
-      >
-        Kod wykorzystany </mat-error
-      ><mat-hint
+      <mat-hint
         class="color-success"
         *ngIf="
           (couponCodeCtrl.statusChanges | async) &&

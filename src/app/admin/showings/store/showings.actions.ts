@@ -1,5 +1,6 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
+import { ShowingForm } from '../addShowings/add-showing.form.service';
 
 export const ShowingsActions = createActionGroup({
   source: 'Showings',

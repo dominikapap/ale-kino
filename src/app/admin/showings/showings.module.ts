@@ -19,6 +19,8 @@ import { ShowingsEffects } from './store/showings.effects';
 import { showingsReducer } from './store/showings.reducer';
 import { showingsFeatureKey } from './store/showings.state';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { ShowingsListItemComponent } from './showing-list-item.component';
 
 @NgModule({
   declarations: [ShowingsListComponent, AddShowingComponent],
@@ -26,6 +28,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     CommonModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatIconModule,
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
@@ -35,6 +38,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatSnackBarModule,
     MatSlideToggleModule,
     MatProgressSpinnerModule,
+    ShowingsListItemComponent,
     StoreModule.forFeature(showingsFeatureKey, showingsReducer),
     EffectsModule.forFeature([ShowingsEffects]),
     RouterModule.forChild([

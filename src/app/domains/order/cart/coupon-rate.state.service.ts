@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, tap } from 'rxjs';
+import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
 import { CouponRateApiService } from './coupon-rate.api.service';
 export interface Coupon {
   id: number;
@@ -14,6 +15,7 @@ export interface Coupon {
 })
 export class CouponRateStateService {
   private couponRateApiService = inject(CouponRateApiService);
+  private snackBarService = inject(SnackBarService);
   private couponRate$$ = new BehaviorSubject<{
     couponRate: number;
     id: number;
@@ -43,8 +45,9 @@ export class CouponRateStateService {
                 id: result.id,
               }),
             error: (e) => {
-              alert(
-                'Nie udało się pobrać kodów rabatowych, spróbuj ponownie później'
+              this.snackBarService.openSnackBar(
+                'Nie udało się pobrać kodów rabatowych, spróbuj ponownie później',
+                3000
               );
             },
           })

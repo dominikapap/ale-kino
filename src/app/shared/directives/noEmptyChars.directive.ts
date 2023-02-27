@@ -1,7 +1,7 @@
 import { Directive, ElementRef, HostListener, inject } from '@angular/core';
 
 @Directive({
-  selector: 'input[appNoEmptyChars]',
+  selector: '[appNoEmptyChars]',
   standalone: true,
 })
 export class NoEmptyCharsDirective {

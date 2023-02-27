@@ -19,7 +19,7 @@ export class CheckoutStateService {
     return this.checkout$$.asObservable();
   }
 
-  setCheckoutState(data: any) {
+  setCheckoutState(data: CheckoutInfo) {
     return this.checkout$$.next({
       email: data.email,
       firstName: data.firstName,

@@ -8,12 +8,15 @@
       formControlName="email"
       placeholder="example@email.com"
     />
-    <mat-error *ngIf="loginForm.controls.email.hasError('required')">
-      Email jest <strong>wymagany</strong>
-    </mat-error>
-    <mat-error *ngIf="loginForm.controls.email.hasError('pattern')">
-      Niewłaściwy format email
-    </mat-error>
+    <mat-error *ngIf="loginForm.controls.email.errors">
+      <span *ngIf="loginForm.controls.email.hasError('required')"
+        >Email jest <strong>wymagany</strong></span
+      >
+
+      <span *ngIf="loginForm.controls.email.hasError('pattern')">
+        Niewłaściwy format email
+      </span></mat-error
+    >
   </mat-form-field>
 
   <mat-form-field class="full-width">

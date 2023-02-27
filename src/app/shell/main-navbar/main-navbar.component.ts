@@ -4,6 +4,7 @@ import {
   inject,
   OnInit,
 } from '@angular/core';
+import { combineLatest, map } from 'rxjs';
 import { UserStateService } from 'src/app/auth/user.state.service';
 import { AuthStateService } from '../../auth';
 import { CartStateService } from '../../domains/order/cart/cart.state.service';
@@ -24,6 +25,21 @@ export class MainNavbarComponent implements OnInit {
   userRole$ = inject(UserStateService).userRole$;
   cart$ = inject(CartStateService).cart$;
   auth$ = inject(AuthStateService).auth$;
+  navbarData$ = combineLatest([
+    this.userName$,
+    this.userId$,
+    this.userRole$,
+    this.cart$,
+    this.auth$,
+  ]).pipe(
+    map(([userName, userId, userRole, cart, auth]) => ({
+      userName,
+      userId,
+      userRole,
+      cart,
+      auth,
+    }))
+  );
 
   ngOnInit() {
     const userID = this.userStateService.getUserID();

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router, RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthStateService } from 'src/app/auth';
@@ -20,7 +21,13 @@ interface ShowingInMovieDetails {
   standalone: true,
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.scss'],
-  imports: [CommonModule, MovieRatingComponent, MatButtonModule, RouterLink],
+  imports: [
+    CommonModule,
+    MovieRatingComponent,
+    MatButtonModule,
+    RouterLink,
+    MatProgressSpinnerModule,
+  ],
   providers: [MovieDetailsService],
 })
 export default class MovieDetailsComponent {

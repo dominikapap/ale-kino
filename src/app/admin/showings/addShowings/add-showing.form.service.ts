@@ -77,6 +77,11 @@ export class AddShowingFormService {
     return form;
   }
 
+  clearForm(form: ShowingForm) {
+    form.reset();
+    form.markAsPristine();
+  }
+
   updateMovieId(
     event: { value: string },
     movies: MovieDetails[],

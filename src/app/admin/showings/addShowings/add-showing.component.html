@@ -1,16 +1,17 @@
-<ng-container *ngIf="movies$ | async as movies; else loading"
-  ><form [formGroup]="addShowingForm" (ngSubmit)="addShowing(movies)">
+<ng-container *ngIf="dataForShowing$ | async as data; else loading">
+  <h1 class="text-5xl font-bold pb-1 my-2 text-center">Dodaj nowy seans</h1>
+  <form [formGroup]="addShowingForm" (ngSubmit)="addShowing(data.movies)">
     <mat-form-field appearance="fill">
       <mat-label>Wybierz film</mat-label>
       <mat-select
         formControlName="movieTitle"
         (selectionChange)="
-          updateMovieId($event, movies); setTimeCtrlValues(movies)
+          updateMovieId($event, data.movies); setTimeCtrlValues(data.movies)
         "
       >
         <mat-option
           [value]="movie.title"
-          *ngFor="let movie of movies; let index = index"
+          *ngFor="let movie of data.movies; let index = index"
           >{{ movie.title }} <img class="option-img" [src]="movie.imageUrl"
         /></mat-option>
       </mat-select>
@@ -27,6 +28,7 @@
       <input
         formControlName="date"
         matInput
+        [disabled]="true"
         [min]="tomorrow"
         [matDatepicker]="picker"
       />
@@ -44,12 +46,12 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Time From</mat-label>
+      <mat-label>Czas rozpoczęcia</mat-label>
       <input
         type="time"
         matInput
         formControlName="timeFrom"
-        (change)="setTimeCtrlValues(movies)"
+        (change)="setTimeCtrlValues(data.movies)"
       />
       <mat-error *ngIf="timeFromCtrl.errors"
         ><span *ngIf="timeFromCtrl.errors['required']"
@@ -57,13 +59,21 @@
         ></mat-error
       >
     </mat-form-field>
+    <p class="mb-4 text-xl">
+      <b>Czas zakończenia:</b
+      ><span
+        *ngIf="movieTitleCtrl.dirty && timeFromCtrl.dirty && timeFromCtrl.valid"
+        >{{ addShowingForm.controls.timeTo.value }}</span
+      >
+    </p>
     <mat-form-field appearance="fill">
       <mat-label>Przerwa po filmie</mat-label>
       <input
         matInput
         appNumbersOnly
+        type="number"
         formControlName="break"
-        (change)="setTimeCtrlValues(movies)"
+        (change)="setTimeCtrlValues(data.movies)"
       />
       <mat-error *ngIf="breakCtrl.errors"
         ><span *ngIf="breakCtrl.errors['required']"
@@ -71,76 +81,97 @@
         ></mat-error
       >
     </mat-form-field>
-    <ng-container *ngIf="halls$ | async as halls">
-      <mat-form-field appearance="fill">
-        <mat-label>Wybierz salę</mat-label>
-        <mat-select (selectionChange)="updateRowsAndColumns($event, halls)">
-          <mat-option
-            [value]="hall.name"
-            *ngFor="let hall of halls; let index = index"
-            >{{ hall.name }}</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
-      <p>Liczba kolumn: {{ addShowingForm.controls.columns.value }}</p>
-      <p>
-        Liczba rzędów: {{ addShowingForm.controls.rows.value }}
-      </p></ng-container
-    >
+    <p class="mb-4 text-xl">
+      <b>Sala dostępna po godzinie:</b
+      ><span
+        *ngIf="
+          movieTitleCtrl.dirty &&
+          timeFromCtrl.dirty &&
+          timeFromCtrl.valid &&
+          breakCtrl.valid
+        "
+        >{{ addShowingForm.controls.hallAvailableAfter.value }}</span
+      >
+    </p>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Wybierz salę</mat-label>
+      <mat-select (selectionChange)="updateRowsAndColumns($event, data.halls)">
+        <mat-option
+          [value]="hall.name"
+          *ngFor="let hall of data.halls; let index = index"
+          >{{ hall.name }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <p class="text-xl">
+      <b>Liczba kolumn:</b> {{ addShowingForm.controls.columns.value }}
+    </p>
+    <p class="text-xl">
+      <b>Liczba rzędów:</b> {{ addShowingForm.controls.rows.value }}
+    </p>
     <ng-container *ngIf="addShowingForm.statusChanges | async">
       <ng-container *ngIf="addShowingForm.valid && addShowingForm.touched">
-        <p>Sala dostępna</p>
+        <div
+          class="text-xl text-green-700 inline-flex font-semibold mt-4 justify-center"
+        >
+          <mat-icon class="mr-2">check_circle_outline</mat-icon>
+          <p>Sala dostępna</p>
+        </div>
       </ng-container>
       <ng-container *ngIf="addShowingForm.pending">
-        <p>Sprawdzam dostępność sali</p>
-        <mat-spinner></mat-spinner>
+        <div class="flex flex-col items-center justify-center">
+          <p class="text-xl font-semibold mb-2">Sprawdzam dostępność sali</p>
+          <mat-spinner></mat-spinner>
+        </div>
       </ng-container>
     </ng-container>
 
-    <ng-container *ngIf="!addShowingForm.pending"
-      ><button
-        [disabled]="!addShowingForm.valid"
-        mat-raised-button
-        color="primary"
-      >
-        Utwórz seans
-      </button></ng-container
+    <ng-container *ngIf="!addShowingForm.pending">
+      <div class="flex justify-center">
+        <button
+          [disabled]="!addShowingForm.valid"
+          mat-raised-button
+          color="primary"
+          class="w-36"
+        >
+          Utwórz seans
+        </button>
+      </div></ng-container
     >
 
     <ng-container *ngIf="addShowingForm.errors as errors">
-      <ng-container *ngIf="errors['timeslotTaken']">
-        Nie można dodać seansu, w tym czasie na wybranej sali odbywa się inny
-        seans.
-        <button
-          type="button"
-          mat-raised-button
-          color="primary"
-          (click)="getShowings()"
-        >
-          Pokaż seansa
-        </button>
+      <ng-container *ngIf="errors['timeslotTaken']"
+        ><p class="text-red-700 inline-flex justify-center">
+          <mat-icon class="mr-2">info</mat-icon> Nie można dodać seansu, w tym
+          czasie na wybranej sali odbywa się inny seans.
+        </p>
+        <div class="flex justify-center">
+          <button
+            type="button"
+            mat-raised-button
+            color="primary"
+            (click)="getShowings()"
+            class="w-36 mx-0"
+          >
+            Pokaż seanse
+          </button>
+        </div>
+
         <ng-container *ngIf="showings$ | async as showings">
-          <ol>
+          <ol class="pl-2 showing-list mt-4">
             <li *ngFor="let showing of showings">
-              <p><b>Seans ID:</b> {{ showing.id }}</p>
-              <p><b>Tytuł filmu : </b>{{ showing.movieTitle }}</p>
-              <p><b>Data : </b>{{ showing.date }}</p>
-              <p><b>Godzina rozpoczęcia : </b>{{ showing.timeFrom }}</p>
-              <p><b>Godzina zakończenia : </b>{{ showing.timeTo }}</p>
-              <p><b>Długość przerwy : </b>{{ showing.break }}min</p>
-              <p>
-                <b>Sala dostępna po: </b>{{ showing.hallAvailableAfter }}min
-              </p>
-              <p><b>Sala : </b>{{ showing.hallId }}</p>
-              <p><b>Liczba rzędów w sali: </b>{{ showing.rows }}</p>
-              <p><b>Liczba kolumn w sali: </b>{{ showing.columns }}</p>
+              <app-showings-list-item
+                [showing]="showing"
+              ></app-showings-list-item>
             </li>
           </ol>
-        </ng-container>
-      </ng-container></ng-container
-    >
+        </ng-container> </ng-container
+    ></ng-container>
   </form>
 </ng-container>
 <ng-template #loading>
-  <mat-spinner></mat-spinner>
+  <div class="flex items-center justify-center">
+    <mat-spinner></mat-spinner>
+  </div>
 </ng-template>

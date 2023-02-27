@@ -1,4 +1,4 @@
-<ng-container *ngIf="movieDetails | async as movie"
+<ng-container *ngIf="movieDetails | async as movie; else loading"
   ><div class="movie-container__img">
     <ng-container *ngIf="movie.isPremiere"
       ><span class="movie-container__premiere">Premiera</span></ng-container
@@ -87,3 +87,6 @@
     >
   </div>
 </ng-container>
+<ng-template #loading>
+  <mat-progress-spinner></mat-progress-spinner>
+</ng-template>

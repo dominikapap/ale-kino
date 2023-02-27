@@ -5,6 +5,7 @@ import { map, Observable, tap } from 'rxjs';
 import { DatesService } from 'src/app/domains/movies';
 import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 import { MovieDetails } from '../../domains/movies/movie-details/MovieDetails.interface';
+import { TimeslotShowingsStateService } from './timeslot-showings.state.service';
 
 export interface ScreeningHall {
   id: number;
@@ -19,6 +20,7 @@ export interface ScreeningHall {
 export class ShowingsApiService {
   private http = inject(HttpClient);
   private currDay = inject(DatesService).getCurrentDay();
+  private timeslotShowingsStateServive = inject(TimeslotShowingsStateService);
 
   getMovies(): Observable<MovieDetails[]> {
     return this.http.get<MovieDetails[]>('/movies');
@@ -43,7 +45,9 @@ export class ShowingsApiService {
   }
 
   getShowings() {
-    return this.http.get<MovieShowing[]>(`/showings?date_gte=${this.currDay}`);
+    return this.http.get<MovieShowing[]>(
+      `/showings?date_gte=${this.currDay}&_sort=date&_order=asc`
+    );
   }
 
   getShowingsWithParams(formValue: MovieShowing) {
@@ -63,7 +67,8 @@ export class ShowingsApiService {
               (formValue.timeFrom < item.timeFrom &&
                 formValue.hallAvailableAfter > item.hallAvailableAfter)
           )
-        )
+        ),
+        tap((result) => this.timeslotShowingsStateServive.update(result))
       );
   }
 }
