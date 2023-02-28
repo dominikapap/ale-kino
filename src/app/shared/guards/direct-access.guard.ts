@@ -1,11 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import {
-  CanActivate,
-  Router,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +7,7 @@ import {
 export class DirectAccessGuard implements CanActivate {
   private router = inject(Router);
 
-  canActivate(
-    _activatedRouteSnapshot: ActivatedRouteSnapshot,
-    _routerStateSnapshot: RouterStateSnapshot
-  ): boolean {
+  canActivate(): boolean {
     if (this.router.navigated) {
       return true;
     } else {

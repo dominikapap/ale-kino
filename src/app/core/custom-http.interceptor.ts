@@ -4,7 +4,6 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpErrorResponse,
 } from '@angular/common/http';
 import { catchError, EMPTY, Observable, retry } from 'rxjs';
 import { API_URL } from './env.token';

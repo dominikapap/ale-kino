@@ -1,10 +1,10 @@
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   EventEmitter,
   inject,
   Input,
+  OnInit,
   Output,
 } from '@angular/core';
 import { BookedSeatsStateService } from '../../services/booked-seats.state.service';
@@ -30,45 +30,9 @@ import { CreateSeatGridStateService } from './create-seat-grid.service';
       {{ column }}
     </span>
   </div>`,
-  styles: [
-    `
-      .rows {
-        margin-inline: auto;
-        margin-bottom: 1rem;
-      }
-
-      .column-seats,
-      .row {
-        width: 200px;
-        border: 1px solid black;
-        padding: 0.5rem;
-        margin: 0.5rem;
-        display: table-cell;
-        text-align: center;
-      }
-
-      .column-seats {
-        background-color: #1f62cc;
-        cursor: pointer;
-      }
-
-      .row {
-        background-color: black;
-      }
-
-      .booked-seat {
-        background-color: red;
-        pointer-events: none;
-      }
-
-      .reserved-seat {
-        background-color: orange;
-        pointer-events: none;
-      }
-    `,
-  ],
+  styleUrls: ['seat-grid.component.scss'],
 })
-export class SeatGridComponent {
+export class SeatGridComponent implements OnInit {
   @Input() showingId = 0;
   @Output() chooseSeat = new EventEmitter<{ row: string; column: number }>();
   private cdr = inject(ChangeDetectorRef);

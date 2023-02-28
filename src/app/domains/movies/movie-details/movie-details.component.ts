@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router, RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthStateService } from 'src/app/auth';
-import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 import { WatchListStateService } from '../../user';
 import { MovieRatingComponent } from '../movie-rating/movie-rating.component';
 import { MovieDetailsService } from './movie-details.service';
@@ -30,7 +29,7 @@ interface ShowingInMovieDetails {
   ],
   providers: [MovieDetailsService],
 })
-export default class MovieDetailsComponent {
+export default class MovieDetailsComponent implements OnInit {
   @Input() movieId = '';
   @Input() movieShowings: ShowingInMovieDetails[] = [];
 

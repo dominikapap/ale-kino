@@ -1,0 +1,23 @@
+:host {
+  padding-top: 130px;
+}
+p {
+  line-height: 2;
+}
+.movies-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(80vw, 400px), 1fr));
+  gap: 2rem;
+}
+
+li {
+  border: 2px solid white;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+li p:not(:last-child) {
+  border-bottom: dashed 1px white;
+}
+b {
+  color: rgb(14, 116, 144);
+}

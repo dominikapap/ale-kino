@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -82,7 +81,6 @@ export class AuthStateService {
     // checking with userID
     const userIDFromLS = localStorage.getItem('userID');
     const userRoleFromLS = localStorage.getItem('userRole');
-    console.log(userRoleFromLS);
     if (userIDFromLS !== null) {
       this.auth$$.next({ hasAuth: true });
       this.userStateService.fetchUser(parseInt(userIDFromLS));

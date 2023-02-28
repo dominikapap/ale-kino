@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[appNumbersOnly]',
+  selector: 'input[appNumbersOnly]',
   standalone: true,
 })
 export class NumbersOnlyDirective {

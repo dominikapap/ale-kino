@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import {
   FormArray,
   FormControl,
@@ -10,9 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 import { UserStateService } from 'src/app/auth/user.state.service';
 import { ReservedSeatsService } from './reserved-seats.state.service';
 import { v4 as createUuidv4 } from 'uuid';
-import { TicketType } from 'src/app/shared/interfaces/TicketType';
 import { CartStateService } from '../cart/cart.state.service';
-import { MovieApiService } from '../services/movieapi.service';
+import { MovieApiService, TicketType } from '../services/movieapi.service';
 import { DialogSontentService } from 'src/app/shared/services/dialog-content-service';
 import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
 import { Subscription } from 'rxjs';
@@ -45,7 +44,7 @@ export interface TicketForm {
   templateUrl: './tickets.component.html',
   styleUrls: ['./tickets.component.scss'],
 })
-export class TicketsComponent implements OnInit {
+export class TicketsComponent implements OnInit, OnDestroy {
   private routeParams = inject(ActivatedRoute).snapshot.paramMap;
   private movieApiService = inject(MovieApiService);
   private cartService = inject(CartStateService);
@@ -56,9 +55,8 @@ export class TicketsComponent implements OnInit {
   private userID = inject(UserStateService).getUserID();
   private reservedSeatsService = inject(ReservedSeatsService);
   private subscriptions = new Subscription();
-
-  cart$ = this.cartService.cart$;
   private readonly MAX_TICKETS_COUNT = 10;
+  cart$ = this.cartService.cart$;
   ticketPrices: TicketPrices = {};
   ticketsForm = this.createForm();
   ticketTypes: TicketType[] = [];

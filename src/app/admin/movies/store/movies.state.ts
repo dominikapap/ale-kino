@@ -1,6 +1,4 @@
 import { MovieDetails } from 'src/app/domains/movies/movie-details/MovieDetails.interface';
-// type Id = 'id';
-// export type MovieDetailsToPost = Omit<MovieDetails, Id>;
 
 export interface MoviesState {
   moviesList: MovieDetails[];

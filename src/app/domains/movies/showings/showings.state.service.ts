@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
@@ -9,7 +10,6 @@ import { Repertoire } from './showings.component';
   providedIn: 'root',
 })
 export class ShowingsStateService {
-  private http = inject(HttpClient);
   private currDay = inject(DatesService).getCurrentDay();
   private showingsApiService = inject(ShowingsApiService);
   private showings$$ = new BehaviorSubject<Repertoire[]>([]);

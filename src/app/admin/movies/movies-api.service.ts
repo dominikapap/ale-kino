@@ -7,7 +7,7 @@ interface Genre {
   id: number;
   name: string;
 }
-interface ageRestriction {
+interface AgeRestriction {
   id: number;
   name: string;
 }
@@ -18,11 +18,11 @@ interface ageRestriction {
 export class MoviesApiService {
   private http = inject(HttpClient);
 
-  getGenres$(): Observable<Genre[]> {
+  getGenres(): Observable<Genre[]> {
     return this.http.get<Genre[]>('/genres?_sort=name&_order=asc');
   }
-  getAgeRestrictions$(): Observable<ageRestriction[]> {
-    return this.http.get<ageRestriction[]>('/ageRestrictions');
+  getAgeRestrictions(): Observable<AgeRestriction[]> {
+    return this.http.get<AgeRestriction[]>('/ageRestrictions');
   }
 
   add(movieData: MovieDetails) {

@@ -5,7 +5,7 @@ import { moviesFeatureKey } from './store/movies.state';
 import { moviesReducer } from './store/movies.reducer';
 import { RouterModule } from '@angular/router';
 import { AddMovieComponent } from './addMovie/add-movie.component';
-import { MoviesListComponent } from './movies-list.component';
+import { MoviesListComponent } from './movies-list/movies-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -16,7 +16,7 @@ import { NumbersOnlyDirective } from 'src/app/shared';
 import { EffectsModule } from '@ngrx/effects';
 import { MoviesEffects } from './store/movies.effects';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NoEmptyCharsDirective } from 'src/app/shared/directives/noEmptyChars.directive';
+import { NoEmptyCharsDirective } from 'src/app/shared/directives/no-empty-chars.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 

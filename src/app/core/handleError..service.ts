@@ -1,6 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { SnackBarService } from '../shared/services/snack-bar.service';
 
@@ -8,7 +7,6 @@ import { SnackBarService } from '../shared/services/snack-bar.service';
   providedIn: 'root',
 })
 export class HandleErrorService {
-  private router = inject(Router);
   private snackBarService = inject(SnackBarService);
 
   handleError(error: HttpErrorResponse) {

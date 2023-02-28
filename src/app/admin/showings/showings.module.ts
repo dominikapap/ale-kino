@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AddShowingComponent } from './addShowings/add-showing.component';
-import { ShowingsListComponent } from './showings-list.component';
+import { ShowingsListComponent } from './showing-list/showings-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,7 +20,7 @@ import { showingsReducer } from './store/showings.reducer';
 import { showingsFeatureKey } from './store/showings.state';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
-import { ShowingsListItemComponent } from './showing-list-item.component';
+import { ShowingsListItemComponent } from './showing-list/showings-list-item.component';
 
 @NgModule({
   declarations: [ShowingsListComponent, AddShowingComponent],

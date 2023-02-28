@@ -3,6 +3,7 @@ import {
   Component,
   inject,
   Input,
+  OnInit,
 } from '@angular/core';
 import { CartStateService } from './cart.state.service';
 import { Router, RouterModule } from '@angular/router';
@@ -20,7 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-cart',
   standalone: true,
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss'],
+  styles: [],
   imports: [
     RouterModule,
     ShowingDetailsComponent,
@@ -33,7 +34,7 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class CartComponent {
+export default class CartComponent implements OnInit {
   @Input() couponRate = 1;
   private reservedSeatsService = inject(ReservedSeatsService);
   private cartService = inject(CartStateService);

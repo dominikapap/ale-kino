@@ -7,7 +7,6 @@ import { MovieRatings } from './MovieRatings.interface';
 
 @Injectable()
 export class MovieRatingStateService {
-  private http = inject(HttpClient);
   private movieRating$$ = new BehaviorSubject<MovieRatings[]>([]);
   private userID = inject(UserStateService).getUserID();
   private movieRatingApiService = inject(MovieRatingApiService);

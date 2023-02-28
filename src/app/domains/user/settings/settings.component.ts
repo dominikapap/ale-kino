@@ -11,8 +11,4 @@ import { Router } from '@angular/router';
 })
 export default class SettingsComponent {
   routerUrl = inject(Router).url;
-
-  ngOnInit() {
-    console.log(this.routerUrl);
-  }
 }

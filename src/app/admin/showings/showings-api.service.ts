@@ -46,7 +46,7 @@ export class ShowingsApiService {
 
   getShowings() {
     return this.http.get<MovieShowing[]>(
-      `/showings?date_gte=${this.currDay}&_sort=date&_order=asc`
+      `/showings?date_gte=${this.currDay}&_sort=date,timeFrom&_order=asc`
     );
   }
 

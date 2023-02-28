@@ -11,42 +11,7 @@ import { AddShowingFormService } from './add-showing.form.service';
 @Component({
   selector: 'app-add-showing',
   templateUrl: 'add-showing.component.html',
-  styles: [
-    `
-      :host {
-        padding-top: 140px;
-      }
-      form {
-        display: flex;
-        flex-direction: column;
-        min-width: min(500px, 80vw);
-        max-width: 800px;
-        margin: 1rem auto 0;
-        background-color: #0d4a80;
-        padding: 1rem;
-        border-radius: 10px;
-      }
-
-      .option-img {
-        height: 150px;
-        width: auto;
-      }
-      .showing-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-      }
-
-      li {
-        border: 2px solid white;
-        padding: 0.5rem;
-        border-radius: 10px;
-      }
-      li p:not(:last-child) {
-        border-bottom: dashed 1px white;
-      }
-    `,
-  ],
+  styleUrls: ['add-showing.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddShowingComponent {

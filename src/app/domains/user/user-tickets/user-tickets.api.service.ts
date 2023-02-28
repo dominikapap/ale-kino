@@ -2,9 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
-import { UserStateService } from 'src/app/auth';
 import { BookedSeat } from '../../order/services/booked-seats.state.service';
-import { UserTicketsStateService } from './user-tickets.state.service';
 
 interface Tickets {
   rowSeat: string;

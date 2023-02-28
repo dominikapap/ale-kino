@@ -21,7 +21,6 @@ import { API_URL, IS_PRODUCTION } from './core/env.token';
 import ShowingDetailsComponent from './domains/order/showing-details/showing-details.component';
 import { ShowingsComponent, ThisWeekComponent } from './domains/movies';
 import MovieDetailsComponent from './domains/movies/movie-details/movie-details.component';
-import { TicketsComponent, SeatGridComponent } from './domains/order';
 import { MainFooterComponent, MainNavbarComponent } from './shell';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -37,9 +36,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MainFooterComponent,
     ShowingsComponent,
     ThisWeekComponent,
-    TicketsComponent,
     ShellComponent,
-    SeatGridComponent,
   ],
   imports: [
     ShowingDetailsComponent,

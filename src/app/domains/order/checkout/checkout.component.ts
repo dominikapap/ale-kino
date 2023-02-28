@@ -44,9 +44,6 @@ export class CheckoutComponent implements OnInit {
       this.fillForm(this.user);
     }
     this.couponValue();
-    if (this.couponCodeCtrl.invalid) {
-      this.couponRateStateService.updateCouponRate('');
-    }
   }
 
   get checkoutFormCtrls() {

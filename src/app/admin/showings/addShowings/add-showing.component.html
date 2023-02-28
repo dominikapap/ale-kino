@@ -12,6 +12,7 @@
         <mat-option
           [value]="movie.title"
           *ngFor="let movie of data.movies; let index = index"
+          class="mt-2 title-option"
           >{{ movie.title }} <img class="option-img" [src]="movie.imageUrl"
         /></mat-option>
       </mat-select>

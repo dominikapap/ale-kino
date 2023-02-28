@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, switchMap } from 'rxjs';
 import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
@@ -16,16 +15,17 @@ export interface WatchListItem {
 export class WatchListStateService {
   private watchlistApiService = inject(WatchListApiService);
   private snackBarService = inject(SnackBarService);
+  private currentUserID$ = inject(UserStateService).user$;
   private watchList$$ = new BehaviorSubject<
     { title: string; titleId: string }[]
   >([]);
-  watchList$ = this.watchList$$.asObservable();
+  get watchList$() {
+    return this.watchList$$.asObservable();
+  }
 
   constructor() {
     this.getWatchList();
   }
-
-  private currentUserID$ = inject(UserStateService).user$;
 
   getWatchList() {
     this.currentUserID$

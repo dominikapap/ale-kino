@@ -6,7 +6,7 @@
 }
 
 .favorite {
-  color: green;
+  color: rgb(7, 88, 7);
 }
 
 .movie-container {
@@ -28,4 +28,7 @@
     background-color: red;
     padding: 4px;
   }
+}
+.movie-details__description {
+  max-width: 1000px;
 }

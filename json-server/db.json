@@ -1,8 +1,8 @@
 {
   "orders": [
     {
-      "id": "39d8afd9-5c58-40f3-a431-2cec04559894",
-      "date": "2023-02-26",
+      "id": "026237c2-edf4-4072-b623-dc23fb79061d",
+      "date": "2023-02-27",
       "userData": {
         "firstName": "John",
         "lastName": "Wick",
@@ -14,8 +14,8 @@
       }
     },
     {
-      "id": "19db32bb-15af-47a1-b7b9-939182c9ab17",
-      "date": "2023-02-25",
+      "id": "c36dfc2d-3749-4aba-8ba2-78be03774551",
+      "date": "2023-02-27",
       "userData": {
         "firstName": "John",
         "lastName": "Wick",
@@ -27,8 +27,8 @@
       }
     },
     {
-      "id": "a2ff8598-707c-4235-ba27-3150bb396dd0",
-      "date": "2023-02-22",
+      "id": "6730f4c9-ec1b-4de7-9593-34dd6b5a24f9",
+      "date": "2023-02-27",
       "userData": {
         "firstName": "John",
         "lastName": "Wick",
@@ -40,8 +40,8 @@
       }
     },
     {
-      "id": "6e3e33fa-d6e3-481a-ba3d-83126b4a9504",
-      "date": "2023-02-26",
+      "id": "65e9d427-525c-4ad2-8e57-b85bccfc6d79",
+      "date": "2023-02-27",
       "userData": {
         "firstName": "John",
         "lastName": "Wick",
@@ -53,8 +53,8 @@
       }
     },
     {
-      "id": "c05bf856-e758-4db7-bfe8-1b07dee6f9fb",
-      "date": "2023-02-26",
+      "id": "5b8f9502-4904-42a8-a6a3-b5538bdc5ad5",
+      "date": "2023-02-27",
       "userData": {
         "firstName": "John",
         "lastName": "Wick",
@@ -66,8 +66,8 @@
       }
     },
     {
-      "id": "8bf107c5-f787-45cd-a222-079abe38bff0",
-      "date": "2023-02-26",
+      "id": "31bbeea7-bdcc-4ab4-a5a3-13770687853b",
+      "date": "2023-02-27",
       "userData": {
         "firstName": "John",
         "lastName": "Wick",
@@ -202,8 +202,8 @@
       "genres": ["Horror"],
       "time": "120 minut",
       "ageRestriction": "PG-13",
-      "descriptionShort": " Apokawixa details:Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
-      "descriptionLong": " Apokawixa details:Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "descriptionShort": "Czasem kac to nie najgorsze, co może ci się przydarzyć… „Apokawixa” to historia grupy maturzystów, którzy – zmęczeni kolejnymi lockdownami – postanawiają zorganizować nad morzem „melanż życia”",
+      "descriptionLong": "Czasem kac to nie najgorsze, co może ci się przydarzyć… „Apokawixa” to historia grupy maturzystów, którzy – zmęczeni kolejnymi lockdownami – postanawiają zorganizować nad morzem „melanż życia”. Mimo niepokojąco wysokiego stężenia sinic w Bałtyku i przypadków dziwnych zakażeń początkowo wszystko idzie normalnie. Z minuty na minutę całość jednak zaczyna wymykać się spod kontroli. W środku imprezy wybucha epidemia zombie. Bohaterowie muszą walczyć o życie",
       "duration": 90,
       "isPremiere": false
     },
@@ -214,9 +214,8 @@
       "genres": ["Animowany", "Obyczajowy"],
       "time": "120 minut",
       "ageRestriction": "Dla wszystkich",
-      "descriptionShort": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
-      "descriptionLong": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
-      "duration": 75,
+      "descriptionShort": "Joe Gardner prowadzi zespół muzyczny w gimnazjum. Jego prawdziwą pasją jest jednak jazz. Joe przeżywa kryzys - zaczyna zadawać sobie pytania: 'Po co tu jestem? Jaki jest cel mojego życia?'.",
+      "descriptionLong": "W filmie śledzimy losy Joe Gardnera, który prowadzi zespół muzyczny w gimnazjum. Jego prawdziwą pasją jest jednak jazz. Joe przeżywa kryzys, jaki jest udziałem wszystkich artystów. Coraz wyraźniej dostrzega, że marzenie jego życia, by być muzykiem jazzowym, nie spełni się i dlatego zadaje sobie pytania 'Po co tu jestem? Jaki jest cel mojego życia?'.   Ale nadchodzi moment, kiedy Joe stwierdza, że jego marzenie może być w zasięgu ręki. Przez jedno nieoczekiwane zdarzenie trafia do fantastycznego miejsca, gdzie zostaje zmuszony, by ponownie zastanowić się nad tym, co to znaczy mieć duszę. Tam spotyka, a ostatecznie również zaprzyjaźnia się z 22 – duszą, która uważa, że życie na Ziemi nie toczy się tak, jak powinno. ",
       "isPremiere": false
     },
     {
@@ -226,8 +225,8 @@
       "genres": ["Fantasy", "Przygodowy"],
       "time": "240 minut",
       "ageRestriction": "Dla wszystkich",
-      "descriptionShort": " Lorem ipsum dolor sit amet In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci.",
-      "descriptionLong": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis dictum turpis, Lorem ipsum dolor sit amet, consectetur adipiscing elit. ut viverra orci. In malesuada, diam in consequat malesuada, enim purus faucibus ex, condimentum vulputate mauris ex vel massa.",
+      "descriptionShort": "Podróż hobbita z Shire i jego ośmiu towarzyszy, której celem jest zniszczenie potężnego pierścienia pożądanego przez Czarnego Władcę - Saurona.",
+      "descriptionLong": "Kiedyś, na pamiętnej wyprawie pod Samotną Górę Bilbo Baggins (Ian Holm) zdobył przez przypadek pierścień. Jeden z jego starych dobrych znajomych, który także uczestniczył w tamtej wyprawie - czarodziej Gandalf (Ian McKellen), zaczyna teraz podejrzewać, że jest to Jedyny Pierścień, który może dać władzę nad światem. Został on dawno temu stworzony przez Saurona we wnętrzu Góry Zagłady i teraz jego twórca chce go odzyskać, by zrealizować swoje niebezpieczne plany. Frodo Baggins (Elijah Wood), który otrzymał ten pierścień od Bilba, musi uciekać. Na naradzie w Rivendell zostaje podjęta decyzja, że drużyna złożona z dziewięciu przedstawicieli różnych ras podejmie się razem z Frodem - Powiernikiem Pierścienia - wykonać misję zniszczenia potężnego pierścienia. ",
       "duration": 240,
       "isPremiere": true
     },
@@ -256,19 +255,6 @@
   ],
   "showings": [
     {
-      "movieId": "1267943",
-      "movieTitle": "Apokawixa",
-      "date": "2023-02-27",
-      "break": 15,
-      "timeFrom": "21:30",
-      "timeTo": "23:00",
-      "hallAvailableAfter": "23:15",
-      "hallId": 2,
-      "rows": 10,
-      "columns": 10,
-      "id": 1
-    },
-    {
       "movieId": "5633922",
       "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
       "date": "2023-02-28",
@@ -279,8 +265,22 @@
       "hallId": 2,
       "rows": 10,
       "columns": 10,
+      "id": 1
+    },
+    {
+      "movieId": "1267943",
+      "movieTitle": "Apokawixa",
+      "date": "2023-02-28",
+      "break": 15,
+      "timeFrom": "21:30",
+      "timeTo": "23:00",
+      "hallAvailableAfter": "23:15",
+      "hallId": 2,
+      "rows": 10,
+      "columns": 10,
       "id": 2
     },
+
     {
       "movieId": "5633922",
       "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
@@ -297,8 +297,7 @@
     {
       "movieId": "5633922",
       "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-02-27",
-      "break": 15,
+      "date": "2023-02-28",
       "timeFrom": "15:00",
       "timeTo": "19:00",
       "hallAvailableAfter": "19:15",
@@ -310,7 +309,7 @@
     {
       "movieId": "1267943",
       "movieTitle": "Apokawixa",
-      "date": "2023-02-28",
+      "date": "2023-03-02",
       "break": "20",
       "timeFrom": "12:30",
       "timeTo": "14:00",
@@ -325,9 +324,9 @@
       "movieTitle": "Glass Onion: Film z serii \"Na noże\"",
       "date": "2023-03-02",
       "break": 15,
-      "timeFrom": "17:20",
-      "timeTo": "19:39",
-      "hallAvailableAfter": "19:54",
+      "timeFrom": "12:20",
+      "timeTo": "17:39",
+      "hallAvailableAfter": "17:54",
       "hallId": 1,
       "rows": 8,
       "columns": 6,
@@ -336,7 +335,7 @@
     {
       "movieId": "930174",
       "movieTitle": "Duma i uprzedzenie",
-      "date": "2023-02-27",
+      "date": "2023-02-28",
       "break": 15,
       "timeFrom": "15:30",
       "timeTo": "17:37",
@@ -384,448 +383,237 @@
       "rows": 8,
       "columns": 6,
       "id": 10
+    },
+    {
+      "movieId": "1267943",
+      "movieTitle": "Apokawixa",
+      "date": "2023-03-03",
+      "break": 15,
+      "timeFrom": "14:50",
+      "timeTo": "16:20",
+      "hallAvailableAfter": "16:35",
+      "hallId": 1,
+      "rows": 8,
+      "columns": 6,
+      "id": 11
+    },
+    {
+      "movieId": "1267943",
+      "movieTitle": "Apokawixa",
+      "date": "2023-03-03",
+      "break": 15,
+      "timeFrom": "15:30",
+      "timeTo": "17:00",
+      "hallAvailableAfter": "17:15",
+      "hallId": 2,
+      "rows": 10,
+      "columns": 10,
+      "id": 12
+    },
+    {
+      "movieId": "678367",
+      "movieTitle": "Glass Onion: Film z serii \"Na noże\"",
+      "date": "2023-03-02",
+      "break": 15,
+      "timeFrom": "15:00",
+      "timeTo": "17:19",
+      "hallAvailableAfter": "17:34",
+      "hallId": 2,
+      "rows": 10,
+      "columns": 10,
+      "id": 13
     }
   ],
   "reservedSeats": [
     {
-      "rowSeat": "F",
-      "columnSeat": 4,
+      "rowSeat": "B",
+      "columnSeat": 2,
       "showingID": 3,
-      "userID": -1,
-      "id": "3F4"
+      "userID": 168395,
+      "id": "3B2"
     },
     {
-      "rowSeat": "F",
-      "columnSeat": 5,
+      "rowSeat": "B",
+      "columnSeat": 3,
       "showingID": 3,
-      "userID": -1,
-      "id": "3F5"
-    },
-    {
-      "rowSeat": "H",
-      "columnSeat": 6,
-      "showingID": 3,
-      "userID": -1,
-      "id": "3H6"
-    },
-    {
-      "rowSeat": "I",
-      "columnSeat": 7,
-      "showingID": 3,
-      "userID": -1,
-      "id": "3I7"
+      "userID": 168395,
+      "id": "3B3"
     },
     {
       "rowSeat": "G",
-      "columnSeat": 8,
-      "showingID": 3,
-      "userID": -1,
-      "id": "3G8"
-    },
-    {
-      "rowSeat": "J",
-      "columnSeat": 7,
-      "showingID": 3,
-      "userID": -1,
-      "id": "3J7"
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 2,
-      "showingID": 5,
-      "userID": 168395,
-      "id": "5D2"
-    },
-    {
-      "rowSeat": "F",
-      "columnSeat": 3,
-      "showingID": 5,
-      "userID": 168395,
-      "id": "5F3"
-    },
-    {
-      "rowSeat": "C",
       "columnSeat": 2,
       "showingID": 3,
       "userID": 168395,
-      "id": "3C2"
+      "id": "3G2"
     },
     {
-      "rowSeat": "A",
-      "columnSeat": 1,
-      "showingID": 5,
-      "userID": 168395,
-      "id": "5A1"
-    },
-    {
-      "rowSeat": "A",
+      "rowSeat": "G",
       "columnSeat": 3,
-      "showingID": 5,
+      "showingID": 3,
       "userID": 168395,
-      "id": "5A3"
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 3,
-      "showingID": 5,
-      "userID": 168395,
-      "id": "5B3"
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 2,
-      "showingID": 5,
-      "userID": 168395,
-      "id": "5B2"
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 6,
-      "showingID": 7,
-      "userID": -1,
-      "id": "7B6"
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 5,
-      "showingID": 7,
-      "userID": -1,
-      "id": "7B5"
-    },
-    {
-      "rowSeat": "H",
-      "columnSeat": 1,
-      "showingID": 5,
-      "userID": 168395,
-      "id": "5H1"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 2,
-      "showingID": 2,
-      "userID": 168395,
-      "id": "2E2"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 3,
-      "showingID": 2,
-      "userID": 168395,
-      "id": "2E3"
-    },
-    {
-      "rowSeat": "H",
-      "columnSeat": 3,
-      "showingID": 5,
-      "userID": -1,
-      "id": "5H3"
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 1,
-      "showingID": 2,
-      "userID": 168395,
-      "id": "2B1"
-    },
-    {
-      "rowSeat": "H",
-      "columnSeat": 4,
-      "showingID": 5,
-      "userID": 168395,
-      "id": "5H4"
-    },
-    {
-      "rowSeat": "F",
-      "columnSeat": 1,
-      "showingID": 5,
-      "userID": 168395,
-      "id": "5F1"
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 2,
-      "showingID": 2,
-      "userID": 168395,
-      "id": "2B2"
+      "id": "3G3"
     },
     {
       "rowSeat": "G",
       "columnSeat": 4,
-      "showingID": 2,
+      "showingID": 3,
       "userID": 168395,
-      "id": "2G4"
-    },
-    {
-      "rowSeat": "I",
-      "columnSeat": 2,
-      "showingID": 2,
-      "userID": 168395,
-      "id": "2I2"
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 1,
-      "showingID": 1,
-      "userID": 168395,
-      "id": "1B1"
+      "id": "3G4"
     },
     {
       "rowSeat": "B",
       "columnSeat": 2,
-      "showingID": 1,
-      "userID": 168395,
-      "id": "1B2"
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 1,
       "showingID": 6,
       "userID": 168395,
-      "id": "6E1"
+      "id": "6B2"
+    },
+    {
+      "rowSeat": "B",
+      "columnSeat": 3,
+      "showingID": 6,
+      "userID": 168395,
+      "id": "6B3"
+    },
+    {
+      "rowSeat": "I",
+      "columnSeat": 4,
+      "showingID": 2,
+      "userID": -1,
+      "id": "2I4"
     }
   ],
   "bookedSeats": [
     {
-      "rowSeat": "I",
-      "columnSeat": 1,
+      "rowSeat": "C",
+      "columnSeat": 2,
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "showingID": 303,
+      "showingID": 1,
       "userID": 168395,
-      "orderID": "dd8dfc43-90a6-41c0-a162-aa5bdbc851c5",
-      "date": "2023-02-18",
+      "orderID": "026237c2-edf4-4072-b623-dc23fb79061d",
+      "date": "2023-02-27",
       "id": 1
     },
     {
-      "rowSeat": "I",
-      "columnSeat": 2,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 303,
+      "rowSeat": "C",
+      "columnSeat": 3,
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "showingID": 1,
       "userID": 168395,
-      "orderID": "dd8dfc43-90a6-41c0-a162-aa5bdbc851c5",
-      "date": "2023-02-18",
+      "orderID": "026237c2-edf4-4072-b623-dc23fb79061d",
+      "date": "2023-02-27",
       "id": 2
     },
     {
-      "rowSeat": "I",
-      "columnSeat": 3,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 303,
+      "rowSeat": "C",
+      "columnSeat": 4,
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "showingID": 1,
       "userID": 168395,
-      "orderID": "dd8dfc43-90a6-41c0-a162-aa5bdbc851c5",
-      "date": "2023-02-18",
+      "orderID": "026237c2-edf4-4072-b623-dc23fb79061d",
+      "date": "2023-02-27",
       "id": 3
     },
     {
-      "rowSeat": "C",
-      "columnSeat": 11,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 263,
+      "rowSeat": "B",
+      "columnSeat": 2,
+      "ticketTypeName": "Bilet ulgowy",
+      "ticketPrice": 17,
+      "showingID": 3,
       "userID": 168395,
-      "orderID": "edf37065-494e-4416-8c36-e8da958f6a8f",
-      "date": "2023-02-19",
+      "orderID": "c36dfc2d-3749-4aba-8ba2-78be03774551",
+      "date": "2023-02-27",
       "id": 4
     },
     {
-      "rowSeat": "L",
-      "columnSeat": 4,
+      "rowSeat": "B",
+      "columnSeat": 3,
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "showingID": 323,
+      "showingID": 3,
       "userID": 168395,
-      "orderID": "edf37065-494e-4416-8c36-e8da958f6a8f",
-      "date": "2023-02-19",
+      "orderID": "c36dfc2d-3749-4aba-8ba2-78be03774551",
+      "date": "2023-02-27",
       "id": 5
     },
     {
-      "rowSeat": "C",
-      "columnSeat": 12,
+      "rowSeat": "G",
+      "columnSeat": 2,
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "showingID": 263,
+      "showingID": 3,
       "userID": 168395,
-      "orderID": "edf37065-494e-4416-8c36-e8da958f6a8f",
-      "date": "2023-02-19",
+      "orderID": "6730f4c9-ec1b-4de7-9593-34dd6b5a24f9",
+      "date": "2023-02-27",
       "id": 6
     },
     {
-      "rowSeat": "A",
-      "columnSeat": 1,
+      "rowSeat": "G",
+      "columnSeat": 3,
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "showingID": 263,
+      "showingID": 3,
       "userID": 168395,
-      "orderID": "edf37065-494e-4416-8c36-e8da958f6a8f",
-      "date": "2023-02-19",
+      "orderID": "6730f4c9-ec1b-4de7-9593-34dd6b5a24f9",
+      "date": "2023-02-27",
       "id": 7
     },
     {
-      "rowSeat": "L",
+      "rowSeat": "G",
       "columnSeat": 4,
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "showingID": 323,
+      "showingID": 3,
       "userID": 168395,
-      "orderID": "dcc78d3f-cbe0-4f4a-aba0-b00074d43a61",
-      "date": "2023-02-19",
+      "orderID": "6730f4c9-ec1b-4de7-9593-34dd6b5a24f9",
+      "date": "2023-02-27",
       "id": 8
     },
     {
-      "rowSeat": "L",
-      "columnSeat": 4,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 323,
+      "rowSeat": "G",
+      "columnSeat": 6,
+      "ticketTypeName": "Bilet ulgowy",
+      "ticketPrice": 17,
+      "showingID": 1,
       "userID": 168395,
-      "orderID": "c005a6a9-7bef-4eee-893e-312f199cdd78",
-      "date": "2023-02-19",
+      "orderID": "65e9d427-525c-4ad2-8e57-b85bccfc6d79",
+      "date": "2023-02-27",
       "id": 9
     },
     {
-      "rowSeat": "L",
-      "columnSeat": 4,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 323,
+      "rowSeat": "B",
+      "columnSeat": 2,
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "showingID": 6,
       "userID": 168395,
-      "orderID": "0fd420ee-b8f1-4167-a508-de84733bb01a",
-      "date": "2023-02-19",
+      "orderID": "5b8f9502-4904-42a8-a6a3-b5538bdc5ad5",
+      "date": "2023-02-27",
       "id": 10
     },
     {
-      "rowSeat": "L",
-      "columnSeat": 4,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 323,
-      "userID": 168395,
-      "orderID": "dfd47640-5acc-4bc5-8c7e-5d51492fb610",
-      "date": "2023-02-19",
-      "id": 11
-    },
-    {
-      "rowSeat": "C",
-      "columnSeat": 5,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 263,
-      "userID": 168395,
-      "orderID": "25c7943d-d5d5-4b8c-9b37-9af0041c9da9",
-      "date": "2023-02-19",
-      "id": 12
-    },
-    {
-      "rowSeat": "C",
-      "columnSeat": 6,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 263,
-      "userID": 168395,
-      "orderID": "25c7943d-d5d5-4b8c-9b37-9af0041c9da9",
-      "date": "2023-02-19",
-      "id": 13
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 4,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 3,
-      "userID": 168395,
-      "orderID": "017e82d7-a3ca-4c70-9f64-dacaec28ef55",
-      "date": "2023-02-23",
-      "id": 14
-    },
-    {
-      "rowSeat": "D",
-      "columnSeat": 5,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 3,
-      "userID": 168395,
-      "orderID": "017e82d7-a3ca-4c70-9f64-dacaec28ef55",
-      "date": "2023-02-23",
-      "id": 15
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 2,
-      "ticketTypeName": "Bilet rodzinny",
-      "ticketPrice": 18,
-      "showingID": 2,
-      "userID": 168395,
-      "orderID": "39d8afd9-5c58-40f3-a431-2cec04559894",
-      "date": "2023-02-26",
-      "id": 16
-    },
-    {
-      "rowSeat": "E",
-      "columnSeat": 3,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 2,
-      "userID": 168395,
-      "orderID": "39d8afd9-5c58-40f3-a431-2cec04559894",
-      "date": "2023-02-26",
-      "id": 17
-    },
-    {
-      "rowSeat": "H",
+      "rowSeat": "B",
       "columnSeat": 3,
       "ticketTypeName": "Bilet ulgowy",
       "ticketPrice": 17,
-      "showingID": 5,
+      "showingID": 6,
       "userID": 168395,
-      "orderID": "19db32bb-15af-47a1-b7b9-939182c9ab17",
-      "date": "2023-02-26",
-      "id": 18
+      "orderID": "5b8f9502-4904-42a8-a6a3-b5538bdc5ad5",
+      "date": "2023-02-27",
+      "id": 11
     },
     {
-      "rowSeat": "B",
-      "columnSeat": 1,
-      "ticketTypeName": "Bilet rodzinny",
-      "ticketPrice": 18,
-      "showingID": 2,
-      "userID": 168395,
-      "orderID": "a2ff8598-707c-4235-ba27-3150bb396dd0",
-      "date": "2023-02-26",
-      "id": 19
-    },
-    {
-      "rowSeat": "H",
+      "rowSeat": "I",
       "columnSeat": 4,
       "ticketTypeName": "Bilet normalny",
       "ticketPrice": 22,
-      "showingID": 5,
-      "userID": 168395,
-      "orderID": "6e3e33fa-d6e3-481a-ba3d-83126b4a9504",
-      "date": "2023-02-26",
-      "id": 20
-    },
-    {
-      "rowSeat": "F",
-      "columnSeat": 1,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
-      "showingID": 5,
-      "userID": 168395,
-      "orderID": "c05bf856-e758-4db7-bfe8-1b07dee6f9fb",
-      "date": "2023-02-26",
-      "id": 21
-    },
-    {
-      "rowSeat": "B",
-      "columnSeat": 2,
-      "ticketTypeName": "Bilet normalny",
-      "ticketPrice": 22,
       "showingID": 2,
       "userID": 168395,
-      "orderID": "8bf107c5-f787-45cd-a222-079abe38bff0",
-      "date": "2023-02-26",
-      "id": 22
+      "orderID": "31bbeea7-bdcc-4ab4-a5a3-13770687853b",
+      "date": "2023-02-27",
+      "id": 12
     }
   ],
   "screeningHalls": [
@@ -1018,6 +806,138 @@
       "inCart": true,
       "timestamp": "2023-02-27T14:06:06.232Z",
       "toBeDeleted": false
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "C",
+      "columnSeat": 2,
+      "userID": 168395,
+      "showingId": 1,
+      "id": "22e83827-45c7-4ae7-9257-b1548e399887",
+      "inCart": true,
+      "timestamp": "2023-02-27T16:04:50.353Z",
+      "toBeDeleted": true
+    },
+    {
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "rowSeat": "C",
+      "columnSeat": 4,
+      "userID": 168395,
+      "showingId": 1,
+      "id": "cc6cbd10-20ba-4d6b-9d0c-a89121b1bd85",
+      "inCart": true,
+      "timestamp": "2023-02-27T16:04:50.353Z",
+      "toBeDeleted": true
+    },
+    {
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "rowSeat": "C",
+      "columnSeat": 3,
+      "userID": 168395,
+      "showingId": 1,
+      "id": "5ded4de3-183f-4402-900e-e9e9417b983a",
+      "inCart": true,
+      "timestamp": "2023-02-27T16:04:50.353Z",
+      "toBeDeleted": true
+    },
+    {
+      "ticketTypeName": "Bilet ulgowy",
+      "ticketPrice": 17,
+      "rowSeat": "B",
+      "columnSeat": 2,
+      "userID": 168395,
+      "showingId": 3,
+      "id": "5078c2d3-de94-4d55-aba2-469fde2d9c97",
+      "inCart": true,
+      "timestamp": "2023-02-27T16:07:45.875Z",
+      "toBeDeleted": false
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "B",
+      "columnSeat": 3,
+      "userID": 168395,
+      "showingId": 3,
+      "id": "e7d4ee98-508c-498a-8ef6-1333dee1f4f6",
+      "inCart": true,
+      "timestamp": "2023-02-27T16:07:45.875Z",
+      "toBeDeleted": false
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "G",
+      "columnSeat": 2,
+      "userID": 168395,
+      "showingId": 3,
+      "id": "2a65ecc7-46c5-41fd-9e58-9f315350c94f",
+      "inCart": true,
+      "timestamp": "2023-02-27T17:34:19.215Z",
+      "toBeDeleted": false
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "G",
+      "columnSeat": 4,
+      "userID": 168395,
+      "showingId": 3,
+      "id": "8cc63951-18a9-4fe6-a21c-912e2660e05d",
+      "inCart": true,
+      "timestamp": "2023-02-27T17:34:19.215Z",
+      "toBeDeleted": false
+    },
+    {
+      "ticketTypeName": "Bilet normalny",
+      "ticketPrice": 22,
+      "rowSeat": "G",
+      "columnSeat": 3,
+      "userID": 168395,
+      "showingId": 3,
+      "id": "fc0f7342-22c5-4dd1-a550-c041fdddae06",
+      "inCart": true,
+      "timestamp": "2023-02-27T17:34:19.215Z",
+      "toBeDeleted": false
+    },
+    {
+      "ticketTypeName": "Bilet ulgowy",
+      "ticketPrice": 17,
+      "rowSeat": "G",
+      "columnSeat": 6,
+      "userID": 168395,
+      "showingId": 1,
+      "id": "dd79a273-c4c5-4b0d-997c-186f422ccd33",
+      "inCart": true,
+      "timestamp": "2023-02-27T18:55:41.177Z",
+      "toBeDeleted": true
+    },
+    {
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "rowSeat": "B",
+      "columnSeat": 2,
+      "userID": 168395,
+      "showingId": 6,
+      "id": "9fe45fe4-2e53-404c-9dd8-517bc2716070",
+      "inCart": true,
+      "timestamp": "2023-02-27T18:57:48.194Z",
+      "toBeDeleted": true
+    },
+    {
+      "ticketTypeName": "Bilet ulgowy",
+      "ticketPrice": 17,
+      "rowSeat": "B",
+      "columnSeat": 3,
+      "userID": 168395,
+      "showingId": 6,
+      "id": "8007e52f-9c2d-4446-bf49-acc389f96d7b",
+      "inCart": true,
+      "timestamp": "2023-02-27T18:57:48.194Z",
+      "toBeDeleted": true
     }
   ],
   "ageRestrictions": [

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminDashboardComponent } from './admin-dashboard.component';
+import { AdminDashboardComponent } from './dashboard/admin-dashboard.component';
 import { RouterModule } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import SettingsComponent from '../domains/user/settings/settings.component';

@@ -6,7 +6,7 @@
     (ngSubmit)="onSubmit()"
     class="flex flex-col"
   >
-    <mat-form-field class="">
+    <mat-form-field>
       <input
         matInput
         appNoEmptyChars
@@ -16,6 +16,10 @@
       <mat-error *ngIf="titleCtrl.errors">
         <span *ngIf="titleCtrl.errors['required']"
           >Tytuł filmu jest wymaganym polem.</span
+        >
+        <span *ngIf="titleCtrl.errors['minlength']"
+          >MinimLna liczba znaków dla tytułu to
+          {{ titleCtrl.errors["minlength"]["requiredLength"] }}</span
         >
         <span *ngIf="titleCtrl.errors['maxlength']"
           >Dopuszczalna liczba znaków dla tytułu to
@@ -153,7 +157,14 @@
       >Premiera
     </mat-slide-toggle>
 
-    <button mat-raised-button color="primary">Dodaj film</button>
+    <button
+      [disabled]="!addMovieForm.valid"
+      mat-raised-button
+      color="primary"
+      class="w-36 mx-auto"
+    >
+      Dodaj film
+    </button>
   </form>
 </ng-container>
 

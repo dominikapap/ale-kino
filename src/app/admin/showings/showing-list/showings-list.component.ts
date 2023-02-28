@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ShowingsActions } from './store/showings.actions';
-import { selectShowingsList } from './store/showings.selector';
+import { ShowingsActions } from '../store/showings.actions';
+import { selectShowingsList } from '../store/showings.selector';
 
 @Component({
   selector: 'app-showings-list',

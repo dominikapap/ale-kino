@@ -52,6 +52,11 @@ export class AddMovieComponent {
   private builder = inject(NonNullableFormBuilder);
   private store = inject(Store);
   private moviesApiService = inject(MoviesApiService);
+  genres$ = this.moviesApiService.getGenres();
+  ageRestriction$ = this.moviesApiService.getAgeRestrictions();
+  movieData$ = combineLatest([this.genres$, this.ageRestriction$]).pipe(
+    map(([genres, ageRestrictions]) => ({ genres, ageRestrictions }))
+  );
 
   get titleCtrl() {
     return this.addMovieForm.controls.title;
@@ -79,12 +84,8 @@ export class AddMovieComponent {
   }
 
   addMovieForm = this.createMovieForm();
-  genres$ = this.moviesApiService.getGenres$();
-  ageRestriction$ = this.moviesApiService.getAgeRestrictions$();
-  movieData$ = combineLatest([this.genres$, this.ageRestriction$]).pipe(
-    map(([genres, ageRestrictions]) => ({ genres, ageRestrictions }))
-  );
-  createMovieForm(): MovieForm {
+
+  private createMovieForm(): MovieForm {
     const form = this.builder.group({
       title: this.builder.control('', {
         validators: [
@@ -101,9 +102,7 @@ export class AddMovieComponent {
           Validators.pattern(/\.(jpg|jpeg|png|webp|avif|gif|svg)$/),
         ],
       }),
-      id: this.builder.control('', {
-        validators: [Validators.required],
-      }),
+      id: this.builder.control(''),
       genres: this.builder.control([] as Array<string>, {
         validators: [Validators.required, Validators.maxLength(5)],
       }),
@@ -140,7 +139,6 @@ export class AddMovieComponent {
 
   onSubmit() {
     this.addMovieForm.markAllAsTouched();
-    this.addMovieForm.controls.id.setValue('6');
     if (this.addMovieForm.valid) {
       this.store.dispatch(
         MoviesActions.addNewMovie(this.addMovieForm.getRawValue())

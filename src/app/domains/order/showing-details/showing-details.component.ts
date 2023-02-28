@@ -13,7 +13,14 @@ import { ShowingDetailsApiService } from './showing-details.api.service';
   selector: 'app-showing-details',
   standalone: true,
   templateUrl: './showing-details.component.html',
-  styleUrls: ['./showing-details.component.scss'],
+  styles: [
+    `
+      :host {
+        display: inline;
+        margin: 2rem 0;
+      }
+    `,
+  ],
   imports: [NgIf, AsyncPipe, SlicePipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

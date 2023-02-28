@@ -1,7 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TicketType } from '../../../shared/interfaces/TicketType';
+
+export interface TicketType {
+  id: number;
+  name: string;
+  price: number;
+}
 
 @Injectable({
   providedIn: 'root',

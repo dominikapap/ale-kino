@@ -1,4 +1,3 @@
-import { state } from '@angular/animations';
 import { createSelector } from '@ngrx/store';
 import { MoviesState } from './movies.state';
 

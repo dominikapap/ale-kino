@@ -1,6 +1,6 @@
 /* eslint-disable @ngrx/on-function-explicit-return-type */
 import { createReducer, on } from '@ngrx/store';
-import { MoviesActions, MoviesAPIActions } from './movies.actions';
+import { MoviesAPIActions } from './movies.actions';
 import { initialMoviesState } from './movies.state';
 
 export const moviesReducer = createReducer(

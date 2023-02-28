@@ -13,7 +13,7 @@ form {
 :host {
   background-color: #ffffff;
   width: fit-content;
-  padding: 5rem;
+  padding: clamp(5rem, 6vw, 9rem);
   margin-top: 2rem;
   margin-inline: auto;
   border-radius: 10px;

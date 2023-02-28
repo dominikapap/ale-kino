@@ -3,6 +3,8 @@ import {
   ChangeDetectorRef,
   Component,
   inject,
+  OnDestroy,
+  OnInit,
 } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { CartStateService } from '../../cart/cart.state.service';
@@ -21,7 +23,7 @@ import { combineLatest, map } from 'rxjs';
   styleUrls: ['./payment.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PaymentComponent {
+export class PaymentComponent implements OnInit, OnDestroy {
   private builder = inject(NonNullableFormBuilder);
   private cartValue = inject(CartStateService).cartValue;
   private datesService = inject(DatesService);

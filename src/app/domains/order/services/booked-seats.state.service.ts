@@ -1,12 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, tap } from 'rxjs';
-import { UserStateService } from 'src/app/auth/user.state.service';
 import {
   CartStateService,
   TicketInCartDetails,
 } from '../cart/cart.state.service';
-import { v4 as createUuidv4 } from 'uuid';
 import { BookedSeatsApiService } from './booked-seats.api.service';
 
 export interface BookedSeat {
@@ -27,7 +25,6 @@ export interface BookedSeat {
 export class BookedSeatsStateService {
   private http = inject(HttpClient);
   private cartService = inject(CartStateService);
-  private userService = inject(UserStateService);
   private bookedSeatsApiService = inject(BookedSeatsApiService);
   private bookedSeats$$ = new BehaviorSubject<BookedSeat[]>([]);
 
@@ -54,7 +51,7 @@ export class BookedSeatsStateService {
         tap({
           next: (response) => {
             this.bookedSeats$$.next([...this.bookedSeats$$.value, response]);
-            this.cartService.removeFromCart(ticket.id!, ticket.userID!);
+            this.cartService.removeFromCart(ticket.id, ticket.userID);
           },
         })
       )
