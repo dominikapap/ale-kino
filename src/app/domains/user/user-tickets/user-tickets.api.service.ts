@@ -29,19 +29,19 @@ export class UserTicketsApiService {
   getUserOrders(userID: number) {
     return this.http
       .get<BookedSeat[]>(`/bookedSeats?userID=${userID}&_sort=date&_order=desc`)
-      .pipe(map((response) => (response = this.transformOrders(response))));
+      .pipe(map((response) => this.transformOrders(response)));
   }
 
   getOrderById(orderID: string): Observable<TransformedOrder[]> {
     return this.http
       .get<BookedSeat[]>(`/bookedSeats?orderID=${orderID}`)
-      .pipe(map((response) => (response = this.transformOrders(response))));
+      .pipe(map((response) => this.transformOrders(response)));
   }
 
-  transformOrders(list: any[]) {
-    return list.reduce((acc, current) => {
+  transformOrders(list: BookedSeat[]) {
+    return list.reduce<TransformedOrder[]>((acc, current) => {
       const existingOrder = acc.find(
-        (order: any) => order.orderID === current.orderID
+        (order) => order.orderID === current.orderID
       );
       if (existingOrder) {
         (existingOrder.date = current.date),
@@ -51,7 +51,7 @@ export class UserTicketsApiService {
             ticketTypeName: current.ticketTypeName,
             ticketPrice: current.ticketPrice,
             showingID: current.showingID,
-            userID: current.userID,
+            userID: current.userID!,
             id: current.id,
           });
       } else {
@@ -65,7 +65,7 @@ export class UserTicketsApiService {
               ticketTypeName: current.ticketTypeName,
               ticketPrice: current.ticketPrice,
               showingID: current.showingID,
-              userID: current.userID,
+              userID: current.userID!,
               id: current.id,
             },
           ],

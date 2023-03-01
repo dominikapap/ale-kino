@@ -5,7 +5,7 @@
       <div *ngFor="let movie of repertoire" class="movie-container">
         <ng-container *ngIf="movie.showings.length">
           <app-movie-details
-            [movieId]="movie.movieId"
+            [movieDetails]="movie.movieDetails"
             [movieShowings]="movie.showings"
           ></app-movie-details>
         </ng-container>

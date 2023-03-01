@@ -4,7 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { moviesFeatureKey } from './store/movies.state';
 import { moviesReducer } from './store/movies.reducer';
 import { RouterModule } from '@angular/router';
-import { AddMovieComponent } from './addMovie/add-movie.component';
+import { AddMovieComponent } from './add-movie/add-movie.component';
 import { MoviesListComponent } from './movies-list/movies-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';

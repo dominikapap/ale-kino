@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Repertoire } from './showings.component';
+import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 
 @Injectable({
   providedIn: 'root',
@@ -14,11 +14,11 @@ export class ShowingsApiService {
     let padStart;
     currHour < 10 ? (padStart = 0) : (padStart = '');
     const currMinutes = now.getMinutes();
-    return this.http.get<Repertoire[]>(
+    return this.http.get<MovieShowing[]>(
       `/showings?date_like=${date}&timeFrom_gte=${padStart}${currHour}:${currMinutes}`
     );
   }
   getForDate(date: string) {
-    return this.http.get<Repertoire[]>(`/showings?date_like=${date}`);
+    return this.http.get<MovieShowing[]>(`/showings?date_like=${date}`);
   }
 }

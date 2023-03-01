@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AddShowingComponent } from './addShowings/add-showing.component';
+import { AddShowingComponent } from './add-showings/add-showing.component';
 import { ShowingsListComponent } from './showing-list/showings-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';

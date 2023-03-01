@@ -77,6 +77,19 @@
         "newsletter": false,
         "couponCode": ""
       }
+    },
+    {
+      "id": "f002ce60-2635-41c8-b694-dc61d1b9091f",
+      "date": "2023-02-28",
+      "userData": {
+        "firstName": "John",
+        "lastName": "Wick",
+        "phoneNumber": "123456789",
+        "email": "john@wick.com",
+        "confirmEmail": "john@wick.com",
+        "newsletter": false,
+        "couponCode": ""
+      }
     }
   ],
   "coupons": [
@@ -199,7 +212,9 @@
       "title": "Apokawixa",
       "id": "1267943",
       "imageUrl": "https://fwcdn.pl/fpo/55/10/10015510/8029347.6.jpg",
-      "genres": ["Horror"],
+      "genres": [
+        "Horror"
+      ],
       "time": "120 minut",
       "ageRestriction": "PG-13",
       "descriptionShort": "Czasem kac to nie najgorsze, co może ci się przydarzyć… „Apokawixa” to historia grupy maturzystów, którzy – zmęczeni kolejnymi lockdownami – postanawiają zorganizować nad morzem „melanż życia”",
@@ -211,7 +226,10 @@
       "title": "Co w duszy gra",
       "id": "2437892",
       "imageUrl": "https://fwcdn.pl/fpo/66/50/836650/7934792.6.jpg",
-      "genres": ["Animowany", "Obyczajowy"],
+      "genres": [
+        "Animowany",
+        "Obyczajowy"
+      ],
       "time": "120 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": "Joe Gardner prowadzi zespół muzyczny w gimnazjum. Jego prawdziwą pasją jest jednak jazz. Joe przeżywa kryzys - zaczyna zadawać sobie pytania: 'Po co tu jestem? Jaki jest cel mojego życia?'.",
@@ -222,7 +240,10 @@
       "title": "Władca Pierścieni: Drużyna Pierścienia",
       "id": "5633922",
       "imageUrl": "https://fwcdn.pl/fpo/10/65/1065/7912491.6.jpg",
-      "genres": ["Fantasy", "Przygodowy"],
+      "genres": [
+        "Fantasy",
+        "Przygodowy"
+      ],
       "time": "240 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": "Podróż hobbita z Shire i jego ośmiu towarzyszy, której celem jest zniszczenie potężnego pierścienia pożądanego przez Czarnego Władcę - Saurona.",
@@ -233,7 +254,10 @@
     {
       "title": "Glass Onion: Film z serii \"Na noże\"",
       "imageUrl": "https://fwcdn.pl/fpo/62/42/876242/8038804.6.jpg",
-      "genres": ["Komedia", "Dramat"],
+      "genres": [
+        "Komedia",
+        "Dramat"
+      ],
       "ageRestriction": "PG-13",
       "descriptionShort": "Harlan Thrombey, senior zamożnej rodziny, zostaje znaleziony we własnym pokoju z podciętym gardłem. Rozwikłania zagadki podejmuje się detektyw Benoit Blanc. ",
       "descriptionLong": "Harlan Thrombey, senior zamożnej rodziny, zostaje znaleziony we własnym pokoju z podciętym gardłem. Rozwikłania zagadki podejmuje się detektyw Benoit Blanc. Okazuje się, że tuż przed śmiercią, bogacz wydziedziczył rodzinę, a jedyną spadkobierczynią uczynił swą pielęgniarkę. Intryga się komplikuje i wkrótce pojawia się kolejny trup, a rodzina Harlana nie daje spokoju nowej właścicielce ich własnego domu, zdeterminowana odzyskać pieniądze.",
@@ -244,13 +268,33 @@
     {
       "title": "Duma i uprzedzenie",
       "imageUrl": "https://fwcdn.pl/fpo/54/87/125487/7530410.6.jpg",
-      "genres": ["Dramat", "Romans"],
+      "genres": [
+        "Dramat",
+        "Romans"
+      ],
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": "Do Netherfield przybywa przystojny i bogaty Charles Bingley z zamiarem osiedlenia się tam na stałe. Przybysz wzbudza żywe zainteresowanie lokalnej społeczności, zwłaszcza niezamożnych panien na wydaniu. Na zawarciu bliższej znajomości z nowym sąsiadem zależy szczególnie pani Bennet, matce pięciu dorosłych córek, których jedyną szansą na dostatnie życie jest bogate zamążpójście",
       "descriptionLong": "Do Netherfield przybywa przystojny i bogaty Charles Bingley z zamiarem osiedlenia się tam na stałe. Przybysz wzbudza żywe zainteresowanie lokalnej społeczności, zwłaszcza niezamożnych panien na wydaniu. Na zawarciu bliższej znajomości z nowym sąsiadem zależy szczególnie pani Bennet, matce pięciu dorosłych córek, których jedyną szansą na dostatnie życie jest bogate zamążpójście. Sprawa jest paląca, gdyż cały rodzinny majątek ma wkrótce przejść w ręce antypatycznego kuzyna, pana Collinsa. Początkowo wszystko układa się po myśli pani Bennet. Bingley zakochuje się w jej najstarszej i najładniejszej córce, Jane. Tymczasem jego najlepszy przyjaciel, ponury i wyniosły pan Darcy, obdarza zainteresowaniem jej młodszą siostrę, Elżbietę.",
       "duration": 127,
       "isPremiere": false,
       "id": "930174"
+    },
+    {
+      "title": "ddsdss",
+      "imageUrl": "https://fwcdn.pl/fpo/55/10/10015510/8029347.6.jpg",
+      "genres": [
+        "Akcja",
+        "Animowany",
+        "Dramat",
+        "Historyczny",
+        "Horror"
+      ],
+      "ageRestriction": "PG",
+      "descriptionShort": "vvfff",
+      "descriptionLong": "fddfdfdgb",
+      "duration": 50,
+      "isPremiere": true,
+      "id": "yFsKPex"
     }
   ],
   "showings": [
@@ -280,7 +324,6 @@
       "columns": 10,
       "id": 2
     },
-
     {
       "movieId": "5633922",
       "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
@@ -422,6 +465,19 @@
       "rows": 10,
       "columns": 10,
       "id": 13
+    },
+    {
+      "movieId": "678367",
+      "movieTitle": "Glass Onion: Film z serii \"Na noże\"",
+      "date": "2023-03-01",
+      "break": 20,
+      "timeFrom": "21:30",
+      "timeTo": "23:49",
+      "hallAvailableAfter": "00:09",
+      "hallId": 2,
+      "rows": 10,
+      "columns": 10,
+      "id": 14
     }
   ],
   "reservedSeats": [
@@ -480,6 +536,20 @@
       "showingID": 2,
       "userID": -1,
       "id": "2I4"
+    },
+    {
+      "rowSeat": "E",
+      "columnSeat": 1,
+      "showingID": 1,
+      "userID": 168395,
+      "id": "1E1"
+    },
+    {
+      "rowSeat": "E",
+      "columnSeat": 2,
+      "showingID": 1,
+      "userID": 168395,
+      "id": "1E2"
     }
   ],
   "bookedSeats": [
@@ -614,6 +684,28 @@
       "orderID": "31bbeea7-bdcc-4ab4-a5a3-13770687853b",
       "date": "2023-02-27",
       "id": 12
+    },
+    {
+      "rowSeat": "E",
+      "columnSeat": 1,
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "showingID": 1,
+      "userID": 168395,
+      "orderID": "f002ce60-2635-41c8-b694-dc61d1b9091f",
+      "date": "2023-02-28",
+      "id": 13
+    },
+    {
+      "rowSeat": "E",
+      "columnSeat": 2,
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "showingID": 1,
+      "userID": 168395,
+      "orderID": "f002ce60-2635-41c8-b694-dc61d1b9091f",
+      "date": "2023-02-28",
+      "id": 14
     }
   ],
   "screeningHalls": [
@@ -938,6 +1030,30 @@
       "inCart": true,
       "timestamp": "2023-02-27T18:57:48.194Z",
       "toBeDeleted": true
+    },
+    {
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "rowSeat": "E",
+      "columnSeat": 1,
+      "userID": 168395,
+      "showingId": 1,
+      "id": "4a7a5a67-06ab-4780-bea8-a0c8d59b1d7b",
+      "inCart": true,
+      "timestamp": "2023-02-28T10:50:35.011Z",
+      "toBeDeleted": false
+    },
+    {
+      "ticketTypeName": "Bilet rodzinny",
+      "ticketPrice": 18,
+      "rowSeat": "E",
+      "columnSeat": 2,
+      "userID": 168395,
+      "showingId": 1,
+      "id": "0a51f3af-1e1b-49fd-b4f1-d454c677c75a",
+      "inCart": true,
+      "timestamp": "2023-02-28T10:50:35.011Z",
+      "toBeDeleted": false
     }
   ],
   "ageRestrictions": [

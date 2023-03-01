@@ -59,6 +59,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatBadgeModule,
     MatSnackBarModule,
     MatDialogModule,
+    MovieDetailsComponent,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
   ],

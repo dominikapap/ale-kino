@@ -1,4 +1,4 @@
-<ng-container *ngIf="movieDetails | async as movie; else loading"
+<ng-container *ngIf="movieDetails as movie; else loading"
   ><div class="movie-container__img">
     <ng-container *ngIf="movie.isPremiere"
       ><span class="movie-container__premiere">Premiera</span></ng-container
@@ -70,7 +70,7 @@
         <ng-container *ngIf="onWatchlist(movie.title); else addToWatchlist"
           ><p>
             Zapisany na
-            <a (click)="navigateToWatchlist()">liście do obejrzenia</a>
+            <a routerLink="/watchlist">liście do obejrzenia</a>
           </p></ng-container
         >
 

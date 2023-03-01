@@ -21,6 +21,12 @@ import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
       b {
         color: rgb(14, 116, 144);
       }
+      p {
+        font-size: 1.25rem;
+      }
+      p:not(:last-child) {
+        border-bottom: dashed 1px white;
+      }
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,

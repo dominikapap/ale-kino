@@ -3,9 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { adminGuard } from './admin/admin.guard';
 import { hasAuthGuard } from './auth';
 import { userOrGuestGuard } from './auth/userOrGuest.guard';
-
 import { ShowingsComponent } from './domains/movies';
-import { TicketsComponent } from './domains/order';
 import { DirectAccessGuard } from './shared/guards/direct-access.guard';
 import { ShellComponent } from './shell/';
 

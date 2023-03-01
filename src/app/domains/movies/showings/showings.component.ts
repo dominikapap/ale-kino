@@ -1,5 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MovieDetailsService } from '../movie-details/movie-details.service';
+import { MovieDetails } from '../movie-details/MovieDetails.interface';
 import { DatesService } from '../services/dates.service';
 import { ShowingsApiService } from './showings.api.service';
 import { ShowingsStateService } from './showings.state.service';
@@ -12,6 +14,7 @@ interface Showing {
 export interface Repertoire {
   movieId: string;
   showings: Showing[];
+  movieDetails?: MovieDetails;
 }
 
 @Component({
@@ -22,6 +25,7 @@ export interface Repertoire {
 })
 export class ShowingsComponent implements OnInit {
   private showingsService = inject(ShowingsStateService);
+  private movieDetailsService = inject(MovieDetailsService);
   private currDay = inject(DatesService).getCurrentDay();
   private router = inject(Router);
   private routeParams = inject(ActivatedRoute).snapshot.paramMap;

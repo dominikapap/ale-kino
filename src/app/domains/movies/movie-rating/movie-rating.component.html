@@ -1,6 +1,6 @@
 <ng-container *ngIf="ratingList$ | async as movieRating">
   <ng-container *ngIf="movieRating.length > 0; else notRated"
-    ><span>
+    ><span class="text-xl font-medium">
       Rating: {{ movieRating | avg | number : "1.2-2" }} / 10</span
     ></ng-container
   >

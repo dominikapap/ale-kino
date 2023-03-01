@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
+import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
+import { MovieDetailsService } from '../movie-details/movie-details.service';
 import { DatesService } from '../services/dates.service';
 import { ShowingsApiService } from './showings.api.service';
 import { Repertoire } from './showings.component';
@@ -11,6 +12,7 @@ import { Repertoire } from './showings.component';
 })
 export class ShowingsStateService {
   private currDay = inject(DatesService).getCurrentDay();
+  private movieDetailsService = inject(MovieDetailsService);
   private showingsApiService = inject(ShowingsApiService);
   private showings$$ = new BehaviorSubject<Repertoire[]>([]);
 
@@ -36,20 +38,25 @@ export class ShowingsStateService {
     }
   }
 
-  private updateShowingsState(showings: Repertoire[]) {
+  private updateShowingsState(showings: MovieShowing[]) {
     let transformedShowings = [];
     transformedShowings = this.transformShowings(showings);
+    transformedShowings.forEach((showing) =>
+      this.movieDetailsService
+        .get(showing.movieId)
+        .subscribe((result) => (showing.movieDetails = result))
+    );
     this.showings$$.next(transformedShowings);
   }
 
-  private transformShowings(list: any[]) {
-    return list.reduce((acc, current) => {
+  private transformShowings(list: MovieShowing[]): Repertoire[] {
+    return list.reduce<Repertoire[]>((acc, current) => {
       const existingMovie = acc.find(
-        (movie: any) => movie.movieId === current.movieId
+        (movie) => movie.movieId === current.movieId
       );
       if (existingMovie) {
         existingMovie.showings.push({
-          showingId: current.id,
+          showingId: current.id!,
           timeFrom: current.timeFrom,
           date: current.date,
         });
@@ -58,7 +65,7 @@ export class ShowingsStateService {
           movieId: current.movieId,
           showings: [
             {
-              showingId: current.id,
+              showingId: current.id!,
               timeFrom: current.timeFrom,
               date: current.date,
             },
