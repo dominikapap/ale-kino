@@ -1,0 +1,39 @@
+<ng-container *ngIf="paymentData as data">
+  <p class="text-body">
+    Łączny koszt biletów:
+    <span>{{ data.cart | number : "1.2-2" }}</span
+    >PLN
+  </p>
+
+  <ng-container *ngIf="data.couponRate.couponRate < 1">
+    <p class="text-body color-success">
+      Kod zniżkowy: -
+      <span
+        appMultiply
+        [multiplyBy]="1 - data.couponRate.couponRate"
+        [valueToMultiply]="data.cart"
+        >{{ data.cart }}</span
+      >
+      PLN
+    </p>
+    <p class="text-body-big">
+      Całkowita kwota:
+      <span
+        appMultiply
+        [multiplyBy]="data.couponRate.couponRate"
+        [valueToMultiply]="data.cart"
+        >{{ data.cart | number : "1.2-2" }}</span
+      >
+      PLN
+    </p>
+  </ng-container>
+
+  <a
+    *ngIf="routerUrl === '/cart'"
+    mat-raised-button
+    color="primary"
+    routerLink="/checkout"
+    class="mt-2 inline-block"
+    >Przejdź do zamówienia</a
+  ></ng-container
+>

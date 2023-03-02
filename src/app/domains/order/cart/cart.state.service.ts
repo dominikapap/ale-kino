@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
+import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 import { v4 as createUuidv4 } from 'uuid';
 import { CartApiService } from './cart.api.service';
 
@@ -17,13 +17,13 @@ export interface TicketDetails {
 export interface TicketInCartDetails extends TicketDetails {
   inCart: boolean;
   timestamp: string;
+  showingDetails: MovieShowing;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartStateService {
-  private http = inject(HttpClient);
   private cartApiService = inject(CartApiService);
   private cart$$ = new BehaviorSubject<TicketInCartDetails[]>([]);
 
@@ -43,12 +43,16 @@ export class CartStateService {
     );
   }
 
-  addToCart(ticketList: TicketDetails[], userID: number) {
+  addToCart(
+    ticketList: TicketDetails[],
+    userID: number,
+    showingDetails: MovieShowing
+  ) {
     const timestamp = new Date().toISOString();
     if (userID) {
-      this.addToCartAsUser(ticketList, timestamp);
+      this.addToCartAsUser(ticketList, timestamp, showingDetails);
     } else {
-      this.addToCartAsGuest(ticketList, timestamp);
+      this.addToCartAsGuest(ticketList, timestamp, showingDetails);
     }
   }
 
@@ -141,13 +145,17 @@ export class CartStateService {
     this.cart$$.next(this.cart$$.value.filter((item) => item.id !== ticketID));
   }
 
-  private addToCartAsUser(ticketList: TicketDetails[], timestamp: string) {
+  private addToCartAsUser(
+    ticketList: TicketDetails[],
+    timestamp: string,
+    showingDetails: MovieShowing
+  ) {
     return ticketList.forEach((ticket) => {
       if (this.cart$$.value.find((item) => item.id === ticket.id)) {
         return;
       } else {
         this.cartApiService
-          .postCartItems(ticket, timestamp)
+          .postCartItems(ticket, timestamp, showingDetails)
           .pipe(
             tap({
               next: (response) => {
@@ -160,7 +168,11 @@ export class CartStateService {
     });
   }
 
-  private addToCartAsGuest(ticketList: TicketDetails[], timestamp: string) {
+  private addToCartAsGuest(
+    ticketList: TicketDetails[],
+    timestamp: string,
+    showingDetails: MovieShowing
+  ) {
     let guestTickets: TicketInCartDetails[] = [];
 
     if (localStorage.getItem('guestTickets')! == '') {
@@ -183,6 +195,7 @@ export class CartStateService {
           id: createUuidv4(),
           inCart: true,
           timestamp: timestamp,
+          showingDetails,
         });
       }
     });

@@ -14,7 +14,9 @@ import { CartStateService } from '../cart/cart.state.service';
 import { MovieApiService, TicketType } from '../services/movieapi.service';
 import { DialogSontentService } from 'src/app/shared/services/dialog-content-service';
 import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
+import { ShowingDetailsApiService } from '../showing-details/showing-details.api.service';
 import { Subscription } from 'rxjs';
+import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 
 export type TicketGroupForm = FormGroup<{
   tickets: FormArray<FormGroup<TicketForm>>;
@@ -54,6 +56,7 @@ export class TicketsComponent implements OnInit, OnDestroy {
   private builder = inject(NonNullableFormBuilder);
   private userID = inject(UserStateService).getUserID();
   private reservedSeatsService = inject(ReservedSeatsService);
+  private showingService = inject(ShowingDetailsApiService);
   private subscriptions = new Subscription();
   private readonly MAX_TICKETS_COUNT = 10;
   cart$ = this.cartService.cart$;
@@ -61,6 +64,9 @@ export class TicketsComponent implements OnInit, OnDestroy {
   ticketsForm = this.createForm();
   ticketTypes: TicketType[] = [];
   showingIdFromRoute = Number(this.routeParams.get('id'));
+  showingDetails$ = this.showingService.getShowingDetails(
+    this.showingIdFromRoute
+  );
   totalPrice = 0;
 
   ngOnInit(): void {
@@ -117,7 +123,7 @@ export class TicketsComponent implements OnInit, OnDestroy {
       },
     });
   }
-  onSubmit() {
+  onSubmit(showingDetails: MovieShowing) {
     if (
       this.ticketsForm.value.tickets &&
       this.ticketsForm.value.tickets.filter((item) => item.inCart === false)
@@ -125,7 +131,8 @@ export class TicketsComponent implements OnInit, OnDestroy {
     ) {
       this.cartService.addToCart(
         this.ticketsForm.getRawValue().tickets,
-        this.userService.getUserID()
+        this.userService.getUserID(),
+        showingDetails
       );
       this.setTicketsFromCart();
       this.dialogContentService.dialogInstance(

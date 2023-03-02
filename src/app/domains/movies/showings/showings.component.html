@@ -1,4 +1,9 @@
-<app-this-week (chooseDay)="fetchShowings($event)"></app-this-week>
+<app-this-week
+  (chooseDay)="fetchShowings($event)"
+  [chosenDate]="chosenDate"
+  [currDay]="currDay"
+  [week]="week"
+></app-this-week>
 <ng-container *ngIf="repertoire$ | async as repertoire; else noShowings">
   <ng-container *ngIf="repertoire.length; else noShowings">
     <div>

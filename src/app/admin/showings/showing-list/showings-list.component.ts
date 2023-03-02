@@ -4,65 +4,17 @@ import {
   inject,
   OnInit,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, NonNullableFormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { combineLatest, map } from 'rxjs';
+import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 import { ShowingsApiService } from '../showings-api.service';
 import { ShowingsActions } from '../store/showings.actions';
 import { selectShowingsList } from '../store/showings.selector';
 
 @Component({
   selector: 'app-showings-list',
-  template: `
-    <ng-container *ngIf="showings$ | async as showings; else listEmpty">
-      <h1 class="text-3xl font-bold  pb-1">Lista nadchodzących seansów</h1>
-      <a routerLink="/admin/showings/add-showing" class="text-xl inline-flex"
-        >Dodaj nowy seans <mat-icon class="ml-2 text-lg ">create</mat-icon></a
-      >
-      <ng-container *ngIf="dataForShowing$ | async as data" ;
-        ><div class="mt-4">
-          <mat-form-field appearance="fill" class="mr-2">
-            <mat-label>Filtruj po nazwie filmu</mat-label>
-            <mat-select
-              (selectionChange)="filterByTitle(titleCtrl.value)"
-              [formControl]="titleCtrl"
-            >
-              <mat-option value="Wszystkie">Wszystkie</mat-option>
-              <mat-option
-                [value]="movie.title"
-                *ngFor="let movie of data.movies; let index = index"
-                class="mt-2 title-option"
-                >{{ movie.title }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Filtruj po sali</mat-label>
-            <mat-select
-              (selectionChange)="filterByHall(hallCtrl.value)"
-              [formControl]="hallCtrl"
-            >
-              <mat-option value="Wszystkie">Wszytskie</mat-option>
-              <mat-option [value]="hall.id" *ngFor="let hall of data.halls"
-                >{{ hall.name }}, nr: {{ hall.id }}</mat-option
-              >
-            </mat-select>
-          </mat-form-field>
-        </div></ng-container
-      >
-      <ol class="pl-2 showing-list mt-4">
-        <li *ngFor="let showing of showings">
-          <app-showings-list-item [showing]="showing"></app-showings-list-item>
-        </li>
-      </ol>
-    </ng-container>
-    <ng-template #listEmpty
-      ><p>
-        Nie udało się załadować danych, spróbuj ponwnie później
-      </p></ng-template
-    >
-  `,
+  templateUrl: 'showings-list.component.html',
   styles: [
     `
       :host {
@@ -89,6 +41,7 @@ import { selectShowingsList } from '../store/showings.selector';
 export class ShowingsListComponent implements OnInit {
   private store = inject(Store);
   private showingsApiService = inject(ShowingsApiService);
+  private builder = inject(NonNullableFormBuilder);
   showings$ = this.store.select(selectShowingsList);
   allShowings$ = this.showings$;
   movies$ = this.showingsApiService.getMovies();
@@ -96,9 +49,18 @@ export class ShowingsListComponent implements OnInit {
   dataForShowing$ = combineLatest([this.movies$, this.halls$]).pipe(
     map(([movies, halls]) => ({ movies, halls }))
   );
-  titleCtrl = new FormControl('Wszystkie');
-  hallCtrl = new FormControl('Wszystkie');
 
+  filterForm = this.builder.group({
+    title: this.builder.control('Wszystkie'),
+    hall: this.builder.control('Wszystkie'),
+  });
+
+  get hallCtrl() {
+    return this.filterForm.controls.hall;
+  }
+  get titleCtrl() {
+    return this.filterForm.controls.title;
+  }
   ngOnInit() {
     this.store.dispatch(ShowingsActions.getAllShowings());
   }
@@ -106,7 +68,14 @@ export class ShowingsListComponent implements OnInit {
   filterByTitle(ctrlValue: string | null) {
     if (ctrlValue && ctrlValue !== 'Wszystkie') {
       this.showings$ = this.allShowings$.pipe(
-        map((result) => result.filter((item) => item.movieTitle == ctrlValue))
+        map((result) => result.filter((item) => item.movieTitle == ctrlValue)),
+        map((result: MovieShowing[]) =>
+          this.hallCtrl.value == 'Wszystkie'
+            ? result
+            : result.filter(
+                (item) => item.hallId.toString() == this.hallCtrl.value
+              )
+        )
       );
     } else {
       this.showings$ = this.allShowings$;

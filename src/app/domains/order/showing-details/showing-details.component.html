@@ -1,4 +1,4 @@
-<ng-container *ngIf="showingDetails$ | async as showing"
+<ng-container *ngIf="showingDetails as showing"
   ><p>
     {{ showing.movieTitle }}, {{ showing.date | slice : 0 : 10 }},
     {{

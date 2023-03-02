@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 import { v4 as createUuidv4 } from 'uuid';
 import { TicketDetails, TicketInCartDetails } from './cart.state.service';
 
@@ -29,7 +30,8 @@ export class CartApiService {
 
   postCartItems(
     ticket: TicketDetails,
-    timestamp: string
+    timestamp: string,
+    showingDetails: MovieShowing
   ): Observable<TicketInCartDetails> {
     return this.http.post<TicketInCartDetails>(`/cart`, {
       ticketTypeName: ticket.ticketTypeName,
@@ -42,6 +44,7 @@ export class CartApiService {
       inCart: true,
       timestamp,
       toBeDeleted: false,
+      showingDetails,
     });
   }
 

@@ -1,13 +1,6 @@
 import { AsyncPipe, NgIf, SlicePipe } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  Input,
-} from '@angular/core';
-import { Observable } from 'rxjs';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
-import { ShowingDetailsApiService } from './showing-details.api.service';
 
 @Component({
   selector: 'app-showing-details',
@@ -26,13 +19,11 @@ import { ShowingDetailsApiService } from './showing-details.api.service';
 })
 export default class ShowingDetailsComponent {
   @Input() showingId = 0;
+  @Input() showingDetails!: MovieShowing;
 
-  private showingService = inject(ShowingDetailsApiService);
-  showingDetails$!: Observable<MovieShowing>;
-
-  ngOnInit() {
-    this.showingDetails$ = this.showingService.getShowingDetails(
-      this.showingId
-    );
-  }
+  // ngOnInit() {
+  //   this.showingDetails$ = this.showingService.getShowingDetails(
+  //     this.showingId
+  //   );
+  // }
 }

@@ -19,6 +19,7 @@
           <app-showing-details
             class="leading-normal"
             [showingId]="item.showingId"
+            [showingDetails]="item.showingDetails"
           ></app-showing-details></a
       ></ng-container>
       <button
@@ -44,7 +45,9 @@
   </ol>
 
   <ng-container *ngIf="cart.length > 0; else cartIsEmpty">
-    <app-cart-price></app-cart-price> </ng-container
+    <app-cart-price
+      [paymentData]="(paymentData$ | async)!"
+    ></app-cart-price> </ng-container
   ><ng-template #cartIsEmpty>
     <h2 class="text-2xl mt-2">Koszyk jest pusty</h2>
     <a routerLink="" class="text-xl mt-2 inline-block">Wróć do listy seansów</a>
