@@ -5,15 +5,13 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { catchError, EMPTY, Observable, retry } from 'rxjs';
+import { catchError, Observable, retry } from 'rxjs';
 import { API_URL } from './env.token';
-import { Router } from '@angular/router';
-import { HandleErrorService } from './handleError..service';
+import { HandleErrorService } from './handleError.service';
 
 @Injectable()
 export class CustomHttpInterceptor implements HttpInterceptor {
   private baseUrl = inject(API_URL);
-  private router = inject(Router);
   private handleErrorService = inject(HandleErrorService);
   intercept(
     request: HttpRequest<unknown>,

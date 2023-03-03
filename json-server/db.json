@@ -183,6 +183,12 @@
       "userID": 168395,
       "rating": 7,
       "id": 6
+    },
+    {
+      "movieId": "930174",
+      "userID": 168395,
+      "rating": 7,
+      "id": 7
     }
   ],
   "ticketTypes": [
@@ -301,7 +307,7 @@
     {
       "movieId": "5633922",
       "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-02-28",
+      "date": "2023-03-04",
       "break": 15,
       "timeFrom": "12:30",
       "timeTo": "16:30",
@@ -314,7 +320,7 @@
     {
       "movieId": "1267943",
       "movieTitle": "Apokawixa",
-      "date": "2023-02-28",
+      "date": "2023-03-04",
       "break": 15,
       "timeFrom": "21:30",
       "timeTo": "23:00",
@@ -340,7 +346,7 @@
     {
       "movieId": "5633922",
       "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
-      "date": "2023-02-28",
+      "date": "2023-03-03",
       "timeFrom": "15:00",
       "timeTo": "19:00",
       "hallAvailableAfter": "19:15",
@@ -378,7 +384,7 @@
     {
       "movieId": "930174",
       "movieTitle": "Duma i uprzedzenie",
-      "date": "2023-02-28",
+      "date": "2023-03-03",
       "break": 15,
       "timeFrom": "15:30",
       "timeTo": "17:37",
@@ -417,7 +423,7 @@
     {
       "movieId": "678367",
       "movieTitle": "Glass Onion: Film z serii \"Na noże\"",
-      "date": "2023-02-28",
+      "date": "2023-03-03",
       "break": 15,
       "timeFrom": "14:50",
       "timeTo": "17:09",
@@ -557,6 +563,20 @@
       "showingID": 3,
       "userID": 168395,
       "id": "3J5"
+    },
+    {
+      "rowSeat": "F",
+      "columnSeat": 3,
+      "showingID": 1,
+      "userID": -1,
+      "id": "1F3"
+    },
+    {
+      "rowSeat": "I",
+      "columnSeat": 3,
+      "showingID": 1,
+      "userID": -1,
+      "id": "1I3"
     }
   ],
   "bookedSeats": [
@@ -700,7 +720,7 @@
       "showingID": 1,
       "userID": 168395,
       "orderID": "f002ce60-2635-41c8-b694-dc61d1b9091f",
-      "date": "2023-02-28",
+      "date": "2023-03-03",
       "id": 13
     },
     {
@@ -735,6 +755,18 @@
       "movieID": "5633922",
       "movieTitle": "Władca Pierścieni: Drużyna Pierścienia",
       "id": 1
+    },
+    {
+      "userID": 0,
+      "movieID": "1267943",
+      "movieTitle": "Apokawixa",
+      "id": 2
+    },
+    {
+      "userID": 680235,
+      "movieID": "1267943",
+      "movieTitle": "Apokawixa",
+      "id": 3
     }
   ],
   "cart": [

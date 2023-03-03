@@ -4,13 +4,17 @@ import {
   inject,
   OnInit,
 } from '@angular/core';
-import { FormControl, NonNullableFormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { combineLatest, map } from 'rxjs';
-import { MovieShowing } from 'src/app/shared/interfaces/MovieShowing';
 import { ShowingsApiService } from '../showings-api.service';
 import { ShowingsActions } from '../store/showings.actions';
 import { selectShowingsList } from '../store/showings.selector';
+
+type FilterForm = FormGroup<{
+  title: FormControl<string>;
+  hall: FormControl<string>;
+}>;
 
 @Component({
   selector: 'app-showings-list',
@@ -44,13 +48,8 @@ export class ShowingsListComponent implements OnInit {
   private builder = inject(NonNullableFormBuilder);
   showings$ = this.store.select(selectShowingsList);
   allShowings$ = this.showings$;
-  movies$ = this.showingsApiService.getMovies();
-  halls$ = this.showingsApiService.getHalls();
-  dataForShowing$ = combineLatest([this.movies$, this.halls$]).pipe(
-    map(([movies, halls]) => ({ movies, halls }))
-  );
 
-  filterForm = this.builder.group({
+  filterForm: FilterForm = this.builder.group({
     title: this.builder.control('Wszystkie'),
     hall: this.builder.control('Wszystkie'),
   });
@@ -63,34 +62,5 @@ export class ShowingsListComponent implements OnInit {
   }
   ngOnInit() {
     this.store.dispatch(ShowingsActions.getAllShowings());
-  }
-
-  filterByTitle(ctrlValue: string | null) {
-    if (ctrlValue && ctrlValue !== 'Wszystkie') {
-      this.showings$ = this.allShowings$.pipe(
-        map((result) => result.filter((item) => item.movieTitle == ctrlValue)),
-        map((result: MovieShowing[]) =>
-          this.hallCtrl.value == 'Wszystkie'
-            ? result
-            : result.filter(
-                (item) => item.hallId.toString() == this.hallCtrl.value
-              )
-        )
-      );
-    } else {
-      this.showings$ = this.allShowings$;
-    }
-  }
-
-  filterByHall(ctrlValue: string | null) {
-    if (ctrlValue && ctrlValue.toString() !== 'Wszystkie') {
-      this.showings$ = this.allShowings$.pipe(
-        map((result) =>
-          result.filter((item) => item.hallId.toString() == ctrlValue)
-        )
-      );
-    } else {
-      this.showings$ = this.allShowings$;
-    }
   }
 }

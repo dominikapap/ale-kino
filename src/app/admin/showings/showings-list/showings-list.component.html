@@ -1,0 +1,14 @@
+<ng-container *ngIf="showings$ | async as showings; else listEmpty">
+  <h1 class="text-3xl font-bold pb-1">Lista nadchodzących seansów</h1>
+  <a routerLink="/admin/showings/add-showing" class="text-xl inline-flex"
+    >Dodaj nowy seans <mat-icon class="ml-2 text-lg">create</mat-icon></a
+  >
+  <ol class="pl-2 showing-list mt-4">
+    <li *ngFor="let showing of showings">
+      <app-showings-list-item [showing]="showing"></app-showings-list-item>
+    </li>
+  </ol>
+</ng-container>
+<ng-template #listEmpty
+  ><p>Nie udało się załadować danych, spróbuj ponownie później</p></ng-template
+>
