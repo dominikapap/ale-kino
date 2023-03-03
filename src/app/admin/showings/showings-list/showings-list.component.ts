@@ -4,17 +4,9 @@ import {
   inject,
   OnInit,
 } from '@angular/core';
-import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { combineLatest, map } from 'rxjs';
-import { ShowingsApiService } from '../showings-api.service';
 import { ShowingsActions } from '../store/showings.actions';
 import { selectShowingsList } from '../store/showings.selector';
-
-type FilterForm = FormGroup<{
-  title: FormControl<string>;
-  hall: FormControl<string>;
-}>;
 
 @Component({
   selector: 'app-showings-list',
@@ -44,22 +36,9 @@ type FilterForm = FormGroup<{
 })
 export class ShowingsListComponent implements OnInit {
   private store = inject(Store);
-  private showingsApiService = inject(ShowingsApiService);
-  private builder = inject(NonNullableFormBuilder);
   showings$ = this.store.select(selectShowingsList);
   allShowings$ = this.showings$;
 
-  filterForm: FilterForm = this.builder.group({
-    title: this.builder.control('Wszystkie'),
-    hall: this.builder.control('Wszystkie'),
-  });
-
-  get hallCtrl() {
-    return this.filterForm.controls.hall;
-  }
-  get titleCtrl() {
-    return this.filterForm.controls.title;
-  }
   ngOnInit() {
     this.store.dispatch(ShowingsActions.getAllShowings());
   }
