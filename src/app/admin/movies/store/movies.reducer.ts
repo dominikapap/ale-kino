@@ -11,6 +11,6 @@ export const moviesReducer = createReducer(
   }),
   on(MoviesAPIActions.getAllMovieSuccess, (state, { moviesList }) => ({
     ...state,
-    moviesList: [...state.moviesList, ...moviesList],
+    moviesList: [...moviesList],
   }))
 );
