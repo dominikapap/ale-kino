@@ -218,9 +218,7 @@
       "title": "Apokawixa",
       "id": "1267943",
       "imageUrl": "https://fwcdn.pl/fpo/55/10/10015510/8029347.6.jpg",
-      "genres": [
-        "Horror"
-      ],
+      "genres": ["Horror"],
       "time": "120 minut",
       "ageRestriction": "PG-13",
       "descriptionShort": "Czasem kac to nie najgorsze, co może ci się przydarzyć… „Apokawixa” to historia grupy maturzystów, którzy – zmęczeni kolejnymi lockdownami – postanawiają zorganizować nad morzem „melanż życia”",
@@ -232,10 +230,7 @@
       "title": "Co w duszy gra",
       "id": "2437892",
       "imageUrl": "https://fwcdn.pl/fpo/66/50/836650/7934792.6.jpg",
-      "genres": [
-        "Animowany",
-        "Obyczajowy"
-      ],
+      "genres": ["Animowany", "Obyczajowy"],
       "time": "120 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": "Joe Gardner prowadzi zespół muzyczny w gimnazjum. Jego prawdziwą pasją jest jednak jazz. Joe przeżywa kryzys - zaczyna zadawać sobie pytania: 'Po co tu jestem? Jaki jest cel mojego życia?'.",
@@ -246,10 +241,7 @@
       "title": "Władca Pierścieni: Drużyna Pierścienia",
       "id": "5633922",
       "imageUrl": "https://fwcdn.pl/fpo/10/65/1065/7912491.6.jpg",
-      "genres": [
-        "Fantasy",
-        "Przygodowy"
-      ],
+      "genres": ["Fantasy", "Przygodowy"],
       "time": "240 minut",
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": "Podróż hobbita z Shire i jego ośmiu towarzyszy, której celem jest zniszczenie potężnego pierścienia pożądanego przez Czarnego Władcę - Saurona.",
@@ -260,10 +252,7 @@
     {
       "title": "Glass Onion: Film z serii \"Na noże\"",
       "imageUrl": "https://fwcdn.pl/fpo/62/42/876242/8038804.6.jpg",
-      "genres": [
-        "Komedia",
-        "Dramat"
-      ],
+      "genres": ["Komedia", "Dramat"],
       "ageRestriction": "PG-13",
       "descriptionShort": "Harlan Thrombey, senior zamożnej rodziny, zostaje znaleziony we własnym pokoju z podciętym gardłem. Rozwikłania zagadki podejmuje się detektyw Benoit Blanc. ",
       "descriptionLong": "Harlan Thrombey, senior zamożnej rodziny, zostaje znaleziony we własnym pokoju z podciętym gardłem. Rozwikłania zagadki podejmuje się detektyw Benoit Blanc. Okazuje się, że tuż przed śmiercią, bogacz wydziedziczył rodzinę, a jedyną spadkobierczynią uczynił swą pielęgniarkę. Intryga się komplikuje i wkrótce pojawia się kolejny trup, a rodzina Harlana nie daje spokoju nowej właścicielce ich własnego domu, zdeterminowana odzyskać pieniądze.",
@@ -274,33 +263,13 @@
     {
       "title": "Duma i uprzedzenie",
       "imageUrl": "https://fwcdn.pl/fpo/54/87/125487/7530410.6.jpg",
-      "genres": [
-        "Dramat",
-        "Romans"
-      ],
+      "genres": ["Dramat", "Romans"],
       "ageRestriction": "Dla wszystkich",
       "descriptionShort": "Do Netherfield przybywa przystojny i bogaty Charles Bingley z zamiarem osiedlenia się tam na stałe. Przybysz wzbudza żywe zainteresowanie lokalnej społeczności, zwłaszcza niezamożnych panien na wydaniu. Na zawarciu bliższej znajomości z nowym sąsiadem zależy szczególnie pani Bennet, matce pięciu dorosłych córek, których jedyną szansą na dostatnie życie jest bogate zamążpójście",
       "descriptionLong": "Do Netherfield przybywa przystojny i bogaty Charles Bingley z zamiarem osiedlenia się tam na stałe. Przybysz wzbudza żywe zainteresowanie lokalnej społeczności, zwłaszcza niezamożnych panien na wydaniu. Na zawarciu bliższej znajomości z nowym sąsiadem zależy szczególnie pani Bennet, matce pięciu dorosłych córek, których jedyną szansą na dostatnie życie jest bogate zamążpójście. Sprawa jest paląca, gdyż cały rodzinny majątek ma wkrótce przejść w ręce antypatycznego kuzyna, pana Collinsa. Początkowo wszystko układa się po myśli pani Bennet. Bingley zakochuje się w jej najstarszej i najładniejszej córce, Jane. Tymczasem jego najlepszy przyjaciel, ponury i wyniosły pan Darcy, obdarza zainteresowaniem jej młodszą siostrę, Elżbietę.",
       "duration": 127,
       "isPremiere": false,
       "id": "930174"
-    },
-    {
-      "title": "ddsdss",
-      "imageUrl": "https://fwcdn.pl/fpo/55/10/10015510/8029347.6.jpg",
-      "genres": [
-        "Akcja",
-        "Animowany",
-        "Dramat",
-        "Historyczny",
-        "Horror"
-      ],
-      "ageRestriction": "PG",
-      "descriptionShort": "vvfff",
-      "descriptionLong": "fddfdfdgb",
-      "duration": 50,
-      "isPremiere": true,
-      "id": "yFsKPex"
     }
   ],
   "showings": [
